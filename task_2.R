@@ -19,4 +19,20 @@ syndromes <- read.table('./data/ECC_correctable_syndromes.txt', header=TRUE, sep
 #by(data, list(nodeType=data$nodeType, Syndrome=data$Syndrome), get_biterr)
 #bit_counts <- data.frame(type=character(),Bits.In.Error=integer())
 #df <- data[data$Syndrome!='-1',]
-print(aggregate(rbind(apply(data[data$Syndrome!='-1',], 1, get_biterr))))
+#apply(data[data$Syndrome!='-1',], 1, get_biterr)
+#Gave up on apply, moving to sequential. This is likely the wrong way to do this
+rownames <- seq(1:4)
+colnames <- levels(data$nodeType)
+bit_counts <- matrix(0,length(rownames),length(colnames))
+dimnames(bit_counts) <- list(rownames,colnames)
+
+for( i in 1:nrow(data)) {
+  row = data[i,]
+  if(row['Syndrome'] == '-1')
+    next
+  errs <- get_biterr(row)
+  print(errs)
+  bit_counts[errs[0],errs[1]] <- bit_counts[errs[0],errs[1]] + 1
+  print(bit_counts)
+  quit()
+}
