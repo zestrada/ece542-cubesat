@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 source('load_data.R')
+source('get_memdata.R')
 library("BMS") #requires install.packages("BMS")
 
 data <- load_data() 
@@ -15,20 +16,6 @@ syndromes <- read.table('./data/ECC_correctable_syndromes.txt', header=TRUE, sep
 #  Use a table to summarize the data, for all node types (ALL, compute, gpu,
 #   service)
 
-for (level in levels(data$Syndrome)) {
-  #I gave up on regex capture
-  #synd <- regexpr("=\\s+(?<synd>\\w+)", level, perl=TRUE)[[1]]
-  synd <- strsplit(level,"= ")[[1]][2]
-  #For 2, 3, 4 bit errors
-  if(nchar(synd)>=3) {
-    #Fix 3 character syndromes for hex2bin
-    if(nchar(synd)==3) {
-      synd<-paste('0',synd,sep='')
-    }
-    #look it up in the syndrome table, based on the row we can tell how many 
-    #bits are in error - if the mask has one bit, etc...
-    loc<-which(syndromes==toupper(synd),arr.ind=TRUE)
-    bin<-hex2bin(sprintf('%x',loc[1]))
-    numbits = length(grep('1',bin))
-  }
-}
+#by(data, list(nodeType=data$nodeType, Syndrome=data$Syndrome), get_biterr)
+bit_counts <- data.frame(type=character(),Bits.In.Error=integer())
+na.omit(apply(list(data[c('nodeType','Syndrome')]) , 1, get_biterr))
