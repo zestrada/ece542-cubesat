@@ -3,7 +3,7 @@ source('load_data.R')
 source('get_memdata.R')
 library("BMS") #requires install.packages("BMS")
 
-data <- load_data() 
+data <- load_data()
 #Looks like we have the syndromes corresponding to x8, so let's assume that's
 #what we have
 #2.13.1 (page 246)
@@ -17,5 +17,6 @@ syndromes <- read.table('./data/ECC_correctable_syndromes.txt', header=TRUE, sep
 #   service)
 
 #by(data, list(nodeType=data$nodeType, Syndrome=data$Syndrome), get_biterr)
-bit_counts <- data.frame(type=character(),Bits.In.Error=integer())
-na.omit(apply(list(data[c('nodeType','Syndrome')]) , 1, get_biterr))
+#bit_counts <- data.frame(type=character(),Bits.In.Error=integer())
+#df <- data[data$Syndrome!='-1',]
+print(aggregate(rbind(apply(data[data$Syndrome!='-1',], 1, get_biterr))))
