@@ -20,7 +20,10 @@ syndromes <- read.table('./data/ECC_correctable_syndromes.txt', header=TRUE, sep
 #bit_counts <- data.frame(type=character(),Bits.In.Error=integer())
 #df <- data[data$Syndrome!='-1',]
 #apply(data[data$Syndrome!='-1',], 1, get_biterr)
+
 #Gave up on apply, moving to sequential. This is likely the wrong way to do this
+#Probably should find a way to do this by using a function to transform the 
+#syndrome column
 rownames <- seq(1:4)
 colnames <- levels(data$nodeType)
 bit_counts <- matrix(0,length(rownames),length(colnames))
@@ -31,8 +34,9 @@ for( i in 1:nrow(data)) {
   if(row['Syndrome'] == '-1')
     next
   errs <- get_biterr(row)
-  print(errs)
-  bit_counts[errs[0],errs[1]] <- bit_counts[errs[0],errs[1]] + 1
-  print(bit_counts)
-  quit()
+  #Only count single, double quadruple
+  if(strtoi(errs[1]) <= 4) {
+    bit_counts[errs[1],errs[2]] <- bit_counts[errs[1],errs[2]] + 1 
+  }
 }
+print(bit_counts)
