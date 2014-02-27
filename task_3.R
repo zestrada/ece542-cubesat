@@ -12,9 +12,11 @@ faulty_drams<-0
 
 #Thresholds
 # *1 uncorrectable
-# *mean correctable 3351-4530. So > (5000/year)*(year/(2*52.14weeks))
+# *mean correctable 3351-4530. So > 2*((5000/year)*(year/(52.14weeks)))
 #We consider: "ECC Error" or "DRAM Parity Error"
-corr_thresh=5000/(2*52.14)
+#corr_thresh=2*(5000/(52.14))
+ndays <- 8
+corr_thresh<-ndays*(5000/(365))
 mem_errs <- subset(data, data$Type=="ECC Error" | data$Type=="DRAM Parity Error")
 
 #We don't have uptime or repair data, so count each type of error once

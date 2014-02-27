@@ -6,7 +6,7 @@ get_biterr <-  function(row) {
   loc <- find_syndrome(synd_str)
   bin<-hex2bin(sprintf('%x',loc[1]))
   numbits <- toString(length(grep('1',bin)))
-  return(c(numbits,ntype))
+  return(c(numbits,ntype,strtoi(row[1,'Timestamp'])))
 }
 
 find_syndrome <- function(synd_str) {
