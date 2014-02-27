@@ -45,3 +45,9 @@ for( i in 1:nrow(data)) {
 bit_counts <- cbind(bit_counts,rowSums(bit_counts))
 dimnames(bit_counts)[[2]][[length(colnames)]] <- "ALL"
 bit_percentages <- prop.table(bit_counts,2)
+print(bit_percentages)
+
+#Part 2
+#How frequent (time) are multiple (>1) bit errors? Provide one or
+#two charts of your choice to motivate your answer. Do different types
+#of nodes behave differently?

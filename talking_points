@@ -1,1 +1,20 @@
 *large number of errors
+*distribution of addresses?
+
+These addresses had interesting occurences:
+---
+4181cd8f0: 5.392157e-02  (891) (Memory?)
+1eac4: 5.192447e-02 (858) (NB)
+1eac0: 3.370855e-02 (557)
+6f024ed20: 2.118131e-02 (350)
+339929a60: 1.258775e-02 (208)
+---
+
+ [1] "DRAM Parity Error"        "ECC Error"
+ [3] "L1 cache Fill ECC error"  "L1 tag load"
+ [5] "L1 TLB IC load"           "L2 cache Fill ECC error"
+ [7] "L2 cache Fill ECC Error"  "L2 ECC Error"
+ [9] "NB Array Error"           "Table Walk Data Error"
+[11] "Data copy back Evict"     "L2 IC cache parity error"
+[13] "L2 TLB"                   "Link Retry"
+
