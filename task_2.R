@@ -23,8 +23,8 @@ syndromes <- read.table('./data/ECC_correctable_syndromes.txt', header=TRUE, sep
 
 #Gave up on apply, moving to sequential. This is likely the wrong way to do this
 #Probably should find a way to do this by using a function to transform the 
-#syndrome column
-rownames <- seq(1:4)
+#syndrome column"5+")
+rownames <- c(seq(1:4),"5+")
 colnames <- levels(data$nodeType)
 bit_counts <- matrix(0,length(rownames),length(colnames))
 dimnames(bit_counts) <- list(rownames,colnames)
@@ -34,9 +34,14 @@ for( i in 1:nrow(data)) {
   if(row['Syndrome'] == '-1')
     next
   errs <- get_biterr(row)
-  #Only count single, double quadruple
-  if(strtoi(errs[1]) <= 4) {
-    bit_counts[errs[1],errs[2]] <- bit_counts[errs[1],errs[2]] + 1 
+  bit_row <- errs[1]
+  #Only count single, double quadruple - bunch everything else up
+  if(strtoi(bit_row) > 4) {
+    bit_row="5+"
   }
+  bit_counts[bit_row,errs[2]] <- bit_counts[bit_row,errs[2]] + 1 
 }
-print(bit_counts)
+
+bit_counts <- cbind(bit_counts,rowSums(bit_counts))
+dimnames(bit_counts)[[2]][[length(colnames)]] <- "ALL"
+bit_percentages <- prop.table(bit_counts,2)

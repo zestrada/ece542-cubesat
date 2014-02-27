@@ -1,3 +1,5 @@
+#Should really fix this by reading in the syndrome table and storing the data
+#instead of strings
 get_biterr <-  function(row) {
   ntype <- toString(row[1,'nodeType'])
   synd_str <- toString(row[1,'Syndrome']) #e.g. " Chipkill ECC syndrome = 8fd"
