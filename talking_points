@@ -17,4 +17,7 @@ These addresses had interesting occurences:
  [9] "NB Array Error"           "Table Walk Data Error"
 [11] "Data copy back Evict"     "L2 IC cache parity error"
 [13] "L2 TLB"                   "Link Retry"
+---
 
+
+droplevels was useful

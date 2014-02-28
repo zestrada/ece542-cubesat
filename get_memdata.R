@@ -24,6 +24,5 @@ find_syndrome <- function(synd_str) {
 
 get_symbols <- function(syndrome) {
   synd<-find_syndrome(syndrome)
-  print(synd)
-  print(synd[1,"col"][[1]])
+  synd[1,"col"]
 }
