@@ -31,9 +31,14 @@ for(machine in levels(mem_errs$CompleteNode)) {
       symbol_list<-c(symbol_list,get_symbols(syndrome))
     }
   }   
+  if(nrow(mach_frame) > 0) {
   #Here we make the "no repair" assumption and also only consider symbols
-  faulty_drams <- length(unique(symbol_list))+faulty_drams
+    if(any(mach_frame$ucc == 1) | (table(mach_frame$ecc)['1'][[1]] >= corr_thresh) ){
+        faulty_drams <- length(unique(symbol_list))+faulty_drams
+    }
+  }
 }
 #not sure about this
+print(corr_thresh)
 print("Percentage of faulty_drams:")
 print(faulty_drams/total_drams)
