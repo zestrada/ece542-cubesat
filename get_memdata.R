@@ -12,8 +12,10 @@ get_biterr <-  function(row) {
 find_syndrome <- function(synd_str) {
   synd <- strsplit(synd_str,"= ")[[1]][2]
   #Fix 3 character syndromes for hex2bin, can't remember if it needs nibbles
-  if(nchar(synd)==3) {
-    synd<-paste('0',synd,sep='')
+  if(nchar(synd)<4) {
+    for( i in seq(1:(4-nchar(synd)))) {
+      synd<-paste('0',synd,sep='')
+    }
   }
   #look it up in the syndrome table, based on the row we can tell how many 
   #bits are in error - if the mask has one bit, etc...
@@ -23,6 +25,5 @@ find_syndrome <- function(synd_str) {
 get_symbols <- function(syndrome) {
   synd<-find_syndrome(syndrome)
   print(synd)
-  print(synd[1,'col'])
-  print("--")
+  print(synd[1,"col"][[1]])
 }

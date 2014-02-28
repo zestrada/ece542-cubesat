@@ -41,6 +41,7 @@ for( i in 1:nrow(data)) {
   #numbits, ntype, TimeStamp
   errs <- get_biterr(row)
   bit_row <- errs[1]
+  node_type <- errs[2]
   timestamp <- errs[3]
   #Only count single, double quadruple - bunch everything else up
   if(strtoi(bit_row) == 1) {
@@ -51,11 +52,11 @@ for( i in 1:nrow(data)) {
   if(strtoi(bit_row) > 4) {
     bit_row="5+"
   }
-  bit_counts[bit_row,errs[2]] <- bit_counts[bit_row,errs[2]] + 1 
+  bit_counts[bit_row,node_type] <- bit_counts[bit_row,node_type] + 1 
 }
 
 bit_counts <- cbind(bit_counts,rowSums(bit_counts))
-dimnames(bit_counts)[[2]][[length(colnames)]] <- "ALL"
+dimnames(bit_counts)[[2]][[length(colnames)+1]] <- "ALL"
 bit_percentages <- prop.table(bit_counts,2)
 print("Memory error breakdown:")
 print(bit_percentages)
