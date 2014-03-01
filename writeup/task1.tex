@@ -1,0 +1,40 @@
+\section{Task 1}
+
+\subsection{Distribution of Machine Check Exceptions}
+
+In order to compare this distribution of machine check exceptions across all node types, we first must define what we consider ``memory'', ``L1'' and ``L2'' errors.  For the purposes of this (and future) problems, we define:
+
+\begin{verbatim}
+L1_errors <- c("L1 cache Fill ECC error", "L1 tag load", "L1 TLB IC load")
+L2_errors <- c("L2 cache Fill ECC error", "L2 cache Fill ECC Error", "L2 ECC Error", "L2 IC cache parity error", "L2 TLB")
+mem_errors <- c("DRAM Parity Error", "ECC Error")
+\end{verbatim}
+
+We do not include \code{"NB Array Error"} in any of these categories, as the AMD manual explicitly distinguishes between the northbridge and memory.  The \code{"Table Walk Data Error"}, \code{"Data copy back Evict"}, and \code{"Link Retry"} errors do not directly involve the main memory, L1, or L2 caches.
+
+Once we defined these categories, we filtered the data by both type and node type and used \code{nrow} to determine the number (and, by dividing, percentage) of entries in each category.
+
+The results of this distribution exercise are shown below:
+
+\begin{verbatim}
+
+\end{verbatim}
+
+Generally speaking, memory errors account for the majority of errors encountered in the data, while L1 and L2 cache errors are relatively rare.
+
+To compute the MTBFs across banks and these extended types, we used the same formula discussed in Task 0 to calculate the MTBF across the subsetted data set.
+
+The results of this experiment are shown below:
+
+\begin{verbatim}
+
+\end{verbatim}
+
+Note that the MTBFs across different node types are very different: the MTBF for bank 4 memory errors varies from about 78 seconds (\code{compute}) to about 98,000 seconds (\code{lnet}).  There are a few possibilities for the cause of these results:
+
+\begin{itemize}
+\item Different types of nodes have different quantities of memory and cache; if more memory is present, MTBFs should be lower as there are more components that can fail.
+\item Different types of nodes have different utilization percentages: it is possible that the routing nodes (\code{lnet, mom}) are used less relative to their maximum capacity versus compute nodes (for example), leading to smaller MTBFs.
+\end{itemize}
+
+There are two uncorrectable errors in our data set, yielding an MTBF of 345,600 seconds and a FIT of approximately $1.042 \cdot 10^7$.  One error occured in bank 0 of a compute node and was an L1 error, while the second error occured in bank 4 of a compute node and was a memory error.  If we wish to separate the uncorrectable errors by bank, node type, or type, the two resulting entries would individually have MTBF values of 691,200 seconds and FIT values of $5.208 \cdot 10^6$.
