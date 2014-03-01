@@ -68,7 +68,7 @@ print(bit_percentages)
 ndays<-8
 total_time<-ndays*24
 
-#Now sum all rows except the first
+#Now sum all rows except the first (FIXME: make bargraph)
 print("Frequency of multi-bit errors 1/hr")
 multi_bit_hr<-print(colSums(bit_counts[-1,])/total_time)
 

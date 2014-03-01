@@ -22,7 +22,7 @@ find_syndrome <- function(synd_str) {
   which(syndromes==toupper(synd),arr.ind=TRUE)
 }
 
-get_symbols <- function(syndrome) {
+get_symbol <- function(syndrome) {
   synd<-find_syndrome(syndrome)
   synd[1,"col"]
 }

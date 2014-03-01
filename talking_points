@@ -9,14 +9,10 @@ These addresses had interesting occurences:
 6f024ed20: 2.118131e-02 (350)
 339929a60: 1.258775e-02 (208)
 ---
-> levels(data[data$CompleteNode=="c1-7c0s6n2",]$Type)
- [1] "DRAM Parity Error"        "ECC Error"
- [3] "L1 cache Fill ECC error"  "L1 tag load"
- [5] "L1 TLB IC load"           "L2 cache Fill ECC error"
- [7] "L2 cache Fill ECC Error"  "L2 ECC Error"
- [9] "NB Array Error"           "Table Walk Data Error"
-[11] "Data copy back Evict"     "L2 IC cache parity error"
-[13] "L2 TLB"                   "Link Retry"
+> levels(droplevels(data[data$CompleteNode=="c1-7c0s6n2",]$Type))
+[1] "ECC Error"               "L2 cache Fill ECC Error"
+[3] "L2 ECC Error"            "NB Array Error"         
+[5] "Table Walk Data Error"  
 ---
 
 
