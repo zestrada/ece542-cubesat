@@ -1,0 +1,22 @@
+\section{Task 0}
+
+\subsection{Summarizing the Data Set}
+In order to effectively summarize our data set, we used a few different techniques:
+
+\begin{itemize}
+\item The \code{levels} function in R enumerates all of the different levels used in a factor.  In the case of the CompleteNode column, this allowed us to form a vector that represented every complete node name; by taking the length of this vector, we were able to determine the number of nodes in the system.  We also used this method to determine the unique number of machine check exception types.
+\item As the data was ordered chronologically, the \code{head} and \code{tail} functions helped us to realize that eight days were represented in our data set.
+\item The \code{nrow} function returns the number of rows in a table.  We used this function to determine the total number of machine check exceptions and, after subsetting the data to only include rows where the \code{ue} or \code{ucc} bits were 1, the total number of uncorrectable errors in the data.
+\end{itemize}
+
+Our results are summarized in the following table:
+
+\subsection{Computing the MTBF}
+
+Before we compute MTBFs in general, one note: we define MTBF throughout this report as the quantity $\frac{\textrm{length of measurement period}}{\textrm{number of failures}}$.  We define the measurement period as 8 full days, as we can count entries from eight different days in the data.  Note that we could have defined the measurement period as the time difference between the first and last failures; however, this method underestimates the MTBF more than our method because it ignores the failure-free time between the beginning (and end) of measurement and this data.
+
+To calculate the MTBF of a particular type of node, I created the function \code{get\_mtbf}, which returns the MTBF for our data set for nodes of a given type.  I accomplish this goal by subsetting the data (so that its \code{nodeType} is what we desire), calculating the number of failures of the given type by using the \code{nrow} function on the subsetted data, computing 8 days in seconds, and dividing the two quantities to determine a MTBF value.  The function can also accept a boolean \code{all} argument, which controls whether all of the data should be used in the analysis.  If \code{all} is \code{TRUE}, the data is not subsetted; this functionality was added to easily support determining the MTBF for all nodes at once.
+
+I then create a data frame with all of my results by iterating over all node types and adding their MTBFs and type data.  I also create an entry for all types and call the \code{get\_mtbf} function with the \code{all} argument set to \code{TRUE} to calculate the MTBF for all node types.
+
+The results of this section are summarized in the following table.
