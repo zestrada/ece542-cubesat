@@ -1,11 +1,8 @@
-#Should really fix this by reading in the syndrome table and storing the data
-#instead of strings
+#Gets bits in error, used for Task 2.1
 get_biterr <-  function(row) {
   ntype <- toString(row[1,'nodeType'])
   synd_str <- toString(row[1,'Syndrome']) #e.g. " Chipkill ECC syndrome = 8fd"
-  loc <- find_syndrome(synd_str)
-  bin<-hex2bin(sprintf('%x',loc[1]))
-  numbits <- toString(length(grep('1',bin)))
+  numbits <- get_bitsinerr(synd_str)
   return(c(numbits,ntype,strtoi(row[1,'Timestamp'])))
 }
 
@@ -25,4 +22,11 @@ find_syndrome <- function(synd_str) {
 get_symbol <- function(syndrome) {
   synd<-find_syndrome(syndrome)
   synd[1,"col"]
+}
+
+#Helper function that actually returns the number of bits in error
+get_bitsinerr <- function(synd_str) {
+  loc <- find_syndrome(synd_str)
+  bin<-hex2bin(sprintf('%x',loc[1]))
+  numbits <- toString(length(grep('1',bin)))
 }
