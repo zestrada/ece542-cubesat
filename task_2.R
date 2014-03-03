@@ -71,6 +71,17 @@ total_time<-ndays*24
 #Now sum all rows except the first (FIXME: make bargraph)
 print("Frequency of multi-bit errors 1/hr")
 multi_bit_hr<-print(colSums(bit_counts[-1,])/total_time)
+#We know how many compute/GPU/service nodes there are
+n_compute <- 22640
+n_GPU <- 4192
+n_service <- 1936
+rates_normed<-data.frame(compute=multi_bit_hr['compute']/n_compute, GPU=multi_bit_hr['GPU']/n_GPU, service=multi_bit_hr['service'])
+print("Rates normalized to number of nodes:")
+print(rates_normed)
+#pdf("task2_2_normed.pdf")
+#barplot(data.matrix(rates_normed),main="Per-Node Frequency of Multibit Errors",xlab="Node Type",ylab="Errors/Hour per Node (log scale)", log='y')
+#dev.off()
+
 
 #Part 3
 #How many uncorrectable errors would Blue Waters have if using
@@ -90,7 +101,7 @@ multi_bit_hr<-print(colSums(bit_counts[-1,])/total_time)
 #Reusing our standard definition of MTBF:
 #One FIT=1/10^9 hours
 ucorr_errs <- matrix(0,2,2,dimnames=list(c('Chipkill','No Chipkill'),c('FIT/Mbit','MTBF')))
-per_mbit<-(8*1024*8) #8GB, 1024GB to MB, 8bit to B
+per_mbit<-(1614080*1024*8) #1,614,080GB in the system, (8*1024)GB/Mbit
 
 print('These are system wide, MTBFs are in hours')
 ucorr_errs['Chipkill','FIT/Mbit'] <- (1/total_time)*1E9*(1/per_mbit)
@@ -100,3 +111,7 @@ ucorr_errs['No Chipkill','MTBF'] <- ((1+length(multi_bit_times))/total_time)
 print(ucorr_errs)
 #Really R, sprintf but no printf? :-P
 print(sprintf("Uncorrectable Errors if only using ECC: %d",length(multi_bit_times)))
+
+#pdf("task2_2.pdf")
+#barplot(multi_bit_hr,main="Frequency of Multibit Errors",xlab="Node Type",ylab="Errors/Hour")
+
