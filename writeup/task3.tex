@@ -1,0 +1,17 @@
+\section{What is the percentage of faulty DRAM?  (i.e., DRAM with permanent
+memory faults) }
+
+\subsection{How can you spot them in your dataset?}
+We attempt to follow industry standard practices and consider any DIMM that
+would warrant an in-the-field replacement as ``faulty.''  The two criteria used
+are: (1) if the DIMM has any uncorrectable errors (2) if the number of
+correctable errors per unit time exceeds a certain threshold.  For criteria (1),
+there was only one machine in the dataset that satisfied the requirement.  To
+set an appropriate threshold for (2), we again looked at the study in
+\cite{schroeder2009dram}.  The authors found that on average, 3351--4530
+correctable errors were experienced per year.  Thus, we determined that memory
+exhibiting 5000 or more correctable errors per year (scaled to our dataset) is
+faulty with a rather high degree of confidence.
+
+%assumptions, multiple DIMMs, interleaving unsure - assume that two DIMMs don't
+%fail on the same system.  since a rare event, Should not skew data and average out.
