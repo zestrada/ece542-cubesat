@@ -10,9 +10,9 @@ L2_errors <- c("L2 cache Fill ECC error", "L2 cache Fill ECC Error", "L2 ECC Err
 mem_errors <- c("DRAM Parity Error", "ECC Error")
 \end{verbatim}
 
-We do not include \code{"NB Array Error"} in any of these categories, as the AMD manual explicitly distinguishes between the northbridge and memory.  The \code{"Table Walk Data Error"}, \code{"Data copy back Evict"}, and \code{"Link Retry"} errors do not directly involve the main memory, L1, or L2 caches.
+We do not include \fix{"NB Array Error"} in any of these categories, as the AMD manual explicitly distinguishes between the northbridge and memory.  The \fix{"Table Walk Data Error"}, \fix{"Data copy back Evict"}, and \fix{"Link Retry"} errors do not directly involve the main memory, L1, or L2 caches.
 
-Once we defined these categories, we filtered the data by both type and node type and used \code{nrow} to determine the number (and, by dividing, percentage) of entries in each category.
+Once we defined these categories, we filtered the data by both type and node type and used \fix{nrow} to determine the number (and, by dividing, percentage) of entries in each category.
 
 The results of this distribution exercise are shown below:
 
@@ -30,11 +30,11 @@ The results of this experiment are shown below:
 
 \end{verbatim}
 
-Note that the MTBFs across different node types are very different: the MTBF for bank 4 memory errors varies from about 78 seconds (\code{compute}) to about 98,000 seconds (\code{lnet}).  There are a few possibilities for the cause of these results:
+Note that the MTBFs across different node types are very different: the MTBF for bank 4 memory errors varies from about 78 seconds (\fix{compute}) to about 98,000 seconds (\fix{lnet}).  There are a few possibilities for the cause of these results:
 
 \begin{itemize}
 \item Different types of nodes have different quantities of memory and cache; if more memory is present, MTBFs should be lower as there are more components that can fail.
-\item Different types of nodes have different utilization percentages: it is possible that the routing nodes (\code{lnet, mom}) are used less relative to their maximum capacity versus compute nodes (for example), leading to smaller MTBFs.
+\item Different types of nodes have different utilization percentages: it is possible that the routing nodes (\fix{lnet, mom}) are used less relative to their maximum capacity versus compute nodes (for example), leading to smaller MTBFs.
 \end{itemize}
 
 There are two uncorrectable errors in our data set, yielding an MTBF of 345,600 seconds and a FIT of approximately $1.042 \cdot 10^7$.  One error occured in bank 0 of a compute node and was an L1 error, while the second error occured in bank 4 of a compute node and was a memory error.  If we wish to separate the uncorrectable errors by bank, node type, or type, the two resulting entries would individually have MTBF values of 691,200 seconds and FIT values of $5.208 \cdot 10^6$.
@@ -48,7 +48,7 @@ The graphs for each day are shown below:
 
 \subsubsection{Plotting the TBFs}
 
-The \code{diff} command can be used on a vector of numeric values to return the differences between subsequent values.  If we call \code{diff} on a set of filtered data, we can use the \code{hist} command to visualize the time between failures.
+The \fix{diff} command can be used on a vector of numeric values to return the differences between subsequent values.  If we call \fix{diff} on a set of filtered data, we can use the \fix{hist} command to visualize the time between failures.
 
 To improve the visualization of this data, we plot the x-axis on a logarithmic scale.
 
@@ -56,7 +56,7 @@ The plots for the TBFs are shown below.
 
 \subsubsection{Plotting the Hazard Rate}
 
-First, note that our hazard rate analysis is necessarily limited by our data set--ideally, we would able to track failures over the entire lifetime of the hardware.  Given these circumstances, we decided to shift our timestamp data to define our origin time as the start of October 6 (12:00 AM CDT) and run \code{muhaz} on this data.
+First, note that our hazard rate analysis is necessarily limited by our data set--ideally, we would able to track failures over the entire lifetime of the hardware.  Given these circumstances, we decided to shift our timestamp data to define our origin time as the start of October 6 (12:00 AM CDT) and run \fix{muhaz} on this data.
 
 The hazard rate plots are shown below:
 
@@ -67,5 +67,5 @@ We derived the following insights based on our results:
 \begin{itemize}
 \item The MTBF for each day does not appear to be comparable across banks for different days.  We believe that this could be the case because of the relatively small size of our data set; as a result, noise due to other factors (system load, for example) dominated any other trends in the data.  One small trend is that Saturdays (days 0 and 7) appeared to have higher MTBFs than other data throughout the week, but we are not sure if this trend is statistically significant.
 \item The time between failures appears to trend significantly towards small numbers.  We believe that one reason that this occurs is because failures may occur more often during heavy use; if a failure happens, the machine is more likely to be under more load, so more failures are likely to follow.  Similarly, permanent hardware failures and cosmic ray strikes are likely to be localized to a small area, and processors tend to access physically-close regions of memory over a short period of time; as a result, when a failure occurs, other failures should be likely to occur in a short time.
-\item The hazard rate generally increases as time goes on.  In a general case, this occurs because components are worn out by use and fail naturally over time.  However, as 8 days is an extremely short period of time, we believe that these graphs are more of a consequence of \code{muhaz}'s graphing methodology than any particular trend. 
+\item The hazard rate generally increases as time goes on.  In a general case, this occurs because components are worn out by use and fail naturally over time.  However, as 8 days is an extremely short period of time, we believe that these graphs are more of a consequence of \fix{muhaz}'s graphing methodology than any particular trend. 
 \end{itemize}
