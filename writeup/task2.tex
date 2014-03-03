@@ -70,7 +70,7 @@ behave differently as all of these types differ in the way they use memory.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.45\textwidth]{images/task2_2}
+  \includegraphics[width=0.45\textwidth]{images/task2_2_normed}
   \caption{Bar graph for the number of Memory errors/hour for each machine
   type, normalized to the number of nodes in each
   type.}\label{fig:mem_error_per_hr_normed}
@@ -110,7 +110,8 @@ Chipkill) and used the following formula:
 \begin{equation*}
   FIT = \frac{10^9N_{\textrm{failures}}}{(1614080\cdot8\cdot1024)t}
 \end{equation*}
-, where $t=8*24$ is the timespan of the data set in hours and the system has
+, where $N_{\textrm{failures}}$ is the number of failures for that environment,
+$t=8\cdot24$ is the timespan of the data set in hours and the system has
 1614080GiB of memory and there are $8\dot1024$ GiB to a Mbit. In the
 aforementioned study, the authors found an average of 778--25,000 FIT/Mbit for
 their systems (ECC only DDR DIMMs).  The values calculated here are
