@@ -38,3 +38,34 @@ Note that the MTBFs across different node types are very different: the MTBF for
 \end{itemize}
 
 There are two uncorrectable errors in our data set, yielding an MTBF of 345,600 seconds and a FIT of approximately $1.042 \cdot 10^7$.  One error occured in bank 0 of a compute node and was an L1 error, while the second error occured in bank 4 of a compute node and was a memory error.  If we wish to separate the uncorrectable errors by bank, node type, or type, the two resulting entries would individually have MTBF values of 691,200 seconds and FIT values of $5.208 \cdot 10^6$.
+
+\subsection{Time Between Consecutive Failures}
+\subsubsection{Plotting the Daily MTBF}
+
+In order to compute the MTBF per day, we can subset the data by days.  The easiest way to do this is to convert ``October 6, 2012 12:00 AM CDT'' into a Unix timestamp and use the fact that there are 86,400 seconds in a day to create upper and lower bounds for a given day's timestamp.  Once we have filtered this data, we can calculate MTBF by dividing 86400 seconds by the number of failures in the filtered data.  By concatenating the results for every day together, we can plot this data on a graph.
+
+The graphs for each day are shown below:
+
+\subsubsection{Plotting the TBFs}
+
+The \code{diff} command can be used on a vector of numeric values to return the differences between subsequent values.  If we call \code{diff} on a set of filtered data, we can use the \code{hist} command to visualize the time between failures.
+
+To improve the visualization of this data, we plot the x-axis on a logarithmic scale.
+
+The plots for the TBFs are shown below.
+
+\subsubsection{Plotting the Hazard Rate}
+
+First, note that our hazard rate analysis is necessarily limited by our data set--ideally, we would able to track failures over the entire lifetime of the hardware.  Given these circumstances, we decided to shift our timestamp data to define our origin time as the start of October 6 (12:00 AM CDT) and run \code{muhaz} on this data.
+
+The hazard rate plots are shown below:
+
+\subsubsection{Analysis}
+
+We derived the following insights based on our results:
+
+\begin{itemize}
+\item The MTBF for each day does not appear to be comparable across banks for different days.  We believe that this could be the case because of the relatively small size of our data set; as a result, noise due to other factors (system load, for example) dominated any other trends in the data.  One small trend is that Saturdays (days 0 and 7) appeared to have higher MTBFs than other data throughout the week, but we are not sure if this trend is statistically significant.
+\item The time between failures appears to trend significantly towards small numbers.  We believe that one reason that this occurs is because failures may occur more often during heavy use; if a failure happens, the machine is more likely to be under more load, so more failures are likely to follow.  Similarly, permanent hardware failures and cosmic ray strikes are likely to be localized to a small area, and processors tend to access physically-close regions of memory over a short period of time; as a result, when a failure occurs, other failures should be likely to occur in a short time.
+\item The hazard rate generally increases as time goes on.  In a general case, this occurs because components are worn out by use and fail naturally over time.  However, as 8 days is an extremely short period of time, we believe that these graphs are more of a consequence of \code{muhaz}'s graphing methodology than any particular trend. 
+\end{itemize}
