@@ -11,6 +11,7 @@ total_drams<-205632*9
 faulty_drams<-0
 err_due_faulty_drams<-0
 multi_bit_due_faulty_drams<-0
+multi_bit_not_due_drams<-0
 
 #Thresholds
 # *1 uncorrectable
@@ -33,14 +34,19 @@ for(machine in levels(mem_errs$CompleteNode)) {
   mach_frame <- droplevels(subset(mem_errs, CompleteNode  == machine & Syndrome
 !="-1"))
   if(nrow(mach_frame) <= 0 | !(any(mach_frame$ucc == 1) | (nrow(mach_frame[mach_frame$ecc=="1",]) >= corr_thresh))) { 
+    #Count up multibit errors that are not due to faulty DRAMs
+    for(syndrome in levels(mach_frame$Syndrome)) {
+      numbits<-get_bitsinerr(syndrome)
+      if(strtoi(numbits) > 1) {
+        multi_bit_not_due_drams<-1+multi_bit_due_faulty_drams
+      }
+    }
     next
   }
   symbol_list<-list()
   for(syndrome in levels(mach_frame$Syndrome)) {
     symbol_list<-c(symbol_list,get_symbol(syndrome))
-    loc <- find_syndrome(syndrome)
-    bin<-hex2bin(sprintf('%x',loc[1]))
-    numbits <- toString(length(grep('1',bin)))
+    numbits<-get_bitsinerr(syndrome)
     if(strtoi(numbits) > 1) {
       multi_bit_due_faulty_drams<-1+multi_bit_due_faulty_drams
     }
@@ -64,5 +70,9 @@ print(3600*total_time/nrow(mem_errs))
 print("Memory MTBF w/o faulty DRAMs")
 print(3600*total_time/(nrow(mem_errs)-err_due_faulty_drams))
 
-print("Percent of multibit errors due to faulty DRAM")
-print(100*multi_bit_due_faulty_drams/nrow(mem_errs))
+#
+#d. How effective would the Chipkill be after fixing all the faulty DRAM? Would
+#   we still need Chipkill or ECC would be enough? 
+#Need percetange of multibit errors due to faulty DRAMs
+print("Percent of multibit errors due to faulty DRAMs")
+print(100*multi_bit_due_faulty_drams/(multi_bit_due_faulty_drams+multi_bit_not_due_drams))
