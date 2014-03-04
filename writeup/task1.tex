@@ -56,7 +56,7 @@ To compute the MTBFs across banks and these extended types, we used the same for
 
 The results of this experiment are shown below:
 
-\begin{table}[ht]
+\begin{table}[t]
 \centering
 \begin{tabular}{rrllr}
   \hline
@@ -85,7 +85,18 @@ The results of this experiment are shown below:
   21 &   4 & all & L1 & Inf \\ 
   22 &   4 & all & L2 & Inf \\ 
   23 &   4 & all & mem & 0.02 \\ 
-  24 &   4 & all & other & 0.05 \\ 
+  24 &   4 & all & other & 0.05 \\
+
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{t able}[t]
+\centering
+\begin{tabular}{rrllr}
+  \hline
+ & bank & nodeType & type & mtbf \\ 
+  \hline
   25 &   1 & compute & L1 & 0.96 \\ 
   26 &   1 & compute & L2 & 14.77 \\ 
   27 &   1 & compute & mem & Inf \\ 
@@ -110,6 +121,17 @@ The results of this experiment are shown below:
   46 &   1 & all & L2 & 14.77 \\ 
   47 &   1 & all & mem & Inf \\ 
   48 &   1 & all & other & Inf \\ 
+ 
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{rrllr}
+  \hline
+ & bank & nodeType & type & mtbf \\ 
+  \hline
   49 &   2 & compute & L1 & 32.00 \\ 
   50 &   2 & compute & L2 & 1.17 \\ 
   51 &   2 & compute & mem & Inf \\ 
@@ -133,7 +155,18 @@ The results of this experiment are shown below:
   69 &   2 & all & L1 & 24.00 \\ 
   70 &   2 & all & L2 & 0.89 \\ 
   71 &   2 & all & mem & Inf \\ 
-  72 &   2 & all & other & 192.00 \\ 
+  72 &   2 & all & other & 192.00 \\
+
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{rrllr}
+  \hline
+ & bank & nodeType & type & mtbf \\ 
+  \hline
   73 &   0 & compute & L1 & 48.00 \\ 
   74 &   0 & compute & L2 & Inf \\ 
   75 &   0 & compute & mem & Inf \\ 
