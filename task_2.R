@@ -55,6 +55,7 @@ for( i in 1:nrow(data)) {
   bit_counts[bit_row,node_type] <- bit_counts[bit_row,node_type] + 1 
 }
 
+#Sum across all node types to get the totals:
 bit_counts <- cbind(bit_counts,rowSums(bit_counts))
 dimnames(bit_counts)[[2]][[length(colnames)+1]] <- "ALL"
 bit_percentages <- prop.table(bit_counts,2)
@@ -68,7 +69,7 @@ print(bit_percentages)
 ndays<-8
 total_time<-ndays*24
 
-#Now sum all rows except the first (FIXME: make bargraph)
+#Now sum all rows except the first
 print("Frequency of multi-bit errors 1/hr")
 multi_bit_hr<-print(colSums(bit_counts[-1,])/total_time)
 #We know how many compute/GPU/service nodes there are

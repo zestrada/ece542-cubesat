@@ -23,15 +23,16 @@
 \definecolor{deepgreen}{rgb}{0,0.5,0}
 \newcommand{\fix}[1]{\texttt{\small #1}}
 \newcommand{\sfix}[1]{\texttt{\scriptsize #1}}
+\newcommand{\code}[1]{\texttt{\small #1}}
 
  
 
-\newcommand{\code}[2]{
-  \hrulefill
-  \subsection*{#1}
-  \lstinputlisting{#2}
-  \vspace{2em}
-}
+%\newcommand{\code}[2]{
+%  \hrulefill
+%  \subsection*{#1}
+%  \lstinputlisting{#2}
+%  \vspace{2em}
+%}
 
 \begin{document}
 \title{ECE542 Mini-Project 1:\\ Analysis of Blue Waters Hardware Errors for
@@ -51,6 +52,15 @@ Weeks 40 and 41}
 \input{task1}
 \input{task2}
 \input{task3}
+\input{taskx}
+
+\section{Final Notes}
+\begin{itemize}
+  \item The code is included in this zip file with names like ``task1.R'' for
+  tasks and general function names for more library-like files
+  \item Since all plots involved at most one line at a time, legends were
+  omitted for legibility.
+\end{itemize}
 
 %\section*{acknowledgments}
 
