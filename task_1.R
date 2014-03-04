@@ -201,11 +201,34 @@ plot_tbfs <- function(data) {
 # Task 1, Part 2, Item c.
 # Plots the hazard rate for a given bank and node type.
 # Does not filter by type is all_types is true.
-plot_haz <- function(data, bank, ntype, all_types = FALSE) {
+plot_haz <- function(data, bank, ntype, all_types = FALSE, ...) {
   data <- data[data$Bank == bank, ]
   if (all_types == FALSE) {
     data <- data[data$nodeType == ntype, ]
   }
-  diffs <- diff(data$Timestamp)
-  plot(muhaz(diffs))
+  # Only plot if there will be more than "10 patients at risk" in the first place.
+  # See max.time in
+  # http://cran.r-project.org/web/packages/muhaz/muhaz.pdf
+  if (length(data$Timestamp) > 11) {
+    tbf <- diff(data$Timestamp)
+    return(plot(muhaz(tbf), ...))
+  }
+  else
+  {
+    return(NA)
+  }
+}
+
+# Plot all relevant hazard rates.
+plot_hazs <- function(data) {
+  banks <- unique(data$Bank)
+  nodeTypes <- levels(data$nodeType)
+  for (b in banks) {
+    for (n in nodeTypes) {
+      title_string <- paste("Hazard Rate for bank", as.character(b), "for", n, "nodes")
+      plot_haz(data, b, n, FALSE, main = title_string)
+    }
+    title_string <- paste("Hazard Rate for bank", as.character(b), "for", "ALL", "nodes")
+    plot_haz(data, b, NA, TRUE, main = title_string)
+  }
 }
