@@ -9,9 +9,9 @@ In order to effectively summarize our data set, we used a few different techniqu
 \item The \fix{nrow} function returns the number of rows in a table.  We used this function to determine the total number of machine check exceptions and, after subsetting the data to only include rows where the \fix{ue} or \fix{ucc} bits were 1, the total number of uncorrectable errors in the data.
 \end{itemize}
 
-Our results are summarized in the following table:
+Our results are summarized in Table \ref{tab:task0}.
 
-\begin{table}[ht]
+\begin{table*}
 \centering
 \begin{tabular}{rrrrrr}
   \hline
@@ -20,7 +20,8 @@ Our results are summarized in the following table:
 1 & 910 & 8.00 & 16524 &   2 &  14 \\ 
    \hline
 \end{tabular}
-\end{table}
+\caption{Results from Task0 node counts and MTBF}\label{tab:task0}
+\end{table*}
 
 \subsection{Computing the MTBF}
 
