@@ -16,9 +16,39 @@ Once we defined these categories, we filtered the data by both type and node typ
 
 The results of this distribution exercise are shown below:
 
-\begin{verbatim}
-
-\end{verbatim}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rllrr}
+  \hline
+ & nodeType & type & nerr & perr \\ 
+  \hline
+1 & compute & L1 & 210 & 0.02 \\ 
+  2 & compute & L2 & 177 & 0.01 \\ 
+  3 & compute & mem & 8848 & 0.74 \\ 
+  4 & compute & other & 2685 & 0.23 \\ 
+  5 & GPU & L1 &   2 & 0.00 \\ 
+  6 & GPU & L2 &  14 & 0.02 \\ 
+  7 & GPU & mem & 616 & 0.91 \\ 
+  8 & GPU & other &  48 & 0.07 \\ 
+  9 & lnet & L1 &   0 & 0.00 \\ 
+  10 & lnet & L2 &   0 & 0.00 \\ 
+  11 & lnet & mem &   7 & 0.64 \\ 
+  12 & lnet & other &   4 & 0.36 \\ 
+  13 & service & L1 &   4 & 0.00 \\ 
+  14 & service & L2 &  38 & 0.01 \\ 
+  15 & service & mem & 2382 & 0.62 \\ 
+  16 & service & other & 1411 & 0.37 \\ 
+  17 & mom & L1 &   0 & 0.00 \\ 
+  18 & mom & L2 &   0 & 0.00 \\ 
+  19 & mom & mem &  76 & 0.97 \\ 
+  20 & mom & other &   2 & 0.03 \\ 
+  21 & all & L1 & 216 & 0.01 \\ 
+  22 & all & L2 & 229 & 0.01 \\ 
+  23 & all & mem & 11929 & 0.72 \\ 
+  24 & all & other & 4150 & 0.25 \\ 
+   \hline
+\end{tabular}
+\end{table}
 
 Generally speaking, memory errors account for the majority of errors encountered in the data, while L1 and L2 cache errors are relatively rare.
 
@@ -26,18 +56,121 @@ To compute the MTBFs across banks and these extended types, we used the same for
 
 The results of this experiment are shown below:
 
-\begin{verbatim}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrllr}
+  \hline
+ & bank & nodeType & type & mtbf \\ 
+  \hline
+1 &   4 & compute & L1 & Inf \\ 
+  2 &   4 & compute & L2 & Inf \\ 
+  3 &   4 & compute & mem & 0.02 \\ 
+  4 &   4 & compute & other & 0.07 \\ 
+  5 &   4 & GPU & L1 & Inf \\ 
+  6 &   4 & GPU & L2 & Inf \\ 
+  7 &   4 & GPU & mem & 0.31 \\ 
+  8 &   4 & GPU & other & 4.00 \\ 
+  9 &   4 & lnet & L1 & Inf \\ 
+  10 &   4 & lnet & L2 & Inf \\ 
+  11 &   4 & lnet & mem & 27.43 \\ 
+  12 &   4 & lnet & other & 48.00 \\ 
+  13 &   4 & service & L1 & Inf \\ 
+  14 &   4 & service & L2 & Inf \\ 
+  15 &   4 & service & mem & 0.08 \\ 
+  16 &   4 & service & other & 0.14 \\ 
+  17 &   4 & mom & L1 & Inf \\ 
+  18 &   4 & mom & L2 & Inf \\ 
+  19 &   4 & mom & mem & 2.53 \\ 
+  20 &   4 & mom & other & 96.00 \\ 
+  21 &   4 & all & L1 & Inf \\ 
+  22 &   4 & all & L2 & Inf \\ 
+  23 &   4 & all & mem & 0.02 \\ 
+  24 &   4 & all & other & 0.05 \\ 
+  25 &   1 & compute & L1 & 0.96 \\ 
+  26 &   1 & compute & L2 & 14.77 \\ 
+  27 &   1 & compute & mem & Inf \\ 
+  28 &   1 & compute & other & Inf \\ 
+  29 &   1 & GPU & L1 & 192.00 \\ 
+  30 &   1 & GPU & L2 & Inf \\ 
+  31 &   1 & GPU & mem & Inf \\ 
+  32 &   1 & GPU & other & Inf \\ 
+  33 &   1 & lnet & L1 & Inf \\ 
+  34 &   1 & lnet & L2 & Inf \\ 
+  35 &   1 & lnet & mem & Inf \\ 
+  36 &   1 & lnet & other & Inf \\ 
+  37 &   1 & service & L1 & 96.00 \\ 
+  38 &   1 & service & L2 & Inf \\ 
+  39 &   1 & service & mem & Inf \\ 
+  40 &   1 & service & other & Inf \\ 
+  41 &   1 & mom & L1 & Inf \\ 
+  42 &   1 & mom & L2 & Inf \\ 
+  43 &   1 & mom & mem & Inf \\ 
+  44 &   1 & mom & other & Inf \\ 
+  45 &   1 & all & L1 & 0.95 \\ 
+  46 &   1 & all & L2 & 14.77 \\ 
+  47 &   1 & all & mem & Inf \\ 
+  48 &   1 & all & other & Inf \\ 
+  49 &   2 & compute & L1 & 32.00 \\ 
+  50 &   2 & compute & L2 & 1.17 \\ 
+  51 &   2 & compute & mem & Inf \\ 
+  52 &   2 & compute & other & 192.00 \\ 
+  53 &   2 & GPU & L1 & Inf \\ 
+  54 &   2 & GPU & L2 & 13.71 \\ 
+  55 &   2 & GPU & mem & Inf \\ 
+  56 &   2 & GPU & other & Inf \\ 
+  57 &   2 & lnet & L1 & Inf \\ 
+  58 &   2 & lnet & L2 & Inf \\ 
+  59 &   2 & lnet & mem & Inf \\ 
+  60 &   2 & lnet & other & Inf \\ 
+  61 &   2 & service & L1 & 96.00 \\ 
+  62 &   2 & service & L2 & 5.05 \\ 
+  63 &   2 & service & mem & Inf \\ 
+  64 &   2 & service & other & Inf \\ 
+  65 &   2 & mom & L1 & Inf \\ 
+  66 &   2 & mom & L2 & Inf \\ 
+  67 &   2 & mom & mem & Inf \\ 
+  68 &   2 & mom & other & Inf \\ 
+  69 &   2 & all & L1 & 24.00 \\ 
+  70 &   2 & all & L2 & 0.89 \\ 
+  71 &   2 & all & mem & Inf \\ 
+  72 &   2 & all & other & 192.00 \\ 
+  73 &   0 & compute & L1 & 48.00 \\ 
+  74 &   0 & compute & L2 & Inf \\ 
+  75 &   0 & compute & mem & Inf \\ 
+  76 &   0 & compute & other & Inf \\ 
+  77 &   0 & GPU & L1 & 192.00 \\ 
+  78 &   0 & GPU & L2 & Inf \\ 
+  79 &   0 & GPU & mem & Inf \\ 
+  80 &   0 & GPU & other & Inf \\ 
+  81 &   0 & lnet & L1 & Inf \\ 
+  82 &   0 & lnet & L2 & Inf \\ 
+  83 &   0 & lnet & mem & Inf \\ 
+  84 &   0 & lnet & other & Inf \\ 
+  85 &   0 & service & L1 & Inf \\ 
+  86 &   0 & service & L2 & Inf \\ 
+  87 &   0 & service & mem & Inf \\ 
+  88 &   0 & service & other & Inf \\ 
+  89 &   0 & mom & L1 & Inf \\ 
+  90 &   0 & mom & L2 & Inf \\ 
+  91 &   0 & mom & mem & Inf \\ 
+  92 &   0 & mom & other & Inf \\ 
+  93 &   0 & all & L1 & 38.40 \\ 
+  94 &   0 & all & L2 & Inf \\ 
+  95 &   0 & all & mem & Inf \\ 
+  96 &   0 & all & other & Inf \\ 
+   \hline
+\end{tabular}
+\end{table}
 
-\end{verbatim}
 
-Note that the MTBFs across different node types are very different: the MTBF for bank 4 memory errors varies from about 78 seconds (\fix{compute}) to about 98,000 seconds (\fix{lnet}).  There are a few possibilities for the cause of these results:
+Note that the MTBFs across different node types are very different: the MTBF for bank 4 memory errors varies from about 0.02 hours (\fix{compute}) to about 27 hours (\fix{lnet}).  There are a few possibilities for the cause of these results:
 
 \begin{itemize}
 \item Different types of nodes have different quantities of memory and cache; if more memory is present, MTBFs should be lower as there are more components that can fail.
 \item Different types of nodes have different utilization percentages: it is possible that the routing nodes (\fix{lnet, mom}) are used less relative to their maximum capacity versus compute nodes (for example), leading to smaller MTBFs.
 \end{itemize}
 
-There are two uncorrectable errors in our data set, yielding an MTBF of 345,600 seconds and a FIT of approximately $1.042 \cdot 10^7$.  One error occured in bank 0 of a compute node and was an L1 error, while the second error occured in bank 4 of a compute node and was a memory error.  If we wish to separate the uncorrectable errors by bank, node type, or type, the two resulting entries would individually have MTBF values of 691,200 seconds and FIT values of $5.208 \cdot 10^6$.
+There are two uncorrectable errors in our data set, yielding an MTBF of 96 hours and a FIT of approximately $1.042 \cdot 10^7$.  One error occured in bank 0 of a compute node and was an L1 error, while the second error occured in bank 4 of a compute node and was a memory error.  If we wish to separate the uncorrectable errors by bank, node type, or type, the two resulting entries would individually have MTBF values of 192 hours and FIT values of $5.208 \cdot 10^6$.
 
 \subsection{Time Between Consecutive Failures}
 \subsubsection{Plotting the Daily MTBF}
