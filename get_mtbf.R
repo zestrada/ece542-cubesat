@@ -1,21 +1,27 @@
+# Task 0.3 functions.
+
 # Gets the mean time between failures for a given type,
-# or all of the data if the all parameter is TRUE.
+# or for all of the data if the all parameter is TRUE.
 get_mtbf <- function(data, type, all=FALSE) {
   if(all==FALSE) {
-    data <- data[data$Type == type,]    
+    data <- data[data$nodeType == type,]    
   }
-  # I define mtbf as <total time between all failures> / <number of failures>.
-  # What should we do if there's one failure?  Returns 0 now.
-  total_time <- data$Timestamp[length(data$Timestamp)] - data$Timestamp[1]
+  # I define mtbf as <8 days> / <number of failures>.
+  total_time <- 8 * 24 * 60 * 60
   num_failures <- nrow(data)
   total_time / num_failures
 }
 
+# Function called on the data to get all MTBF values from it.
 get_all_mtbfs <- function(data) {
-  for (level in levels(data$Type)) {
-    print(level)
-    print(get_mtbf(data, level))
+  nodeType <- vector()
+  mtbf <- vector()
+  for (level in levels(data$nodeType)) {
+    nodeType <- c(nodeType, level)
+    mtbf <- c(mtbf, get_mtbf(data, level))
   }
-  print("All")
-  print(get_mtbf(data, NA, TRUE))
+  nodeType <- c(nodeType, "ALL")
+  mtbf <- c(mtbf, get_mtbf(data, NA, TRUE))
+  df <- data.frame(nodeType, mtbf)
+  df
 }
