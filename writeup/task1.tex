@@ -5,8 +5,11 @@
 In order to compare this distribution of machine check exceptions across all node types, we first must define what we consider ``memory'', ``L1'' and ``L2'' errors.  For the purposes of this (and future) problems, we define:
 
 \begin{verbatim}
-L1_errors <- c("L1 cache Fill ECC error", "L1 tag load", "L1 TLB IC load")
-L2_errors <- c("L2 cache Fill ECC error", "L2 cache Fill ECC Error", "L2 ECC Error", "L2 IC cache parity error", "L2 TLB")
+L1_errors <- c("L1 cache Fill ECC error", "L1 tag load",
+               "L1 TLB IC load")
+L2_errors <- c("L2 cache Fill ECC error", 
+               "L2 cache Fill ECC Error", "L2 ECC Error",
+               "L2 IC cache parity error", "L2 TLB")
 mem_errors <- c("DRAM Parity Error", "ECC Error")
 \end{verbatim}
 
@@ -91,7 +94,7 @@ The results of this experiment are shown below:
 \end{tabular}
 \end{table}
 
-\begin{t able}[t]
+\begin{table}[t]
 \centering
 \begin{tabular}{rrllr}
   \hline

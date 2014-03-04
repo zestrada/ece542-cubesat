@@ -1,8 +1,9 @@
 \documentclass[notitlepage,groupedaddress]{IEEEtran}
 %\documentclass{revtex4-1}
 \usepackage{graphicx}
-\usepackage{longtable}
 \usepackage{morefloats}
+\usepackage{placeins}
+\usepackage{supertabular}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{hyperref}
 \usepackage{array}
@@ -14,6 +15,9 @@
 \usepackage[font=small]{caption}
 \hypersetup{colorlinks, linkcolor=blue,citecolor=blue, urlcolor=blue}
 \newcommand{\ACK}{\emph{ACK}}
+\makeatletter
+\def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim} 
+\makeatother
 %\usepackage{cite}
 
 % Default fixed font does not support bold face
