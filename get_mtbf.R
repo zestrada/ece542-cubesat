@@ -7,8 +7,13 @@ get_mtbf <- function(data, type, all=FALSE) {
     data <- data[data$nodeType == type,]    
   }
   # I define mtbf as <8 days> / <number of failures>.
-  total_time <- 8 * 24 * 60 * 60
+  total_time <- 8 * 24
   num_failures <- nrow(data)
+  
+  if(num_failures == 0) {
+    return(Inf)
+  }
+  
   total_time / num_failures
 }
 
