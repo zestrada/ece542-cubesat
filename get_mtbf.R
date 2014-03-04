@@ -25,7 +25,7 @@ get_all_mtbfs <- function(data) {
     nodeType <- c(nodeType, level)
     mtbf <- c(mtbf, get_mtbf(data, level))
   }
-  nodeType <- c(nodeType, "ALL")
+  nodeType <- c(nodeType, "all")
   mtbf <- c(mtbf, get_mtbf(data, NA, TRUE))
   df <- data.frame(nodeType, mtbf)
   df
