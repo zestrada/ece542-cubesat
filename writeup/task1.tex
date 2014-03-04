@@ -278,7 +278,7 @@ The plots for the TBFs are shown below.  Note that we do not create a histogram 
 
 \subsubsection{Plotting the Hazard Rate}
 
-First, note that our hazard rate analysis is necessarily limited by our data set--ideally, we would able to track failures over the entire lifetime of the hardware.  Given these circumstances, we decided to shift our timestamp data to define our origin time as the start of October 6 (12:00 AM CDT) and run \fix{muhaz} on this data.  Note that \code{muhaz} defines its \code{max.time} field based on when ``ten patients remain at risk''.  As such, we did not plot the hazard rates for categories that contained fewer than 11 separate timestamps (10 diffs).
+First, note that our hazard rate analysis is necessarily limited by our data set--ideally, we would able to track failures over the entire lifetime of the hardware.  Given these circumstances, we decided to shift our timestamp data to define our origin time as the start of October 6 (12:00 AM CDT) and run \fix{muhaz} on this data.  Note that \code{muhaz} defines its \code{max.time} field based on when ``ten patients remain at risk''\cite{MUHAZ}.  As such, we did not plot the hazard rates for categories that contained fewer than 11 separate timestamps (10 diffs).
 
 The hazard rate plots are shown below:
 
