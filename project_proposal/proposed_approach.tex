@@ -22,10 +22,11 @@ on top of the OS.  One idea to address this is to store multiple copies of the
 OS kernel, along a checksum for the kernel image.  When booting a kernel, the
 bootloader can compute the checksum at boot time and failover to the next kernel
 image if it does not match the stored checksum.  While this removes the stored
-kernel image as a SPoF, it still leaves the bootloader as a SPoF.  However, the
-bootloader's code is significantly smaller than the Linux kernel and therefore
-should be less susceptible to bit errors.  If time permits, we can investigate
-similar techniques for protecting the bootloader. 
+kernel image as a single point of failure, it still leaves the bootloader as a
+single point of failure.  However, the bootloader's code is significantly
+smaller than the Linux kernel and therefore should be less susceptible to bit
+errors.  If time permits, we can investigate similar techniques for protecting
+the bootloader. 
 
 \subsection{Develop a flash patrol read daemon}
 In addition to storing the Operating System and programs, IlliniSat uses flash
