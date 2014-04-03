@@ -1,36 +1,64 @@
 \section{Proposed Approach}
 \subsection{M\"obius simulation of memory corruption}
-In order to provide the IlliniSat team with useful data about the reliability of the satellite, we intend to develop simulations in M\"obius to indicate the potential for failures due to flash corruption during the 6 month - 1 year mission time frame.  As the IlliniSat satellite must store data it collects from experiments before transmitting it to the ground station, the probability that an arbitrary flash error corrupts existing data increases the longer the satellite goes before communicating with the ground station.  We intend to evaluate the satellite's performance in both the presence and the absence of the flash patrol read daemon discussed below.
+In order to provide the IlliniSat team with useful data about the reliability of
+the satellite, we intend to develop simulations in M\"obius to indicate the
+potential for failures due to flash corruption during the 6 month - 1 year
+mission time frame.  As IlliniSat must store data it collects from experiments
+before transmitting it to the ground station, the probability that an arbitrary
+flash error corrupts existing data increases the longer the satellite goes
+without communicating with the ground station.  Furthermore, the Operating
+System and user programs are stored in flash memory and these are all necessary
+for proper operation of the satellite.  We intend to evaluate the IlliniSat's
+performance in both the presence and the absence of the flash patrol read daemon
+discussed below.
 
 \subsection{Develop a consistent boot/recovery procedure}
 When the project members were conversing with the IlliniSat team, one major
 concern that the IlliniSat team had was that the system may not boot up
-correctly after the watchdog resets the system (or even after launch).  This can
-happen for a number of reasons, but one of the main concerns is corruption of
-the Operating System kernel.  If the OS kernel does not boot, this mission will
-end in catastrophic failure.  One idea is to address this is store multiple
-copies of the OS kernel, along with checksums for the kernel image.  The
+correctly after the watchdog resets the system (or even after deployment).  This
+can happen for a number of reasons, but one of the main concerns is corruption
+of the Operating System kernel image stored in flash memory.  If the OS kernel
+does not boot, this mission will end in catastrophic failure as all systems run
+on top of the OS.  One idea to address this is to store multiple copies of the
+OS kernel, along a checksum for the kernel image.  When booting a kernel, the
 bootloader can compute the checksum at boot time and failover to the next kernel
 image if it does not match the stored checksum.  While this removes the stored
 kernel image as a SPoF, it still leaves the bootloader as a SPoF.  However, the
 bootloader's code is significantly smaller than the Linux kernel and therefore
 should be less susceptible to bit errors.  If time permits, we can investigate
-similar techniques for the bootloader. 
+similar techniques for protecting the bootloader. 
 
 \subsection{Develop a flash patrol read daemon}
-Flash memory is used on the IlliniSat satellite to store important scientific data before it can be sent to the ground station. However, flash memory is susceptible to single-bit and/or whole-chip failures. To ensure that the data is not corrupted, we plan to implement a flash patrol read daemon that will iterate through the flash memory and validate the memory, We will do this using some sort of checksum or other method. The patrol will run in the background to make certain that it does not interfere with the real-time deadlines that are mission critical. In addition, the patrol will be implemented such that it checks the flash that is being used instead of just iterating through its entirety. The satellite needs to hold up to 30 days worth of data on it at anytime, but not all of it may be used at any one time. Adding the patrol to the IlliniSat system will help ensure that no data is lost on the satellite so that the mission can be a success. 
+In addition to storing the Operating System and programs, IlliniSat uses flash
+memory to store up to 30 days of scientific data before it can be transmitted to
+the ground station.  To ensure that the data is not corrupted, we plan to
+implement a flash patrol read daemon that will sweep over the flash memory and
+validate the contents. We plan to do this using a checksum or possibly even an
+in memory cache (if storage space permits).  Storing the detection data in
+memory allows us to take advantage of the fact that DRAM is more reliable than
+flash memory in CubeSats~\cite{odegaard2013error}.  The patrol will run in the
+background to make certain that it does not interfere with the real-time
+deadlines that are mission critical.  In addition, the patrol will be
+implemented such that it checks the flash that is being used instead of just
+iterating through its entirety (e.g.  data that has already been transmitted
+will no longer be validated). With regards to power consumption, we can ensure
+that the daemon only runs while the satellite has sufficient power remaining.
+Adding the patrol daemon to the IlliniSat system will help safeguard that no
+data is lost on the satellite, allowing its scientific missions to be
+successful.
 
 \subsection{Develop a method to increase reliability of ground station
 communications}
-The ground station is able to send commands from the ground to the IlliniSat satellite. These commands
+The ground station is able to send commands from the ground to IlliniSat. These commands
 can change the state of the satellite and also the configuration settings. This makes sense because the
-researchers on the ground may want to update the mission objectives or fix new bugs. However, this is
-also a lot of power for the ground station. If the commands were somehow changed in transit by cosmic 
-rays or communication failure, the satellite could be sent into an unknown state with unknown settings. 
+researchers on the ground may want to update the mission objectives or fix new bugs. However, this
+means that the ground station has a large amount of control over the
+satellite. If the commands were somehow corrupted in transit,
+the satellite could be sent into an unknown state with unknown settings. 
 It is then possible that the satellite could keep restarting, hang, or just crash altogether. All of these are
 unacceptable failures and must be avoided. So we plan to develop a system of validating the 
 communications that are sent from the ground before actually interpreting them. This method could 
-involve a checksum or even embedded commands that are stored on the satellite and then indexed into
-by the commands sent from the ground. Ensuring reliability of these commands will ensure a stable state
+involve a checksum or even a fixed set of commands that are stored on the satellite and then indexed 
+by the commands sent from the ground. Ensuring the correctness of these commands
+will can help guarantee a stable state
 on the satellite and thwart transient errors.
-
