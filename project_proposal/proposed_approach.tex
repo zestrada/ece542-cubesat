@@ -17,7 +17,23 @@ should be less susceptible to bit errors.  If time permits, we can investigate
 similar techniques for the bootloader. 
 
 \subsection{Develop a flash patrol read daemon}
-Flash memory is used on the IlliniSat satellite to store important scientific data before it can be sent to the ground station. However, flash memory is susceptible to single-bit and/or whole-chip failures. To ensure that the data is not corrupted, we plan to implement a flash patrol read daemon that will iterate through the flash memory and validate the memory, We will do this using some sort of checksum or other method. The patrol will run in the background to make certain that it does not interfere with the real-time deadlines that are mission critical. In addition, the patrol will be implemented such that it checks the flash that is being used instead of just iterating through its entirety. The satellite needs to hold up to 30 days worth of data on it at anytime, but not all of it may be used at any one time. Adding the patrol to the IlliniSat system will help ensure that no data is lost on the satellite so that the mission can be a success. 
+In addition to storing the Operating System and programs, IlliniSat uses flash
+memory to store up to 30 days of scientific data before it can be transmitted to
+the ground station.  To ensure that the data is not corrupted, we plan to
+implement a flash patrol read daemon that will sweep over the flash memory and
+validate the contents. We plan to do this using a checksum or possibly even an
+in memory cache (if storage space permits).  Storing the detection data in
+memory allows us to take advantage of the fact that DRAM is more reliable than
+flash memory in CubeSats~\cite{odegaard2013error}.  The patrol will run in the
+background to make certain that it does not interfere with the real-time
+deadlines that are mission critical.  In addition, the patrol will be
+implemented such that it checks the flash that is being used instead of just
+iterating through its entirety (e.g.  data that has already been transmitted
+will no longer be validated). With regards to power consumption, we can ensure
+that the daemon only runs while the satellite has sufficient power remaining.
+Adding the patrol daemon to the IlliniSat system will help safeguard that no
+data is lost on the satellite, allowing its scientific missions to be
+successful.
 
 \subsection{Develop a method to increase reliability of ground station
 communications}
