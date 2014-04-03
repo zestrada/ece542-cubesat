@@ -38,7 +38,11 @@ sun).
 %FIXME: define SPoF
 
 \subsection{Design Constraints}
-The IlliniSat mission has many hardware and software requirements that will constrain our improvements of their system. Since the IlliniSat team has already chosen their hardware, we will have to make all of our changes in software. Given the nature of the mission, the software is required to have mission critical components that keep the satellite working safely and correctly. The main design constraints that will be put on us while improving the system are the following:
+The IlliniSat bus has many hardware and software requirements that constrain our
+improvements of the system. Since the IlliniSat team has already chosen their
+hardware, we will have to make all of our changes in software. Given the nature
+of the mission, the software is required to have mission critical components
+that cannot fail in order to keep the satellite working. The main design constraints that will be put on us while improving the system are the following:
 \begin{itemize}
   \item Preserve real-time deadlines
   \item Minimize additional power consumption
