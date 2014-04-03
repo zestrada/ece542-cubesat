@@ -15,17 +15,18 @@ discussed below.
 \subsection{Develop a consistent boot/recovery procedure}
 When the project members were conversing with the IlliniSat team, one major
 concern that the IlliniSat team had was that the system may not boot up
-correctly after the watchdog resets the system (or even after launch).  This can
-happen for a number of reasons, but one of the main concerns is corruption of
-the Operating System kernel.  If the OS kernel does not boot, this mission will
-end in catastrophic failure.  One idea is to address this is store multiple
-copies of the OS kernel, along with checksums for the kernel image.  The
+correctly after the watchdog resets the system (or even after deployment).  This
+can happen for a number of reasons, but one of the main concerns is corruption
+of the Operating System kernel image stored in flash memory.  If the OS kernel
+does not boot, this mission will end in catastrophic failure as all systems run
+on top of the OS.  One idea to address this is to store multiple copies of the
+OS kernel, along a checksum for the kernel image.  When booting a kernel, the
 bootloader can compute the checksum at boot time and failover to the next kernel
 image if it does not match the stored checksum.  While this removes the stored
 kernel image as a SPoF, it still leaves the bootloader as a SPoF.  However, the
 bootloader's code is significantly smaller than the Linux kernel and therefore
 should be less susceptible to bit errors.  If time permits, we can investigate
-similar techniques for the bootloader. 
+similar techniques for protecting the bootloader. 
 
 \subsection{Develop a flash patrol read daemon}
 In addition to storing the Operating System and programs, IlliniSat uses flash
