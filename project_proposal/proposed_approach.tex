@@ -48,15 +48,16 @@ successful.
 
 \subsection{Develop a method to increase reliability of ground station
 communications}
-The ground station is able to send commands from the ground to the IlliniSat satellite. These commands
+The ground station is able to send commands from the ground to IlliniSat. These commands
 can change the state of the satellite and also the configuration settings. This makes sense because the
-researchers on the ground may want to update the mission objectives or fix new bugs. However, this is
-also a lot of power for the ground station. If the commands were somehow changed in transit by cosmic 
-rays or communication failure, the satellite could be sent into an unknown state with unknown settings. 
+researchers on the ground may want to update the mission objectives or fix new bugs. However, this
+means that the ground station has a large amount of control over the
+satellite. If the commands were somehow corrupted in transit,
+the satellite could be sent into an unknown state with unknown settings. 
 It is then possible that the satellite could keep restarting, hang, or just crash altogether. All of these are
 unacceptable failures and must be avoided. So we plan to develop a system of validating the 
 communications that are sent from the ground before actually interpreting them. This method could 
-involve a checksum or even embedded commands that are stored on the satellite and then indexed into
-by the commands sent from the ground. Ensuring reliability of these commands will ensure a stable state
+involve a checksum or even a fixed set of commands that are stored on the satellite and then indexed 
+by the commands sent from the ground. Ensuring the correctness of these commands
+will can help guarantee a stable state
 on the satellite and thwart transient errors.
-
