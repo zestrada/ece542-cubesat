@@ -3,7 +3,7 @@
 A CubeSat is a small satellite ($\sim$~1kg) that can be delivered as a secondary
 payload or as a ``shared ride'' with a number of other satellites , thus
 lowering the cost to launch\cite{toorian2008cubesat}.  With an estimated cost of
-roughly \$52,000\footnote{http://www.satmagazine.com/story.php?number=602922274}
+roughly \$52,000\footnote{http://www.satma gazine.com/story.php?number=602922274}
 to put an educational CubeSat in orbit, CubeSats are well within the budget of
 many universities.  The University of Illinois has a
 CubeSat\footnote{http://cubesat.ae.illinois.edu/index.php} program in which a
@@ -17,3 +17,14 @@ Previous work has investigated the reliability of CubeSats systems built using
 commodity computing devices \cite{odegaard2013error}.
 %FIXME: include figure about C&DH
 \subsection{Design Constraints}
+The IlliniSat mission has many hardware and software requirements that will constrain our improvements of their system. Since the IlliniSat team has already chosen their hardware, we will have to make all of our changes in software. Given the nature of the mission, the software is required to have mission critical components that keep the satellite working safely and correctly. The main design constraints that will be put on us while improving the system are the following:
+\begin{itemize}
+  \item Preserve real-time deadlines
+  \item Minimize additional power consumption
+  \item Avoid complex solutions
+\end{itemize}
+The IlliniSat satellite needs to be constantly reacting to its environment so that it can communicate to the ground and so that it can monitor the health of the system, among other things. Because of this, strict real-time deadlines are required and cannot be missed. 
+
+Since the IlliniSat is such a small satellite that will also be going on extended missions, power is a major concern of the team. If too much power is consumed, then components may start to overheat and the satellite will need to be charging very often. As well, if the satellite isn't able to charge due to eclipse or bad positioning, the system could die out completely.
+
+Finally, the IlliniSat team has requested that we keep our solution simple so that it can be easily implemented and easily maintained, even by team members that have a small amount of experience in programming and/or reliability. 

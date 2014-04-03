@@ -4,6 +4,7 @@
 \subsection{Develop a consistent boot/recovery procedure}
 
 \subsection{Develop a flash patrol read daemon}
+Flash memory is used on the IlliniSat satellite to store important scientific data before it can be sent to the ground station. However, flash memory is susceptible to single-bit and/or whole-chip failures. To ensure that the data is not corrupted, we plan to implement a flash patrol read daemon that will iterate through the flash memory and validate the memory, We will do this using some sort of checksum or other method. The patrol will run in the background to make certain that it does not interfere with the real-time deadlines that are mission critical. In addition, the patrol will be implemented such that it checks the flash that is being used instead of just iterating through its entirety. The satellite needs to hold up to 30 days worth of data on it at anytime, but not all of it may be used at any one time. Adding the patrol to the IlliniSat system will help ensure that no data is lost on the satellite so that the mission can be a success. 
 
 \subsection{Develop a method to increase reliability of ground station
 communications}
