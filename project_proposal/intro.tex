@@ -1,21 +1,48 @@
 \section{Introduction}
 \subsection{IlliniSat}
 A CubeSat is a small satellite ($\sim$~1kg) that can be delivered as a secondary
+<<<<<<< HEAD
 payload or as a ``shared ride'' with a number of other satellites , thus
 lowering the cost to launch\cite{toorian2008cubesat}.  With an estimated cost of
 roughly \$52,000\footnote{http://www.satma gazine.com/story.php?number=602922274}
+=======
+payload or as a ``shared ride'' with a number of other satellites, thus lowering
+the cost to launch\cite{toorian2008cubesat}.  With an estimated cost of roughly
+\$52,000\footnote{\url{http://www.satmagazine.com/story.php?number=602922274}}
+>>>>>>> d111d3c64c45cab77353b6e05f0f725aed9ccb5c
 to put an educational CubeSat in orbit, CubeSats are well within the budget of
 many universities.  The University of Illinois has a
-CubeSat\footnote{http://cubesat.ae.illinois.edu/index.php} program in which a
-class and dedicated team have been developing a scalable picosatellite ($<$~1kg)
-bus, IlliniSat-2.  IlliniSat-2 is intended to be used for multiple missions, the
-first of which is planned to launch around December 2014.  This project aims to
-analyze and enhance the reliability of the computing systems of the IlliniSat-2
-bus.
+CubeSat\footnote{\url{http://cubesat.ae.illinois.edu/index.php}} program in
+which a class and dedicated team have been developing a scalable picosatellite
+($<$~1kg) bus, IlliniSat-2.  IlliniSat-2 is intended to be used for multiple
+missions, the first of which (Lower Atmosphere/Ionosphere Coupling Experiment,
+LAICE) is planned to launch around December 2014.  This mission will involve
+three scientific payloads: one from Illinois and two from Virginia Tech.  In
+collaboration with Bindu Jagannatha and Alex Ghosh of the IlliniSat-2 team, this
+project aims to analyze and enhance the reliability of the computing systems
+used in IlliniSat-2.
 
-Previous work has investigated the reliability of CubeSats systems built using
-commodity computing devices \cite{odegaard2013error}.
-%FIXME: include figure about C&DH
+The IlliniSat-2 bus contains various systems, and this project focuses on the
+Command and Data Handling (C\&DH) system.  The C\&DH system is responsible
+for maintaining the mission schedule and coordinating the communication of the
+satellite with the ground station.  The C\&DH system is based on a MitySOM-335x
+Processor Card, built with a TI AM335x Application Processor System-on-Chip
+(SoC).\footnote{\url{http://www.criticallink.com/wp-content/uploads/MitySOM-335x_Datasheet.pdf}}
+An embedded Linux distribution, Arago, is run on top of the TI SoC and
+IlliniSat's functionality is implemented in set of userspace deamons. The
+standard \fix{atd} utility is used to schedule tasks.
+%FIXME: include C&DH figure 
+
+Currently, the system has a watchdog timer that will reboot the flight computer
+if it does not receive a heartbeat every 60 seconds.  The watchdog is part of a
+health monitoring system that also observes the state of the battery, satellite 
+attitude, temperature, etc...  If the health monitor determines that the system
+is in a faulty state, it will transition C\&DH into a recovery mode (e.g. if the
+battery is low, switch off all nonessentials and point the satellite towards the
+sun).
+%FIXME: do we want the health monitor figure?
+%FIXME: define SPoF
+
 \subsection{Design Constraints}
 The IlliniSat mission has many hardware and software requirements that will constrain our improvements of their system. Since the IlliniSat team has already chosen their hardware, we will have to make all of our changes in software. Given the nature of the mission, the software is required to have mission critical components that keep the satellite working safely and correctly. The main design constraints that will be put on us while improving the system are the following:
 \begin{itemize}

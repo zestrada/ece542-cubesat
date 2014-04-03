@@ -2,6 +2,19 @@
 \subsection{M\"obius simulation of memory corruption}
 
 \subsection{Develop a consistent boot/recovery procedure}
+When the project members were conversing with the IlliniSat team, one major
+concern that the IlliniSat team had was that the system may not boot up
+correctly after the watchdog resets the system (or even after launch).  This can
+happen for a number of reasons, but one of the main concerns is corruption of
+the Operating System kernel.  If the OS kernel does not boot, this mission will
+end in catastrophic failure.  One idea is to address this is store multiple
+copies of the OS kernel, along with checksums for the kernel image.  The
+bootloader can compute the checksum at boot time and failover to the next kernel
+image if it does not match the stored checksum.  While this removes the stored
+kernel image as a SPoF, it still leaves the bootloader as a SPoF.  However, the
+bootloader's code is significantly smaller than the Linux kernel and therefore
+should be less susceptible to bit errors.  If time permits, we can investigate
+similar techniques for the bootloader. 
 
 \subsection{Develop a flash patrol read daemon}
 Flash memory is used on the IlliniSat satellite to store important scientific data before it can be sent to the ground station. However, flash memory is susceptible to single-bit and/or whole-chip failures. To ensure that the data is not corrupted, we plan to implement a flash patrol read daemon that will iterate through the flash memory and validate the memory, We will do this using some sort of checksum or other method. The patrol will run in the background to make certain that it does not interfere with the real-time deadlines that are mission critical. In addition, the patrol will be implemented such that it checks the flash that is being used instead of just iterating through its entirety. The satellite needs to hold up to 30 days worth of data on it at anytime, but not all of it may be used at any one time. Adding the patrol to the IlliniSat system will help ensure that no data is lost on the satellite so that the mission can be a success. 
