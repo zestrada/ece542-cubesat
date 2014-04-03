@@ -44,14 +44,27 @@ The IlliniSat bus has many hardware and software requirements that constrain our
 improvements of the system. Since the IlliniSat team has already chosen their
 hardware, we will have to make all of our changes in software. Given the nature
 of the mission, the software is required to have mission critical components
-that cannot fail in order to keep the satellite working. The main design constraints that will be put on us while improving the system are the following:
+that cannot fail. The main design constraints that will be put on us while improving the system are the following:
 \begin{itemize}
   \item Preserve real-time deadlines
   \item Minimize additional power consumption
   \item Avoid complex solutions
 \end{itemize}
-The IlliniSat satellite needs to be constantly reacting to its environment so that it can communicate to the ground and so that it can monitor the health of the system, among other things. Because of this, strict real-time deadlines are required and cannot be missed. 
+IlliniSat needs to be constantly reacting to its environment so that it can
+interface with payloads, communicate to the ground, and monitor the health of
+the system, among other things. Because of this, hard real-time deadlines are
+required and cannot be missed. 
 
-Since the IlliniSat is such a small satellite that will also be going on extended missions, power is a major concern of the team. If too much power is consumed, then components may start to overheat and the satellite will need to be charging very often. As well, if the satellite isn't able to charge due to eclipse or bad positioning, the system could die out completely.
+Since IlliniSat is such a small satellite with stringent physical dimensions and
+therefore limited battery capacity, power is a major concern for the team.  If
+too much power is consumed, the battery may not last while the satellite is not
+receiving solar power (if it is either eclipsed by the earth or positioned
+poorly).  Also, if the system is charging and the CPU is loaded, components may
+start to overheat.  Any software reliability techniques used should therefore be
+mindful not to use too much power and should also be aware of the current state
+of the satellite (recovery modes, etc...).
 
-Finally, the IlliniSat team has requested that we keep our solution simple so that it can be easily implemented and easily maintained, even by team members that have a small amount of experience in programming and/or reliability. 
+Finally, the IlliniSat team has requested that we keep our solution simple (and
+well documented) so that it can be implemented and maintained easily.
+Furthermore, we need to be careful not to implement overly intricate solutions
+that may introduce new failure modes or reduce the system's reliability.
