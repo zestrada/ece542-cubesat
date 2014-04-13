@@ -1,14 +1,16 @@
 \section{Introduction}
 \subsection{IlliniSat}
-A CubeSat is a small satellite ($\sim$~1kg) that can be delivered as a secondary
-payload or as a ``shared ride'' with a number of other satellites, thus lowering
-the cost to launch\cite{toorian2008cubesat}.  With an estimated cost of roughly
+A CubeSat is a small satellite ($\sim$~1kg) constructed out of (usually) commodity components
+that is used for scientific research or educational purposes. It can be delivered as a secondary payload or 
+as a ``shared ride'' with a number of other satellites to decrease costs.
+\cite{toorian2008cubesat}.  
+With an estimated cost of roughly
 \$52,000\footnote{\url{http://www.satmagazine.com/story.php?number=602922274}}
 to put an educational CubeSat in orbit, CubeSats are well within the budget of
 many universities.  The University of Illinois has a
 CubeSat\footnote{\url{http://cubesat.ae.illinois.edu/index.php}} program in
 which a class and dedicated team have been developing a scalable picosatellite
-($<$~1kg) bus, IlliniSat-2.  IlliniSat-2 is intended to be used for multiple
+bus, IlliniSat-2.  IlliniSat-2 is intended to be used for multiple
 missions, the first of which (Lower Atmosphere/Ionosphere Coupling Experiment,
 LAICE) is planned to launch around December 2014.  This mission will involve
 three scientific payloads: one from Illinois and two from Virginia Tech.  In
@@ -23,14 +25,14 @@ satellite with the ground station.  The C\&DH system is based on a MitySOM-335x
 Processor Card, built with a TI AM335x Application Processor System-on-Chip
 (SoC).\footnote{\url{http://www.criticallink.com/wp-content/uploads/MitySOM-335x_Datasheet.pdf}}
 An embedded Linux distribution, Arago, is run on top of the TI SoC and
-IlliniSat's functionality is implemented in set of userspace deamons. The
+IlliniSat's functionality is implemented in set of userspace daemons. The
 standard \fix{atd} utility is used to schedule tasks.
 %FIXME: include C&DH figure 
 
 Currently, the system has a watchdog timer that will reboot the flight computer
 if it does not receive a heartbeat every 60 seconds.  The watchdog is part of a
 health monitoring system that also observes the state of the battery, satellite 
-attitude, temperature, etc...  If the health monitor determines that the system
+attitude, temperature, etc. If the health monitor determines that the system
 is in a faulty state, it will transition C\&DH into a recovery mode (e.g. if the
 battery is low, switch off all nonessentials and point the satellite towards the
 sun).
@@ -38,3 +40,31 @@ sun).
 %FIXME: define SPoF
 
 \subsection{Design Constraints}
+The IlliniSat bus has many hardware and software requirements that constrain our
+improvements of the system. Since the IlliniSat team has already chosen their
+hardware, we will have to make all of our changes in software. Given the nature
+of the mission, the software is required to have mission critical components
+that cannot fail. The main design constraints that will be put on us while improving the system are the following:
+\begin{itemize}
+  \item Preserve real-time deadlines
+  \item Minimize additional power consumption
+  \item Avoid complex solutions
+\end{itemize}
+IlliniSat needs to be constantly reacting to its environment so that it can
+interface with payloads, communicate to the ground, and monitor the health of
+the system, among other things. Because of this, hard real-time deadlines are
+required and cannot be missed. 
+
+Since IlliniSat is such a small satellite with stringent physical dimensions and
+therefore limited battery capacity, power is a major concern for the team.  If
+too much power is consumed, the battery may not last while the satellite is not
+receiving solar power (if it is either eclipsed by the earth or positioned
+poorly).  Also, if the system is charging and the CPU is loaded, components may
+start to overheat.  Any software reliability techniques used should therefore be
+mindful not to use too much power and should also be aware of the current state
+of the satellite (recovery modes, etc...).
+
+Finally, the IlliniSat team has requested that we keep our solution simple (and
+well documented) so that it can be implemented and maintained easily.
+Furthermore, we need to be careful not to implement overly intricate solutions
+that may introduce new failure modes or reduce the system's reliability.
