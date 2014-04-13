@@ -1,0 +1,54 @@
+Today I started by working on getting qemu to boot u-boot and Linux in an ARM
+environment.
+
+I'm basing my work on this site:
+http://balau82.wordpress.com/2010/03/10/u-boot-for-arm-on-qemu/
+
+The first step is to get a working development environment, so I just downloaded
+the latest and greatest u-boot from ftp://ftp.denx.de/pub/u-boot/u-boot-latest.tar.bz2
+
+and then compiled it with (my compiler is arm-linux-gnu-gcc):
+---
+[zak@ungar u-boot-2014.01]$ make versatilepb_config ARCH=arm CROSS_COMPILE=arm-linux-gnu-
+[zak@ungar u-boot-2014.01]# make all ARCH=arm CROSS_COMPILE=arm-linux-gnu-
+---
+
+and then I booted the VM using:
+---
+qemu-system-arm -M versatilepb -m 128M -nographic -kernel u-boot.bin
+---
+
+but it froze. I then grabbed the mentor graphics eabi compiler (as advocated on
+that website)
+
+the error was:
+---
+audio: Could not init `oss' audio driver
+---
+
+now I'm trying the EABI compiler:
+---
+[zak@ungar u-boot-2014.01]$ make versatilepb_config ARCH=arm CROSS_COMPILE=/opt/arm-2013.11/bin/arm-none-eabi-
+[zak@ungar u-boot-2014.01]$ make all ARCH=arm CROSS_COMPILE=/opt/arm-2013.11/bin/arm-none-eabi-
+---
+
+and that did something different after a "make clean", 
+---
+qemu: fatal: Trying to execute code outside RAM or ROM at 0xe1540000
+...
+---
+followed by a register dump
+
+apparently this is the trick needed:
+---
+http://emreboy.wordpress.com/2012/12/15/how-to-cross-compile-u-boot-and-work-it-on-qemu/
+---
+
+and I patched it by adding "#define CONFIG_ARCH_VERSATILE_QEMU" to versatile.h
+
+and then it worked!
+
+I noticed that u-boot has crc32 builtin, so there is that
+
+it seems that after the QEMU patch, u-boot works just fine with the unmodified
+GNU compiler, which is great
