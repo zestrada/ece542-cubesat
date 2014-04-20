@@ -30,8 +30,13 @@ int patrol_init()
 
 int patrol(int fd, FILE* fp)
 {
-	int length, i = 0;
+	int length, i = 0, j = 0;
 	char buffer[BUF_LEN];
+	
+	for(j = 0; j < BUF_LEN; j++)
+	{
+		buffer[j] = 0;
+	}
 
 	length = read(fd, buffer, BUF_LEN);  
 
@@ -111,6 +116,8 @@ int main(int argc, char* argv[])
 
 	if(sid < 0)
 	{
+		printf("sid failed!\n");
+
 		// Return failure
 		exit(EXIT_FAILURE);
 	}
@@ -118,6 +125,8 @@ int main(int argc, char* argv[])
 	// Change the current working directory to root.
 	if(chdir("/") < 0)
 	{
+		printf("chdir failed!\n");
+
 		exit(EXIT_FAILURE);
 	}
 	
@@ -127,11 +136,17 @@ int main(int argc, char* argv[])
 	close(STDERR_FILENO);
 
 	// Open a log file in write mode.
+
 	fp = fopen ("Log.txt", "w+");
+	if(fp < 0) 
+	{    
+		printf("fopen failed\n");
+	}
 
 	fprintf(fp, "Daemon created\n\n");
 	while (1)
 	{
+	
 		//Dont block context switches, let the process sleep for some time
 		sleep(1);
 		
@@ -139,7 +154,7 @@ int main(int argc, char* argv[])
 		patrol(fd, fp);
 		fflush(fp);
 	}
-
 	fclose(fp);
+
 	return 0;
 }
