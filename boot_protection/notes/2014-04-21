@@ -1,0 +1,176 @@
+Today I focused on getting my Linux kernel booting using u-boot. Even though I
+can't get a user process started, I suppose as long as I get that going I can
+go back to the user thing later
+
+just kidding, I don't want to give up on this just yet:
+---
+[zak@ungar code]$ qemu-arm -L /opt/arm-2013.11/arm-none-eabi/lib/libc ./a.out 
+Successful Boot!
+---
+
+this incredibly helpful wiki page is looking good:
+---
+http://elinux.org/Virtual_Development_Board
+---
+
+maybe this is the right way to go then?
+---
+[zak@ungar code]$ /opt/arm-2013.11/bin/arm-none-eabi-gcc -marm
+-L/opt/arm-2013.11/lib/libc -I/opt/arm-2013.11/arm-none-eabi/include
+-T/opt/arm-2013.11/arm-none-eabi/lib/generic-hosted.ld -static ./test.c -o test
+---
+
+still no...
+
+some VM stuff for setting up the  root filesystem:
+---
+VersatilePB # printenv  
+baudrate=38400
+bootargs=root=/dev/nfs mem=128M ip=dhcp netdev=25,0,0xf1010000,0xf1010010,eth0
+bootdelay=2
+bootfile=/tftpboot/uImage
+ethact=SMC91111-0
+ethaddr=52:54:00:12:34:56
+stderr=serial
+stdin=serial
+stdout=serial
+verify=n
+---
+
+I needed to use the uImage for the kernel, so I thought about setting up a tftp
+server, but that really wouldn't do the trick since the cubesat thing will be in
+memory
+
+maybe I need to hack QEMU to support flash for the verstailePB?
+
+by default, it has 64MB of flash at 0x34000000:
+---
+#define VERSATILE_FLASH_ADDR 0x34000000
+#define VERSATILE_FLASH_SIZE (64 * 1024 * 1024)
+#define VERSATILE_FLASH_SECT_SIZE (256 * 1024)
+---
+
+so I created an image:
+---
+[zak@ungar code]$ dd if=/dev/zero of=./flash.img bs=1M count=64
+[zak@ungar code]$ dd if ./u-boot-2013.10/u-boot.bin of=flash.img conv=notrunc
+---
+
+and now this:
+---
+[zak@ungar code]$ qemu-system-arm -m 128M -M versatilepb -nographic -pflash flash.img 
+---
+
+that didn't show anything on boot...
+
+I'm going to try u-boot's mkimage now
+
+this works though:
+---
+[zak@ungar code]$ qemu-system-arm -m 128M -M versatilepb -kernel flash.img -nographic
+---
+
+maybe I need to tell qemu to boot from the blash somehow? Probably need to
+configure u-boot to load linux from the pflash.
+
+New plan: put the kernel in flash and boot from there:
+---
+[zak@ungar code]$ dd if=./linux-2.6.32.61/arch/arm/boot/uImage of=flash.img conv=notrunc
+---
+
+---
+[zak@ungar code]$ qemu-system-arm -m 128M -M versatilepb -kernel ./u-boot-2013.10/u-boot.bin -nographic  -pflash ./flash.img 
+---
+
+
+---
+VersatilePB # flinfo
+VersatilePB #
+---
+
+---
+VersatilePB # bootm 0x34000000
+## Booting kernel from Legacy Image at 34000000 ...
+   Image Name:   Linux-2.6.32.61
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    1454440 Bytes = 1.4 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Loading Kernel Image ... OK
+
+Starting kernel ...
+
+Uncompressing
+Linux..............................................................................................
+done, booting the kernel.
+---
+
+and the built-in crc32 for that image:
+---
+VersatilePB # crc32 0x34000000 1454440
+CRC32 for 34000000 ... 3545443f ==> d5e23d2c
+---
+
+now I need to automate this and figure out how to pass kernel args
+
+u-boot is scriptable:
+---
+http://www.denx.de/wiki/view/DULG/UBootScripts
+---
+
+so it should be fairly simple to build this thing, but we'll see.
+
+---
+[zak@ungar code]$ mkimage -A arm -T script -C none -n "Test Linux Boot" -d test-linux.boot ./boot-commands.img
+Image Name:   Test Linux Boot
+Created:      Mon Apr 21 15:32:34 2014
+Image Type:   ARM Linux Script (uncompressed)
+Data Size:    300 Bytes = 0.29 kB = 0.00 MB
+Load Address: 00000000
+Entry Point:  00000000
+Contents:
+   Image 0: 292 Bytes = 0.29 kB = 0.00 MB
+---
+
+now, how to get u-boot to run that automatically...
+
+I'm trying to combine everything into one image
+
+---
+[zak@ungar code]$ cat ./u-boot-2013.10/u-boot.bin boot-commands.img > test-boot.img
+[zak@ungar code]$ qemu-system-arm -m 128M -M versatilepb -kernel ./test-boot.img
+-nographic  -pflash ./flash.img                                                 
+--- 
+
+okay... now to get the script address
+
+finding the size of u-boot image:
+---
+[zak@ungar code]$ printf "0x%X\n" $(expr $(stat -c%s ./u-boot-2013.10/u-boot.bin) +
+65536)
+0x285EC
+---
+
+and in u-boot:
+---
+VersatilePB # iminfo 0x285EC
+
+## Checking Image at 000285ec ...
+   Legacy image found
+   Image Name:   Test Linux Boot
+   Image Type:   ARM Linux Script (uncompressed)
+   Data Size:    300 Bytes = 300 Bytes
+   Load Address: 00000000
+   Entry Point:  00000000
+   Contents:
+      Image 0: 292 Bytes = 292 Bytes
+   Verifying Checksum ... OK
+---
+
+nice!
+
+turns out there's a mkenvimage that will combine environment variables.
+So I think what I will do is create a u-boot script and environment
+
+I will then take the script
+
