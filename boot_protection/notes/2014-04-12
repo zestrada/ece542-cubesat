@@ -52,3 +52,18 @@ I noticed that u-boot has crc32 builtin, so there is that
 
 it seems that after the QEMU patch, u-boot works just fine with the unmodified
 GNU compiler, which is great
+
+I then downloaded a Linux kernel and compiled it with:
+---
+[zak@ungar linux-2.6.32.61]$ make ARCH=arm versatile_defconfig CROSS_COMPILE=arm-linux-gnu-
+[zak@ungar linux-2.6.32.61]$ make ARCH=arm CROSS_COMPILE=arm-linux-gnu- all
+---
+
+might want to disable module support later though...
+
+unfortunately the 2.6 kernel had the same problem... it has to be the glibc or
+something...
+
+I would really like to get this to work with a discernable message to let us
+know that the kernel not only boots, but that it can read from the ram-based
+filesystem and launch processes

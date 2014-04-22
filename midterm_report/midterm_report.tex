@@ -1,0 +1,85 @@
+\documentclass[notitlepage,groupedaddress]{IEEEtran}
+%\documentclass{revtex4-1}
+\usepackage{graphicx}
+\usepackage{morefloats}
+\usepackage{placeins}
+\usepackage{supertabular}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{booktabs}
+%\pdfminorversion=4
+\usepackage[font=small]{caption}
+\hypersetup{colorlinks, linkcolor=blue,citecolor=blue, urlcolor=blue}
+\newcommand{\ACK}{\emph{ACK}}
+\makeatletter
+\def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim} 
+\makeatother
+%\usepackage{cite}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\newcommand{\fix}[1]{\texttt{\small #1}}
+\newcommand{\sfix}[1]{\texttt{\scriptsize #1}}
+\newcommand{\code}[1]{\texttt{\small #1}}
+
+ 
+
+%\newcommand{\code}[2]{
+%  \hrulefill
+%  \subsection*{#1}
+%  \lstinputlisting{#2}
+%  \vspace{2em}
+%}
+
+\begin{document}
+\title{ECE542 Project Proposal\\ Computing Reliability of IlliniSat}
+\author{Eric Badger (badger1), Zachary Estrada (zestrad2), Matthew Tischer
+(tischer1)}
+%FIXME: Write your names, group name, data range in your dataset and the
+%data-set assigned to you on the report.
+
+\maketitle
+%\begin{abstract}
+%\end{abstract}
+
+
+%\nocite{*}
+
+\input{intro}
+\input{proposed_approach}
+\input{lit_review}
+\input{timeline}
+
+%\section*{acknowledgments}
+
+\bibliographystyle{IEEEtran}
+\bibliography{project_proposal}
+
+%\clearpage
+%\onecolumn
+%\section{Code}
+%\lstset{
+%  language=Python,
+%  showstringspaces=false,
+%  formfeed=\newpage,
+%  tabsize=2,
+%  commentstyle=\itshape,
+%  basicstyle=\ttfamily,
+%  morekeywords={models, lambda, forms},
+%  %basicstyle=\ttm,
+%  %keywordstyle=\ttb\color{deepblue},
+%  %otherkeywords={self},             % Add keywords here
+%  %emph={Event,__init__},          % Custom highlighting
+%  %emphstyle=\ttb\color{deepred},    % Custom highlighting style
+%  %stringstyle=\color{deepgreen},
+%}
+\end{document}

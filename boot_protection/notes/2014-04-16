@@ -1,0 +1,34 @@
+Today I downloaded u-boot 2013.10 and kernel 3.2.57 to match their versions
+better
+
+I recompiled those and started trying to figure out the whole u-boot thing
+
+booting the kernel didn't work the best though - since I didn't have a root
+filesystem. 
+
+I want to get the NFS thing working
+
+maybe I need to build an initrd and just use that as a file system
+
+my goal is to get an nfs based file system working (since that's what u-boot
+expects by default) with the Linux kernel. 
+
+Then I'll move on to working u-boot into the mix
+
+this boots the kernel into console mode:
+---
+[zak@ungar linux-3.2.57]$ qemu-system-arm -M versatilepb -m 512M -kernel
+./arch/arm/boot/zImage -append console=ttyAMA0 -nographic
+---
+
+time to get the NFS root working... or maybe just initrd
+
+I'm downloading this image:
+http://wiki.qemu.org/download/arm-test-0.2.tar.gz
+
+that ended with an "attempted to kill init"
+
+probably need to craft a rootfs:
+---
+http://balau82.wordpress.com/2010/03/27/busybox-for-arm-on-qemu/
+---

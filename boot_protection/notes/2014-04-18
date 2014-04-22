@@ -1,0 +1,88 @@
+Today I worked on getting busybox compiled. Not sure if I'll use NFS or just
+have it in RAM
+
+---
+[zak@ungar busybox-1.16.0]$ make ARCH=arm CROSS_COMPILE=arm-linux-gnu- defconfig
+---
+
+I also set CONFIG_STATIC=y
+
+but that fell on its face since I didn't have a stdlib:
+---
+applets/applets.c:10:20: fatal error: assert.h: No such file or directory
+---
+
+okay, time to try the sourcery toolchain
+
+---
+[zak@ungar busybox-1.16.0]$ make ARCH=arm
+CROSS_COMPILE=/opt/arm-2013.11/bin/arm-none-eabi- install
+---
+
+I kinda don't want to have to build this, so I started looking for a simple
+initrd I could download
+
+here's me compiling hello world:
+---
+[zak@ungar code]$ /opt/arm-2013.11/bin/arm-none-eabi-gcc -marm -L/opt/arm-2013.11/lib -I/opt/arm-2013.11/arm-none-eabi/include -T/opt/arm-2013.11/arm-none-eabi/lib/generic-hosted.ld -static ./test.c -o test
+---
+
+Took a long time to come up with that one, thanks to:
+---
+http://communities.mentor.com/community/cs/archives/arm-gnu/msg01835.html
+---
+
+and now making it an initrd:
+---
+[zak@ungar code]$ echo test | cpio -o --format=newc > hello_root
+121 blocks
+---
+
+still got:
+---
+Failed to execute /test
+---
+
+hmmm... the error message changed when I gave it a file that didn't exist.
+Maybe I need to rebuild the kernel with the eabi toolchain after all?
+
+nope, that didn't work either
+
+---
+[zak@ungar code]$ cpio -t <./hello_root 
+test
+121 blocks
+---
+
+it's odd since if I use something like rdinit=/foo, then I get no mention of it
+trying to even execute foo
+
+when I add rdinit=/test as well, I get the error twice:
+---
+Failed to execute /test
+Failed to execute /test.  Attempting defaults...
+Kernel panic - not syncing: No init found.  Try passing init= option to kernel.
+See Linux Documentation/init.txt for guidance.
+---
+
+maybe I'm not compiling it correctly?
+
+so I tried a different linker script:
+---
+[zak@ungar code]$ /opt/arm-2013.11/bin/arm-none-eabi-gcc -marm -L/opt/arm-2013.11/lib -I/opt/arm-2013.11/arm-none-eabi/include -T/opt/arm-2013.11/arm-none-eabi/lib/generic.ld -static ./test.c -o test
+---
+
+I decided that maybe this board was a bad idea and that I will try something
+with an A8 (closer to what IlliniSat will use)
+
+the qemu name is: "realview-pb-a8"
+
+and the linux kernel:
+---
+make ARCH=arm realview_defconfig CROSS_COMPILE=arm-linux-gnu-
+---
+
+there I couldn't get anything to show up anywhere...
+
+I tried a 2.6 kernel in case that would work better. Kernel version shouldn't
+matter as much as the u-boot version here

@@ -1,0 +1,11 @@
+Apparently the MityARM requires a tailored boot image:
+---
+https://support.criticallink.com/redmine/projects/armc8-platforms/wiki/Das_U-Boot_Port
+---
+
+we'll settle for just using the same versions: 2013.10 and 3.2.0
+
+I could just try the binary:
+---
+http://support.criticallink.com/redmine/attachments/download/2793/am335x-pm-firmware.bin
+---
