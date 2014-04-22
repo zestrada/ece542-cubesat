@@ -7,6 +7,29 @@
 \subsubsection{M\"obius Baseline Model}
 
 \subsection{Consistent Boot/Recovery Procedure}
+The first challenge with this project was to get a working development
+environment off the ground.  Installing QEMU was fairly straightforward, but
+cross-compiling and getting u-boot and Linux to work took some effort.  We tried
+a number of different ARM boards implemented in QEMU and eventually settled on
+the ``versatilepb'' since it was the best documented.\footnote{http://balau82.wordpress.com/2010/03/10/u-boot-for-arm-on-qemu/}$^{,}$\footnote{http://elinux.org/Virtual\_Development\_Board}
+
+After getting u-boot to work, we built a Linux kernel (version 3.2.67 was chosen
+as IlliniSat is using a 3.2 based kernel) and booted that both with and without 
+u-boot.  To demonstrate that the OS is working properly, we tried to get a
+regular user process to run (by specifying it as the \fix{init} process).
+However, this was highly non-trivial since it depended on things like system
+call linkage, a working libc, and a filesystem.  Since the main project involves
+the boot procedure, we will just boot the Linux kernel and let it panic by not
+finding an init process. We intend to fix this for a proper demonstration in the
+future.
+
+It was discovered the u-boot has a built-in CRC-32 command, which we plan to
+utilize. U-boot has two main ways of adding code: via scripts and standalone
+applications.  After discovering to enable scripts (by modifying the
+configuration header file), we have have decided to use the script method as
+that is the most portable option. We have demonstrated the ability to get a
+working test script that modifies the u-boot environment and next we will work
+on building the boot-assurance script.  
 
 
 \subsection{Flash Patrol Read Daemon}
