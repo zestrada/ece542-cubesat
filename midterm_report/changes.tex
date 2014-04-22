@@ -4,6 +4,18 @@
 
 
 \subsection{Consistent Boot/Recovery Procedure}
+The plan remains the same for this project, we have just scoped out how exactly
+we plan to deliver on this. As a simplified description, IlliniSat uses the
+u-boot bootloader to load the Linux kernel.  We decided that we will modify
+u-boot to calculate the CRC of multiple kernel images and boot an image that
+verifies.  In order to develop this without purchasing a board or slowing down
+the rest of IlliniSat's software development, we decided use QEMU with ARM. The
+MityARM-335x used in IlliniSat is not available in QEMU and adding it would be
+far beyond the scope of the class (though useful for future work in IlliniSat).
+Therefore, we chose to use a standard ARM board that is often used with QEMU,
+the Versatile PowerBoard.  Though this uses an older processor (ARM9 vs. Cortex
+A-8), we believe that the development procedure and codepaths should be similar
+enough to be useful for IlliniSat.
 
 
 \subsection{Flash Patrol Read Daemon}
