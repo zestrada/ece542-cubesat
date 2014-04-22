@@ -4,6 +4,15 @@
 
 \subsubsection{Failure Model}
 
+In order to perform an effective failure analysis of the IlliniSat boot and recovery system, we first had to develop an error model to describe it.
+
+We consider the IlliniSat system failed if the system's Command and Data Handling (CD\&H) board is unable to resume normal operations after a fault occurs.  The satellite's health monitor already has support for a hardware watchdog timer; if the CD\&H board is unresponsive, it is assumed to have failed and it is rebooted \cite{jagannatha2014command}.  As such, the system is able to tolerate failure of the CD\&H system provided that the CD\&H board is able to boot the operating system and resume normal operation.  In this model, we consider the probability that this recovery process will not succeed due to corruption of the operating system's image in flash memory.
+
+This error model has two primary components: failures in RAM and the CD\&H board's execution that force a system reboot and failures in flash memory that prevent this reboot from being successful.
+
+% TODO: are SEU's transient?
+We plan on modeling failures in flash memory as the interaction of two different cosmic ray-induced failures.  Single Event Upsets (SEUs) impact individual bits in memory and cannot be fixed without active error correction.  Single Event Functional Interrupt (SEFI) events occur when the logic circuitry for the memory is hit, impacting normal operation.  We use the description of SEFIs in \cite{Gerardin2010Present} to guide our model; we assume that the flash memory is unresponsive after an SEFI until the memory is power-cycled.
+
 \subsubsection{M\"obius Baseline Model}
 
 \subsection{Consistent Boot/Recovery Procedure}
