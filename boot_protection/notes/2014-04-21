@@ -146,8 +146,7 @@ okay... now to get the script address
 
 finding the size of u-boot image:
 ---
-[zak@ungar code]$ printf "0x%X\n" $(expr $(stat -c%s ./u-boot-2013.10/u-boot.bin) +
-65536)
+[zak@ungar code]$ printf "0x%X\n" $(expr $(stat -c%s ./u-boot-2013.10/u-boot.bin) + 65536)
 0x285EC
 ---
 
@@ -393,3 +392,18 @@ qemu: fatal: Trying to execute code outside RAM or ROM at 0x3a4c0000
 ---
 
 both 'go' and 'bootm' ended with the same  failure
+
+this didn't end in failure:
+---
+VersatilePB # bootm 0x34000000
+## Booting kernel from Legacy Image at 34000000 ...
+   Image Name:   hello standalone
+   Image Type:   ARM Linux Standalone Program (uncompressed)
+   Data Size:    594 Bytes = 594 Bytes
+   Load Address: 00040000
+   Entry Point:  00040004
+   Loading Standalone Program ... OK
+
+---
+
+but no output
