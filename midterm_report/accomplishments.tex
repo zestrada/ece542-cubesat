@@ -20,7 +20,20 @@ The literature seems to indicate that neither Single Event Latchup \cite{Langley
 
 \subsubsection{M\"obius Baseline Model}
 
-Using some of the parameters described in \cite{Oldham2008TID}, we have constructed a model in M\"obius to evaluate the reliability of the system without additional boot protection; this model will serve as a baseline reference for future experimentation.
+Using some of the parameters described in \cite{Oldham2008TID}, we have constructed a model in M\"obius to evaluate the reliability of the system without additional boot protection; this model will serve as a baseline reference for future experimentation.  The model is shown in more detail in Figure \ref{fig:ram} and \ref{fig:flash}.
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{ram_model}
+\caption{The M\"obius model for the RAM subsystem.}
+\label{fig:ram}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{flash_model}
+\caption{The M\"obius model for the flash subsystem.}
+\label{fig:flash}
+\end{figure}
+
 
 \subsection{Consistent Boot/Recovery Procedure}
 The first challenge with this project was to get a working development
