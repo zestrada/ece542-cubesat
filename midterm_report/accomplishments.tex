@@ -46,4 +46,30 @@ on building the boot-assurance script.
 
 
 \subsection{Flash Patrol Read Daemon}
+The Flash Patrol Read Daemon depends on being able to capture all creations 
+and modifications in the filesystem. Supported by Linux 2.6.16 and after is an API
+called inotify that allows the user to monitor all filesystem events by directory or by 
+file using a user-specified watch list. Once creating the inotify instance, the user is able to 
+interact with the instance using a returned file descriptor. 
+
+All of the events that happen inside of the watch list are added to an inotify event buffer. 
+These then can be read out and appropriate action can be taken. For file creation and 
+modification, we capture the event and then create a file with ``\_crc'' appended to 
+the name of the created/modified file. Currently we have not fixed the bugs with 
+the CRC code, but this is where we will store the created CRC value that is 
+associated with the created/modified file. This CRC will be computed on file creation
+and updated on file modification.
+
+We have also implemented this program as a daemon. The current approach is very
+naive and uses a polling method instead of signals. By the final demonstration, this
+will be changed so that the daemon doesn't eat up resources. Also by the final
+demonstration we intend to create a separate daemon that checks the CRC 
+values on unmodified files to check for validity. The challenge with this will be
+the race condition on file modifications. The first daemon would be recalculating
+the CRC while the second daemon is checking the old CRC against the new data.
+
+
+
+
+
 
