@@ -1,0 +1,31 @@
+\section{Changes to Goals} 
+
+\subsection{M\"obius Simulation}
+We have changed the focus of the M\"obius simulation.  Previously, we intended to create a model to determine the probability that the Flash memory that stored scientific data during a mission would be corrupted.  Now, we are creating a model to determine the impact of our boot and recovery procedures on the system's ability to recover from failures.  We feel that this change will allow us to provide a more quantitative analysis to Task B and will make better use of techniques discussed in class.
+
+\subsection{Consistent Boot/Recovery Procedure}
+The plan remains the same for this project, we have just scoped out how exactly
+we plan to deliver on this. As a simplified description, IlliniSat uses the
+u-boot bootloader to load the Linux kernel.  We decided that we will modify
+u-boot to calculate the CRC of multiple kernel images and boot an image that
+verifies.  In order to develop this without purchasing a board or slowing down
+the rest of IlliniSat's software development, we decided use QEMU with ARM. The
+MityARM-335x used in IlliniSat is not available in QEMU and adding it would be
+far beyond the scope of the class (though useful for future work in IlliniSat).
+Therefore, we chose to use a standard ARM board that is often used with QEMU,
+the Versatile PowerBoard.  Though this uses an older processor (ARM9 vs. Cortex
+A-8), we believe that the development procedure and codepaths should be similar
+enough to be useful for IlliniSat.
+
+
+\subsection{Flash Patrol Read Daemon}
+The plan for the daemon is the same as the initial plan. We are almost finished
+with creating and modifying CRC values for every file that is created/modified. 
+The other half of that coin will be to check the values that have already been
+created for validity. This should be attainable as long as we are able to 
+supress any race conditions that this code will add in the code. Also, it is
+not noted in the initial proposal, but the CRC creation daemon will use signals 
+to intelligently go to sleep and be woken up instead of just chewing up cycles 
+and sleeping for a certain period of time. The validity checking daemon won't need
+to use signals, since there will always be files to check. It can just validate and sleep
+regularly.

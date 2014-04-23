@@ -146,8 +146,7 @@ okay... now to get the script address
 
 finding the size of u-boot image:
 ---
-[zak@ungar code]$ printf "0x%X\n" $(expr $(stat -c%s ./u-boot-2013.10/u-boot.bin) +
-65536)
+[zak@ungar code]$ printf "0x%X\n" $(expr $(stat -c%s ./u-boot-2013.10/u-boot.bin) + 65536)
 0x285EC
 ---
 
@@ -170,7 +169,241 @@ VersatilePB # iminfo 0x285EC
 nice!
 
 turns out there's a mkenvimage that will combine environment variables.
-So I think what I will do is create a u-boot script and environment
+So I think what I will do is create a u-boot script and environment. The
+environment will boot into the script which will do all the crc stuff and
+whatnot
 
-I will then take the script
+---
+[zak@ungar code]$ cat test-linux.env 
+bootargs=console=ttyAMA0
+bootcmd=bootm 0x34000000
+---
 
+and running the environment from within u-boot's directory:
+---
+[zak@ungar u-boot-2013.10]$ ./tools/mkenvimage -s 0x300 -o ./test-env.img
+../test-linux.env 
+---
+
+and that didn't work:
+---
+[zak@ungar code]$ qemu-system-arm -m 128M -M versatilepb -kernel ./u-boot-2013.10/test-env.img -nographic  -pflash ./flash.img 
+---
+
+hmmm...
+---
+[zak@ungar u-boot-2013.10]$ du -sh u-boot.bin 
+104K    u-boot.bin
+[zak@ungar u-boot-2013.10]$ du -sh test-env.img 
+4.0K    test-env.img
+---
+
+now i'm playing with the environment:
+---
+VersatilePB # setenv bootargs 'console=ttyAMA0'
+VersatilePB # setenv bootcmd 'bootm 0x34000000'
+---
+
+ah... this is good to know:
+---
+VersatilePB # printenv
+baudrate=38400
+bootargs=root=/dev/nfs mem=128M ip=dhcp netdev=25,0,0xf1010000,0xf1010010,eth0
+bootdelay=2
+bootfile=/tftpboot/uImage
+ethact=SMC91111-0
+ethaddr=52:54:00:12:34:56
+stderr=serial
+stdin=serial
+stdout=serial
+verify=n
+
+Environment size: 247/8188 bytes
+---
+
+probably why my earlier mkenv thing failed - the environment size was too small
+
+still can't figure out how to run the u-boot script, once I get that I can make
+it my boot command
+
+this is good to keep in mind:
+---
+http://free-electrons.com/blog/mkenvimage-uboot-binary-env-generator/
+---
+
+useful blog series:
+---
+http://www.opensourceforu.com/2011/08/qemu-for-embedded-systems-development-part-3/
+---
+
+okay, now will the environment thing work?
+---
+[zak@ungar u-boot-2013.10]$ ./tools/mkenvimage -s 9000 -o ./test-env.img
+../test-linux.env 
+[zak@ungar u-boot-2013.10]$ du -sh ./test-env.img 12K     ./test-env.img
+---
+
+still nothing...
+
+trying the '-r' in case it's relocatable:
+---
+[zak@ungar u-boot-2013.10]$ ./tools/mkenvimage -r -s 9000 -o ./test-env.img ../test-linux.env
+---
+
+just gave a bunch of bad output:
+---
+[zak@ungar code]$ qemu-system-arm -m 128M -M versatilepb -kernel ./u-boot-2013.10/test-env.img -nographic  -pflash ./flash.img 
+vpb_sic_read: Bad register offset 0xa1a
+vpb_sic_read: Bad register offset 0xd24
+vpb_sic_read: Bad register offset 0x2c9
+vpb_sic_read: Bad register offset 0x5d3
+vpb_sic_read: Bad register offset 0x8dd
+qemu: terminating on signal 15 from pid 28708
+---
+
+so not that...
+
+maybe the kernel args just aren't being passed correctly? even with video
+device, it still didn't want to work
+
+I tried making sure everything was quoted and that also didn't help
+
+the 2014.1 version of u-boot didn't have any more commands, not sure if that's
+good or not
+
+maybe it's the versatilepb?
+
+---
+VersatilePB # setenv bootcmd 'bootm 0x34000000'
+---
+
+this configuration seemed better than the header hack:
+---
+[zak@ungar u-boot-2013.10]$ make versatileqemu_config
+CROSS_COMPILE=arm-linux-gnu-
+Generating include/autoconf.mk
+Generating include/autoconf.mk.dep
+Configuring for versatileqemu - Board: versatile, Options:
+ARCH_VERSATILE_QEMU,ARCH_VERSATILE_PB
+---
+
+good things to know:
+---
+VersatilePB # bdinfo    
+arch_number = 0x00000183
+boot_params = 0x00000100
+DRAM bank   = 0x00000000
+-> start    = 0x00000000
+-> size     = 0x08000000
+eth0name    = SMC91111-0
+ethaddr     = 52:54:00:12:34:56
+current eth = SMC91111-0
+ip_addr     = <NULL>
+baudrate    = 38400 bps
+TLB addr    = 0x07FF0000
+relocaddr   = 0x07FD7000
+reloc off   = 0x07FC7000
+irq_sp      = 0x07FB4F48
+sp start    = 0x07FB4F38
+---
+
+maybe I should make a standalone application instead of a script?
+http://www.denx.de/wiki/view/DULG/UBootStandalone
+
+I found that maybe I could change the shell in use
+
+There's this:
+./include/configs/versatile.h
+
+now I'm trying that:
+---
+#define CONFIG_SYS_HUSH_PARSER
+---
+
+might not have it in their version, maybe we'll need the standalone app
+
+but I'm adding that and we'll see what happens... looked like nothing
+
+I suppose the standalone application is the most portable, so I tried
+incorporating the hello-world app. first, I'm going to use it as flash:
+---
+[zak@ungar code]$ dd if=./u-boot-2013.10/examples/standalone/hello_world.bin
+of=./hello.img conv=notrunc
+---
+
+but nothing happened when I tried running it
+
+apparently it's configure to run at 0x0004004, but that won't make sense here I
+either need to copy it or configure the base address differently
+
+maybe mkimage to the rescue?
+---
+[zak@ungar u-boot-2013.10]$ mkimage -T standalone -a 0x34000000 -e 0x34000000 -A
+arm -C none -n "hello standalone" -d ./examples/standalone/hello_world
+./hello.bin
+Image Name:   hello standalone
+Created:      Mon Apr 21 23:20:47 2014
+Image Type:   ARM Linux Standalone Program (uncompressed)
+Data Size:    40519 Bytes = 39.57 kB = 0.04 MB
+Load Address: 34000000
+Entry Point:  34000000
+[zak@ungar code]$ dd if=./u-boot-2013.10/hello.bin of=./hello.img conv=notrunc  
+---
+
+---
+VersatilePB # iminfo 0x34000000
+
+## Checking Image at 34000000 ...
+   Legacy image found
+   Image Name:   hello standalone
+   Image Type:   ARM Linux Standalone Program (uncompressed)
+   Data Size:    40519 Bytes = 39.6 KiB
+   Load Address: 34000000
+   Entry Point:  34000000
+   Verifying Checksum ... OK
+---
+
+not sure if that load address was good now that I think of it...
+
+hmm...
+---
+VersatilePB # bootm 0x34000000
+## Booting kernel from Legacy Image at 34000000 ...
+   Image Name:   hello standalone
+   Image Type:   ARM Linux Standalone Program (uncompressed)
+   Data Size:    40519 Bytes = 39.6 KiB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Loading Standalone Program ... OK
+---
+
+interesting:
+---
+[zak@ungar u-boot-2013.10]$ mkimage -l ./examples/standalone/hello_world.bin
+mkimage: Bad Magic Number: "./examples/standalone/hello_world.bin" is no valid
+image
+---
+
+maybe I should be building that .bin into my .img?
+
+more happened that time:
+---
+qemu: fatal: Trying to execute code outside RAM or ROM at 0x3a4c0000
+---
+
+both 'go' and 'bootm' ended with the same  failure
+
+this didn't end in failure:
+---
+VersatilePB # bootm 0x34000000
+## Booting kernel from Legacy Image at 34000000 ...
+   Image Name:   hello standalone
+   Image Type:   ARM Linux Standalone Program (uncompressed)
+   Data Size:    594 Bytes = 594 Bytes
+   Load Address: 00040000
+   Entry Point:  00040004
+   Loading Standalone Program ... OK
+
+---
+
+but no output

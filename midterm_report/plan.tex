@@ -1,0 +1,16 @@
+\section{Plan}
+
+%Not sure if we want separate sections here as well, or if we want to itemize,
+%etc...
+M\"obius model: the completed model will be used during development to determine which new approaches provide the best performance.  The final deliverable will be the description of the model along with the results of the analysis of our improved boot/recovery process.
+
+Recovery/boot: the plan is to finish developing the script and then test it with
+corrupted kernels.  The final deliverable will be documentation and scripts for
+generating the u-boot script image and flash image with multiple copies of the
+kernel.  If possible, we would like to provide this functionality in a modular,
+automated way (possibly a Makefile).
+
+Flash Patrol: The plan will be to fix the CRC code that is needed to write
+CRCs for created/modified files. After that is finished we will implement the 
+complementary daemon that checks the validity of these CRCs. In addition, 
+we will change the CRC generation daemon to use signals instead of polling.

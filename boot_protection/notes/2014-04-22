@@ -1,0 +1,53 @@
+I now tried adding 
+---
+#define CONFIG_CMD_RUN 
+--- 
+
+to versatile.h
+
+and rebuilt test-boot.img
+
+keeping in mind that the added code increased the size of the uboot image,
+here's where we are now:
+---
+0x2B090
+---
+
+fair enough:
+---
+VersatilePB # run 0x2B090
+## Error: "0x2B090" not defined
+VersatilePB # run 2b090
+## Error: "2b090" not defined
+---
+
+probably should try the source command
+
+and now we're at 0x2B35C
+
+hmmm...
+---
+VersatilePB # source 0x2B35C
+## Executing script at 0002b35c
+VersatilePB # printenv
+baudrate=38400
+bootargs=console=ttyAMA0
+bootcmd=bootm 0x34000000
+bootdelay=2
+bootfile=/tftpboot/uImage
+ethact=SMC91111-0
+ethaddr=52:54:00:12:34:56
+stderr=serial
+stdin=serial
+stdout=serial
+verify=n
+---
+
+so it works, that's good
+
+and then "run bootcmd" boots the Linux kernel
+
+Next, I decided to work on automating the generation of the script image, etc...
+
+Not sure if we want the u-boot script sitting in memory or in flash, but for now
+I'm doing memory (I think MLO will handle copying it to memory from flash)
