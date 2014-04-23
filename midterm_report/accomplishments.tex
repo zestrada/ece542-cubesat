@@ -6,7 +6,7 @@
 
 In order to perform an effective failure analysis of the IlliniSat boot and recovery system, we first had to develop an error model to describe it.
 
-We consider the IlliniSat system failed if the system's Command and Data Handling (CD\&H) board is unable to resume normal operations after a fault occurs.  The satellite's health monitor already has support for a hardware watchdog timer; if the CD\&H board is unresponsive, it is assumed to have failed and it is rebooted \cite{jagannatha2014command}.  As such, the system is able to tolerate failure of the CD\&H system provided that the CD\&H board is able to boot the operating system and resume normal operation.  In this model, we consider the probability that this recovery process will not succeed due to corruption of the operating system's image in flash memory.
+We consider the IlliniSat system as failed if the system's Command and Data Handling (CD\&H) board is unable to resume normal operations after a fault occurs.  The satellite's health monitor already has support for a hardware watchdog timer; if the CD\&H board is unresponsive, it is assumed to have failed and it is rebooted \cite{jagannatha2014command}.  As such, the system is able to tolerate failure of the CD\&H system provided that the CD\&H board is able to boot the operating system and resume normal operation.  In this model, we consider the probability that this recovery process will not succeed as due to corruption of the operating system's image in flash memory.
 
 This error model has two primary components: failures in RAM and the CD\&H system's execution that force a system reboot and failures in flash memory that prevent this reboot from being successful.  We only consider transient errors in this model.
 
@@ -52,17 +52,21 @@ on building the boot-assurance script.
 \subsection{Flash Patrol Read Daemon}
 The Flash Patrol Read Daemon depends on being able to capture all creations 
 and modifications in the filesystem. Supported by Linux 2.6.16 and after is an API
-called inotify that allows the user to monitor all filesystem events by directory or by 
-file using a user-specified watch list. Once creating the inotify instance, the user is able to 
+called \fix{inotify} that allows the user to monitor all filesystem events by directory or by 
+file using a user-specified watch list. Upon creation of the \fix{inotify} instance, the user is able to 
 interact with the instance using a returned file descriptor. 
 
-All of the events that happen inside of the watch list are added to an inotify event buffer. 
-These then can be read out and appropriate action can be taken. For file creation and 
+All of the events that happen inside of the watch list are added to an
+\fix{inotify} event buffer. 
+These can then be read out and appropriate action can be taken. For file creation and 
 modification, we capture the event and then create a file with ``\_crc'' appended to 
 the name of the created/modified file. Currently we have not fixed the bugs with 
 the CRC code, but this is where we will store the created CRC value that is 
 associated with the created/modified file. This CRC will be computed on file creation
-and updated on file modification.
+and updated on file modification. If there is enough free memory to support
+storing CRCs in memory (the IlliniSat expressed concerns with us storing too
+much state in memory), we can use the same application and store them in
+\fix{tmpfs}.
 
 We have also implemented this program as a daemon. The current approach is very
 naive and uses a polling method instead of signals. By the final demonstration, this
