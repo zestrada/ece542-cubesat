@@ -8,15 +8,19 @@ In order to perform an effective failure analysis of the IlliniSat boot and reco
 
 We consider the IlliniSat system failed if the system's Command and Data Handling (CD\&H) board is unable to resume normal operations after a fault occurs.  The satellite's health monitor already has support for a hardware watchdog timer; if the CD\&H board is unresponsive, it is assumed to have failed and it is rebooted \cite{jagannatha2014command}.  As such, the system is able to tolerate failure of the CD\&H system provided that the CD\&H board is able to boot the operating system and resume normal operation.  In this model, we consider the probability that this recovery process will not succeed due to corruption of the operating system's image in flash memory.
 
-This error model has two primary components: failures in RAM and the CD\&H board's execution that force a system reboot and failures in flash memory that prevent this reboot from being successful.  We only consider transient errors in this model.
+This error model has two primary components: failures in RAM and the CD\&H system's execution that force a system reboot and failures in flash memory that prevent this reboot from being successful.  We only consider transient errors in this model.
 
-For failures in RAM, we   We also assume that the CD\&H system experiences unspecified critical failures at some rate.
+We plan on modeling failures in flash memory as the interaction of two different cosmic ray-induced faults.  Single Event Upsets (SEUs) impact individual bits in memory and can be fixed with either active error correction or power-cycling.  Single Event Functional Interrupt (SEFI) events occur when the logic circuitry for the memory is hit, impacting normal operation.  We use the description of SEFIs in \cite{Gerardin2010Present} to guide our model; we assume that the flash memory is unresponsive after an SEFI until the memory is power-cycled.  
 
-We plan on modeling failures in flash memory as the interaction of two different cosmic ray-induced failures.  Single Event Upsets (SEUs) impact individual bits in memory and can be fixed with either active error correction or power-cycling.  Single Event Functional Interrupt (SEFI) events occur when the logic circuitry for the memory is hit, impacting normal operation.  We use the description of SEFIs in \cite{Gerardin2010Present} to guide our model; we assume that the flash memory is unresponsive after an SEFI until the memory is power-cycled.
+We plan on modeling failures in RAM as single-bit and page-wide errors, roughly following the results in \cite{Herrmann2013InSitu}.  We also assume that the CD\&H system experiences unspecified critical failures at some rate.
 
-The literature seems to indicate that neither Single Event Latchup or Total Ionizing Dose \cite{Likar2010Novel, Oldham2008TID} failure modes are likely for the given mission, so they are intentionally omitted here.
+We assume that faults that affect a region of storage do so with equal probability across all address ranges; an image in RAM or in flash is corrupted if an fault affects any bits in its address range.
+
+The literature seems to indicate that neither Single Event Latchup \cite{Langley2004SEE} or Total Ionizing Dose \cite{Likar2010Novel, Oldham2008TID, Herrmann2013InSitu} failure modes are likely for the given mission, so they are intentionally omitted here.
 
 \subsubsection{M\"obius Baseline Model}
+
+Using some of the parameters described in \cite{Oldham2008TID}, we have constructed a model in M\"obius to evaluate the reliability of the system without additional boot protection; this model will serve as a baseline reference for future experimentation.
 
 \subsection{Consistent Boot/Recovery Procedure}
 The first challenge with this project was to get a working development
