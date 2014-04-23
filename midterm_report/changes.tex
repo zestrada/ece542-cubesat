@@ -20,12 +20,12 @@ enough to be useful for IlliniSat.
 
 \subsection{Flash Patrol Read Daemon}
 The plan for the daemon is the same as the initial plan. We are almost finished
-with creating and modifying CRC values for every file that is created/modified. 
-The other half of that coin will be to check the values that have already been
-created for validity. This should be attainable as long as we are able to 
-supress any race conditions that this code will add in the code. Also, it is
-not noted in the initial proposal, but the CRC creation daemon will use signals 
-to intelligently go to sleep and be woken up instead of just chewing up cycles 
-and sleeping for a certain period of time. The validity checking daemon won't need
-to use signals, since there will always be files to check. It can just validate and sleep
-regularly.
+with creating and modifying CRC values for every file that is created/modified.
+The remainder of the project is to check the values that have already been
+created for validity.  This should be attainable as long as we are able to
+suppress any race conditions that this code will add. Also, it is not noted in
+the initial proposal, but the CRC creation daemon will use signals to
+intelligently go to sleep and be woken up instead of just chewing up cycles and
+sleeping for a certain period of time. The validity checking daemon will not
+need to use signals, since there should always be files to check. It will just
+validate CRCs periodically.
