@@ -39,8 +39,9 @@ It was discovered the u-boot has a built-in CRC-32 command, which we plan to
 utilize. U-boot has two main ways of adding code: via scripts and standalone
 applications.  After discovering to enable scripts (by modifying the
 configuration header file), we have have decided to use the script method as
-that is the most portable option. We have demonstrated the ability to get a
-working test script that modifies the u-boot environment and next we will work
+that is the most portable option. After properly configuring qemu and u-boot, we
+have demonstrated the ability to get a working test script stored on a virtual
+flash device.  This script modifies the u-boot environment and next we will work
 on building the boot-assurance script.  
 
 
