@@ -92,7 +92,8 @@ int patrol(int fd, FILE* log_fp)
 {
 	int length, i = 0, j = 0;
 	char buffer[BUF_LEN];
-	char str[80];
+	char crc_str[80];
+	char read_str[80];
 	char buf[BUF_LEN];
 	FILE* crc_fp;
 	FILE* read_fp;
@@ -130,24 +131,24 @@ int patrol(int fd, FILE* log_fp)
 					fprintf(log_fp, "The file %s was created.\n", event->name);
 					fflush(log_fp);
 					
-					strcpy(str, event->name);
-					strcat(str, "_crc");
-					crc_fp = fopen(str, "w+");
+					strcpy(crc_str, event->name);
+					strcat(crc_str, "_crc");
+					crc_fp = fopen(crc_str, "w+");
 					if(crc_fp < 0)
 					{
-						fprintf(log_fp, "could not open crc file%s\n", str);
+						fprintf(log_fp, "could not open crc file%s\n", crc_str);
 						fprintf(log_fp, "errno = %d\n", errno);
 						fflush(log_fp);
 					}
 
-					strcpy(str, "/home/skibuntu/Desktop/");
-					strcat(str, event->name);
+					strcpy(read_str, "/home/skibuntu/Desktop/");
+					strcat(read_str, event->name);
 				
-					read_fp = fopen(str, "r");
+					read_fp = fopen(read_str, "r");
 
 					if(read_fp < 0)
 					{
-						fprintf(log_fp, "could not open read file %s\n", str);
+						fprintf(log_fp, "could not open read file %s\n", read_str);
 						fprintf(log_fp, "errno = %d\n", errno);
 						fflush(log_fp);
 					}
@@ -193,23 +194,23 @@ int patrol(int fd, FILE* log_fp)
 					fprintf(log_fp, "The file %s was modified.\n", event->name);
 					fflush(log_fp);
 
-					strcpy(str, event->name);
-					strcat(str, "_crc");
-					crc_fp = fopen(str, "a+");
+					strcpy(crc_str, event->name);
+					strcat(crc_str, "_crc");
+					crc_fp = fopen(crc_str, "a+");
 					if(crc_fp < 0)
 					{
-						fprintf(log_fp, "could not open crc file %s\n", str);
+						fprintf(log_fp, "could not open crc file %s\n", crc_str);
 						fprintf(log_fp, "errno = %d\n", errno);
 						fflush(log_fp);
 					}
-					strcpy(str, "/home/skibuntu/Desktop/");
-					strcat(str, event->name);
+					strcpy(read_str, "/home/skibuntu/Desktop/");
+					strcat(read_str, event->name);
 
-					read_fp = fopen(str, "r");
+					read_fp = fopen(read_str, "r");
 
 					if(read_fp < 0)
 					{
-						fprintf(log_fp, "could not open read file %s\n", str);
+						fprintf(log_fp, "could not open read file %s\n", read_str);
 						fprintf(log_fp, "errno = %d\n", errno);
 						fflush(log_fp);
 					}
@@ -237,6 +238,7 @@ int patrol(int fd, FILE* log_fp)
 	}
 
 	fprintf(log_fp, "exiting patrol function\n");	
+	fflush(log_fp);
 	return 0;
 }
 
