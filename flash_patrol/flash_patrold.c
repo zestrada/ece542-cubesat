@@ -75,7 +75,7 @@ int patrol_init()
 	int fd;
 	int wd;
 
-  fd = inotify_init();
+	fd = inotify_init();
 
 	if(fd < 0) 
 	{    
@@ -100,12 +100,33 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 	memset(crc_str, 0, 160);
 	memset(read_str, 0, 160);
 	
+	
 	strcpy(crc_str, event->name);
+	
+	if(strlen(crc_str) > 4 && !strcmp(crc_str + strlen(crc_str) - 4, ".swp"))
+	{
+		fprintf(log_fp, "skipping .swp file\n");
+		fflush(log_fp);
+		return 0;
+	}
+	else if(strlen(crc_str) > 4 && !strcmp(crc_str + strlen(crc_str) - 5, ".swpx"))
+	{
+		fprintf(log_fp, "skipping .swpx file\n");
+		fflush(log_fp);
+		return 0;
+	}
+	else if(strlen(crc_str) > 4 && !strcmp(crc_str + strlen(crc_str) - 4, ".swx"))
+	{
+		fprintf(log_fp, "skipping .swx file\n");
+		fflush(log_fp);
+		return 0;
+	}
+	
 	strcat(crc_str, "_crc");
 	crc_fp = fopen(crc_str, "w+");
 	if(crc_fp < 0)
 	{
-		fprintf(log_fp, "could not open crc file%s\n", str);
+		fprintf(log_fp, "could not open crc file%s\n", crc_str);
 		fprintf(log_fp, "errno = %d\n", errno);
 		fflush(log_fp);
 		return;
@@ -117,7 +138,7 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 	read_fp = fopen(read_str, "r");
 	if(read_fp < 0)
 	{
-		fprintf(log_fp, "could not open read file %s\n", str);
+		fprintf(log_fp, "could not open read file %s\n", read_str);
 		fprintf(log_fp, "errno = %d\n", errno);
 		fflush(log_fp);
 		
