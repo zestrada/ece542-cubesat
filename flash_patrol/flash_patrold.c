@@ -83,7 +83,7 @@ int patrol_init()
 		exit(EXIT_FAILURE);
 	}
 
-	wd = inotify_add_watch(fd, "/home/skibuntu/Desktop", 
+	wd = inotify_add_watch(fd, "/home/skibuntu32/Desktop", 
                          IN_MODIFY | IN_CREATE | IN_DELETE);
 	return fd;
 }
@@ -112,7 +112,7 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 		return;
 	}
 
-	strcpy(read_str, "/home/skibuntu/Desktop/");
+	strcpy(read_str, "/home/skibuntu32/Desktop/");
 	strcat(read_str, event->name);
 	
 	read_fp = fopen(read_str, "r");
@@ -147,7 +147,7 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 }
 
 
-int is_swp_file(char * str)
+int is_swp_file(char * str, FILE* log_fp)
 {
 	if(strlen(str) > 4 && !strcmp(str + strlen(str) - 4, ".swp"))
 	{
@@ -198,11 +198,7 @@ int patrol(int fd, FILE* log_fp)
 	while (i < length)
 	{
 		struct inotify_event *event = (struct inotify_event *) &buffer[i];
-		if(is_swp_file(event->name))
-		{
-			continue;
-		}
-		if (event->len)
+		if (event->len && !is_swp_file(event->name, log_fp))
 		{
 			if (event->mask & IN_CREATE)
 			{
