@@ -88,16 +88,58 @@ int patrol_init()
 	return fd;
 }
 
+int create_crc_file(struct inotify_event *event)
+{
+	FILE* crc_fp;
+	FILE* read_fp;
+	char buf[BUF_LEN];
+	uint32_t crc = 0;
+	char str[80];
+	
+	strcpy(str, event->name);
+	strcat(str, "_crc");
+	crc_fp = fopen(str, "w+");
+	if(crc_fp < 0)
+	{
+		fprintf(log_fp, "could not open crc file%s\n", str);
+		fprintf(log_fp, "errno = %d\n", errno);
+		fflush(log_fp);
+		continue;
+	}
+
+	strcpy(str, "/home/skibuntu/Desktop/");
+	strcat(str, event->name);
+	
+	read_fp = fopen(str, "r");
+	if(read_fp < 0)
+	{
+		fprintf(log_fp, "could not open read file %s\n", str);
+		fprintf(log_fp, "errno = %d\n", errno);
+		fflush(log_fp);
+		continue;
+	}
+/*
+	while(fread(buf, sizeof(char), BUF_LEN, read_fp) != EOF) 
+	{
+		crc = crc32(crc, buf, BUF_LEN);
+	}
+*/
+	if(fprintf(crc_fp, "%u", crc) < 0)
+	{
+		fprintf(log_fp, "file write failure\n");	
+		fflush(log_fp);
+		continue;
+	}
+	fflush(crc_fp);
+	fclose(crc_fp);
+	fclose(read_fp);	
+	
+}
 
 int patrol(int fd, FILE* log_fp)
 {
 	int length, i = 0, j = 0;
 	char buffer[BUF_LEN];
-	char str[80];
-	char buf[BUF_LEN];
-	FILE* crc_fp;
-	FILE* read_fp;
-	uint32_t crc = 0;	
 	
 	fprintf(log_fp, "inside patrol function\n");
 	fflush(log_fp);
@@ -125,60 +167,23 @@ int patrol(int fd, FILE* log_fp)
 			{
 				if (event->mask & IN_ISDIR)
 				{
-					fprintf(log_fp, "The directory %s was created.\n", event->name);      			fflush(log_fp);
+					fprintf(log_fp, "The directory %s was created.\n", event->name);      			
+					fflush(log_fp);
 				}
 				else
 				{
 					fprintf(log_fp, "The file %s was created.\n", event->name);
 					fflush(log_fp);
 					
-					strcpy(str, event->name);
-					strcat(str, "_crc");
-					crc_fp = fopen(str, "w+");
-					if(crc_fp < 0)
-					{
-						fprintf(log_fp, "could not open crc file%s\n", str);
-						fprintf(log_fp, "errno = %d\n", errno);
-						fflush(log_fp);
-						continue;
-					}
-
-					strcpy(str, "/home/skibuntu/Desktop/");
-					strcat(str, event->name);
-				
-					read_fp = fopen(str, "r");
-
-					if(read_fp < 0)
-					{
-						fprintf(log_fp, "could not open read file %s\n", str);
-						fprintf(log_fp, "errno = %d\n", errno);
-						fflush(log_fp);
-						continue;
-					}
-/*	
-					while(fread(buf, sizeof(char), BUF_LEN, read_fp) != EOF) 
-					{
-						crc = crc32(crc, buf, BUF_LEN);
-					}
-*/
-					if(fprintf(crc_fp, "%u", crc) < 0)
-					{
-						fprintf(log_fp, "file write failure\n");	
-						fflush(log_fp);
-						continue;
-					}
-					fflush(crc_fp);
-					fclose(crc_fp);
-					fclose(read_fp);
-	
-					
+					create_crc_file(event);
 				}
 			}
 			else if(event->mask & IN_DELETE)
 			{
 				if(event->mask & IN_ISDIR)
 				{
-					fprintf(log_fp, "The directory %s was deleted.\n", event->name);       			fflush(log_fp);
+					fprintf(log_fp, "The directory %s was deleted.\n", event->name);       			
+					fflush(log_fp);
 				}
 				else
 				{
@@ -198,46 +203,7 @@ int patrol(int fd, FILE* log_fp)
 					fprintf(log_fp, "The file %s was modified.\n", event->name);
 					fflush(log_fp);
 
-					strcpy(str, event->name);
-					strcat(str, "_crc");
-					crc_fp = fopen(str, "a+");
-					if(crc_fp < 0)
-					{
-						fprintf(log_fp, "could not open crc file %s\n", str);
-						fprintf(log_fp, "errno = %d\n", errno);
-						fflush(log_fp);
-						continue;
-					}
-					strcpy(str, "/home/skibuntu/Desktop/");
-					strcat(str, event->name);
-
-					read_fp = fopen(str, "r");
-
-					if(read_fp < 0)
-					{
-						fprintf(log_fp, "could not open read file %s\n", str);
-						fprintf(log_fp, "errno = %d\n", errno);
-						fflush(log_fp);
-						continue;
-					}
-/*
-					while(fread(buf, sizeof(char), BUF_LEN, read_fp) != EOF) 
-					{
-						crc = crc32(crc, buf, BUF_LEN);
-					}
-*/
-
-					if(fprintf(crc_fp, "%u", crc) < 0)
-					{
-						fprintf(log_fp, "file write failure\n");	
-						fflush(log_fp);
-						continue;
-					}
-
-					fflush(crc_fp);
-					fclose(crc_fp);
-					fclose(read_fp);
-				
+					create_crc_file(event);				
 				}
 			}
 		}
