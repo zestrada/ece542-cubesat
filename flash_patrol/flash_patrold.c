@@ -80,6 +80,7 @@ int patrol_init()
 	if(fd < 0) 
 	{    
 		printf("inotify_init\n");
+		exit(EXIT_FAILURE);
 	}
 
 	wd = inotify_add_watch(fd, "/home/skibuntu/Desktop", 
@@ -112,6 +113,7 @@ int patrol(int fd, FILE* log_fp)
 	{
 	  fprintf(log_fp, "read fail\n");
 		fflush(log_fp);
+		return -1;
 	}  
 
 	while (i < length)
@@ -138,6 +140,7 @@ int patrol(int fd, FILE* log_fp)
 						fprintf(log_fp, "could not open crc file%s\n", str);
 						fprintf(log_fp, "errno = %d\n", errno);
 						fflush(log_fp);
+						continue;
 					}
 
 					strcpy(str, "/home/skibuntu/Desktop/");
@@ -150,6 +153,7 @@ int patrol(int fd, FILE* log_fp)
 						fprintf(log_fp, "could not open read file %s\n", str);
 						fprintf(log_fp, "errno = %d\n", errno);
 						fflush(log_fp);
+						continue;
 					}
 /*	
 					while(fread(buf, sizeof(char), BUF_LEN, read_fp) != EOF) 
@@ -161,6 +165,7 @@ int patrol(int fd, FILE* log_fp)
 					{
 						fprintf(log_fp, "file write failure\n");	
 						fflush(log_fp);
+						continue;
 					}
 					fflush(crc_fp);
 					fclose(crc_fp);
@@ -201,6 +206,7 @@ int patrol(int fd, FILE* log_fp)
 						fprintf(log_fp, "could not open crc file %s\n", str);
 						fprintf(log_fp, "errno = %d\n", errno);
 						fflush(log_fp);
+						continue;
 					}
 					strcpy(str, "/home/skibuntu/Desktop/");
 					strcat(str, event->name);
@@ -212,6 +218,7 @@ int patrol(int fd, FILE* log_fp)
 						fprintf(log_fp, "could not open read file %s\n", str);
 						fprintf(log_fp, "errno = %d\n", errno);
 						fflush(log_fp);
+						continue;
 					}
 /*
 					while(fread(buf, sizeof(char), BUF_LEN, read_fp) != EOF) 
@@ -224,6 +231,7 @@ int patrol(int fd, FILE* log_fp)
 					{
 						fprintf(log_fp, "file write failure\n");	
 						fflush(log_fp);
+						continue;
 					}
 
 					fflush(crc_fp);
@@ -303,6 +311,7 @@ int main(int argc, char* argv[])
 	if(log_fp < 0) 
 	{    
 		printf("fopen failed\n");
+		exit(EXIT_FAILURE);
 	}
 
 	fprintf(log_fp, "Daemon created\n\n");
@@ -314,7 +323,10 @@ int main(int argc, char* argv[])
 		sleep(1);
 		
 		// Implement and call some function that does core work for this daemon.
-		patrol(fd, log_fp);
+		if(-1 == patrol(fd, log_fp))
+		{
+			fprintf(log_fp, "patrol function failed \n");
+		}
 		fprintf(log_fp, "iterating the while loop\n\n");
 		fflush(log_fp);
 	}
