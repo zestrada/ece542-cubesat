@@ -8,6 +8,7 @@
 
 extern float flash_size;
 extern float ram_size;
+extern float random_failure_rate;
 
 class basic_model_studyRangeStudy : public BaseStudyClass {
 public:
@@ -19,9 +20,11 @@ private:
 
 float *flash_sizeValues;
 float *ram_sizeValues;
+float *random_failure_rateValues;
 
 void SetValues_flash_size();
 void SetValues_ram_size();
+void SetValues_random_failure_rate();
 
 void PrintGlobalValues(int);
 void *GetGVValue(char *TheGVName);

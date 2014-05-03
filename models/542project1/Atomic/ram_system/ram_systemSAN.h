@@ -10,6 +10,7 @@
 #include "Cpp/BaseClasses/SAN/Place.h"
 #include "Cpp/BaseClasses/SAN/ExtendedPlace.h"
 extern float ram_size;
+extern float random_failure_rate;
 extern UserDistributions* TheDistribution;
 
 void MemoryError();
@@ -21,6 +22,30 @@ void MemoryError();
 
 class ram_systemSAN:public SANModel{
 public:
+
+class failureActivity:public Activity {
+public:
+
+  Place* flash_corrupted;
+  short* flash_corrupted_Mobius_Mark;
+  Place* ram_corrupted;
+  short* ram_corrupted_Mobius_Mark;
+  Place* system_failed;
+  short* system_failed_Mobius_Mark;
+
+  double* TheDistributionParameters;
+  failureActivity();
+  double Rate(){return 0;}
+  bool Enabled();
+  void LinkVariables();
+  double Weight();
+  bool ReactivationPredicate();
+  bool ReactivationFunction();
+  double SampleDistribution();
+  double* ReturnDistributionParameters();
+  int Rank();
+  BaseActionClass* Fire();
+}; // failureActivityActivity
 
 class watchdog_rebootActivity:public Activity {
 public:
@@ -159,8 +184,10 @@ public:
   Place* flash_corrupted;
   Place* ram_working;
   Place* ram_corrupted;
+  Place* system_failed;
 
   // Create instances of all actvities
+  failureActivity failure;
   watchdog_rebootActivity watchdog_reboot;
   random_failureActivity random_failure;
   bit_errorActivity_case1 bit_error_case1;
@@ -168,7 +195,8 @@ public:
   page_errorActivity_case1 page_error_case1;
   page_errorActivity_case2 page_error_case2;
   //Create instances of all groups 
-  EmptyGroup ImmediateGroup;
+  PreselectGroup ImmediateGroup;
+  PostselectGroup failureGroup;
   PostselectGroup bit_errorGroup;  PostselectGroup page_errorGroup;
   ram_systemSAN();
   ~ram_systemSAN();

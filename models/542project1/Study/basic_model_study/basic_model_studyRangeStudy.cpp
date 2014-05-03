@@ -6,6 +6,7 @@
 //******************************************************
 float flash_size;
 float ram_size;
+float random_failure_rate;
 
 //********************************************************
 //basic_model_studyRangeStudy Constructor
@@ -13,8 +14,8 @@ float ram_size;
 basic_model_studyRangeStudy::basic_model_studyRangeStudy() {
 
   // define arrays of global variable names and types
-  NumGVs = 2;
-  NumExps = 25;
+  NumGVs = 3;
+  NumExps = 16;
 
   GVNames = new char*[NumGVs];
   GVTypes = new char*[NumGVs];
@@ -22,14 +23,18 @@ basic_model_studyRangeStudy::basic_model_studyRangeStudy() {
   GVTypes[0]=strdup("float");
   GVNames[1]=strdup("ram_size");
   GVTypes[1]=strdup("float");
+  GVNames[2]=strdup("random_failure_rate");
+  GVTypes[2]=strdup("float");
 
   // create the arrays to store the values of each gv
   flash_sizeValues = new float[NumExps];
   ram_sizeValues = new float[NumExps];
+  random_failure_rateValues = new float[NumExps];
 
   // call methods to assign values to each gv
   SetValues_flash_size();
   SetValues_ram_size();
+  SetValues_random_failure_rate();
   SetDefaultMobiusRoot(MOBIUSROOT);
 }
 
@@ -40,6 +45,7 @@ basic_model_studyRangeStudy::basic_model_studyRangeStudy() {
 basic_model_studyRangeStudy::~basic_model_studyRangeStudy() {
   delete [] flash_sizeValues;
   delete [] ram_sizeValues;
+  delete [] random_failure_rateValues;
   delete ThePVModel;
 }
 
@@ -48,31 +54,22 @@ basic_model_studyRangeStudy::~basic_model_studyRangeStudy() {
 // set values for flash_size
 //******************************************************
 void basic_model_studyRangeStudy::SetValues_flash_size() {
-  flash_sizeValues[0] = 32.0;
-  flash_sizeValues[1] = 64.0;
-  flash_sizeValues[2] = 128.0;
-  flash_sizeValues[3] = 256.0;
-  flash_sizeValues[4] = 512.0;
-  flash_sizeValues[5] = 32.0;
-  flash_sizeValues[6] = 64.0;
-  flash_sizeValues[7] = 128.0;
-  flash_sizeValues[8] = 256.0;
-  flash_sizeValues[9] = 512.0;
-  flash_sizeValues[10] = 32.0;
-  flash_sizeValues[11] = 64.0;
-  flash_sizeValues[12] = 128.0;
-  flash_sizeValues[13] = 256.0;
-  flash_sizeValues[14] = 512.0;
-  flash_sizeValues[15] = 32.0;
-  flash_sizeValues[16] = 64.0;
-  flash_sizeValues[17] = 128.0;
-  flash_sizeValues[18] = 256.0;
-  flash_sizeValues[19] = 512.0;
-  flash_sizeValues[20] = 32.0;
-  flash_sizeValues[21] = 64.0;
-  flash_sizeValues[22] = 128.0;
-  flash_sizeValues[23] = 256.0;
-  flash_sizeValues[24] = 512.0;
+  flash_sizeValues[0] = 64.0;
+  flash_sizeValues[1] = 128.0;
+  flash_sizeValues[2] = 256.0;
+  flash_sizeValues[3] = 512.0;
+  flash_sizeValues[4] = 64.0;
+  flash_sizeValues[5] = 128.0;
+  flash_sizeValues[6] = 256.0;
+  flash_sizeValues[7] = 512.0;
+  flash_sizeValues[8] = 64.0;
+  flash_sizeValues[9] = 128.0;
+  flash_sizeValues[10] = 256.0;
+  flash_sizeValues[11] = 512.0;
+  flash_sizeValues[12] = 64.0;
+  flash_sizeValues[13] = 128.0;
+  flash_sizeValues[14] = 256.0;
+  flash_sizeValues[15] = 512.0;
 }
 
 
@@ -80,31 +77,31 @@ void basic_model_studyRangeStudy::SetValues_flash_size() {
 // set values for ram_size
 //******************************************************
 void basic_model_studyRangeStudy::SetValues_ram_size() {
-  ram_sizeValues[0] = 32.0;
-  ram_sizeValues[1] = 32.0;
-  ram_sizeValues[2] = 32.0;
-  ram_sizeValues[3] = 32.0;
-  ram_sizeValues[4] = 32.0;
-  ram_sizeValues[5] = 64.0;
-  ram_sizeValues[6] = 64.0;
-  ram_sizeValues[7] = 64.0;
-  ram_sizeValues[8] = 64.0;
-  ram_sizeValues[9] = 64.0;
-  ram_sizeValues[10] = 128.0;
-  ram_sizeValues[11] = 128.0;
-  ram_sizeValues[12] = 128.0;
-  ram_sizeValues[13] = 128.0;
-  ram_sizeValues[14] = 128.0;
-  ram_sizeValues[15] = 256.0;
-  ram_sizeValues[16] = 256.0;
-  ram_sizeValues[17] = 256.0;
-  ram_sizeValues[18] = 256.0;
-  ram_sizeValues[19] = 256.0;
-  ram_sizeValues[20] = 512.0;
-  ram_sizeValues[21] = 512.0;
-  ram_sizeValues[22] = 512.0;
-  ram_sizeValues[23] = 512.0;
-  ram_sizeValues[24] = 512.0;
+  ram_sizeValues[0] = 64.0;
+  ram_sizeValues[1] = 64.0;
+  ram_sizeValues[2] = 64.0;
+  ram_sizeValues[3] = 64.0;
+  ram_sizeValues[4] = 128.0;
+  ram_sizeValues[5] = 128.0;
+  ram_sizeValues[6] = 128.0;
+  ram_sizeValues[7] = 128.0;
+  ram_sizeValues[8] = 256.0;
+  ram_sizeValues[9] = 256.0;
+  ram_sizeValues[10] = 256.0;
+  ram_sizeValues[11] = 256.0;
+  ram_sizeValues[12] = 512.0;
+  ram_sizeValues[13] = 512.0;
+  ram_sizeValues[14] = 512.0;
+  ram_sizeValues[15] = 512.0;
+}
+
+
+//******************************************************
+// set values for random_failure_rate
+//******************************************************
+void basic_model_studyRangeStudy::SetValues_random_failure_rate() {
+  for (int n=0; n<NumExps; n++)
+    random_failure_rateValues[n] = 0.005;
 }
 
 
@@ -124,6 +121,7 @@ void basic_model_studyRangeStudy::PrintGlobalValues(int expNum) {
     GetExpName(expNum)<<" are:"<<endl;
   cout << "flash_size\tfloat\t" << flash_size << endl;
   cout << "ram_size\tfloat\t" << ram_size << endl;
+  cout << "random_failure_rate\tfloat\t" << random_failure_rate << endl;
 }
 
 
@@ -135,6 +133,8 @@ void *basic_model_studyRangeStudy::GetGVValue(char *TheGVName) {
     return &flash_size;
   else if (strcmp("ram_size", TheGVName) == 0)
     return &ram_size;
+  else if (strcmp("random_failure_rate", TheGVName) == 0)
+    return &random_failure_rate;
   else 
     cerr<<"!! basic_model_studyRangeStudy::GetGVValue: Global Variable "<<TheGVName<<" does not exist."<<endl;
   return NULL;
@@ -149,6 +149,8 @@ void basic_model_studyRangeStudy::OverrideGVValue(char *TheGVName,void *TheGVVal
     flash_size = *(float *)TheGVValue;
   else if (strcmp("ram_size", TheGVName) == 0)
     ram_size = *(float *)TheGVValue;
+  else if (strcmp("random_failure_rate", TheGVName) == 0)
+    random_failure_rate = *(float *)TheGVValue;
   else 
     cerr<<"!! basic_model_studyRangeStudy::OverrideGVValue: Global Variable "<<TheGVName<<" does not exist."<<endl;
 }
@@ -160,6 +162,7 @@ void basic_model_studyRangeStudy::OverrideGVValue(char *TheGVName,void *TheGVVal
 void basic_model_studyRangeStudy::SetGVs(int expNum) {
   flash_size = flash_sizeValues[expNum];
   ram_size = ram_sizeValues[expNum];
+  random_failure_rate = random_failure_rateValues[expNum];
 }
 
 

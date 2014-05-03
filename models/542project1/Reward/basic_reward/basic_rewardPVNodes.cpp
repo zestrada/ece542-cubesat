@@ -14,8 +14,9 @@ basic_rewardPV0Worker::~basic_rewardPV0Worker() {
 
 double basic_rewardPV0Worker::Reward_Function(void) {
 
-return ((ram_system->flash_corrupted->Mark() > 0) 
-&& (ram_system->ram_corrupted->Mark() > 0));
+return ram_system->system_failed->Mark();
+//return ((ram_system->flash_corrupted->Mark() > 0) 
+//&& (ram_system->ram_corrupted->Mark() > 0));
 
 return (0);
 
@@ -25,11 +26,10 @@ return (0);
 
 basic_rewardPV0::basic_rewardPV0(int timeindex) {
   TheModelPtr = (BaseModelClass**)(&Thebasic_modelRJ);
-  double startpts[1]={365.0};
-  double stoppts[1]={365.0};
-  Initialize("reliability",(RewardType)0,1, startpts, stoppts, timeindex, 0,3, 2);
-  AddVariableDependency("flash_corrupted","ram_system");
-  AddVariableDependency("ram_corrupted","ram_system");
+  double startpts[3]={30.0, 180.0, 365.0};
+  double stoppts[3]={30.0, 180.0, 365.0};
+  Initialize("reliability",(RewardType)0,3, startpts, stoppts, timeindex, 0,2, 1);
+  AddVariableDependency("system_failed","ram_system");
   AddModelDependency("flash_system");
 }
 

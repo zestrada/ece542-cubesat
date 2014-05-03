@@ -20,7 +20,7 @@
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
-		<string id="VersionNumber">13</string>
+		<string id="VersionNumber">17</string>
 	</class>
 	<vector id="ComposedNames">
 		<string id="0">basic_model</string>
@@ -37,7 +37,7 @@
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
-		<string id="VersionNumber">3</string>
+		<string id="VersionNumber">4</string>
 	</class>
 	<vector id="RewardNames">
 		<string id="0">basic_reward</string>
@@ -52,8 +52,8 @@
 	<int id="RewardStatusLength">1</int>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
-		<boolean id="Modified">false</boolean>
-		<string id="VersionNumber">6</string>
+		<boolean id="Modified">true</boolean>
+		<string id="VersionNumber">12</string>
 	</class>
 	<vector id="StudyNames">
 		<string id="0">basic_model_study</string>
@@ -68,8 +68,8 @@
 	<int id="StudyStatusLength">1</int>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
-		<boolean id="Modified">true</boolean>
-		<string id="VersionNumber">3</string>
+		<boolean id="Modified">false</boolean>
+		<string id="VersionNumber">5</string>
 	</class>
 	<vector id="TransformerNames">
 		<string id="0">basic_model_ssg</string>

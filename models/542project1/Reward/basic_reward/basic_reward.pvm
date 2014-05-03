@@ -7,7 +7,7 @@
 		<class id="PVEditor">
 			<int id="ClassVersion">2</int>
 			<string id="TheInterfaceName">basic_model</string>
-			<boolean id="SkipAcceptPopup">false</boolean>
+			<boolean id="SkipAcceptPopup">true</boolean>
 			<class id="Mobius.BaseClasses.BaseEditorClass">
 				<int id="ClassVersion">3</int>
 				<boolean id="HasPanel">false</boolean>
@@ -51,9 +51,9 @@
 				<vector id="ImpulseFunctionsList">
 				</vector>
 				<string id="RewardFunction">
-					return ((ram_system-&gt;flash_corrupted-&gt;Mark() &gt; 0) \
-					n&amp;&amp; (ram_system-&gt;ram_corrupted-&gt;Mark() &gt; 0)
-					);
+					return ram_system-&gt;system_failed-&gt;Mark();\n//return ((
+					ram_system-&gt;flash_corrupted-&gt;Mark() &gt; 0) \n//&amp;&
+					amp; (ram_system-&gt;ram_corrupted-&gt;Mark() &gt; 0));
 				</string>
 				<int id="Type">0</int>
 				<int id="TimeSeriesType">1</int>
@@ -61,12 +61,16 @@
 				<double id="TimeSeriesLast">0.0</double>
 				<double id="TimeSeriesStep">0.0</double>
 				<double id="TimeSeriesInterval">0.0</double>
-				<int id="NumTimePoints">1</int>
+				<int id="NumTimePoints">3</int>
 				<vector id="StartTimes">
-					<string id="0">365.0</string>
+					<string id="0">30.0</string>
+					<string id="1">180.0</string>
+					<string id="2">365.0</string>
 				</vector>
 				<vector id="StopTimes">
-					<string id="0">365.0</string>
+					<string id="0">30.0</string>
+					<string id="1">180.0</string>
+					<string id="2">365.0</string>
 				</vector>
 				<double id="InitialTransient">0.0</double>
 				<double id="BatchSize">1.0</double>

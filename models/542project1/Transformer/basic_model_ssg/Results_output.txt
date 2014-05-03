@@ -1,421 +1,284 @@
 
 **********************************************************
 
-State Generation initiated on Experiment_1 of basic_model_ssg started at Tue Apr 29 21:41:15 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_1 of basic_model_ssg started at Sat May 03 11:19:41 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 1 are:
-flash_size	float	32
-ram_size	float	32
+flash_size	float	64
+ram_size	float	64
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 8.000000e-003 seconds
-State Generation of Experiment_1 on model basic_model_ssg finished at Tue Apr 29 21:41:15 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 1.000000e-002 seconds
+State Generation of Experiment_1 on model basic_model_ssg finished at Sat May 03 11:19:41 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_2 of basic_model_ssg started at Tue Apr 29 21:41:15 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_2 of basic_model_ssg started at Sat May 03 11:19:41 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 2 are:
-flash_size	float	64
-ram_size	float	32
+flash_size	float	128
+ram_size	float	64
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 7.000000e-003 seconds
-State Generation of Experiment_2 on model basic_model_ssg finished at Tue Apr 29 21:41:15 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 6.000000e-003 seconds
+State Generation of Experiment_2 on model basic_model_ssg finished at Sat May 03 11:19:41 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_3 of basic_model_ssg started at Tue Apr 29 21:41:15 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_3 of basic_model_ssg started at Sat May 03 11:19:41 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 3 are:
-flash_size	float	128
-ram_size	float	32
+flash_size	float	256
+ram_size	float	64
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 1.100000e-002 seconds
-State Generation of Experiment_3 on model basic_model_ssg finished at Tue Apr 29 21:41:15 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 8.000000e-003 seconds
+State Generation of Experiment_3 on model basic_model_ssg finished at Sat May 03 11:19:41 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_4 of basic_model_ssg started at Tue Apr 29 21:41:15 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_4 of basic_model_ssg started at Sat May 03 11:19:41 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 4 are:
-flash_size	float	256
-ram_size	float	32
+flash_size	float	512
+ram_size	float	64
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 7.000000e-003 seconds
-State Generation of Experiment_4 on model basic_model_ssg finished at Tue Apr 29 21:41:15 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 6.000000e-003 seconds
+State Generation of Experiment_4 on model basic_model_ssg finished at Sat May 03 11:19:41 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_5 of basic_model_ssg started at Tue Apr 29 21:41:15 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_5 of basic_model_ssg started at Sat May 03 11:19:41 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 5 are:
-flash_size	float	512
-ram_size	float	32
+flash_size	float	64
+ram_size	float	128
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
+Generated: 13 states
 Computation Time (user + system): 7.000000e-003 seconds
-State Generation of Experiment_5 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+State Generation of Experiment_5 on model basic_model_ssg finished at Sat May 03 11:19:41 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_6 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_6 of basic_model_ssg started at Sat May 03 11:19:41 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 6 are:
-flash_size	float	32
-ram_size	float	64
+flash_size	float	128
+ram_size	float	128
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 1.700000e-002 seconds
-State Generation of Experiment_6 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 7.000000e-003 seconds
+State Generation of Experiment_6 on model basic_model_ssg finished at Sat May 03 11:19:41 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_7 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_7 of basic_model_ssg started at Sat May 03 11:19:41 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 7 are:
-flash_size	float	64
-ram_size	float	64
+flash_size	float	256
+ram_size	float	128
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 1.000000e-002 seconds
-State Generation of Experiment_7 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 6.000000e-003 seconds
+State Generation of Experiment_7 on model basic_model_ssg finished at Sat May 03 11:19:42 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_8 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_8 of basic_model_ssg started at Sat May 03 11:19:42 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 8 are:
-flash_size	float	128
-ram_size	float	64
+flash_size	float	512
+ram_size	float	128
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 1.000000e-002 seconds
-State Generation of Experiment_8 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 8.000000e-003 seconds
+State Generation of Experiment_8 on model basic_model_ssg finished at Sat May 03 11:19:42 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_9 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_9 of basic_model_ssg started at Sat May 03 11:19:42 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 9 are:
-flash_size	float	256
-ram_size	float	64
+flash_size	float	64
+ram_size	float	256
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 1.400000e-002 seconds
-State Generation of Experiment_9 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 6.000000e-003 seconds
+State Generation of Experiment_9 on model basic_model_ssg finished at Sat May 03 11:19:42 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_10 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_10 of basic_model_ssg started at Sat May 03 11:19:42 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 10 are:
-flash_size	float	512
-ram_size	float	64
+flash_size	float	128
+ram_size	float	256
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 1.400000e-002 seconds
-State Generation of Experiment_10 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 7.000000e-003 seconds
+State Generation of Experiment_10 on model basic_model_ssg finished at Sat May 03 11:19:42 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_11 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_11 of basic_model_ssg started at Sat May 03 11:19:42 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 11 are:
-flash_size	float	32
-ram_size	float	128
+flash_size	float	256
+ram_size	float	256
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 8.000000e-003 seconds
-State Generation of Experiment_11 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 7.000000e-003 seconds
+State Generation of Experiment_11 on model basic_model_ssg finished at Sat May 03 11:19:42 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_12 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_12 of basic_model_ssg started at Sat May 03 11:19:42 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 12 are:
-flash_size	float	64
-ram_size	float	128
+flash_size	float	512
+ram_size	float	256
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 1.600000e-002 seconds
-State Generation of Experiment_12 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 6.000000e-003 seconds
+State Generation of Experiment_12 on model basic_model_ssg finished at Sat May 03 11:19:42 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_13 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_13 of basic_model_ssg started at Sat May 03 11:19:42 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 13 are:
-flash_size	float	128
-ram_size	float	128
+flash_size	float	64
+ram_size	float	512
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
+Generated: 13 states
 Computation Time (user + system): 7.000000e-003 seconds
-State Generation of Experiment_13 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+State Generation of Experiment_13 on model basic_model_ssg finished at Sat May 03 11:19:42 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_14 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_14 of basic_model_ssg started at Sat May 03 11:19:42 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 14 are:
-flash_size	float	256
-ram_size	float	128
+flash_size	float	128
+ram_size	float	512
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 8.000000e-003 seconds
-State Generation of Experiment_14 on model basic_model_ssg finished at Tue Apr 29 21:41:16 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 6.000000e-003 seconds
+State Generation of Experiment_14 on model basic_model_ssg finished at Sat May 03 11:19:42 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_15 of basic_model_ssg started at Tue Apr 29 21:41:16 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_15 of basic_model_ssg started at Sat May 03 11:19:42 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 15 are:
-flash_size	float	512
-ram_size	float	128
+flash_size	float	256
+ram_size	float	512
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 1.800000e-002 seconds
-State Generation of Experiment_15 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
+Generated: 13 states
+Computation Time (user + system): 6.000000e-003 seconds
+State Generation of Experiment_15 on model basic_model_ssg finished at Sat May 03 11:19:42 CDT 2014.
 
 
 **********************************************************
 
 **********************************************************
 
-State Generation initiated on Experiment_16 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
+State Generation initiated on Experiment_16 of basic_model_ssg started at Sat May 03 11:19:42 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/basic_model_ssg/]
 License File=C:/Mobius-2.4/\License.mli
 The Global Variable values for experiment Experiment 16 are:
-flash_size	float	32
-ram_size	float	256
-SSG: SetTraceLevel: 0
-
-Generated: 8 states
-Computation Time (user + system): 7.000000e-003 seconds
-State Generation of Experiment_16 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
-
-
-**********************************************************
-
-**********************************************************
-
-State Generation initiated on Experiment_17 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
-License File=C:/Mobius-2.4/\License.mli
-The Global Variable values for experiment Experiment 17 are:
-flash_size	float	64
-ram_size	float	256
-SSG: SetTraceLevel: 0
-
-Generated: 8 states
-Computation Time (user + system): 5.000000e-003 seconds
-State Generation of Experiment_17 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
-
-
-**********************************************************
-
-**********************************************************
-
-State Generation initiated on Experiment_18 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
-License File=C:/Mobius-2.4/\License.mli
-The Global Variable values for experiment Experiment 18 are:
-flash_size	float	128
-ram_size	float	256
-SSG: SetTraceLevel: 0
-
-Generated: 8 states
-Computation Time (user + system): 9.000000e-003 seconds
-State Generation of Experiment_18 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
-
-
-**********************************************************
-
-**********************************************************
-
-State Generation initiated on Experiment_19 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
-License File=C:/Mobius-2.4/\License.mli
-The Global Variable values for experiment Experiment 19 are:
-flash_size	float	256
-ram_size	float	256
-SSG: SetTraceLevel: 0
-
-Generated: 8 states
-Computation Time (user + system): 6.000000e-003 seconds
-State Generation of Experiment_19 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
-
-
-**********************************************************
-
-**********************************************************
-
-State Generation initiated on Experiment_20 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
-License File=C:/Mobius-2.4/\License.mli
-The Global Variable values for experiment Experiment 20 are:
-flash_size	float	512
-ram_size	float	256
-SSG: SetTraceLevel: 0
-
-Generated: 8 states
-Computation Time (user + system): 5.000000e-003 seconds
-State Generation of Experiment_20 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
-
-
-**********************************************************
-
-**********************************************************
-
-State Generation initiated on Experiment_21 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
-License File=C:/Mobius-2.4/\License.mli
-The Global Variable values for experiment Experiment 21 are:
-flash_size	float	32
-ram_size	float	512
-SSG: SetTraceLevel: 0
-
-Generated: 8 states
-Computation Time (user + system): 7.000000e-003 seconds
-State Generation of Experiment_21 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
-
-
-**********************************************************
-
-**********************************************************
-
-State Generation initiated on Experiment_22 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
-License File=C:/Mobius-2.4/\License.mli
-The Global Variable values for experiment Experiment 22 are:
-flash_size	float	64
-ram_size	float	512
-SSG: SetTraceLevel: 0
-
-Generated: 8 states
-Computation Time (user + system): 6.000000e-003 seconds
-State Generation of Experiment_22 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
-
-
-**********************************************************
-
-**********************************************************
-
-State Generation initiated on Experiment_23 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
-License File=C:/Mobius-2.4/\License.mli
-The Global Variable values for experiment Experiment 23 are:
-flash_size	float	128
-ram_size	float	512
-SSG: SetTraceLevel: 0
-
-Generated: 8 states
-Computation Time (user + system): 8.000000e-003 seconds
-State Generation of Experiment_23 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
-
-
-**********************************************************
-
-**********************************************************
-
-State Generation initiated on Experiment_24 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
-License File=C:/Mobius-2.4/\License.mli
-The Global Variable values for experiment Experiment 24 are:
-flash_size	float	256
-ram_size	float	512
-SSG: SetTraceLevel: 0
-
-Generated: 8 states
-Computation Time (user + system): 1.400000e-002 seconds
-State Generation of Experiment_24 on model basic_model_ssg finished at Tue Apr 29 21:41:17 CDT 2014.
-
-
-**********************************************************
-
-**********************************************************
-
-State Generation initiated on Experiment_25 of basic_model_ssg started at Tue Apr 29 21:41:17 CDT 2014 ...
-path=[C:/Users/Matt/Dropbox/ECE541_shared/542project1/Transformer/basic_model_ssg/]
-License File=C:/Mobius-2.4/\License.mli
-The Global Variable values for experiment Experiment 25 are:
 flash_size	float	512
 ram_size	float	512
+random_failure_rate	float	1
 SSG: SetTraceLevel: 0
 
-Generated: 8 states
-Computation Time (user + system): 1.100000e-002 seconds
+Generated: 13 states
+Computation Time (user + system): 7.000000e-003 seconds

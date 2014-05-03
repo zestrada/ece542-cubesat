@@ -20,52 +20,45 @@
 						<boolean id="DisplayToolTips">true</boolean>
 					</class>
 					<string id="FullPath">
-						C:\\Users\\Matt\\Dropbox\\ECE541_shared\\542project1\\Study\
-						\basic_model_study\\
+						C:\\Users\\Matt\\Documents\\GitHub\\ece542\\models\\542proje
+						ct1\\Study\\basic_model_study\\
 					</string>
 					<string id="PVModelName">basic_reward</string>
 					<vector id="ActiveExpVector">
 						<boolean id="0">true</boolean>
-						<boolean id="1">false</boolean>
-						<boolean id="2">false</boolean>
-						<boolean id="3">false</boolean>
-						<boolean id="4">false</boolean>
-						<boolean id="5">false</boolean>
-						<boolean id="6">false</boolean>
-						<boolean id="7">false</boolean>
-						<boolean id="8">false</boolean>
-						<boolean id="9">false</boolean>
-						<boolean id="10">false</boolean>
-						<boolean id="11">false</boolean>
-						<boolean id="12">false</boolean>
-						<boolean id="13">false</boolean>
-						<boolean id="14">false</boolean>
-						<boolean id="15">false</boolean>
-						<boolean id="16">false</boolean>
-						<boolean id="17">false</boolean>
-						<boolean id="18">false</boolean>
-						<boolean id="19">false</boolean>
-						<boolean id="20">false</boolean>
-						<boolean id="21">false</boolean>
-						<boolean id="22">false</boolean>
-						<boolean id="23">false</boolean>
-						<boolean id="24">true</boolean>
+						<boolean id="1">true</boolean>
+						<boolean id="2">true</boolean>
+						<boolean id="3">true</boolean>
+						<boolean id="4">true</boolean>
+						<boolean id="5">true</boolean>
+						<boolean id="6">true</boolean>
+						<boolean id="7">true</boolean>
+						<boolean id="8">true</boolean>
+						<boolean id="9">true</boolean>
+						<boolean id="10">true</boolean>
+						<boolean id="11">true</boolean>
+						<boolean id="12">true</boolean>
+						<boolean id="13">true</boolean>
+						<boolean id="14">true</boolean>
+						<boolean id="15">true</boolean>
 					</vector>
 					<vector id="GVNameVector">
 						<string id="0">flash_size</string>
 						<string id="1">ram_size</string>
+						<string id="2">random_failure_rate</string>
 					</vector>
 					<vector id="GVTypeStringVector">
 						<string id="0">float</string>
 						<string id="1">float</string>
+						<string id="2">float</string>
 					</vector>
 				</class>
-				<int id="VectorLength">2</int>
+				<int id="VectorLength">3</int>
 				<vector id="e">
 					<string id="0">Functional Range</string>
 					<string id="1">0</string>
 					<string id="2">1.0</string>
-					<string id="3">5.0</string>
+					<string id="3">6.0</string>
 					<string id="4">9.0</string>
 					<string id="5">1</string>
 					<string id="6">n^x</string>
@@ -75,25 +68,29 @@
 					<string id="0">Functional Range</string>
 					<string id="1">0</string>
 					<string id="2">1.0</string>
-					<string id="3">5.0</string>
+					<string id="3">6.0</string>
 					<string id="4">9.0</string>
 					<string id="5">1</string>
 					<string id="6">n^x</string>
 					<string id="7">2.0</string>
 				</vector>
-				<vector id="g">
-					<string id="0">32.0</string>
-					<string id="1">64.0</string>
-					<string id="2">128.0</string>
-					<string id="3">256.0</string>
-					<string id="4">512.0</string>
+				<vector id="e">
+					<string id="0">Fixed Value</string>
 				</vector>
 				<vector id="g">
-					<string id="0">32.0</string>
-					<string id="1">64.0</string>
-					<string id="2">128.0</string>
-					<string id="3">256.0</string>
-					<string id="4">512.0</string>
+					<string id="0">64.0</string>
+					<string id="1">128.0</string>
+					<string id="2">256.0</string>
+					<string id="3">512.0</string>
+				</vector>
+				<vector id="g">
+					<string id="0">64.0</string>
+					<string id="1">128.0</string>
+					<string id="2">256.0</string>
+					<string id="3">512.0</string>
+				</vector>
+				<vector id="g">
+					<string id="0">0.005</string>
 				</vector>
 			</class>
 			<class id="Mobius.Studies.RangeStudy.RangeStudyInfoClass">
