@@ -7,6 +7,7 @@
 #include "Cpp/Study/BaseStudyClass.hpp"
 
 extern float flash_size;
+extern float power_cycle_rate;
 extern float ram_size;
 extern float random_failure_rate;
 
@@ -19,10 +20,12 @@ basic_model_studyRangeStudy();
 private:
 
 float *flash_sizeValues;
+float *power_cycle_rateValues;
 float *ram_sizeValues;
 float *random_failure_rateValues;
 
 void SetValues_flash_size();
+void SetValues_power_cycle_rate();
 void SetValues_ram_size();
 void SetValues_random_failure_rate();
 

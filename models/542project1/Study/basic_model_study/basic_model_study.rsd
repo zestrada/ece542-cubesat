@@ -34,42 +34,30 @@
 						<boolean id="6">true</boolean>
 						<boolean id="7">true</boolean>
 						<boolean id="8">true</boolean>
-						<boolean id="9">true</boolean>
-						<boolean id="10">true</boolean>
-						<boolean id="11">true</boolean>
-						<boolean id="12">true</boolean>
-						<boolean id="13">true</boolean>
-						<boolean id="14">true</boolean>
-						<boolean id="15">true</boolean>
 					</vector>
 					<vector id="GVNameVector">
 						<string id="0">flash_size</string>
-						<string id="1">ram_size</string>
-						<string id="2">random_failure_rate</string>
+						<string id="1">power_cycle_rate</string>
+						<string id="2">ram_size</string>
+						<string id="3">random_failure_rate</string>
 					</vector>
 					<vector id="GVTypeStringVector">
 						<string id="0">float</string>
 						<string id="1">float</string>
 						<string id="2">float</string>
+						<string id="3">float</string>
 					</vector>
 				</class>
-				<int id="VectorLength">3</int>
+				<int id="VectorLength">4</int>
 				<vector id="e">
-					<string id="0">Functional Range</string>
-					<string id="1">0</string>
-					<string id="2">1.0</string>
-					<string id="3">6.0</string>
-					<string id="4">9.0</string>
-					<string id="5">1</string>
-					<string id="6">n^x</string>
-					<string id="7">2.0</string>
+					<string id="0">Fixed Value</string>
 				</vector>
 				<vector id="e">
 					<string id="0">Functional Range</string>
 					<string id="1">0</string>
 					<string id="2">1.0</string>
-					<string id="3">6.0</string>
-					<string id="4">9.0</string>
+					<string id="3">-5.0</string>
+					<string id="4">3.0</string>
 					<string id="5">1</string>
 					<string id="6">n^x</string>
 					<string id="7">2.0</string>
@@ -77,17 +65,25 @@
 				<vector id="e">
 					<string id="0">Fixed Value</string>
 				</vector>
-				<vector id="g">
-					<string id="0">64.0</string>
-					<string id="1">128.0</string>
-					<string id="2">256.0</string>
-					<string id="3">512.0</string>
+				<vector id="e">
+					<string id="0">Fixed Value</string>
 				</vector>
 				<vector id="g">
 					<string id="0">64.0</string>
-					<string id="1">128.0</string>
-					<string id="2">256.0</string>
-					<string id="3">512.0</string>
+				</vector>
+				<vector id="g">
+					<string id="0">0.03125</string>
+					<string id="1">0.0625</string>
+					<string id="2">0.125</string>
+					<string id="3">0.25</string>
+					<string id="4">0.5</string>
+					<string id="5">1.0</string>
+					<string id="6">2.0</string>
+					<string id="7">4.0</string>
+					<string id="8">8.0</string>
+				</vector>
+				<vector id="g">
+					<string id="0">128.0</string>
 				</vector>
 				<vector id="g">
 					<string id="0">0.005</string>

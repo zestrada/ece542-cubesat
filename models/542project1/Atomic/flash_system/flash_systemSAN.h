@@ -10,6 +10,7 @@
 #include "Cpp/BaseClasses/SAN/Place.h"
 #include "Cpp/BaseClasses/SAN/ExtendedPlace.h"
 extern float flash_size;
+extern float power_cycle_rate;
 extern UserDistributions* TheDistribution;
 
 void MemoryError();

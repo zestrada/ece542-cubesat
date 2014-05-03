@@ -294,7 +294,7 @@ bool flash_systemSAN::power_cycleActivity::Enabled(){
 }
 
 double flash_systemSAN::power_cycleActivity::DeterministicParamValue(){
-  return 10000000000000000000;
+  return power_cycle_rate;
   return 1.0;  // default rate if none is specified
 }
 
@@ -311,7 +311,7 @@ bool flash_systemSAN::power_cycleActivity::ReactivationFunction(){
 }
 
 double flash_systemSAN::power_cycleActivity::SampleDistribution(){
-  return 10000000000000000000;
+  return power_cycle_rate;
 }
 
 double* flash_systemSAN::power_cycleActivity::ReturnDistributionParameters(){

@@ -32,7 +32,7 @@
 				<null id="CommentsString"></null>
 				<byte id="BuildType">0</byte>
 				<boolean id="RunInBackgroundState">false</boolean>
-				<int id="NumExps">16</int>
+				<int id="NumExps">9</int>
 				<boolean id="BuildOnlyState">false</boolean>
 				<vector id="ExpNames">
 					<string id="0">Experiment_1</string>
@@ -44,13 +44,6 @@
 					<string id="6">Experiment_7</string>
 					<string id="7">Experiment_8</string>
 					<string id="8">Experiment_9</string>
-					<string id="9">Experiment_10</string>
-					<string id="10">Experiment_11</string>
-					<string id="11">Experiment_12</string>
-					<string id="12">Experiment_13</string>
-					<string id="13">Experiment_14</string>
-					<string id="14">Experiment_15</string>
-					<string id="15">Experiment_16</string>
 				</vector>
 			</class>
 			<double id="HashValue">0.5</double>

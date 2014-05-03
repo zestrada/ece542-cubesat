@@ -116,11 +116,13 @@
 				<string id="0">flash_size</string>
 				<string id="1">ram_size</string>
 				<string id="2">random_failure_rate</string>
+				<string id="3">power_cycle_rate</string>
 			</vector>
 			<vector id="LocalGlobalTypesList">
 				<string id="0">float</string>
 				<string id="1">float</string>
 				<string id="2">float</string>
+				<string id="3">float</string>
 			</vector>
 			<boolean id="DisplayToolTips">true</boolean>
 		</class>

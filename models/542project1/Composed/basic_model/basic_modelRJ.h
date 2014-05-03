@@ -11,6 +11,7 @@
 extern float flash_size;
 extern float ram_size;
 extern float random_failure_rate;
+extern float power_cycle_rate;
 
 class basic_modelRJ: public Join {
  public:

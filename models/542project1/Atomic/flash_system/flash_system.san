@@ -299,7 +299,7 @@
 							<vector id="MetaParameters">
 							</vector>
 							<vector id="Parameters">
-								<string id="0">10000000000000000000</string>
+								<string id="0">power_cycle_rate</string>
 							</vector>
 						</class>
 						<string id="Activation"></string>
@@ -550,9 +550,11 @@
 				</class>
 				<vector id="LocalGlobalNamesList">
 					<string id="0">flash_size</string>
+					<string id="1">power_cycle_rate</string>
 				</vector>
 				<vector id="LocalGlobalTypesList">
 					<string id="0">float</string>
+					<string id="1">float</string>
 				</vector>
 				<boolean id="DisplayToolTips">true</boolean>
 			</class>
