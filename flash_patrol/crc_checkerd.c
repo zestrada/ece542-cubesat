@@ -13,8 +13,29 @@
 
 int check_file_crc(FILE* log_fp)
 {
+	FILE* calc_crc_fp;
+	FILE* old_crc_fp;
+	char buf[BUF_LEN];
+	uint32_t nbytes = BUF_LEN;
+	uint32_t old_crc = 0;
+	uint32_t calc_crc = 0;
+
 	//fprintf(log_fp, "in crc check\n");
 	//fflush(log_fp);
+
+	//old_crc_fp = fopen("");
+	//fread(&old_crc, sizeof(uint32_t), 1, old_crc_fp);
+
+	//calc_crc_fp = fopen("");	
+	
+	while(nbytes == BUF_LEN)
+	{
+		nbytes = fread(buf, sizeof(char), BUF_LEN, calc_crc_fp);
+		calc_crc = crc32(calc_crc, buf, nbytes);
+	}
+
+	fclose(calc_crc_fp);
+	fclose(old_crc_fp);
 
 	return 0;
 }
