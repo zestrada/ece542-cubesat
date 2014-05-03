@@ -1,0 +1,81 @@
+_______________________________Simulator Results______________________________
+Date:                        Sat May 03 01:29:00 CDT 2014
+
+____________________________Simulator Configuration___________________________
+Simulation Type:             Terminating
+Project Name:                542project1
+Study Name:                  basic_model_study
+Random Number Generator:     Lagged Fibonacci
+Random Number Seed:          31415
+Maximum Batches:             10000
+Minimum Batches:             1000
+Data Reporting Frequency:    1000
+Display Update Frequency:    1000
+BuildType:                   Optimize
+Execution Architecture:      32-bit
+Runname:                     Results
+Output File:                 Results_output.txt
+Results File:                Results_results
+Jackknife Variance:          On
+Processors Per Experiment:   1
+Maximize Processor Usage:    false
+Processors Selected for Simulation: 
+        macbook-win8         amd64
+
+_________________________________Experiment 1_________________________________
+Start Time:                  Sat May 03 01:28:22 CDT 2014
+Finish Time:                 Sat May 03 01:28:34 CDT 2014
+Elapsed Running Time:        11.573
+Total CPU Time:              11.309
+Batches Completed:           10000
+Experiment Name:             Experiment 1
+Global Variable Settings:    
+        float                flash_size               32.0                   
+        float                ram_size                 32.0                   
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           365.0             7.0000000000E-04  +/-   5.1841164789E-04  (*)
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 25________________________________
+Start Time:                  Sat May 03 01:28:34 CDT 2014
+Finish Time:                 Sat May 03 01:29:00 CDT 2014
+Elapsed Running Time:        26.265
+Total CPU Time:              26.068
+Batches Completed:           10000
+Experiment Name:             Experiment 25
+Global Variable Settings:    
+        float                flash_size               512.0                  
+        float                ram_size                 512.0                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           365.0             1.1800000000E-02  +/-   2.1166118128E-03  (*)
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+<END_MOBIUS_RESULTS>

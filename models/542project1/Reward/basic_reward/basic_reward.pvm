@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<class id="Mobius.RewardModels.pvs.PVInterface">
+	<int id="ClassVersion">1</int>
+	<class id="Mobius.BaseClasses.BaseInterfaceClass">
+		<int id="ClassVersion">3</int>
+		<string id="ModelName">basic_reward</string>
+		<class id="PVEditor">
+			<int id="ClassVersion">2</int>
+			<string id="TheInterfaceName">basic_model</string>
+			<boolean id="SkipAcceptPopup">false</boolean>
+			<class id="Mobius.BaseClasses.BaseEditorClass">
+				<int id="ClassVersion">3</int>
+				<boolean id="HasPanel">false</boolean>
+				<vector id="LocalGlobalNamesList">
+				</vector>
+				<vector id="LocalGlobalTypesList">
+				</vector>
+				<boolean id="DisplayToolTips">true</boolean>
+			</class>
+		</class>
+		<class id="Mobius.RewardModels.pvs.PVInfo">
+			<int id="ClassVersion">3</int>
+			<class id="Mobius.BaseClasses.BaseInfoClass">
+				<int id="ClassVersion">2</int>
+			</class>
+			<string id="OutputDirectory">Reward\\basic_reward\\</string>
+			<string id="PVModelFileName">basic_rewardPVModel</string>
+			<string id="PVNodeFileName">basic_rewardPVNodes</string>
+			<string id="PVArchiveName">basic_rewardPV</string>
+			<vector id="IncludePath">
+				<string id="0">Composed\\basic_model\\basic_modelRJ.h</string>
+			</vector>
+			<vector id="HeaderFileList">
+				<string id="0">Reward\\basic_reward\\basic_rewardPVNodes.h</string>
+				<string id="1">Reward\\basic_reward\\basic_rewardPVModel.h</string>
+			</vector>
+			<vector id="CodeFileList">
+				<string id="0">Reward\\basic_reward\\basic_rewardPVNodes.cpp</string>
+				<string id="1">Reward\\basic_reward\\basic_rewardPVModel.cpp</string>
+			</vector>
+			<int id="NumVars">1</int>
+			<class id="Mobius.RewardModels.pvs.VariableInfo">
+				<int id="ClassVersion">7</int>
+				<string id="Name">reliability</string>
+				<vector id="AffectingModelList">
+					<string id="0">flash_system</string>
+					<string id="1">ram_system</string>
+				</vector>
+				<vector id="AffectingActionsList">
+				</vector>
+				<vector id="ImpulseFunctionsList">
+				</vector>
+				<string id="RewardFunction">
+					return ((ram_system-&gt;flash_corrupted-&gt;Mark() &gt; 0) \
+					n&amp;&amp; (ram_system-&gt;ram_corrupted-&gt;Mark() &gt; 0)
+					);
+				</string>
+				<int id="Type">0</int>
+				<int id="TimeSeriesType">1</int>
+				<double id="TimeSeriesFirst">0.0</double>
+				<double id="TimeSeriesLast">0.0</double>
+				<double id="TimeSeriesStep">0.0</double>
+				<double id="TimeSeriesInterval">0.0</double>
+				<int id="NumTimePoints">1</int>
+				<vector id="StartTimes">
+					<string id="0">365.0</string>
+				</vector>
+				<vector id="StopTimes">
+					<string id="0">365.0</string>
+				</vector>
+				<double id="InitialTransient">0.0</double>
+				<double id="BatchSize">1.0</double>
+				<null id="InitialTransientVar"></null>
+				<null id="BatchSizeVar"></null>
+				<boolean id="EstimateMean">true</boolean>
+				<boolean id="EstimateVariance">false</boolean>
+				<boolean id="EstimateInterval">false</boolean>
+				<boolean id="IncludeLowerBoundOnIntervalEstimate">true</boolean>
+				<boolean id="IncludeUpperBoundOnIntervalEstimate">true</boolean>
+				<double id="LowerBoundOnIntervalEstimate">0.0</double>
+				<double id="UpperBoundOnIntervalEstimate">1.0</double>
+				<boolean id="EstimateDistribution">false</boolean>
+				<boolean id="EstimateOutOfRangeProbabilities">true</boolean>
+				<double id="LowerBoundOnDistributionEstimate">0.0</double>
+				<double id="UpperBoundOnDistributionEstimate">1.0</double>
+				<double id="StepSizeOnDistributionEstimate">0.1</double>
+				<int id="ConfidenceLevel">2</int>
+				<double id="ConfidenceInterval">0.1</double>
+				<boolean id="ConfidenceIntervalIsRelative">true</boolean>
+				<boolean id="RewardIsOverAllAvailableModels">true</boolean>
+				<vector id="ImpulseIsOverAllAvailableModels">
+				</vector>
+			</class>
+			<string id="TopModelName">basic_model</string>
+			<string id="ModelName">basic_model</string>
+		</class>
+		<boolean id="Valid">true</boolean>
+	</class>
+</class>
