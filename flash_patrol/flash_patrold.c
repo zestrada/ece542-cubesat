@@ -83,7 +83,7 @@ int patrol_init()
 		exit(EXIT_FAILURE);
 	}
 
-	wd = inotify_add_watch(fd, "/home/skibuntu32/Desktop", 
+	wd = inotify_add_watch(fd, "/home/eric/Desktop", 
                          IN_MODIFY | IN_CREATE | IN_DELETE);
 	return fd;
 }
@@ -96,6 +96,7 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 	uint32_t crc = 0;
 	char crc_str[160];
 	char read_str[160];
+	uint32_t nbytes = BUF_LEN;
 	
 	memset(crc_str, 0, 160);
 	memset(read_str, 0, 160);
@@ -112,7 +113,7 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 		return;
 	}
 
-	strcpy(read_str, "/home/skibuntu32/Desktop/");
+	strcpy(read_str, "/home/eric/Desktop/");
 	strcat(read_str, event->name);
 	
 	read_fp = fopen(read_str, "r");
@@ -125,13 +126,14 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 		fclose(crc_fp);
 		return;
 	}
-/*
-	while(fread(buf, sizeof(char), BUF_LEN, read_fp) != EOF) 
+
+	while(nbytes == BUF_LEN)
 	{
-		crc = crc32(crc, buf, BUF_LEN);
+		nbytes = fread(buf, sizeof(char), BUF_LEN, read_fp); 
+		crc = crc32(crc, buf, nbytes);
 	}
-*/
-	if(fprintf(crc_fp, "%u", crc) < 0)
+
+	if(fprintf(crc_fp, "%x", crc) < 0)
 	{
 		fprintf(log_fp, "file write failure\n");	
 		fflush(log_fp);
@@ -147,7 +149,7 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 }
 
 
-int is_swp_file(char * str, FILE* log_fp)
+int skip_file(char * str, FILE* log_fp)
 {
 	if(strlen(str) > 4 && !strcmp(str + strlen(str) - 4, ".swp"))
 	{
@@ -164,6 +166,12 @@ int is_swp_file(char * str, FILE* log_fp)
 	else if(strlen(str) > 4 && !strcmp(str + strlen(str) - 4, ".swx"))
 	{
 		fprintf(log_fp, "skipping .swx file\n");
+		fflush(log_fp);
+		return 1;
+	}
+	else if(!strcmp(str + strlen(str) - 4, "4913"))
+	{
+		fprintf(log_fp, "skipping 4913 file\n");
 		fflush(log_fp);
 		return 1;
 	}
@@ -198,7 +206,7 @@ int patrol(int fd, FILE* log_fp)
 	while (i < length)
 	{
 		struct inotify_event *event = (struct inotify_event *) &buffer[i];
-		if (event->len && !is_swp_file(event->name, log_fp))
+		if (event->len && !skip_file(event->name, log_fp))
 		{
 			if (event->mask & IN_CREATE)
 			{
