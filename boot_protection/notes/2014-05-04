@@ -1,0 +1,17 @@
+Today I continued with getting the whole while loop working for attempting to
+boot multiple images.
+
+as usual, we the documentation for how to do these while loops and such is
+almost completely lacking
+
+things I'm trying (since u-boot doesn't support command history):
+---
+while test $NUM_IMAGES > 0; do; setexpr kernadd ${kernadd} + ${KERNEL_SIZE}; setexpr NUM_IMAGES NUM_IMAGES - 1 ;  done
+---
+
+my script command
+---
+source 0x2B82C
+---
+
+and I needed to add CONFIG_CMD_ECHO

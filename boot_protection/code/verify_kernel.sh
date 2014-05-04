@@ -4,8 +4,20 @@
 #Global Variables
 FLASH_ADDR=0x34000000
 BOOT_ARGS="console=ttyAMA0"
+KERNEL_OFFSET=0
+#Easier than forcing u-boot to parse iminfo
+KERNEL_SIZE=0x1a8300
+NUM_IMAGES=3
 
 #Now we'll try booting it from the beginning of flash
-setenv bootcmd bootm $FLASH_ADDR
 setenv bootargs $BOOT_ARGS
-run bootcmd
+setexpr kernadd ${FLASH_ADDR} + ${KERNEL_OFFSET}
+while test $NUM_IMAGES -gt "0"; do
+  if imi ${kernadd} ; then
+    echo "${kernadd} verified"
+    setenv bootcmd bootm ${kernadd}
+    exit #EXITS SCRIPT
+  fi
+  setexpr kernadd ${kernadd} + ${KERNEL_SIZE} ;
+  setexpr NUM_IMAGES ${NUM_IMAGES} - 1 ;
+done

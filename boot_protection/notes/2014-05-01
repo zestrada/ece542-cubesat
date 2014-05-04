@@ -1,0 +1,69 @@
+I was thinking about how my script can calculate the size and the locations of
+all the images. Possibly just pick a base address, measure the size of the image
+and take it from there?
+
+wonder if I can address by decimal?
+---
+[zak@ungar code]$ echo $((1737536+872415232))
+874152768
+---
+
+nope...
+---
+VersatilePB # imi 874152768
+
+## Checking Image at 74152768 ...
+Unknown image format!
+---
+
+then I started wondering if I could do some arithmetic in the script or if it
+all needed pre-processing
+
+doesn't seem like it does anything. apparently there's  a 'setexpr' command that
+does
+
+needed to add this guy to the u-boot header:
+---
+CONFIG_CMD_SETEXPR
+---
+
+hmmm...
+---
+VersatilePB # setexpr foo 0x34000000 + 1737536
+VersatilePB # print foo
+foo=35737536
+---
+
+hmm... it appears that  it might be loading the magic number at 0x34000000 and
+adding that. 
+
+but this works:
+---
+VersatilePB # setexpr foo 0x34000000 + 0x1A8300
+VersatilePB # print foo
+foo=341a8300
+VersatilePB # imi ${foo}
+
+## Checking Image at 341a8300 ...
+   Legacy image found
+   Image Name:   Linux-3.2.57
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    1737408 Bytes = 1.7 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+---
+
+hmmm...
+---
+[zak@ungar code]$ printf "%x" `stat -c\%s ./linux-3.2.57/arch/arm/boot/uImage`
+1a8300
+---
+
+I'm definitely thinking a conversion to python + some templating helps
+
+I tried figuring out how to do a while loop, but it wasn't liking my syntax.
+Basing it off of this:
+---
+http://permalink.gmane.org/gmane.comp.boot-loaders.u-boot/70156
+--:

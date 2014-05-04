@@ -1,3 +1,181 @@
 Today I finished out the makefile and got to working on the script.
 We either need to do an NMR type solution or store the checksums. Stored
 checksums are probably cheaper in terms of power...
+
+I'm wondering if I can dynamically determine the size of the Linux kernel (for
+the CRC) or if I need to store it somewhere
+
+well, the image have that information:
+---
+## Checking Image at 34000000 ...
+   Legacy image found
+   Image Name:   Linux-2.6.32.61
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    1454440 Bytes = 1.4 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+---
+
+so here's the crc calculated online... maybe I can get it from the linux shell
+first?
+---
+VersatilePB # crc32 0x34000000 1454440
+CRC32 for 34000000 ... 3545443f ==> d5e23d2c
+---
+
+---
+[zak@ungar code]$ cksum ./linux-2.6.32.61/arch/arm/boot/uImage 
+1844787546 1454504 ./linux-2.6.32.61/arch/arm/boot/uImage
+---
+
+I probably should make a uImage for the 3.2 kernel...
+
+---
+VersatilePB # iminfo 0x34000000
+
+## Checking Image at 34000000 ...
+   Legacy image found
+   Image Name:   Linux-3.2.57
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    1737408 Bytes = 1.7 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+---
+
+---
+VersatilePB # crc32 0x34000000 1737408
+CRC32 for 34000000 ... 35737407 ==> 1a7806f6
+---
+
+---
+[zak@ungar code]$ cksum ./linux-3.2.57/arch/arm/boot/uImage
+991512179 1737472 ./linux-3.2.57/arch/arm/boot/uImage
+---
+
+Definitely not satisfying that the sizes were different... probably has to do
+with the u-boot header
+
+let's try this (using the size of the file):
+---
+VersatilePB # crc32 0x34000000 1737472
+CRC32 for 34000000 ... 35737471 ==> 26055b95
+---
+
+converting to decimal:
+---
+637885333
+---
+
+nope, not the same
+
+For now, we'll go with the NMR thing. The biggest concern will be whether or not
+one can store variables
+
+now I'm trying this hack in my makefile
+
+it appears that u-boot verifies checksums of images anyway? but it probably
+doesn't fall back - doesn't appear to since 'bootm' is a one-shot attempt
+
+maybe this will work?
+---
+VersatilePB # imi 0x341A82C0
+
+## Checking Image at 341a82c0 ...
+Unknown image format!
+---
+
+now, where did that image go?
+
+the good news is that 'imi' returns a status code for the checksum of the image,
+so we don't need to manually run the crc32 command
+
+okay...
+
+I tried my corrupted flash again:
+---
+VersatilePB # imi 0x34000000
+
+## Checking Image at 34000000 ...
+   Legacy image found
+   Image Name:   Linux-2.6.32.61
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    1454440 Bytes = 1.4 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ...    Bad Data CRC
+---
+
+but bootm will blindly boot it, so our project does still have validity.  I
+I suppose an argument could be made that maybe the fault wouldn't get activated?
+
+maybe the other thing to do would be to scan flash memory for u-boot image
+headers
+
+http://www.isysop.com/unpacking-and-repacking-u-boot-uimage-files/
+apparently these images have a 64 byte header with a magic number of 0x27051956
+
+we're allowed to have multi-file images. that would seem to be the easiest.
+unless it only has one crc for the whole thing
+
+here's the magic number:
+---
+VersatilePB # md.b 0x34000000 4
+34000000: 27 05 19 56                                        '..V
+---
+
+and looking around where we expect the other one:
+---
+VersatilePB # md.l 0x341A82C0 40
+341a82c0: 400c0001 95641936 00000034 00000000    ...@6.d.4.......
+341a82d0: 00000000 00000000 001a828a 001a82d4    ................
+341a82e0: 00004784 001a82d0 001a82c0 00000880    .G..............
+341a82f0: 001a82c8 001a82cc 001a82c4 00000000    ................
+341a8300: 56190527 13ac2842 5cff5f53 c0821a00    '..VB(..S_.\....
+341a8310: 00800000 00800000 cb04ce7c 00020205    ........|.......
+341a8320: 756e694c 2e332d78 37352e32 00000000    Linux-3.2.57....
+341a8330: 00000000 00000000 00000000 00000000    ................
+341a8340: e1a00000 e1a00000 e1a00000 e1a00000    ................
+341a8350: e1a00000 e1a00000 e1a00000 e1a00000    ................
+341a8360: ea000002 016f2818 00000000 001a82c0    .....(o.........
+341a8370: e1a07001 e1a08002 e10f2000 e3120003    .p....... ......
+341a8380: 1a000001 e3a00017 ef123456 e10f2000    ........V4... ..
+341a8390: e38220c0 e121f002 00000000 00000000    . ....!.........
+341a83a0: e59f4784 eb000055 e28f0f4a e8901c4e    .G..U...J...N...
+341a83b0: e590d01c e0400001 e0866000 e08aa000    ......@..`......
+---
+
+cool... it's at 0x341a8300 (little endian)
+
+so... 0x341a8300-0x341A82C0=0x40, so 64 bytes like the header
+
+and we didn't clobber the header:
+---
+## Checking Image at 341a8300 ...
+   Legacy image found
+   Image Name:   Linux-3.2.57
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    1737408 Bytes = 1.7 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+VersatilePB # imi 0x34000000
+
+## Checking Image at 34000000 ...
+   Legacy image found
+   Image Name:   Linux-3.2.57
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    1737408 Bytes = 1.7 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+---
+
+next, I used cat to make three images, the third one will be at:
+---
+0x34350600
+---
+
+Now I need to automatically calculate those addresses in either the makefile or
+something else...

@@ -6,6 +6,7 @@ SCRIPTIMAGE="script.img" #This is the -kernel arg for qemu
 NCOPIES="3" #How many copies of the kernel we want to store
 QEMUARGS=-m 128M -M versatilepb -nographic #for 'make run'
 FLASHIMG="flash.img" #The flash disk image
+KERNEL=linux-3.2.57/arch/arm/boot/uImage
 
 all: ${BOOTIMAGE}
 
@@ -16,7 +17,13 @@ ${BOOTIMAGE}: ${UBOOT}
 ${UBOOT}: 
 	make -C `dirname ${UBOOT}` ${UBUILDARGS} 1>/dev/null
 
-run: ${BOOTIMAGE}
-	echo 'Script stored at: '
-	printf "0x%X\n" `expr $$(stat -c%s ${UBOOT}) + 65536`
+flash:
+	dd if=/dev/zero of=${FLASHIMG} bs=1M count=64
+	cat ${KERNEL} ${KERNEL} ${KERNEL} > ./tmpKERNEL
+	dd if=./tmpKERNEL of=${FLASHIMG} conv=notrunc
+	rm -f tmpKERNEL
+
+run:
+	printf "Script stored at: 0x%X\n" `expr $$(stat -c%s ${UBOOT}) + 65536`
+	printf "kernel size: %x\n" `stat -c\%s ${KERNEL}`
 	qemu-system-arm ${QEMUARGS} -kernel ${BOOTIMAGE} -pflash ${FLASHIMG}
