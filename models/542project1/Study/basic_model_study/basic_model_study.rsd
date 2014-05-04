@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<class id="Mobius.Studies.RangeStudy.RangeStudyInterface">
+	<int id="ClassVersion">1</int>
+	<class id="Mobius.Studies.Common.BaseStudyInterface">
+		<int id="ClassVersion">1</int>
+		<class id="Mobius.BaseClasses.BaseInterfaceClass">
+			<int id="ClassVersion">3</int>
+			<string id="ModelName">basic_model_study</string>
+			<class id="Mobius.Studies.RangeStudy.RangeStudyEditor">
+				<int id="ClassVersion">2</int>
+				<class id="Mobius.Studies.Common.BaseStudyEditor">
+					<int id="ClassVersion">4</int>
+					<class id="Mobius.BaseClasses.BaseEditorClass">
+						<int id="ClassVersion">3</int>
+						<boolean id="HasPanel">false</boolean>
+						<vector id="LocalGlobalNamesList">
+						</vector>
+						<vector id="LocalGlobalTypesList">
+						</vector>
+						<boolean id="DisplayToolTips">true</boolean>
+					</class>
+					<string id="FullPath">
+						C:\\Users\\Matt\\Documents\\GitHub\\ece542\\models\\542proje
+						ct1\\Study\\basic_model_study\\
+					</string>
+					<string id="PVModelName">basic_reward</string>
+					<vector id="ActiveExpVector">
+						<boolean id="0">true</boolean>
+						<boolean id="1">true</boolean>
+						<boolean id="2">true</boolean>
+						<boolean id="3">true</boolean>
+						<boolean id="4">true</boolean>
+						<boolean id="5">true</boolean>
+						<boolean id="6">true</boolean>
+						<boolean id="7">true</boolean>
+						<boolean id="8">true</boolean>
+					</vector>
+					<vector id="GVNameVector">
+						<string id="0">flash_size</string>
+						<string id="1">power_cycle_rate</string>
+						<string id="2">ram_size</string>
+						<string id="3">random_failure_rate</string>
+					</vector>
+					<vector id="GVTypeStringVector">
+						<string id="0">float</string>
+						<string id="1">float</string>
+						<string id="2">float</string>
+						<string id="3">float</string>
+					</vector>
+				</class>
+				<int id="VectorLength">4</int>
+				<vector id="e">
+					<string id="0">Fixed Value</string>
+				</vector>
+				<vector id="e">
+					<string id="0">Functional Range</string>
+					<string id="1">0</string>
+					<string id="2">1.0</string>
+					<string id="3">-5.0</string>
+					<string id="4">3.0</string>
+					<string id="5">1</string>
+					<string id="6">n^x</string>
+					<string id="7">2.0</string>
+				</vector>
+				<vector id="e">
+					<string id="0">Fixed Value</string>
+				</vector>
+				<vector id="e">
+					<string id="0">Fixed Value</string>
+				</vector>
+				<vector id="g">
+					<string id="0">64.0</string>
+				</vector>
+				<vector id="g">
+					<string id="0">0.03125</string>
+					<string id="1">0.0625</string>
+					<string id="2">0.125</string>
+					<string id="3">0.25</string>
+					<string id="4">0.5</string>
+					<string id="5">1.0</string>
+					<string id="6">2.0</string>
+					<string id="7">4.0</string>
+					<string id="8">8.0</string>
+				</vector>
+				<vector id="g">
+					<string id="0">128.0</string>
+				</vector>
+				<vector id="g">
+					<string id="0">0.005</string>
+				</vector>
+			</class>
+			<class id="Mobius.Studies.RangeStudy.RangeStudyInfoClass">
+				<int id="ClassVersion">1</int>
+				<class id="Mobius.Studies.RangeStudy.RangeStudyInfoClass">
+					<int id="ClassVersion">1</int>
+					<class id="Mobius.BaseClasses.BaseInfoClass">
+						<int id="ClassVersion">2</int>
+					</class>
+				</class>
+			</class>
+			<boolean id="Valid">true</boolean>
+		</class>
+	</class>
+</class>
