@@ -94,3 +94,25 @@ VersatilePB # imi 0x34000365
    Verifying Checksum ... OK
 ---
 
+now I can go ahead and make that the boot command
+
+I then edited the BOOTDELAY AND BOOTCMD that were listed
+
+---
+#define CONFIG_BOOTCOMMAND "source 0x34000000"
+---
+
+and apparently that causes u-boot to fail building:
+---
+:257: undefined reference to `default_serial_console'
+arm-linux-gnu-ld.bfd: error: required section '.rel.plt' not found in the linker
+script
+arm-linux-gnu-ld.bfd: final link failed: Invalid operation
+make[1]: *** [u-boot] Error 1
+make: *** ["./u-boot-2013.10/u-boot.bin"] Error 2
+---
+
+I added '#define CONFIG_INITRD_TAG   1' and that seems to have done the trick -
+why, I don't know...
+
+now it automatically runs and verifies the kernels
