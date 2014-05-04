@@ -7,6 +7,7 @@ NCOPIES="3" #How many copies of the kernel we want to store
 QEMUARGS=-m 128M -M versatilepb -nographic #for 'make run'
 FLASHIMG="flash.img" #The flash disk image
 KERNEL=linux-3.2.57/arch/arm/boot/uImage
+CORRUPTED_KERNEL=linux-3.2.57/arch/arm/boot/faultyuImage #image w/ flipped bits
 
 all: ${BOOTIMAGE}
 
@@ -27,3 +28,12 @@ run:
 	printf "Script stored at: 0x%X\n" `expr $$(stat -c%s ${UBOOT}) + 65536`
 	printf "kernel size: %x\n" `stat -c\%s ${KERNEL}`
 	qemu-system-arm ${QEMUARGS} -kernel ${BOOTIMAGE} -pflash ${FLASHIMG}
+
+#No code reuse here, should fix in a future version. 
+#Once u-boot environment invocation of a script is figured out, we can
+#automatically test with multiple corrupted images
+faulty:
+	dd if=/dev/zero of=${FLASHIMG} bs=1M count=64
+	cat ${CORRUPTED_KERNEL} ${KERNEL} ${KERNEL} > ./tmpKERNEL
+	dd if=./tmpKERNEL of=${FLASHIMG} conv=notrunc
+	rm -f tmpKERNEL

@@ -21,3 +21,7 @@ while test $NUM_IMAGES -gt "0"; do
   setexpr kernadd ${kernadd} + ${KERNEL_SIZE} ;
   setexpr NUM_IMAGES ${NUM_IMAGES} - 1 ;
 done
+
+echo "NO CRC CHECKS PASSED! Booting the first and hoping for the best!"
+setexpr kernadd ${FLASH_ADDR} + ${KERNEL_OFFSET}
+setenv bootcmd bootm ${kernadd}
