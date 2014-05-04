@@ -4,7 +4,7 @@
 #Global Variables
 FLASH_ADDR=0x34000000
 BOOT_ARGS="console=ttyAMA0"
-KERNEL_OFFSET=0
+KERNEL_OFFSET=0x365
 #Easier than forcing u-boot to parse iminfo
 KERNEL_SIZE=0x1a8300
 NUM_IMAGES=3

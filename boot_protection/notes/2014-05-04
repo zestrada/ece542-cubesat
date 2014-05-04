@@ -34,3 +34,63 @@ but... my editing of the uImage had changed the size of the image. Our fault
 model won't cover that since we assume the images were written to flash cleanly
 
 but the script worked wonderfully
+
+The next step is to make a nicer python script to replace the messy Makefile or
+figure out the u-boot environment thing or figure out how to get a user
+application working properly
+
+I decided to work on the environment so that it would boot into the script
+automatically
+
+I need to do something with 'autostart' or 'autoboot'
+
+ah!
+---
+http://www.denx.de/wiki/view/DULG/UBootEnvVariables
+bootdelay: After reset, U-Boot will wait this number of seconds before it
+executes the contents of the bootcmd variable. During this time a countdown is
+printed, which can be interrupted by pressing any key. 
+---
+
+oh joy, more header file stuff
+---
+  CONFIG_BOOTDELAY
+  CONFIG_BOOTCOMMAND
+---
+
+even tried passing "bootdelay=3" through 'append'
+
+maybe I should put the script in flash and then use that as the
+CONFIG_BOOTCOMMAND? I think I need to, otherwise things will get really weird
+since the size of the u-boot image changes with the command, which can change
+the location!
+
+okay, thinking about that...
+---
+[zak@ungar code]$ ls -l script.img
+-rw-rw-r--. 1 zak zak 865 May  4 15:34 script.img
+---
+
+and now I can't find the kernel images
+
+magic number: 56190527
+
+
+---
+[zak@ungar code]$ printf "0x%X\n" `stat -c%s ./script.img`
+0x365
+---
+
+---
+VersatilePB # imi 0x34000365
+
+## Checking Image at 34000365 ...
+   Legacy image found
+   Image Name:   Linux-3.2.57
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    1737408 Bytes = 1.7 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+---
+

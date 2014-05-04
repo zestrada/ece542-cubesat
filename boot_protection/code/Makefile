@@ -13,14 +13,15 @@ all: ${BOOTIMAGE}
 
 ${BOOTIMAGE}: ${UBOOT}
 	mkimage -A arm -T script -C none -n "Linux Verify" -d ${SCRIPT} ${SCRIPTIMAGE}
-	cat ${UBOOT} ${SCRIPTIMAGE} > ${BOOTIMAGE}
+	#cat ${UBOOT} ${SCRIPTIMAGE} > ${BOOTIMAGE}
+	cp ${UBOOT} ${BOOTIMAGE}
 
 ${UBOOT}: 
 	make -C `dirname ${UBOOT}` ${UBUILDARGS} 1>/dev/null
 
 flash:
 	dd if=/dev/zero of=${FLASHIMG} bs=1M count=64
-	cat ${KERNEL} ${KERNEL} ${KERNEL} > ./tmpKERNEL
+	cat ${SCRIPTIMAGE} ${KERNEL} ${KERNEL} ${KERNEL} > ./tmpKERNEL
 	dd if=./tmpKERNEL of=${FLASHIMG} conv=notrunc
 	rm -f tmpKERNEL
 
@@ -34,6 +35,6 @@ run:
 #automatically test with multiple corrupted images
 faulty:
 	dd if=/dev/zero of=${FLASHIMG} bs=1M count=64
-	cat ${CORRUPTED_KERNEL} ${KERNEL} ${KERNEL} > ./tmpKERNEL
+	cat ${SCRIPTIMAGE} ${CORRUPTED_KERNEL} ${KERNEL} ${KERNEL} > ./tmpKERNEL
 	dd if=./tmpKERNEL of=${FLASHIMG} conv=notrunc
 	rm -f tmpKERNEL
