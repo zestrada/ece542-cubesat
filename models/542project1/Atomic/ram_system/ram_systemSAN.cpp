@@ -65,7 +65,7 @@ ram_systemSAN::ram_systemSAN(){
   assignPlacesToActivitiesTimed();
 
   int AffectArcs[10][2]={ 
-    {3,0}, {2,1}, {1,1}, {2,2}, {1,3}, {1,4}, {2,4}, {1,5}, {1,6}, 
+    {3,0}, {1,1}, {2,1}, {2,2}, {1,3}, {1,4}, {2,4}, {1,5}, {1,6}, 
     {2,6}
   };
   for(int n=0;n<10;n++) {
@@ -217,8 +217,9 @@ int ram_systemSAN::watchdog_rebootActivity::Rank(){
 }
 
 BaseActionClass* ram_systemSAN::watchdog_rebootActivity::Fire(){
-  ram_corrupted->Mark() = 0;
+  ;
   ram_working->Mark() = 1;
+ram_corrupted->Mark() = 0;
   return this;
 }
 

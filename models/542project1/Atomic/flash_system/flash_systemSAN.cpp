@@ -52,7 +52,7 @@ flash_systemSAN::flash_systemSAN(){
   assignPlacesToActivitiesTimed();
 
   int AffectArcs[7][2]={ 
-    {1,0}, {1,1}, {0,1}, {1,2}, {0,2}, {0,3}, {1,3}
+    {1,0}, {1,1}, {0,1}, {1,2}, {0,2}, {1,3}, {0,3}
   };
   for(int n=0;n<7;n++) {
     AddAffectArc(InitialPlaces[AffectArcs[n][0]],
@@ -148,7 +148,7 @@ int flash_systemSAN::seuActivity_case1::Rank(){
 }
 
 BaseActionClass* flash_systemSAN::seuActivity_case1::Fire(){
-  flash_working->Mark() = 0;
+  ;
   flash_working->Mark() = 1;
   return this;
 }
@@ -206,7 +206,7 @@ int flash_systemSAN::seuActivity_case2::Rank(){
 }
 
 BaseActionClass* flash_systemSAN::seuActivity_case2::Fire(){
-  flash_working->Mark() = 0;
+  ;
   flash_working->Mark() = 0;
 flash_corrupted->Mark() = 1;
   return this;
@@ -265,7 +265,7 @@ int flash_systemSAN::sefiActivity::Rank(){
 }
 
 BaseActionClass* flash_systemSAN::sefiActivity::Fire(){
-  flash_working->Mark() = 0;
+  ;
   flash_working->Mark() = 0;
 flash_corrupted->Mark() = 1;
   return this;
@@ -324,8 +324,9 @@ int flash_systemSAN::power_cycleActivity::Rank(){
 }
 
 BaseActionClass* flash_systemSAN::power_cycleActivity::Fire(){
-  flash_corrupted->Mark() = 0;
+  ;
   flash_working->Mark() = 1;
+flash_corrupted->Mark() = 0;
   return this;
 }
 

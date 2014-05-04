@@ -1,0 +1,6 @@
+Global variable settings for this experiment:
+	flash_size = 64.0
+	num_replicas = 4
+	power_cycle_rate = 0.5
+	ram_size = 128.0
+	random_failure_rate = 0.005

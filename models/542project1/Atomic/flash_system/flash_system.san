@@ -75,7 +75,7 @@
 						</class>
 						<boolean id="MirrorImage">false</boolean>
 						<string id="Predicate">flash_working-&gt;Mark() &gt; 0</string>
-						<string id="Function">flash_working-&gt;Mark() = 0;</string>
+						<string id="Function">;</string>
 					</class>
 					<class id="Mobius.AtomicModels.San.InputGatePanelObject">
 						<int id="ClassVersion">1</int>
@@ -94,7 +94,7 @@
 						</class>
 						<boolean id="MirrorImage">false</boolean>
 						<string id="Predicate">flash_working-&gt;Mark() &gt; 0</string>
-						<string id="Function">flash_working-&gt;Mark() = 0;</string>
+						<string id="Function">;</string>
 					</class>
 					<class id="Mobius.AtomicModels.San.InputGatePanelObject">
 						<int id="ClassVersion">1</int>
@@ -113,7 +113,7 @@
 						</class>
 						<boolean id="MirrorImage">false</boolean>
 						<string id="Predicate">flash_corrupted-&gt;Mark() == 1</string>
-						<string id="Function">flash_corrupted-&gt;Mark() = 0;</string>
+						<string id="Function">;</string>
 					</class>
 					<class id="Mobius.AtomicModels.San.OutputGatePanelObject">
 						<int id="ClassVersion">1</int>
@@ -191,7 +191,10 @@
 							</point>
 						</class>
 						<boolean id="MirrorImage">false</boolean>
-						<string id="Function">flash_working-&gt;Mark() = 1;</string>
+						<string id="Function">
+							flash_working-&gt;Mark() = 1;\nflash_corrupted-&gt;Mark() = 
+							0;
+						</string>
 					</class>
 					<class id="Mobius.AtomicModels.San.TimedActivityPanelObject">
 						<int id="ClassVersion">2</int>
