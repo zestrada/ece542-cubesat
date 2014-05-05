@@ -1,0 +1,81 @@
+Today I tried to figure out how to make this whole thing nicer. I started by
+debating whether or not to move the script to the end of the address space in
+flash or to start the kernels at a fixed offset.  Right now, it necessitates
+some sort of self-consistent calculation
+
+I also thought about how to do the userspace programs and filesystem
+
+apparently, you can just pass an address to the initrd arg:
+---
+http://processors.wiki.ti.com/index.php/Booting_Linux_kernel_using_U-Boot
+---
+
+---
+root=/dev/ram0 initrd=0xc1180000,4M
+---
+
+my initrd should start at:
+---
+0x2B890
+---
+
+and now we're trying:
+---
+setenv bootargs "console=ttyAMA0 initrd=0x2B890 init=/test root=/dev/ram"
+bootm 340003d0
+---
+
+then I realized the address I'm passing for the initrd is a physical address
+
+I think I need to use rdinit and specify the memory size...
+
+---
+[zak@ungar code]$ cat u-boot-2013.10/u-boot.bin hello_root > boot.img 
+---
+
+---
+setenv bootargs "console=ttyAMA0 initrd=0x2B890 rdinit=/test root=/dev/ram"
+bootm 340003d0
+---
+
+I never saw any mention of the initrd during boot... so that's frustrating
+
+maybe it has to do with that CONFIG_INITRD_TAG?
+
+then I realized that the initrd is the second argument to bootm, so I should
+probably work on getting that to work
+
+now I'm doing this
+---
+[zak@ungar code]$ mkimage -A arm -T ramdisk -C none -n "Hello World initrd" -d
+./hello_root ./initrd.img
+Image Name:   Hello World initrd
+Created:      Mon May  5 15:37:33 2014
+Image Type:   ARM Linux RAMDisk Image (uncompressed)
+Data Size:    61952 Bytes = 60.50 kB = 0.06 MB
+Load Address: 00000000
+Entry Point:  00000000
+---
+
+---
+setenv bootargs "console=ttyAMA0 rdinit=/test root=/dev/ram initrd=0x800000"
+bootm 0x340003d0 0x2B890
+---
+
+hmmm... it didn't work
+---
+VersatilePB # imi 0x2B890
+
+## Checking Image at 0002b890 ...
+   Legacy image found
+   Image Name:   Hello World initrd
+   Image Type:   ARM Linux RAMDisk Image (uncompressed)
+   Data Size:    61952 Bytes = 60.5 KiB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Verifying Checksum ... OK
+---
+
+and still no mention of the initrd during boot. Checking the kernel .config, it
+appears that "CONFIG_BLK_DEV_INITRD=y" so that's good (would've been terrible if
+that wasn't the case)

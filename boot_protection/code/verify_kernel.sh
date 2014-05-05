@@ -4,7 +4,8 @@
 #Global Variables
 FLASH_ADDR=0x34000000
 BOOT_ARGS="console=ttyAMA0"
-KERNEL_OFFSET=0x381
+#Obtained from printf "0x%X\n" `stat -c%s ./script.img`
+KERNEL_OFFSET=0x3D0
 #Easier than forcing u-boot to parse iminfo
 KERNEL_SIZE=0x1a8300
 NUM_IMAGES=3
@@ -17,7 +18,7 @@ while test $NUM_IMAGES -gt "0"; do
     echo "${kernadd} verified"
     setenv bootcmd bootm ${kernadd}
     run bootcmd
-    exit #EXITS SCRIPT
+    exit #EXITS SCRIPT, SHOULD NEVER GET HERE
   fi
   setexpr kernadd ${kernadd} + ${KERNEL_SIZE} ;
   setexpr NUM_IMAGES ${NUM_IMAGES} - 1 ;

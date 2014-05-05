@@ -116,3 +116,7 @@ I added '#define CONFIG_INITRD_TAG   1' and that seems to have done the trick -
 why, I don't know...
 
 now it automatically runs and verifies the kernels
+
+I'm thinking about making a constant offset for the script, otherwise you still
+get into this wacky situation of calculating addresses of things that change
+based on those addresses that are calculated

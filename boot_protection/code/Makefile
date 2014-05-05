@@ -8,13 +8,14 @@ QEMUARGS=-m 128M -M versatilepb -nographic #for 'make run'
 FLASHIMG="flash.img" #The flash disk image
 KERNEL=linux-3.2.57/arch/arm/boot/uImage
 CORRUPTED_KERNEL=linux-3.2.57/arch/arm/boot/faultyuImage #image w/ flipped bits
+INITRD=initrd.img
+ROOT_CPIO=hello_root #cpio archive containing root filesystem
 
 all: ${BOOTIMAGE}
 
-${BOOTIMAGE}: ${UBOOT}
+${BOOTIMAGE}: ${UBOOT} ${INITRD}
 	mkimage -A arm -T script -C none -n "Linux Verify" -d ${SCRIPT} ${SCRIPTIMAGE}
-	#cat ${UBOOT} ${SCRIPTIMAGE} > ${BOOTIMAGE}
-	cp ${UBOOT} ${BOOTIMAGE}
+	cat ${UBOOT} ${INITRD} > ${BOOTIMAGE}
 
 ${UBOOT}: 
 	make -C `dirname ${UBOOT}` ${UBUILDARGS} 1>/dev/null
@@ -26,7 +27,7 @@ flash:
 	rm -f tmpKERNEL
 
 run:
-	printf "Script stored at: 0x%X\n" `expr $$(stat -c%s ${UBOOT}) + 65536`
+	printf "Initrd stored at: 0x%X\n" `expr $$(stat -c%s ${UBOOT}) + 65536`
 	printf "kernel size: %x\n" `stat -c\%s ${KERNEL}`
 	qemu-system-arm ${QEMUARGS} -kernel ${BOOTIMAGE} -pflash ${FLASHIMG}
 
@@ -38,3 +39,6 @@ faulty:
 	cat ${SCRIPTIMAGE} ${CORRUPTED_KERNEL} ${KERNEL} ${KERNEL} > ./tmpKERNEL
 	dd if=./tmpKERNEL of=${FLASHIMG} conv=notrunc
 	rm -f tmpKERNEL
+
+${INITRD}:
+	mkimage -A arm -T ramdisk -C none -n "Hello World" -d ${INITRD_CPIO} ${INITRD}
