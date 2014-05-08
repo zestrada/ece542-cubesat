@@ -1,7 +1,9 @@
 #ifndef FLASH_PATROL_H
 #define FLASH_PATROL_H
 
-#define DIRECTORY "/home/eric/Desktop/"
+#define DEFAULT_DIRECTORY "/home/eric/Desktop/"
+#define DEFAULT_LOGFILE "flash_patrol_log.txt"
+char *directory=NULL, *logfile=NULL;
 
 static uint32_t crc32_tab[] = { 
   0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419, 0x706af48f,

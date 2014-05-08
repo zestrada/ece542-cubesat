@@ -24,7 +24,7 @@ int patrol_init()
 		exit(EXIT_FAILURE);
 	}
 
-	wd = inotify_add_watch(fd, DIRECTORY, 
+	wd = inotify_add_watch(fd, directory, 
                          IN_MODIFY | IN_CREATE | IN_DELETE);
 	return fd;
 }
@@ -67,7 +67,7 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 		return;
 	}
 
-	strcpy(read_str, DIRECTORY);
+	strcpy(read_str, directory);
 	strcat(read_str, event->name);
 	
 	read_fp = fopen(read_str, "r");
@@ -220,7 +220,36 @@ int main(int argc, char* argv[])
 	pid_t sid = 0;
 	pid_t process_id = 0;
 	int fd;
+  
+	//For getopt:
+	char *optstring;  
+	int c;
 
+	//Parse arguments
+	while((c = getopt(argc, argv, "d:l:h")) != -1) {
+		switch(c) {
+			case 'd':
+				directory = optarg;		
+				break;
+			case 'l':			
+				logfile = optarg;		
+				break;
+			default:
+				abort();
+		}
+	}
+
+	//Defaults for options
+	if(directory == NULL) {
+		directory = DEFAULT_DIRECTORY;
+	}
+
+	if(logfile == NULL) {
+		logfile = DEFAULT_LOGFILE;
+	}
+
+	//I trust we don't worry about buffer overflows here...
+	printf("Watching %s\nWriting output to %s\n",directory,logfile);
 	fd = patrol_init();
 
 	// Create child process
@@ -273,7 +302,7 @@ int main(int argc, char* argv[])
 
 	// Open a log file in write mode.
 
-	log_fp = fopen ("flash_patrol_log.txt", "w+");
+	log_fp = fopen (logfile, "w+");
 	if(log_fp < 0) 
 	{    
 		printf("fopen failed\n");
