@@ -5,7 +5,7 @@
 FLASH_ADDR=0x34000000
 BOOT_ARGS="console=ttyAMA0"
 #Obtained from printf "0x%X\n" `stat -c%s ./script.img`
-KERNEL_OFFSET=0x3D0
+KERNEL_OFFSET=0x000003D5
 #Easier than forcing u-boot to parse iminfo
 KERNEL_SIZE=0x1a8300
 NUM_IMAGES=3

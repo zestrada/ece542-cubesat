@@ -3,7 +3,9 @@
 
 #define DEFAULT_DIRECTORY "/home/eric/Desktop/"
 #define DEFAULT_LOGFILE "flash_patrol_log.txt"
-char *directory=NULL, *logfile=NULL;
+#define DEFAULT_CRCDIR "/"
+#define EVENT_SIZE  (sizeof (struct inotify_event))
+#define BUF_LEN     (1024 * ( EVENT_SIZE + 16))
 
 static uint32_t crc32_tab[] = { 
   0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419, 0x706af48f,
@@ -61,4 +63,11 @@ int skip_file(char * str, FILE* log_fp);
 
 int patrol(int fd, FILE* log_fp);
 
+void parse_args(int argc, char* argv[], char **directory, char **logfile,
+                char **crcdir);
+
+char *parse_env(char *varname);
+
+void exit_error(char *msg);
 #endif
+// vim: noexpandtab

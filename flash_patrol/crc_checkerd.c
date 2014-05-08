@@ -8,8 +8,7 @@
 #include <string.h>
 #include "flash_patrold.h"
 
-#define EVENT_SIZE  (sizeof (struct inotify_event))
-#define BUF_LEN     (1024 * ( EVENT_SIZE + 16))
+char *directory=NULL, *logfile=NULL;
 
 int check_file_crc(FILE* log_fp)
 {
@@ -46,6 +45,7 @@ int main(int argc, char* argv[])
   pid_t sid = 0;
   pid_t process_id = 0;
 
+	parse_args(argc, argv, directory, logfile);
   // Create child process
   process_id = fork();
 
@@ -114,3 +114,4 @@ int main(int argc, char* argv[])
 	fclose(log_fp);
 	return 0;
 }
+// vim: noexpandtab

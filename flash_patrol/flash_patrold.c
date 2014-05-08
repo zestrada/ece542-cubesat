@@ -8,8 +8,7 @@
 #include <string.h>
 #include "flash_patrold.h"
 
-#define EVENT_SIZE  (sizeof (struct inotify_event))
-#define BUF_LEN     (1024 * ( EVENT_SIZE + 16))
+char *directory=NULL, *logfile=NULL, *crcdir=NULL;
 
 int patrol_init()
 {
@@ -29,18 +28,6 @@ int patrol_init()
 	return fd;
 }
 
-uint32_t crc32(uint32_t crc, const void *buf, size_t size)
-{
-  const uint8_t *p; 
-
-  p = buf;
-  crc = crc ^ ~0U;
-
-  while (size--)
-    crc = crc32_tab[(crc ^ *p++) & 0xFF] ^ (crc >> 8); 
-
-  return crc ^ ~0U;
-}
 
 int create_crc_file(struct inotify_event *event, FILE* log_fp)
 {
@@ -221,35 +208,16 @@ int main(int argc, char* argv[])
 	pid_t process_id = 0;
 	int fd;
   
-	//For getopt:
-	char *optstring;  
-	int c;
-
-	//Parse arguments
-	while((c = getopt(argc, argv, "d:l:h")) != -1) {
-		switch(c) {
-			case 'd':
-				directory = optarg;		
-				break;
-			case 'l':			
-				logfile = optarg;		
-				break;
-			default:
-				abort();
-		}
-	}
-
-	//Defaults for options
-	if(directory == NULL) {
-		directory = DEFAULT_DIRECTORY;
-	}
-
-	if(logfile == NULL) {
-		logfile = DEFAULT_LOGFILE;
-	}
+	parse_args(argc, argv, &directory, &logfile, &crcdir);
 
 	//I trust we don't worry about buffer overflows here...
+	if(directory[strlen(directory)-1]!='/') 
+	{
+		errno = EINVAL;
+		exit_error("Need trailing / for patrol directory");		
+	}
 	printf("Watching %s\nWriting output to %s\n",directory,logfile);
+	printf("Storing crcs in %s\n",crcdir);
 	fd = patrol_init();
 
 	// Create child process
@@ -287,8 +255,8 @@ int main(int argc, char* argv[])
 		exit(EXIT_FAILURE);
 	}
 	
-	// Change the current working directory to root.
-	if(chdir("/") < 0)
+	// Change the current working directory to where we will store CRCs
+	if(chdir(crcdir) < 0)
 	{
 		printf("chdir failed!\n");
 
@@ -301,7 +269,6 @@ int main(int argc, char* argv[])
 	close(STDERR_FILENO);
 
 	// Open a log file in write mode.
-
 	log_fp = fopen (logfile, "w+");
 	if(log_fp < 0) 
 	{    
@@ -329,3 +296,5 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+
+// vim: noexpandtab
