@@ -60,9 +60,7 @@ int check_file_crc(FILE* log_fp)
 
 		fclose(calc_crc_fp);
 		fclose(old_crc_fp);
-
 	}
-
 	return 0;
 }
 
