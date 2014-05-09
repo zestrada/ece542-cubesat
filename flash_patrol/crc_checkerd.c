@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <dirent.h>
 #include "flash_patrold.h"
 
 char *directory=NULL, *logfile=NULL, *crcdir=NULL, *crclog=NULL;
@@ -15,10 +16,24 @@ int check_file_crc(FILE* log_fp)
 	FILE* calc_crc_fp;
 	FILE* old_crc_fp;
 	char buf[BUF_LEN];
+	char crcfile[PATH_MAX+1];
 	uint32_t nbytes = BUF_LEN;
 	uint32_t old_crc = 0;
 	uint32_t calc_crc = 0;
+	struct dirent *entry;
+	DIR *dp;
 
+	if((dp=opendir(directory))==NULL)
+		exit_error(directory);
+
+	while((entry=readdir(dp))!=NULL) {
+		//FIXME: ignore . and ..
+		strncpy(crcfile,crcdir,PATH_MAX);
+		strncat(crcfile,entry->d_name,PATH_MAX);
+		strncat(crcfile,"_crc",PATH_MAX);
+		LOG_MSG("crcfile: %s\n",crcfile);
+	}
+	return 0;
 	//fprintf(log_fp, "in crc check\n");
 	//fflush(log_fp);
 
@@ -71,7 +86,7 @@ int main(int argc, char* argv[])
   {
     printf("process_id of child process %d \n", process_id);
 
-    // return success in exit status
+    // end parent and return success in exit status
     exit(EXIT_SUCCESS);
   }
 
@@ -90,10 +105,9 @@ int main(int argc, char* argv[])
   }
 
   // Change the current working directory to root.
-  if(chdir("/") < 0)
+  if(chdir(crcdir) < 0)
   {
     printf("chdir failed!\n");
-
     exit(EXIT_FAILURE);
   }
 

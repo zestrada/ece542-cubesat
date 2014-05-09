@@ -36,12 +36,12 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 	FILE* read_fp;
 	char buf[BUF_LEN];
 	uint32_t crc = 0;
-	char crc_str[NAME_MAX];
-	char read_str[PATH_MAX];
+	char crc_str[NAME_MAX+1];
+	char read_str[PATH_MAX+1];
 	uint32_t nbytes = BUF_LEN;
 	
-	memset(crc_str, 0, NAME_MAX);
-	memset(read_str, 0, PATH_MAX);
+	memset(crc_str, 0, NAME_MAX+1);
+	memset(read_str, 0, PATH_MAX+1);
 	
 	
 	strcpy(crc_str, event->name);
