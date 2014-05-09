@@ -70,7 +70,7 @@ uint32_t crc32(uint32_t crc, const void *buf, size_t size)
 char *parse_env(char *varname)
 {
 	char *retval=NULL, *tmp;
-	if(tmp = getenv(varname))
+	if((tmp = getenv(varname)))
 	{
 		//not NULL
 		retval=malloc(strlen(tmp)+1);

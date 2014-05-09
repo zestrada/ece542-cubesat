@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <linux/limits.h>
 #include "flash_patrold.h"
 
 char *directory=NULL, *logfile=NULL, *crcdir=NULL;
@@ -35,12 +36,12 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 	FILE* read_fp;
 	char buf[BUF_LEN];
 	uint32_t crc = 0;
-	char crc_str[160];
-	char read_str[160];
+	char crc_str[NAME_MAX];
+	char read_str[PATH_MAX];
 	uint32_t nbytes = BUF_LEN;
 	
-	memset(crc_str, 0, 160);
-	memset(read_str, 0, 160);
+	memset(crc_str, 0, NAME_MAX);
+	memset(read_str, 0, PATH_MAX);
 	
 	
 	strcpy(crc_str, event->name);
