@@ -27,7 +27,8 @@ int check_file_crc(FILE* log_fp)
 		exit_error(directory);
 
 	while((entry=readdir(dp))!=NULL) {
-		//ifstrncmp
+		if(!strncmp(entry->d_name,".",1)) //ignore ., .. and hidden files
+			continue;
 		strncpy(crcfile,crcdir,PATH_MAX);
 		strncat(crcfile,entry->d_name,PATH_MAX);
 		strncat(crcfile,"_crc",PATH_MAX);

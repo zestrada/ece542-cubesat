@@ -77,5 +77,7 @@ char *parse_env(char *varname);
 void print_time(FILE* fp);
 
 void exit_error(char *msg);
+
+int is_valid_file(char *filename);
 #endif
 // vim: noexpandtab

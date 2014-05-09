@@ -93,28 +93,9 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 
 int skip_file(char * str, FILE* log_fp)
 {
-	if(strlen(str) > 4 && !strcmp(str + strlen(str) - 4, ".swp"))
+	if(!is_valid_file(str))
 	{
-		fprintf(log_fp, "skipping .swp file\n");
-		fflush(log_fp);
-		return 1;
-	}
-	else if(strlen(str) > 4 && !strcmp(str + strlen(str) - 5, ".swpx"))
-	{
-		fprintf(log_fp, "skipping .swpx file\n");
-		fflush(log_fp);
-		return 1;
-	}
-	else if(strlen(str) > 4 && !strcmp(str + strlen(str) - 4, ".swx"))
-	{
-		fprintf(log_fp, "skipping .swx file\n");
-		fflush(log_fp);
-		return 1;
-	}
-	else if(!strcmp(str + strlen(str) - 4, "4913"))
-	{
-		fprintf(log_fp, "skipping 4913 file\n");
-		fflush(log_fp);
+		LOG_MSG("Skipping %s\n",str);
 		return 1;
 	}
 	else

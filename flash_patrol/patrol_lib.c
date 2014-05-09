@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
 #include "flash_patrold.h"
 
 /*
@@ -106,5 +107,38 @@ void print_time(FILE* fp)
 	nowtm = localtime(&(now.tv_sec));
 	strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S# ", nowtm);
 	fprintf(fp,buf);
+}
+
+//Ignore files we don't want to read
+int is_valid_file(char *fname)
+{
+	int n_pre = 1;
+	int n_suf = 4;
+	int i;
+	const char *skip_pre[n_pre]; //prefixes to skip
+	const char *skip_suf[n_suf]; //sufixes to skip 
+
+	/* If you're reading this, please don't think we're stupid */
+	skip_suf[0] = ".swp";
+	skip_suf[1] = ".swx";
+	skip_suf[2] = "4913";
+	skip_suf[3] = ".swpx";
+	skip_pre[0] = ".";
+	/* Glad that's over */
+
+	for(i=0;i<n_suf;i++) 
+	{
+		if(strlen(fname) >= strlen(skip_suf[i]) &&
+       !strcmp(fname + strlen(fname) - strlen(skip_suf[i]), skip_suf[i]))
+			return false;
+	}
+
+	for(i=0;i<n_pre;i++) 
+	{
+		if(strlen(fname) >= strlen(skip_pre[i]) &&
+       !strncmp(fname, skip_pre[i], strlen(skip_pre[i])))
+			return false;
+	}
+	return true;
 }
 // vim: noexpandtab

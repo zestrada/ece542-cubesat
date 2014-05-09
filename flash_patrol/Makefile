@@ -16,7 +16,7 @@ crc_checkerd: crc_checkerd.o $(LIBS)
 clean:
 	rm -f *.o flash_patrold crc_checkerd	
 
-run: kill
+run: kill flash_patrold crc_checkerd
 	./flash_patrold 
 	./crc_checkerd	
 
