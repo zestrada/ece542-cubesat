@@ -34,24 +34,6 @@
 						<boolean id="6">true</boolean>
 						<boolean id="7">true</boolean>
 						<boolean id="8">true</boolean>
-						<boolean id="9">true</boolean>
-						<boolean id="10">true</boolean>
-						<boolean id="11">true</boolean>
-						<boolean id="12">true</boolean>
-						<boolean id="13">true</boolean>
-						<boolean id="14">true</boolean>
-						<boolean id="15">true</boolean>
-						<boolean id="16">true</boolean>
-						<boolean id="17">true</boolean>
-						<boolean id="18">true</boolean>
-						<boolean id="19">true</boolean>
-						<boolean id="20">true</boolean>
-						<boolean id="21">true</boolean>
-						<boolean id="22">true</boolean>
-						<boolean id="23">true</boolean>
-						<boolean id="24">true</boolean>
-						<boolean id="25">true</boolean>
-						<boolean id="26">true</boolean>
 					</vector>
 					<vector id="GVNameVector">
 						<string id="0">flash_size</string>
@@ -85,14 +67,7 @@
 					<string id="2">1</string>
 				</vector>
 				<vector id="e">
-					<string id="0">Functional Range</string>
-					<string id="1">0</string>
-					<string id="2">1.0</string>
-					<string id="3">-2.0</string>
-					<string id="4">0.0</string>
-					<string id="5">1</string>
-					<string id="6">n^x</string>
-					<string id="7">2.0</string>
+					<string id="0">Fixed Value</string>
 				</vector>
 				<vector id="e">
 					<string id="0">Fixed Value</string>
@@ -114,9 +89,7 @@
 					<string id="2">3</string>
 				</vector>
 				<vector id="g">
-					<string id="0">0.25</string>
-					<string id="1">0.5</string>
-					<string id="2">1.0</string>
+					<string id="0">1000.0</string>
 				</vector>
 				<vector id="g">
 					<string id="0">128.0</string>

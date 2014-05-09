@@ -18,7 +18,7 @@ redundant_controller_flash_studyRangeStudy::redundant_controller_flash_studyRang
 
   // define arrays of global variable names and types
   NumGVs = 6;
-  NumExps = 27;
+  NumExps = 9;
 
   GVNames = new char*[NumGVs];
   GVTypes = new char*[NumGVs];
@@ -72,8 +72,15 @@ redundant_controller_flash_studyRangeStudy::~redundant_controller_flash_studyRan
 // set values for flash_size
 //******************************************************
 void redundant_controller_flash_studyRangeStudy::SetValues_flash_size() {
-  for (int n=0; n<NumExps; n++)
-    flash_sizeValues[n] = 17.0;
+  flash_sizeValues[0] = 17.0;
+  flash_sizeValues[1] = 17.0;
+  flash_sizeValues[2] = 17.0;
+  flash_sizeValues[3] = 17.0;
+  flash_sizeValues[4] = 17.0;
+  flash_sizeValues[5] = 17.0;
+  flash_sizeValues[6] = 17.0;
+  flash_sizeValues[7] = 17.0;
+  flash_sizeValues[8] = 17.0;
 }
 
 
@@ -90,24 +97,6 @@ void redundant_controller_flash_studyRangeStudy::SetValues_num_devices() {
   num_devicesValues[6] = 1;
   num_devicesValues[7] = 2;
   num_devicesValues[8] = 3;
-  num_devicesValues[9] = 1;
-  num_devicesValues[10] = 2;
-  num_devicesValues[11] = 3;
-  num_devicesValues[12] = 1;
-  num_devicesValues[13] = 2;
-  num_devicesValues[14] = 3;
-  num_devicesValues[15] = 1;
-  num_devicesValues[16] = 2;
-  num_devicesValues[17] = 3;
-  num_devicesValues[18] = 1;
-  num_devicesValues[19] = 2;
-  num_devicesValues[20] = 3;
-  num_devicesValues[21] = 1;
-  num_devicesValues[22] = 2;
-  num_devicesValues[23] = 3;
-  num_devicesValues[24] = 1;
-  num_devicesValues[25] = 2;
-  num_devicesValues[26] = 3;
 }
 
 
@@ -124,24 +113,6 @@ void redundant_controller_flash_studyRangeStudy::SetValues_num_replicas() {
   num_replicasValues[6] = 3;
   num_replicasValues[7] = 3;
   num_replicasValues[8] = 3;
-  num_replicasValues[9] = 1;
-  num_replicasValues[10] = 1;
-  num_replicasValues[11] = 1;
-  num_replicasValues[12] = 2;
-  num_replicasValues[13] = 2;
-  num_replicasValues[14] = 2;
-  num_replicasValues[15] = 3;
-  num_replicasValues[16] = 3;
-  num_replicasValues[17] = 3;
-  num_replicasValues[18] = 1;
-  num_replicasValues[19] = 1;
-  num_replicasValues[20] = 1;
-  num_replicasValues[21] = 2;
-  num_replicasValues[22] = 2;
-  num_replicasValues[23] = 2;
-  num_replicasValues[24] = 3;
-  num_replicasValues[25] = 3;
-  num_replicasValues[26] = 3;
 }
 
 
@@ -149,33 +120,15 @@ void redundant_controller_flash_studyRangeStudy::SetValues_num_replicas() {
 // set values for power_cycle_rate
 //******************************************************
 void redundant_controller_flash_studyRangeStudy::SetValues_power_cycle_rate() {
-  power_cycle_rateValues[0] = 0.25;
-  power_cycle_rateValues[1] = 0.25;
-  power_cycle_rateValues[2] = 0.25;
-  power_cycle_rateValues[3] = 0.25;
-  power_cycle_rateValues[4] = 0.25;
-  power_cycle_rateValues[5] = 0.25;
-  power_cycle_rateValues[6] = 0.25;
-  power_cycle_rateValues[7] = 0.25;
-  power_cycle_rateValues[8] = 0.25;
-  power_cycle_rateValues[9] = 0.5;
-  power_cycle_rateValues[10] = 0.5;
-  power_cycle_rateValues[11] = 0.5;
-  power_cycle_rateValues[12] = 0.5;
-  power_cycle_rateValues[13] = 0.5;
-  power_cycle_rateValues[14] = 0.5;
-  power_cycle_rateValues[15] = 0.5;
-  power_cycle_rateValues[16] = 0.5;
-  power_cycle_rateValues[17] = 0.5;
-  power_cycle_rateValues[18] = 1.0;
-  power_cycle_rateValues[19] = 1.0;
-  power_cycle_rateValues[20] = 1.0;
-  power_cycle_rateValues[21] = 1.0;
-  power_cycle_rateValues[22] = 1.0;
-  power_cycle_rateValues[23] = 1.0;
-  power_cycle_rateValues[24] = 1.0;
-  power_cycle_rateValues[25] = 1.0;
-  power_cycle_rateValues[26] = 1.0;
+  power_cycle_rateValues[0] = 1000.0;
+  power_cycle_rateValues[1] = 1000.0;
+  power_cycle_rateValues[2] = 1000.0;
+  power_cycle_rateValues[3] = 1000.0;
+  power_cycle_rateValues[4] = 1000.0;
+  power_cycle_rateValues[5] = 1000.0;
+  power_cycle_rateValues[6] = 1000.0;
+  power_cycle_rateValues[7] = 1000.0;
+  power_cycle_rateValues[8] = 1000.0;
 }
 
 
@@ -183,8 +136,15 @@ void redundant_controller_flash_studyRangeStudy::SetValues_power_cycle_rate() {
 // set values for ram_size
 //******************************************************
 void redundant_controller_flash_studyRangeStudy::SetValues_ram_size() {
-  for (int n=0; n<NumExps; n++)
-    ram_sizeValues[n] = 128.0;
+  ram_sizeValues[0] = 128.0;
+  ram_sizeValues[1] = 128.0;
+  ram_sizeValues[2] = 128.0;
+  ram_sizeValues[3] = 128.0;
+  ram_sizeValues[4] = 128.0;
+  ram_sizeValues[5] = 128.0;
+  ram_sizeValues[6] = 128.0;
+  ram_sizeValues[7] = 128.0;
+  ram_sizeValues[8] = 128.0;
 }
 
 
@@ -192,8 +152,15 @@ void redundant_controller_flash_studyRangeStudy::SetValues_ram_size() {
 // set values for random_failure_rate
 //******************************************************
 void redundant_controller_flash_studyRangeStudy::SetValues_random_failure_rate() {
-  for (int n=0; n<NumExps; n++)
-    random_failure_rateValues[n] = 0.005;
+  random_failure_rateValues[0] = 0.005;
+  random_failure_rateValues[1] = 0.005;
+  random_failure_rateValues[2] = 0.005;
+  random_failure_rateValues[3] = 0.005;
+  random_failure_rateValues[4] = 0.005;
+  random_failure_rateValues[5] = 0.005;
+  random_failure_rateValues[6] = 0.005;
+  random_failure_rateValues[7] = 0.005;
+  random_failure_rateValues[8] = 0.005;
 }
 
 

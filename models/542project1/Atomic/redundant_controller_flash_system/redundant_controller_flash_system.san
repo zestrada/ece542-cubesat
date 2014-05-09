@@ -12,8 +12,8 @@
 				<class id="Mobius.BaseClasses.BasePanelClass">
 					<int id="ClassVersion">2</int>
 					<point id="Size of Panel">
-						<int id="x">633</int>
-						<int id="y">400</int>
+						<int id="x">751</int>
+						<int id="y">412</int>
 					</point>
 					<double id="ZoomFactor">1.0</double>
 					<boolean id="ShowGridEnabled">true</boolean>
@@ -71,6 +71,44 @@
 							<point id="CenterPoint">
 								<int id="x">525</int>
 								<int id="y">115</int>
+							</point>
+						</class>
+						<boolean id="ReadOnly">false</boolean>
+						<boolean id="ConstantMarking">true</boolean>
+						<int id="InitialState">0</int>
+					</class>
+					<class id="Mobius.AtomicModels.San.PlacePanelObject">
+						<int id="ClassVersion">1</int>
+						<class id="Mobius.BaseClasses.BaseVertexClass">
+							<int id="ClassVersion">3</int>
+							<class id="Mobius.BaseClasses.BasePanelObjectClass">
+								<int id="ClassVersion">5</int>
+								<string id="Name">seu_events</string>
+								<boolean id="ContainsLabel">true</boolean>
+								<boolean id="IsLabelShown">true</boolean>
+							</class>
+							<point id="CenterPoint">
+								<int id="x">485</int>
+								<int id="y">15</int>
+							</point>
+						</class>
+						<boolean id="ReadOnly">false</boolean>
+						<boolean id="ConstantMarking">true</boolean>
+						<int id="InitialState">0</int>
+					</class>
+					<class id="Mobius.AtomicModels.San.PlacePanelObject">
+						<int id="ClassVersion">1</int>
+						<class id="Mobius.BaseClasses.BaseVertexClass">
+							<int id="ClassVersion">3</int>
+							<class id="Mobius.BaseClasses.BasePanelObjectClass">
+								<int id="ClassVersion">5</int>
+								<string id="Name">sefi_events</string>
+								<boolean id="ContainsLabel">true</boolean>
+								<boolean id="IsLabelShown">true</boolean>
+							</class>
+							<point id="CenterPoint">
+								<int id="x">485</int>
+								<int id="y">65</int>
 							</point>
 						</class>
 						<boolean id="ReadOnly">false</boolean>
@@ -152,7 +190,7 @@
 						<string id="Function">
 							replicas_available-&gt;Mark() = 0;\ndevices_available-&gt;Ma
 							rk() -= 1;\nif(devices_available-&gt;Mark() == 0) {\n\tflash
-							_corrupted-&gt;Mark() = 1;\n}
+							_corrupted-&gt;Mark() = 1;\n}\nsefi_events-&gt;Mark()++;
 						</string>
 					</class>
 					<class id="Mobius.AtomicModels.San.OutputGatePanelObject">
@@ -195,7 +233,8 @@
 						<string id="Function">
 							if(replicas_available-&gt;Mark() == 0) {\n\tdevices_availabl
 							e-&gt;Mark() -= 1;\n\tif(devices_available-&gt;Mark() == 0) 
-							{\n\t\tflash_corrupted-&gt;Mark() = 1;\n\t}\n}
+							{\n\t\tflash_corrupted-&gt;Mark() = 1;\n\t}\n}\nseu_events-&
+							gt;Mark()++;
 						</string>
 					</class>
 					<class id="Mobius.AtomicModels.San.TimedActivityPanelObject">
@@ -480,6 +519,40 @@
 							<point id="1">
 								<int id="x">527</int>
 								<int id="y">114</int>
+							</point>
+						</vector>
+					</class>
+					<class id="Mobius.BaseClasses.BaseEdgeClass">
+						<int id="ClassVersion">3</int>
+						<int id="LineType">0</int>
+						<string id="StartVertex">seu_targeted_corruption</string>
+						<string id="FinishVertex">seu_events</string>
+						<boolean id="Arrows">false</boolean>
+						<vector id="PointList">
+							<point id="0">
+								<int id="x">348</int>
+								<int id="y">71</int>
+							</point>
+							<point id="1">
+								<int id="x">485</int>
+								<int id="y">17</int>
+							</point>
+						</vector>
+					</class>
+					<class id="Mobius.BaseClasses.BaseEdgeClass">
+						<int id="ClassVersion">3</int>
+						<int id="LineType">0</int>
+						<string id="StartVertex">sefi_targeted_corruption</string>
+						<string id="FinishVertex">sefi_events</string>
+						<boolean id="Arrows">false</boolean>
+						<vector id="PointList">
+							<point id="0">
+								<int id="x">318</int>
+								<int id="y">134</int>
+							</point>
+							<point id="1">
+								<int id="x">484</int>
+								<int id="y">59</int>
 							</point>
 						</vector>
 					</class>

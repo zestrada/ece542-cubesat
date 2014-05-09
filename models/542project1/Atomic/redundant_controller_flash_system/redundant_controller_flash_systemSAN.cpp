@@ -38,14 +38,18 @@ redundant_controller_flash_systemSAN::redundant_controller_flash_systemSAN(){
   devices_available = new Place("devices_available" ,num_devices);
   replicas_available = new Place("replicas_available" ,num_replicas);
   flash_corrupted = new Place("flash_corrupted" ,0);
-  BaseStateVariableClass* InitialPlaces[3]={
+  seu_events = new Place("seu_events" ,0);
+  sefi_events = new Place("sefi_events" ,0);
+  BaseStateVariableClass* InitialPlaces[5]={
     devices_available,  // 0
     replicas_available,  // 1
-    flash_corrupted   // 2
+    flash_corrupted,  // 2
+    seu_events,  // 3
+    sefi_events   // 4
   };
   BaseStateVariableClass* InitialROPlaces[0]={
   };
-  initializeSANModelNow("redundant_controller_flash_system", 3, InitialPlaces, 
+  initializeSANModelNow("redundant_controller_flash_system", 5, InitialPlaces, 
                         0, InitialROPlaces, 
                         4, InitialActionList, 3, InitialGroupList);
 
@@ -53,11 +57,11 @@ redundant_controller_flash_systemSAN::redundant_controller_flash_systemSAN(){
   assignPlacesToActivitiesInst();
   assignPlacesToActivitiesTimed();
 
-  int AffectArcs[10][2]={ 
-    {1,0}, {1,1}, {0,1}, {2,1}, {1,2}, {0,2}, {2,2}, {1,3}, {0,3}, 
-    {2,3}
+  int AffectArcs[12][2]={ 
+    {1,0}, {1,1}, {0,1}, {2,1}, {3,1}, {1,2}, {0,2}, {2,2}, {4,2}, 
+    {1,3}, {0,3}, {2,3}
   };
-  for(int n=0;n<10;n++) {
+  for(int n=0;n<12;n++) {
     AddAffectArc(InitialPlaces[AffectArcs[n][0]],
                  InitialActionList[AffectArcs[n][1]]);
   }
@@ -91,9 +95,11 @@ void redundant_controller_flash_systemSAN::assignPlacesToActivitiesTimed(){
   seu_case2.replicas_available = (Place*) LocalStateVariables[1];
   seu_case2.devices_available = (Place*) LocalStateVariables[0];
   seu_case2.flash_corrupted = (Place*) LocalStateVariables[2];
+  seu_case2.seu_events = (Place*) LocalStateVariables[3];
   sefi.replicas_available = (Place*) LocalStateVariables[1];
   sefi.devices_available = (Place*) LocalStateVariables[0];
   sefi.flash_corrupted = (Place*) LocalStateVariables[2];
+  sefi.sefi_events = (Place*) LocalStateVariables[4];
   power_cycle.replicas_available = (Place*) LocalStateVariables[1];
   power_cycle.devices_available = (Place*) LocalStateVariables[0];
   power_cycle.flash_corrupted = (Place*) LocalStateVariables[2];
@@ -163,7 +169,7 @@ BaseActionClass* redundant_controller_flash_systemSAN::seuActivity_case1::Fire()
 
 redundant_controller_flash_systemSAN::seuActivity_case2::seuActivity_case2(){
   TheDistributionParameters = new double[1];
-  ActivityInitialize("seu_case2",0,Exponential, RaceEnabled, 3,1, false);
+  ActivityInitialize("seu_case2",0,Exponential, RaceEnabled, 4,1, false);
 }
 
 redundant_controller_flash_systemSAN::seuActivity_case2::~seuActivity_case2(){
@@ -174,6 +180,7 @@ void redundant_controller_flash_systemSAN::seuActivity_case2::LinkVariables(){
   replicas_available->Register(&replicas_available_Mobius_Mark);
   devices_available->Register(&devices_available_Mobius_Mark);
   flash_corrupted->Register(&flash_corrupted_Mobius_Mark);
+  seu_events->Register(&seu_events_Mobius_Mark);
 }
 
 bool redundant_controller_flash_systemSAN::seuActivity_case2::Enabled(){
@@ -220,6 +227,7 @@ BaseActionClass* redundant_controller_flash_systemSAN::seuActivity_case2::Fire()
 		flash_corrupted->Mark() = 1;
 	}
 }
+seu_events->Mark()++;
   return this;
 }
 
@@ -227,7 +235,7 @@ BaseActionClass* redundant_controller_flash_systemSAN::seuActivity_case2::Fire()
 
 redundant_controller_flash_systemSAN::sefiActivity::sefiActivity(){
   TheDistributionParameters = new double[1];
-  ActivityInitialize("sefi",1,Exponential, RaceEnabled, 3,1, false);
+  ActivityInitialize("sefi",1,Exponential, RaceEnabled, 4,1, false);
 }
 
 redundant_controller_flash_systemSAN::sefiActivity::~sefiActivity(){
@@ -238,6 +246,7 @@ void redundant_controller_flash_systemSAN::sefiActivity::LinkVariables(){
   replicas_available->Register(&replicas_available_Mobius_Mark);
   devices_available->Register(&devices_available_Mobius_Mark);
   flash_corrupted->Register(&flash_corrupted_Mobius_Mark);
+  sefi_events->Register(&sefi_events_Mobius_Mark);
 }
 
 bool redundant_controller_flash_systemSAN::sefiActivity::Enabled(){
@@ -283,6 +292,7 @@ devices_available->Mark() -= 1;
 if(devices_available->Mark() == 0) {
 	flash_corrupted->Mark() = 1;
 }
+sefi_events->Mark()++;
   return this;
 }
 

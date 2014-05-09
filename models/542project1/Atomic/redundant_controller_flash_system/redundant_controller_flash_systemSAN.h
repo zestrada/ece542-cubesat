@@ -55,6 +55,8 @@ public:
   short* devices_available_Mobius_Mark;
   Place* flash_corrupted;
   short* flash_corrupted_Mobius_Mark;
+  Place* seu_events;
+  short* seu_events_Mobius_Mark;
 
   double* TheDistributionParameters;
   seuActivity_case2();
@@ -80,6 +82,8 @@ public:
   short* devices_available_Mobius_Mark;
   Place* flash_corrupted;
   short* flash_corrupted_Mobius_Mark;
+  Place* sefi_events;
+  short* sefi_events_Mobius_Mark;
 
   double* TheDistributionParameters;
   sefiActivity();
@@ -126,6 +130,8 @@ public:
   Place* devices_available;
   Place* replicas_available;
   Place* flash_corrupted;
+  Place* seu_events;
+  Place* sefi_events;
 
   // Create instances of all actvities
   seuActivity_case1 seu_case1;
