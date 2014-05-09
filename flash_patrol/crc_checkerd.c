@@ -23,16 +23,23 @@ int check_file_crc(FILE* log_fp)
 	uint32_t calc_crc = 0;
 	struct dirent *entry;
 	DIR *dp;
+	int i;
 
 	if((dp=opendir(directory))==NULL)
 		exit_error(directory);
 
 	while((entry=readdir(dp))!=NULL) {
+		nbytes = BUF_LEN;
+		memset(buf, 0, BUF_LEN);
+
 		//FIXME: ignore . and ..
 		strncpy(oldcrcfile,crcdir,PATH_MAX);
 		strncat(oldcrcfile,entry->d_name,PATH_MAX);
-		strncpy(calccrcfile, oldcrcfile, PATH_MAX);
-		strncat(calccrcfile,"_crc",PATH_MAX);
+		strncat(oldcrcfile,"_crc",PATH_MAX);
+		LOG_MSG("oldcrcfile: %s\n", oldcrcfile);
+
+		strncpy(calccrcfile,directory,PATH_MAX);
+		strncat(calccrcfile,entry->d_name,PATH_MAX);
 		LOG_MSG("calccrcfile: %s\n", calccrcfile);
 
 		calc_crc_fp = fopen(calccrcfile, "r+");
@@ -42,6 +49,13 @@ int check_file_crc(FILE* log_fp)
 		}
 		while(nbytes == BUF_LEN) {
 			nbytes = fread(buf, sizeof(char), BUF_LEN, calc_crc_fp);
+			fprintf(log_fp, "nbytes = %d\n", nbytes);
+			fprintf(log_fp, "buf = ");
+			for(i=0; i < nbytes; i++)
+			{
+				fprintf(log_fp, "%x", buf[i]);
+			}
+			fprintf(log_fp, "\n");
 			calc_crc = crc32(calc_crc, buf, nbytes);
 		}
 		
@@ -52,10 +66,10 @@ int check_file_crc(FILE* log_fp)
 			continue;
 		}
 
-		fread(&old_crc, sizeof(char), 8, old_crc_fp);
+		fread(&old_crc, sizeof(uint32_t), 1, old_crc_fp);
 
 		if(old_crc != calc_crc) {
-			LOG_MSG("old_crc != calc_crc\n");
+			LOG_MSG("old_crc = 0x%x != calc_crc = 0x%x\n", old_crc, calc_crc);
 		}
 
 		fclose(calc_crc_fp);

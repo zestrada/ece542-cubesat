@@ -39,6 +39,7 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 	char crc_str[NAME_MAX+1];
 	char read_str[PATH_MAX+1];
 	uint32_t nbytes = BUF_LEN;
+	int i;
 	
 	memset(crc_str, 0, NAME_MAX+1);
 	memset(read_str, 0, PATH_MAX+1);
@@ -72,6 +73,13 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 	while(nbytes == BUF_LEN)
 	{
 		nbytes = fread(buf, sizeof(char), BUF_LEN, read_fp); 
+		fprintf(log_fp, "nbytes = %d\n", nbytes);
+		fprintf(log_fp, "buf = ");
+		for(i = 0; i < nbytes; i++)
+		{
+			fprintf(log_fp, "%x", buf[i]);
+		}
+		fprintf(log_fp, "\n");
 		crc = crc32(crc, buf, nbytes);
 	}
 
