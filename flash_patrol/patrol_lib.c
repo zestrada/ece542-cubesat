@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <time.h>
 #include "flash_patrold.h"
 
 /*
@@ -18,7 +19,7 @@ void parse_args(int argc, char* argv[], char **directory, char **logfile,
 	int c; //for getopt
 
 	//Parse arguments
-	while((c = getopt(argc, argv, "d:l:h")) != -1) {
+	while((c = getopt(argc, argv, "hd:l:")) != -1) {
 		switch(c) {
 			case 'c':
 				*crcdir = (char *)optarg;
@@ -72,7 +73,7 @@ char *parse_env(char *varname)
 	if(tmp = getenv(varname))
 	{
 		//not NULL
-		retval=malloc(strlen(tmp));
+		retval=malloc(strlen(tmp)+1);
 		if(retval)
 			strcpy(retval,tmp);
 		else
@@ -86,5 +87,18 @@ void exit_error(char *msg)
 {
 	perror(msg);
 	exit(errno);
+}
+
+//Prints the current time to fd (not terribly efficient, but works)
+void print_time(FILE* fp)
+{
+	struct timeval now;	
+	struct tm *nowtm;
+	char buf[24];
+
+	gettimeofday(&now, NULL);
+	nowtm = localtime(&(now.tv_sec));
+	strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S# ", nowtm);
+	fprintf(fp,buf);
 }
 // vim: noexpandtab

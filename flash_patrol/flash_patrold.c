@@ -181,8 +181,7 @@ int patrol(int fd, FILE* log_fp)
 			{
 				if(event->mask & IN_ISDIR)
 				{
-					fprintf(log_fp, "The directory %s was modified.\n", event->name);
-					fflush(log_fp);
+					LOG_MSG("The directory %s was modified.\n", event->name);
 				}
 				else
 				{
@@ -264,20 +263,21 @@ int main(int argc, char* argv[])
 	}
 	
 	// Close stdin. stdout and stderr
+	fflush(stdout);
+	fflush(stderr);
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
 
 	// Open a log file in write mode.
-	log_fp = fopen (logfile, "w+");
+	log_fp = fopen(logfile, "w+");
 	if(log_fp < 0) 
 	{    
 		printf("fopen failed\n");
 		exit(EXIT_FAILURE);
 	}
 
-	fprintf(log_fp, "Daemon created\n\n");
-	fflush(log_fp);
+	LOG_MSG("Daemon created\n\n");
 	while (1)
 	{
 	
@@ -287,7 +287,7 @@ int main(int argc, char* argv[])
 		// Implement and call some function that does core work for this daemon.
 		if(-1 == patrol(fd, log_fp))
 		{
-			fprintf(log_fp, "patrol function failed \n");
+			LOG_MSG("patrol function failed \n");
 		}
 		//fprintf(log_fp, "iterating the while loop\n\n");
 		//fflush(log_fp);
