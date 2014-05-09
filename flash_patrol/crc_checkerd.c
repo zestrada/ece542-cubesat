@@ -27,7 +27,7 @@ int check_file_crc(FILE* log_fp)
 		exit_error(directory);
 
 	while((entry=readdir(dp))!=NULL) {
-		//FIXME: ignore . and ..
+		//ifstrncmp
 		strncpy(crcfile,crcdir,PATH_MAX);
 		strncat(crcfile,entry->d_name,PATH_MAX);
 		strncat(crcfile,"_crc",PATH_MAX);

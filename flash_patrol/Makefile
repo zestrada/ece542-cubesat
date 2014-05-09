@@ -1,4 +1,4 @@
-CC=gcc
+CC=gcc -Wall
 LIBS=patrol_lib.o
 HEADERS=flash_patrold.h
 
