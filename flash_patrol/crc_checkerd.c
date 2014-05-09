@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <dirent.h>
 #include "flash_patrold.h"
 
 char *directory=NULL, *logfile=NULL, *crcdir=NULL, *crclog=NULL;
@@ -15,27 +16,70 @@ int check_file_crc(FILE* log_fp)
 	FILE* calc_crc_fp;
 	FILE* old_crc_fp;
 	char buf[BUF_LEN];
+	char oldcrcfile[PATH_MAX+1];
+	char calccrcfile[PATH_MAX+1];
+	char oldcrcstr[BUF_LEN];
 	uint32_t nbytes = BUF_LEN;
 	uint32_t old_crc = 0;
 	uint32_t calc_crc = 0;
+	struct dirent *entry;
+	DIR *dp;
 
-	//fprintf(log_fp, "in crc check\n");
-	//fflush(log_fp);
-
-	//old_crc_fp = fopen("");
-	//fread(&old_crc, sizeof(uint32_t), 1, old_crc_fp);
-
-	//calc_crc_fp = fopen("");	
-	
-	while(nbytes == BUF_LEN)
-	{
-		nbytes = fread(buf, sizeof(char), BUF_LEN, calc_crc_fp);
-		calc_crc = crc32(calc_crc, buf, nbytes);
+	if((dp=opendir(directory))==NULL) 
+  {
+		exit_error("Could not open %s\n",directory);
 	}
 
-	fclose(calc_crc_fp);
-	fclose(old_crc_fp);
+	while((entry=readdir(dp))!=NULL) {
+		nbytes = BUF_LEN;
+		memset(buf, 0, BUF_LEN);
 
+		if(!is_valid_file(entry->d_name))
+			continue;
+		strncpy(oldcrcfile,crcdir,PATH_MAX);
+		strncat(oldcrcfile,entry->d_name,PATH_MAX);
+		strncat(oldcrcfile,"_crc",PATH_MAX);
+		LOG_MSG("oldcrcfile: %s\n", oldcrcfile);
+
+		strncpy(calccrcfile,directory,PATH_MAX);
+		strncat(calccrcfile,entry->d_name,PATH_MAX);
+		LOG_MSG("calccrcfile: %s\n", calccrcfile);
+
+		calc_crc_fp = fopen(calccrcfile, "r+");
+		if(calc_crc_fp == NULL)
+		{
+			LOG_MSG("fopen failed on %s\n", calccrcfile);
+			continue;
+		}
+		while(nbytes == BUF_LEN)
+		{
+			nbytes = fread(buf, sizeof(char), BUF_LEN, calc_crc_fp);
+			calc_crc = crc32(calc_crc, buf, nbytes);
+		}
+		
+		old_crc_fp = fopen(oldcrcfile, "r+");
+		if(old_crc_fp == NULL) 
+		{
+			LOG_MSG("fopen failed on %s\n", oldcrcfile); 
+			fclose(calc_crc_fp);
+			continue;
+		}
+		
+		fread(oldcrcstr, sizeof(char), BUF_LEN, old_crc_fp); 
+		old_crc = (int) strtol(oldcrcstr, (char **) NULL, 16);
+
+		if(old_crc != calc_crc) 
+		{
+			LOG_MSG("old_crc = 0x%x != calc_crc = 0x%x\n", old_crc, calc_crc);
+		}
+		else 
+		{
+			LOG_MSG("crc's matched\n");	
+		}
+
+		fclose(calc_crc_fp);
+		fclose(old_crc_fp);
+	}
 	return 0;
 }
 
@@ -49,7 +93,8 @@ int main(int argc, char* argv[])
 	if(directory[strlen(directory)-1]!='/') 
 	{
 		errno = EINVAL;
-		exit_error("Need trailing / for patrol directory");		
+		perror("Need trailing / for patrol directory");		
+		exit(errno);
 	}
 	printf("Checking patrols of %s\nWriting output to %s\n",directory,crclog);
 	printf("Reading crcs from %s\n",crcdir);
@@ -71,7 +116,7 @@ int main(int argc, char* argv[])
   {
     printf("process_id of child process %d \n", process_id);
 
-    // return success in exit status
+    // end parent and return success in exit status
     exit(EXIT_SUCCESS);
   }
 
@@ -90,10 +135,9 @@ int main(int argc, char* argv[])
   }
 
   // Change the current working directory to root.
-  if(chdir("/") < 0)
+  if(chdir(crcdir) < 0)
   {
     printf("chdir failed!\n");
-
     exit(EXIT_FAILURE);
   }
 

@@ -1,4 +1,4 @@
-CC=gcc
+CC=gcc -Wall
 LIBS=patrol_lib.o
 HEADERS=flash_patrold.h
 
@@ -15,10 +15,12 @@ crc_checkerd: crc_checkerd.o $(LIBS)
 
 clean:
 	rm -f *.o flash_patrold crc_checkerd	
+	clear
 
-run: 
-	-killall -q flash_patrold
-	./flash_patrold
+run: kill flash_patrold crc_checkerd
+	./flash_patrold 
+	./crc_checkerd	
 
 kill: 
 	-killall -q flash_patrold
+	-killall -q crc_checkerd

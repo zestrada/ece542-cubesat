@@ -1,0 +1,25 @@
+To do the fault injection, we created a small dummy filesystem:
+---
+dd if=/dev/zero of=./test_fs bs=1M count=10
+mkfs.ext2 -F ./test_fs 
+sudo mkdir /mnt/inotify
+sudo mount ./test_fs /mnt/inotify/
+---
+
+and created a large random file:
+---
+dd if=/dev/urandom of=/mnt/inotify/file bs=1M count=9
+---
+
+then checked its contents:
+---
+md5sum /mnt/inotify/file 
+8ce0d81e78ee328df19ea54df8d462aa  /mnt/inotify/file
+---
+
+and modified it with a file containing all A
+---
+9.0M  fonz.txt
+---
+ 
+line 300000 seems good for bit flipping

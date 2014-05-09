@@ -11,6 +11,7 @@
 
 char *directory=NULL, *logfile=NULL, *crcdir=NULL, *crclog=NULL;
 
+
 int patrol_init()
 {
 	int fd;
@@ -29,19 +30,40 @@ int patrol_init()
 	return fd;
 }
 
+void delete_crc_file(struct inotify_event *event, FILE* log_fp)
+{
+	char crc_str[NAME_MAX+1];
+	strcpy(crc_str, event->name);
+	strcat(crc_str, "_crc");
+	if(event->mask & IN_ISDIR)
+	{
+		return;//FIXME: we don't do directories yet
+		if(rmdir(crc_str) < 0)
+			exit_error("Couldn't rmdir %s\n",crc_str);
+	}
+	else
+	{
+		LOG_MSG("Deleting %s\n",crc_str);
+		if(unlink(crc_str) < 0) {
+			exit_error("Couldn't unlink %s\n",crc_str);
+		}
+	}
+}
 
-int create_crc_file(struct inotify_event *event, FILE* log_fp)
+void create_crc_file(struct inotify_event *event, FILE* log_fp)
 {
 	FILE* crc_fp;
 	FILE* read_fp;
 	char buf[BUF_LEN];
 	uint32_t crc = 0;
-	char crc_str[NAME_MAX];
-	char read_str[PATH_MAX];
+	char crc_str[NAME_MAX+1];
+	char read_str[PATH_MAX+1];
 	uint32_t nbytes = BUF_LEN;
+	int i;
 	
-	memset(crc_str, 0, NAME_MAX);
-	memset(read_str, 0, PATH_MAX);
+	memset(crc_str, 0, NAME_MAX+1);
+	memset(read_str, 0, PATH_MAX+1);
+	memset(buf, 0, BUF_LEN);
 	
 	
 	strcpy(crc_str, event->name);
@@ -72,6 +94,7 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 	while(nbytes == BUF_LEN)
 	{
 		nbytes = fread(buf, sizeof(char), BUF_LEN, read_fp); 
+		fprintf(log_fp, "\n");
 		crc = crc32(crc, buf, nbytes);
 	}
 
@@ -93,28 +116,9 @@ int create_crc_file(struct inotify_event *event, FILE* log_fp)
 
 int skip_file(char * str, FILE* log_fp)
 {
-	if(strlen(str) > 4 && !strcmp(str + strlen(str) - 4, ".swp"))
+	if(!is_valid_file(str))
 	{
-		fprintf(log_fp, "skipping .swp file\n");
-		fflush(log_fp);
-		return 1;
-	}
-	else if(strlen(str) > 4 && !strcmp(str + strlen(str) - 5, ".swpx"))
-	{
-		fprintf(log_fp, "skipping .swpx file\n");
-		fflush(log_fp);
-		return 1;
-	}
-	else if(strlen(str) > 4 && !strcmp(str + strlen(str) - 4, ".swx"))
-	{
-		fprintf(log_fp, "skipping .swx file\n");
-		fflush(log_fp);
-		return 1;
-	}
-	else if(!strcmp(str + strlen(str) - 4, "4913"))
-	{
-		fprintf(log_fp, "skipping 4913 file\n");
-		fflush(log_fp);
+		LOG_MSG("Skipping %s\n",str);
 		return 1;
 	}
 	else
@@ -154,14 +158,11 @@ int patrol(int fd, FILE* log_fp)
 			{
 				if (event->mask & IN_ISDIR)
 				{
-					fprintf(log_fp, "The directory %s was created.\n", event->name);      			
-					fflush(log_fp);
+					LOG_MSG("The directory %s was created.\n", event->name);
 				}
 				else
 				{
-					fprintf(log_fp, "The file %s was created.\n", event->name);
-					fflush(log_fp);
-					
+					LOG_MSG("The file %s was created.\n", event->name);
 					create_crc_file(event, log_fp);
 				}
 			}
@@ -169,14 +170,13 @@ int patrol(int fd, FILE* log_fp)
 			{
 				if(event->mask & IN_ISDIR)
 				{
-					fprintf(log_fp, "The directory %s was deleted.\n", event->name);       			
-					fflush(log_fp);
+					LOG_MSG("The directory %s was deleted.\n", event->name);
 				}
 				else
 				{
-					fprintf(log_fp, "The file %s was deleted.\n", event->name);
-					fflush(log_fp);
+					LOG_MSG("The file %s was deleted.\n", event->name);
 				}
+				delete_crc_file(event, log_fp);
 			}
 			else if(event->mask & IN_MODIFY)
 			{
@@ -186,9 +186,7 @@ int patrol(int fd, FILE* log_fp)
 				}
 				else
 				{
-					fprintf(log_fp, "The file %s was modified.\n", event->name);
-					fflush(log_fp);
-
+					LOG_MSG("The file %s was modified.\n", event->name);
 					create_crc_file(event, log_fp);				
 				}
 			}
@@ -214,7 +212,8 @@ int main(int argc, char* argv[])
 	if(directory[strlen(directory)-1]!='/') 
 	{
 		errno = EINVAL;
-		exit_error("Need trailing / for patrol directory");		
+		perror("Need trailing / for patrol directory");		
+		exit(errno);
 	}
 	printf("Watching %s\nWriting output to %s\n",directory,logfile);
 	printf("Storing crcs in %s\n",crcdir);
