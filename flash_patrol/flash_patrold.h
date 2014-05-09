@@ -20,6 +20,8 @@ uint32_t crc32(uint32_t crc, const void *buf, size_t size);
 
 void create_crc_file(struct inotify_event *event, FILE* log_fp);
 
+void delete_crc_file(struct inotify_event *event, FILE* log_fp);
+
 int skip_file(char * str, FILE* log_fp);
 
 int patrol(int fd, FILE* log_fp);

@@ -29,6 +29,23 @@ int patrol_init()
 	return fd;
 }
 
+void delete_crc_file(struct inotify_event *event, FILE* log_fp)
+{
+	char crc_str[NAME_MAX+1];
+	strcpy(crc_str, event->name);
+	strcat(crc_str, "_crc");
+	LOG_MSG("Deleting %s\n",crc_str);
+	if(event->mask & IN_ISDIR)
+	{
+		if(rmdir(crc_str) != 0)
+			exit_error(crc_str);
+	}
+	else
+	{
+		if(unlink(crc_str) != 0)
+			exit_error(crc_str);
+	}
+}
 
 void create_crc_file(struct inotify_event *event, FILE* log_fp)
 {
@@ -135,14 +152,11 @@ int patrol(int fd, FILE* log_fp)
 			{
 				if (event->mask & IN_ISDIR)
 				{
-					fprintf(log_fp, "The directory %s was created.\n", event->name);      			
-					fflush(log_fp);
+					LOG_MSG("The directory %s was created.\n", event->name);
 				}
 				else
 				{
-					fprintf(log_fp, "The file %s was created.\n", event->name);
-					fflush(log_fp);
-					
+					LOG_MSG("The file %s was created.\n", event->name);
 					create_crc_file(event, log_fp);
 				}
 			}
@@ -150,14 +164,13 @@ int patrol(int fd, FILE* log_fp)
 			{
 				if(event->mask & IN_ISDIR)
 				{
-					fprintf(log_fp, "The directory %s was deleted.\n", event->name);       			
-					fflush(log_fp);
+					LOG_MSG("The directory %s was deleted.\n", event->name);
 				}
 				else
 				{
-					fprintf(log_fp, "The file %s was deleted.\n", event->name);
-					fflush(log_fp);
+					LOG_MSG("The file %s was deleted.\n", event->name);
 				}
+				delete_crc_file(event, log_fp);
 			}
 			else if(event->mask & IN_MODIFY)
 			{
@@ -167,9 +180,7 @@ int patrol(int fd, FILE* log_fp)
 				}
 				else
 				{
-					fprintf(log_fp, "The file %s was modified.\n", event->name);
-					fflush(log_fp);
-
+					LOG_MSG("The file %s was modified.\n", event->name);
 					create_crc_file(event, log_fp);				
 				}
 			}
