@@ -24,3 +24,6 @@ run: kill flash_patrold crc_checkerd
 kill: 
 	-killall -q flash_patrold
 	-killall -q crc_checkerd
+
+flip: flip_bit_fs.o
+	$(CC) $^ -o $@
