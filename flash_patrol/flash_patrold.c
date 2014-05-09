@@ -30,7 +30,7 @@ int patrol_init()
 }
 
 
-int create_crc_file(struct inotify_event *event, FILE* log_fp)
+void create_crc_file(struct inotify_event *event, FILE* log_fp)
 {
 	FILE* crc_fp;
 	FILE* read_fp;
