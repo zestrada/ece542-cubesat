@@ -16,7 +16,8 @@ int check_file_crc(FILE* log_fp)
 	FILE* calc_crc_fp;
 	FILE* old_crc_fp;
 	char buf[BUF_LEN];
-	char crcfile[PATH_MAX+1];
+	char oldcrcfile[PATH_MAX+1];
+	char calccrcfile[PATH_MAX+1];
 	uint32_t nbytes = BUF_LEN;
 	uint32_t old_crc = 0;
 	uint32_t calc_crc = 0;
@@ -28,28 +29,39 @@ int check_file_crc(FILE* log_fp)
 
 	while((entry=readdir(dp))!=NULL) {
 		//FIXME: ignore . and ..
-		strncpy(crcfile,crcdir,PATH_MAX);
-		strncat(crcfile,entry->d_name,PATH_MAX);
-		strncat(crcfile,"_crc",PATH_MAX);
-		LOG_MSG("crcfile: %s\n",crcfile);
+		strncpy(oldcrcfile,crcdir,PATH_MAX);
+		strncat(oldcrcfile,entry->d_name,PATH_MAX);
+		strncpy(calccrcfile, oldcrcfile, PATH_MAX);
+		strncat(calccrcfile,"_crc",PATH_MAX);
+		LOG_MSG("calccrcfile: %s\n", calccrcfile);
+
+		calc_crc_fp = fopen(calccrcfile, "r+");
+		if(calc_crc_fp == NULL) {
+			LOG_MSG("fopen failed on %s\n", calccrcfile);
+			continue;
+		}
+		while(nbytes == BUF_LEN) {
+			nbytes = fread(buf, sizeof(char), BUF_LEN, calc_crc_fp);
+			calc_crc = crc32(calc_crc, buf, nbytes);
+		}
+		
+		old_crc_fp = fopen(oldcrcfile, "r+");
+		if(old_crc_fp == NULL) {
+			LOG_MSG("fopen failed on %s\n", oldcrcfile); 
+			fclose(calc_crc_fp);
+			continue;
+		}
+
+		fread(&old_crc, sizeof(char), 8, old_crc_fp);
+
+		if(old_crc != calc_crc) {
+			LOG_MSG("old_crc != calc_crc\n");
+		}
+
+		fclose(calc_crc_fp);
+		fclose(old_crc_fp);
+
 	}
-	return 0;
-	//fprintf(log_fp, "in crc check\n");
-	//fflush(log_fp);
-
-	//old_crc_fp = fopen("");
-	//fread(&old_crc, sizeof(uint32_t), 1, old_crc_fp);
-
-	//calc_crc_fp = fopen("");	
-	
-	while(nbytes == BUF_LEN)
-	{
-		nbytes = fread(buf, sizeof(char), BUF_LEN, calc_crc_fp);
-		calc_crc = crc32(calc_crc, buf, nbytes);
-	}
-
-	fclose(calc_crc_fp);
-	fclose(old_crc_fp);
 
 	return 0;
 }
