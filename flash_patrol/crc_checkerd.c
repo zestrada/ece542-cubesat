@@ -24,10 +24,11 @@ int check_file_crc(FILE* log_fp)
 	uint32_t calc_crc = 0;
 	struct dirent *entry;
 	DIR *dp;
-	int i;
 
-	if((dp=opendir(directory))==NULL)
-		exit_error(directory);
+	if((dp=opendir(directory))==NULL) 
+  {
+		exit_error("Could not open %s\n",directory);
+	}
 
 	while((entry=readdir(dp))!=NULL) {
 		nbytes = BUF_LEN;
