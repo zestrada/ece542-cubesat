@@ -2,7 +2,8 @@
 #define FLASH_PATROL_H
 
 #define DEFAULT_DIRECTORY "/home/eric/Desktop/"
-#define DEFAULT_LOGFILE "flash_patrol_log.txt"
+#define DEFAULT_PATROLLOG "flash_patrol_log.txt"
+#define DEFAULT_CRCLOG "crc_check_log.txt"
 #define DEFAULT_CRCDIR "/"
 #define EVENT_SIZE  (sizeof (struct inotify_event))
 #define BUF_LEN     (1024 * ( EVENT_SIZE + 16))
@@ -68,8 +69,8 @@ int skip_file(char * str, FILE* log_fp);
 
 int patrol(int fd, FILE* log_fp);
 
-void parse_args(int argc, char* argv[], char **directory, char **logfile,
-                char **crcdir);
+void parse_args(int argc, char* argv[], char **directory, char **patrollog,
+                char **crclog, char **crcdir);
 
 char *parse_env(char *varname);
 

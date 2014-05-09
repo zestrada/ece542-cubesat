@@ -2,6 +2,8 @@ CC=gcc
 LIBS=patrol_lib.o
 HEADERS=flash_patrold.h
 
+all: flash_patrold crc_checkerd
+
 %.o: %.c $(HEADERS)
 	$(CC) -c $< -o $@
 
@@ -20,5 +22,3 @@ run:
 
 kill: 
 	-killall -q flash_patrold
-
-all: flash_patrold crc_checkerd

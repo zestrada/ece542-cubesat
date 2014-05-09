@@ -8,7 +8,7 @@
 #include <string.h>
 #include "flash_patrold.h"
 
-char *directory=NULL, *logfile=NULL;
+char *directory=NULL, *logfile=NULL, *crcdir=NULL, *crclog=NULL;
 
 int check_file_crc(FILE* log_fp)
 {
@@ -45,7 +45,15 @@ int main(int argc, char* argv[])
   pid_t sid = 0;
   pid_t process_id = 0;
 
-	parse_args(argc, argv, directory, logfile);
+	parse_args(argc, argv, &directory, &logfile, &crclog, &crcdir);
+	if(directory[strlen(directory)-1]!='/') 
+	{
+		errno = EINVAL;
+		exit_error("Need trailing / for patrol directory");		
+	}
+	printf("Checking patrols of %s\nWriting output to %s\n",directory,crclog);
+	printf("Reading crcs from %s\n",crcdir);
+
   // Create child process
   process_id = fork();
 
@@ -96,7 +104,7 @@ int main(int argc, char* argv[])
 
   // Open a log file in write mode.
 
-  log_fp = fopen ("crc_check_log.txt", "w+");
+  log_fp = fopen (crclog, "w+");
   if(log_fp < 0)
   {
     printf("fopen failed\n");

@@ -13,10 +13,20 @@
  * Parse the arguments for configuration options. Should probably make this
  * a struct
  */
-void parse_args(int argc, char* argv[], char **directory, char **logfile, 
-                char **crcdir) 
+void parse_args(int argc, char* argv[], char **directory, char **patrollog, 
+                char **crclog, char **crcdir) 
 {
 	int c; //for getopt
+
+	//Look at environment variables. This gives precedence to command line args.
+	if((*crcdir=parse_env("PATROL_CRCDIR"))==NULL)
+		*crcdir = DEFAULT_CRCDIR;
+	if((*directory=parse_env("PATROL_DIR"))==NULL)
+		*directory = DEFAULT_DIRECTORY;
+	if((*patrollog=parse_env("PATROL_LOG"))==NULL)
+		*patrollog = DEFAULT_PATROLLOG;
+	if((*crclog=parse_env("PATROL_CRCLOG"))==NULL)
+		*crclog = DEFAULT_CRCLOG;
 
 	//Parse arguments
 	while((c = getopt(argc, argv, "hd:l:")) != -1) {
@@ -28,7 +38,10 @@ void parse_args(int argc, char* argv[], char **directory, char **logfile,
 				*directory = (char *)optarg;
 				break;
 			case 'l':			
-				*logfile = (char *)optarg;
+				//HACK: but they won't both be used by the same program
+				//the reason we have two separate files is for the environment vars
+				*patrollog = (char *)optarg;
+				*crclog = (char *)optarg;
 				break;
       case 'h':
 				printf("valid options:\n"
@@ -42,14 +55,6 @@ void parse_args(int argc, char* argv[], char **directory, char **logfile,
 		}
 	}
 
-	//If no args, move on to environment variables. This gives precedence to 
-	//command line args. If that doesn't pan out, move on to the defaults
-	if(*crcdir == NULL && (*crcdir=parse_env("PATROL_CRCDIR"))==NULL)
-		*crcdir = DEFAULT_CRCDIR;
-	if(*directory == NULL && (*directory=parse_env("PATROL_DIR"))==NULL)
-		*directory = DEFAULT_DIRECTORY;
-	if(*logfile == NULL && (*logfile=parse_env("PATROL_LOG"))==NULL)
-		*logfile = DEFAULT_LOGFILE;
 	//Need trailing / for directory
 }
 

@@ -9,7 +9,7 @@
 #include <linux/limits.h>
 #include "flash_patrold.h"
 
-char *directory=NULL, *logfile=NULL, *crcdir=NULL;
+char *directory=NULL, *logfile=NULL, *crcdir=NULL, *crclog=NULL;
 
 int patrol_init()
 {
@@ -208,7 +208,7 @@ int main(int argc, char* argv[])
 	pid_t process_id = 0;
 	int fd;
   
-	parse_args(argc, argv, &directory, &logfile, &crcdir);
+	parse_args(argc, argv, &directory, &logfile, &crclog, &crcdir);
 
 	//I trust we don't worry about buffer overflows here...
 	if(directory[strlen(directory)-1]!='/') 
