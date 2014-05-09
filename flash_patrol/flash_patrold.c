@@ -61,6 +61,7 @@ void create_crc_file(struct inotify_event *event, FILE* log_fp)
 	
 	memset(crc_str, 0, NAME_MAX+1);
 	memset(read_str, 0, PATH_MAX+1);
+	memset(buf, 0, BUF_LEN);
 	
 	
 	strcpy(crc_str, event->name);
@@ -91,12 +92,6 @@ void create_crc_file(struct inotify_event *event, FILE* log_fp)
 	while(nbytes == BUF_LEN)
 	{
 		nbytes = fread(buf, sizeof(char), BUF_LEN, read_fp); 
-		fprintf(log_fp, "nbytes = %d\n", nbytes);
-		fprintf(log_fp, "buf = ");
-		for(i = 0; i < nbytes; i++)
-		{
-			fprintf(log_fp, "%x", buf[i]);
-		}
 		fprintf(log_fp, "\n");
 		crc = crc32(crc, buf, nbytes);
 	}
@@ -179,7 +174,7 @@ int patrol(int fd, FILE* log_fp)
 				{
 					LOG_MSG("The file %s was deleted.\n", event->name);
 				}
-				//delete_crc_file(event, log_fp);
+				delete_crc_file(event, log_fp);
 			}
 			else if(event->mask & IN_MODIFY)
 			{

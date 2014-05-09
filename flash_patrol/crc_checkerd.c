@@ -18,6 +18,7 @@ int check_file_crc(FILE* log_fp)
 	char buf[BUF_LEN];
 	char oldcrcfile[PATH_MAX+1];
 	char calccrcfile[PATH_MAX+1];
+	char oldcrcstr[BUF_LEN];
 	uint32_t nbytes = BUF_LEN;
 	uint32_t old_crc = 0;
 	uint32_t calc_crc = 0;
@@ -51,13 +52,6 @@ int check_file_crc(FILE* log_fp)
 		}
 		while(nbytes == BUF_LEN) {
 			nbytes = fread(buf, sizeof(char), BUF_LEN, calc_crc_fp);
-			fprintf(log_fp, "nbytes = %d\n", nbytes);
-			fprintf(log_fp, "buf = ");
-			for(i=0; i < nbytes; i++)
-			{
-				fprintf(log_fp, "%x", buf[i]);
-			}
-			fprintf(log_fp, "\n");
 			calc_crc = crc32(calc_crc, buf, nbytes);
 		}
 		
@@ -67,11 +61,15 @@ int check_file_crc(FILE* log_fp)
 			fclose(calc_crc_fp);
 			continue;
 		}
-
-		fread(&old_crc, sizeof(uint32_t), 1, old_crc_fp);
+		
+		fread(oldcrcstr, sizeof(char), BUF_LEN, old_crc_fp); 
+		old_crc = (int) strtol(oldcrcstr, (char **) NULL, 16);
 
 		if(old_crc != calc_crc) {
 			LOG_MSG("old_crc = 0x%x != calc_crc = 0x%x\n", old_crc, calc_crc);
+		}
+		else {
+			LOG_MSG("crc's matched\n");	
 		}
 
 		fclose(calc_crc_fp);
