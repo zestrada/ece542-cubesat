@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
   size_t nbytes;
 
   //Worst. argument. parsing. ever
-  fd = open(argv[1],O_RDWR|O_DIRECT|O_SYNC); 
+  fd = open(argv[1],O_RDWR|O_DIRECT);
   if(fd < 0) {
     perror("no open");
     return errno;
@@ -29,7 +29,12 @@ int main(int argc, char *argv[]) {
     return errno;
   }
   
-  read(fd, &buf, 1);
+  nbytes=read(fd, &buf, 1);
+  if(nbytes<=0) {
+    perror("no read");
+    return errno;
+  }
+
   printf("Read %c at pos %d\n", buf, (int) off);
   buf^=0x01;
   nbytes = write(fd, &buf, 1);
@@ -40,5 +45,6 @@ int main(int argc, char *argv[]) {
     perror("no write");
     return errno;
   }
+
   return 0;
 }
