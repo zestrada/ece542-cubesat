@@ -11,6 +11,7 @@
 
 char *directory=NULL, *logfile=NULL, *crcdir=NULL, *crclog=NULL;
 
+
 int patrol_init()
 {
 	int fd;
