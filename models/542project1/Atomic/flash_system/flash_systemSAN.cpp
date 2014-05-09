@@ -118,7 +118,7 @@ bool flash_systemSAN::seuActivity_case1::Enabled(){
 }
 
 double flash_systemSAN::seuActivity_case1::Rate(){
-  return 1.5e-16;
+  return 6.44e-7;
   return 1.0;  // default rate if none is specified
 }
 
@@ -135,7 +135,7 @@ bool flash_systemSAN::seuActivity_case1::ReactivationFunction(){
 }
 
 double flash_systemSAN::seuActivity_case1::SampleDistribution(){
-  return TheDistribution->Exponential(1.5e-16);
+  return TheDistribution->Exponential(6.44e-7);
 }
 
 double* flash_systemSAN::seuActivity_case1::ReturnDistributionParameters(){
@@ -176,7 +176,7 @@ bool flash_systemSAN::seuActivity_case2::Enabled(){
 }
 
 double flash_systemSAN::seuActivity_case2::Rate(){
-  return 1.5e-16;
+  return 6.44e-7;
   return 1.0;  // default rate if none is specified
 }
 
@@ -193,7 +193,7 @@ bool flash_systemSAN::seuActivity_case2::ReactivationFunction(){
 }
 
 double flash_systemSAN::seuActivity_case2::SampleDistribution(){
-  return TheDistribution->Exponential(1.5e-16);
+  return TheDistribution->Exponential(6.44e-7);
 }
 
 double* flash_systemSAN::seuActivity_case2::ReturnDistributionParameters(){

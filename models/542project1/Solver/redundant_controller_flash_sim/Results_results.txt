@@ -1,0 +1,889 @@
+_______________________________Simulator Results______________________________
+Date:                        Thu May 08 12:59:04 CDT 2014
+
+____________________________Simulator Configuration___________________________
+Simulation Type:             Terminating
+Project Name:                542project1
+Study Name:                  redundant_controller_flash_study
+Random Number Generator:     Lagged Fibonacci
+Random Number Seed:          31415
+Maximum Batches:             10000
+Minimum Batches:             1000
+Data Reporting Frequency:    1000
+Display Update Frequency:    1000
+BuildType:                   Optimize
+Execution Architecture:      32-bit
+Runname:                     Results
+Output File:                 Results_output.txt
+Results File:                Results_results
+Jackknife Variance:          On
+Processors Per Experiment:   1
+Maximize Processor Usage:    false
+Processors Selected for Simulation: 
+        macbook-win8         amd64
+
+_________________________________Experiment 1_________________________________
+Start Time:                  Thu May 08 12:55:09 CDT 2014
+Finish Time:                 Thu May 08 12:55:24 CDT 2014
+Elapsed Running Time:        14.57
+Total CPU Time:              14.345
+Batches Completed:           10000
+Experiment Name:             Experiment 1
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              1                      
+        short                num_replicas             1                      
+        float                power_cycle_rate         0.25                   
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              2.5700000000E-02  +/-   3.1016350810E-03  (*)
+reliability           180.0             1.5090000000E-01  +/-   7.0161978545E-03
+reliability           365.0             2.7340000000E-01  +/-   8.7362436748E-03
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 2_________________________________
+Start Time:                  Thu May 08 12:55:24 CDT 2014
+Finish Time:                 Thu May 08 12:55:26 CDT 2014
+Elapsed Running Time:        1.911
+Total CPU Time:              1.704
+Batches Completed:           1000
+Experiment Name:             Experiment 2
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              2                      
+        short                num_replicas             1                      
+        float                power_cycle_rate         0.25                   
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 3_________________________________
+Start Time:                  Thu May 08 12:55:26 CDT 2014
+Finish Time:                 Thu May 08 12:55:28 CDT 2014
+Elapsed Running Time:        1.907
+Total CPU Time:              1.819
+Batches Completed:           1000
+Experiment Name:             Experiment 3
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              3                      
+        short                num_replicas             1                      
+        float                power_cycle_rate         0.25                   
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 4_________________________________
+Start Time:                  Thu May 08 12:55:28 CDT 2014
+Finish Time:                 Thu May 08 12:55:43 CDT 2014
+Elapsed Running Time:        15.365
+Total CPU Time:              15.043
+Batches Completed:           10000
+Experiment Name:             Experiment 4
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              1                      
+        short                num_replicas             2                      
+        float                power_cycle_rate         0.25                   
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              2.5700000000E-02  +/-   3.1016350810E-03  (*)
+reliability           180.0             1.5090000000E-01  +/-   7.0161978545E-03
+reliability           365.0             2.7340000000E-01  +/-   8.7362436748E-03
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 5_________________________________
+Start Time:                  Thu May 08 12:55:43 CDT 2014
+Finish Time:                 Thu May 08 12:55:45 CDT 2014
+Elapsed Running Time:        1.95
+Total CPU Time:              1.581
+Batches Completed:           1000
+Experiment Name:             Experiment 5
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              2                      
+        short                num_replicas             2                      
+        float                power_cycle_rate         0.25                   
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 6_________________________________
+Start Time:                  Thu May 08 12:55:45 CDT 2014
+Finish Time:                 Thu May 08 12:55:47 CDT 2014
+Elapsed Running Time:        1.946
+Total CPU Time:              1.614
+Batches Completed:           1000
+Experiment Name:             Experiment 6
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              3                      
+        short                num_replicas             2                      
+        float                power_cycle_rate         0.25                   
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 7_________________________________
+Start Time:                  Thu May 08 12:55:47 CDT 2014
+Finish Time:                 Thu May 08 12:56:01 CDT 2014
+Elapsed Running Time:        14.203
+Total CPU Time:              13.887
+Batches Completed:           10000
+Experiment Name:             Experiment 7
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              1                      
+        short                num_replicas             3                      
+        float                power_cycle_rate         0.25                   
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              2.5700000000E-02  +/-   3.1016350810E-03  (*)
+reliability           180.0             1.5090000000E-01  +/-   7.0161978545E-03
+reliability           365.0             2.7340000000E-01  +/-   8.7362436748E-03
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 8_________________________________
+Start Time:                  Thu May 08 12:56:01 CDT 2014
+Finish Time:                 Thu May 08 12:56:03 CDT 2014
+Elapsed Running Time:        1.94
+Total CPU Time:              1.563
+Batches Completed:           1000
+Experiment Name:             Experiment 8
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              2                      
+        short                num_replicas             3                      
+        float                power_cycle_rate         0.25                   
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 9_________________________________
+Start Time:                  Thu May 08 12:56:03 CDT 2014
+Finish Time:                 Thu May 08 12:56:05 CDT 2014
+Elapsed Running Time:        1.935
+Total CPU Time:              1.568
+Batches Completed:           1000
+Experiment Name:             Experiment 9
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              3                      
+        short                num_replicas             3                      
+        float                power_cycle_rate         0.25                   
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 10________________________________
+Start Time:                  Thu May 08 12:56:05 CDT 2014
+Finish Time:                 Thu May 08 12:56:18 CDT 2014
+Elapsed Running Time:        12.79
+Total CPU Time:              12.461
+Batches Completed:           9000
+Experiment Name:             Experiment 10
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              1                      
+        short                num_replicas             1                      
+        float                power_cycle_rate         0.5                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              4.2111111111E-02  +/-   4.1496824450E-03
+reliability           180.0             2.2877777778E-01  +/-   8.6787190906E-03
+reliability           365.0             4.0655555556E-01  +/-   1.0148665298E-02
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 11________________________________
+Start Time:                  Thu May 08 12:56:18 CDT 2014
+Finish Time:                 Thu May 08 12:56:32 CDT 2014
+Elapsed Running Time:        14.533
+Total CPU Time:              14.424
+Batches Completed:           10000
+Experiment Name:             Experiment 11
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              2                      
+        short                num_replicas             1                      
+        float                power_cycle_rate         0.5                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              3.0000000000E-04  +/-   3.3944800499E-04  (*)
+reliability           180.0             4.0000000000E-04  +/-   3.9194118971E-04  (*)
+reliability           365.0             7.0000000000E-04  +/-   5.1841164789E-04  (*)
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 12________________________________
+Start Time:                  Thu May 08 12:56:32 CDT 2014
+Finish Time:                 Thu May 08 12:56:34 CDT 2014
+Elapsed Running Time:        1.917
+Total CPU Time:              1.745
+Batches Completed:           1000
+Experiment Name:             Experiment 12
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              3                      
+        short                num_replicas             1                      
+        float                power_cycle_rate         0.5                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 13________________________________
+Start Time:                  Thu May 08 12:56:34 CDT 2014
+Finish Time:                 Thu May 08 12:56:48 CDT 2014
+Elapsed Running Time:        13.523
+Total CPU Time:              13.204
+Batches Completed:           9000
+Experiment Name:             Experiment 13
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              1                      
+        short                num_replicas             2                      
+        float                power_cycle_rate         0.5                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              4.2111111111E-02  +/-   4.1496824450E-03
+reliability           180.0             2.2877777778E-01  +/-   8.6787190906E-03
+reliability           365.0             4.0655555556E-01  +/-   1.0148665298E-02
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 14________________________________
+Start Time:                  Thu May 08 12:56:48 CDT 2014
+Finish Time:                 Thu May 08 12:57:04 CDT 2014
+Elapsed Running Time:        15.72
+Total CPU Time:              15.378
+Batches Completed:           10000
+Experiment Name:             Experiment 14
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              2                      
+        short                num_replicas             2                      
+        float                power_cycle_rate         0.5                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              3.0000000000E-04  +/-   3.3944800499E-04  (*)
+reliability           180.0             4.0000000000E-04  +/-   3.9194118971E-04  (*)
+reliability           365.0             7.0000000000E-04  +/-   5.1841164789E-04  (*)
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 15________________________________
+Start Time:                  Thu May 08 12:57:04 CDT 2014
+Finish Time:                 Thu May 08 12:57:06 CDT 2014
+Elapsed Running Time:        1.909
+Total CPU Time:              1.713
+Batches Completed:           1000
+Experiment Name:             Experiment 15
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              3                      
+        short                num_replicas             2                      
+        float                power_cycle_rate         0.5                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 16________________________________
+Start Time:                  Thu May 08 12:57:06 CDT 2014
+Finish Time:                 Thu May 08 12:57:21 CDT 2014
+Elapsed Running Time:        15.164
+Total CPU Time:              14.733
+Batches Completed:           9000
+Experiment Name:             Experiment 16
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              1                      
+        short                num_replicas             3                      
+        float                power_cycle_rate         0.5                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              4.2111111111E-02  +/-   4.1496824450E-03
+reliability           180.0             2.2877777778E-01  +/-   8.6787190906E-03
+reliability           365.0             4.0655555556E-01  +/-   1.0148665298E-02
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 17________________________________
+Start Time:                  Thu May 08 12:57:21 CDT 2014
+Finish Time:                 Thu May 08 12:57:37 CDT 2014
+Elapsed Running Time:        16.154
+Total CPU Time:              15.841
+Batches Completed:           10000
+Experiment Name:             Experiment 17
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              2                      
+        short                num_replicas             3                      
+        float                power_cycle_rate         0.5                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              3.0000000000E-04  +/-   3.3944800499E-04  (*)
+reliability           180.0             4.0000000000E-04  +/-   3.9194118971E-04  (*)
+reliability           365.0             7.0000000000E-04  +/-   5.1841164789E-04  (*)
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 18________________________________
+Start Time:                  Thu May 08 12:57:37 CDT 2014
+Finish Time:                 Thu May 08 12:57:39 CDT 2014
+Elapsed Running Time:        2.39
+Total CPU Time:              1.89
+Batches Completed:           1000
+Experiment Name:             Experiment 18
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              3                      
+        short                num_replicas             3                      
+        float                power_cycle_rate         0.5                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 19________________________________
+Start Time:                  Thu May 08 12:57:39 CDT 2014
+Finish Time:                 Thu May 08 12:57:49 CDT 2014
+Elapsed Running Time:        9.739
+Total CPU Time:              9.506
+Batches Completed:           6000
+Experiment Name:             Experiment 19
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              1                      
+        short                num_replicas             1                      
+        float                power_cycle_rate         1.0                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              6.5833333333E-02  +/-   6.2755493085E-03
+reliability           180.0             3.2000000000E-01  +/-   1.1804458940E-02
+reliability           365.0             5.3150000000E-01  +/-   1.2627665595E-02
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 20________________________________
+Start Time:                  Thu May 08 12:57:49 CDT 2014
+Finish Time:                 Thu May 08 12:58:05 CDT 2014
+Elapsed Running Time:        16.191
+Total CPU Time:              15.764
+Batches Completed:           10000
+Experiment Name:             Experiment 20
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              2                      
+        short                num_replicas             1                      
+        float                power_cycle_rate         1.0                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              1.0000000000E-04  +/-   1.9600000000E-04  (*)
+reliability           180.0             9.0000000000E-04  +/-   5.8776472941E-04  (*)
+reliability           365.0             1.7000000000E-03  +/-   8.0748187614E-04  (*)
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 21________________________________
+Start Time:                  Thu May 08 12:58:05 CDT 2014
+Finish Time:                 Thu May 08 12:58:07 CDT 2014
+Elapsed Running Time:        1.926
+Total CPU Time:              1.806
+Batches Completed:           1000
+Experiment Name:             Experiment 21
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              3                      
+        short                num_replicas             1                      
+        float                power_cycle_rate         1.0                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 22________________________________
+Start Time:                  Thu May 08 12:58:07 CDT 2014
+Finish Time:                 Thu May 08 12:58:17 CDT 2014
+Elapsed Running Time:        9.777
+Total CPU Time:              9.451
+Batches Completed:           6000
+Experiment Name:             Experiment 22
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              1                      
+        short                num_replicas             2                      
+        float                power_cycle_rate         1.0                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              6.5833333333E-02  +/-   6.2755493085E-03
+reliability           180.0             3.2000000000E-01  +/-   1.1804458940E-02
+reliability           365.0             5.3150000000E-01  +/-   1.2627665595E-02
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 23________________________________
+Start Time:                  Thu May 08 12:58:17 CDT 2014
+Finish Time:                 Thu May 08 12:58:33 CDT 2014
+Elapsed Running Time:        16.179
+Total CPU Time:              15.802
+Batches Completed:           10000
+Experiment Name:             Experiment 23
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              2                      
+        short                num_replicas             2                      
+        float                power_cycle_rate         1.0                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              1.0000000000E-04  +/-   1.9600000000E-04  (*)
+reliability           180.0             9.0000000000E-04  +/-   5.8776472941E-04  (*)
+reliability           365.0             1.7000000000E-03  +/-   8.0748187614E-04  (*)
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 24________________________________
+Start Time:                  Thu May 08 12:58:33 CDT 2014
+Finish Time:                 Thu May 08 12:58:36 CDT 2014
+Elapsed Running Time:        2.364
+Total CPU Time:              1.87
+Batches Completed:           1000
+Experiment Name:             Experiment 24
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              3                      
+        short                num_replicas             2                      
+        float                power_cycle_rate         1.0                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 25________________________________
+Start Time:                  Thu May 08 12:58:36 CDT 2014
+Finish Time:                 Thu May 08 12:58:45 CDT 2014
+Elapsed Running Time:        9.717
+Total CPU Time:              9.45
+Batches Completed:           6000
+Experiment Name:             Experiment 25
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              1                      
+        short                num_replicas             3                      
+        float                power_cycle_rate         1.0                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              6.5833333333E-02  +/-   6.2755493085E-03
+reliability           180.0             3.2000000000E-01  +/-   1.1804458940E-02
+reliability           365.0             5.3150000000E-01  +/-   1.2627665595E-02
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+_________________________________Experiment 26________________________________
+Start Time:                  Thu May 08 12:58:46 CDT 2014
+Finish Time:                 Thu May 08 12:59:02 CDT 2014
+Elapsed Running Time:        16.168
+Total CPU Time:              16.0
+Batches Completed:           10000
+Experiment Name:             Experiment 26
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              2                      
+        short                num_replicas             3                      
+        float                power_cycle_rate         1.0                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              1.0000000000E-04  +/-   1.9600000000E-04  (*)
+reliability           180.0             9.0000000000E-04  +/-   5.8776472941E-04  (*)
+reliability           365.0             1.7000000000E-03  +/-   8.0748187614E-04  (*)
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+
+(*) This result did not converge to within the specified confidence interval
+
+_________________________________Experiment 27________________________________
+Start Time:                  Thu May 08 12:59:02 CDT 2014
+Finish Time:                 Thu May 08 12:59:04 CDT 2014
+Elapsed Running Time:        2.354
+Total CPU Time:              2.044
+Batches Completed:           1000
+Experiment Name:             Experiment 27
+Global Variable Settings:    
+        float                flash_size               17.0                   
+        short                num_devices              3                      
+        short                num_replicas             3                      
+        float                power_cycle_rate         1.0                    
+        float                ram_size                 128.0                  
+        float                random_failure_rate      0.005                  
+
+
+_________________________________Mean Results_________________________________
+Name                  Time               Mean                     Confidence Interval
+reliability           30.0              0.0000000000E00   +/-   0.0000000000E00 
+reliability           180.0             0.0000000000E00   +/-   0.0000000000E00 
+reliability           365.0             0.0000000000E00   +/-   0.0000000000E00 
+
+
+_______________________________Variance Results_______________________________
+
+
+_______________________________Interval Results_______________________________
+
+
+_____________________________Distribution Results_____________________________
+
+<END_MOBIUS_RESULTS>

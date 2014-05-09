@@ -7,17 +7,19 @@
 		<string id="0">flash_system</string>
 		<string id="1">ram_system</string>
 		<string id="2">redundant_flash_system</string>
+		<string id="3">redundant_controller_flash_system</string>
 	</vector>
 	<vector id="AtomicFormalismTypes">
 		<string id="0">SAN Model</string>
 		<string id="1">SAN Model</string>
 		<string id="2">SAN Model</string>
+		<string id="3">SAN Model</string>
 	</vector>
-	<int id="AtomicStatusLength">3</int>
+	<int id="AtomicStatusLength">4</int>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
-		<string id="VersionNumber">15</string>
+		<string id="VersionNumber">16</string>
 	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
@@ -27,17 +29,24 @@
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
-		<string id="VersionNumber">3</string>
+		<string id="VersionNumber">6</string>
+	</class>
+	<class id="Mobius.ProjectManager.ModelStatus">
+		<int id="ClassVersion">2</int>
+		<boolean id="Modified">false</boolean>
+		<string id="VersionNumber">6</string>
 	</class>
 	<vector id="ComposedNames">
 		<string id="0">basic_model</string>
 		<string id="1">redundant_flash_model</string>
+		<string id="2">redundant_controller_flash_model</string>
 	</vector>
 	<vector id="ComposedFormalismTypes">
 		<string id="0">Rep/Join</string>
 		<string id="1">Rep/Join</string>
+		<string id="2">Rep/Join</string>
 	</vector>
-	<int id="ComposedChildrenLength">2</int>
+	<int id="ComposedChildrenLength">3</int>
 	<vector id="ComposedChildVector">
 		<string id="0">ram_system</string>
 		<string id="1">flash_system</string>
@@ -47,7 +56,13 @@
 		<string id="1">flash_system</string>
 		<string id="2">redundant_flash_system</string>
 	</vector>
-	<int id="ComposedStatusLength">2</int>
+	<vector id="ComposedChildVector">
+		<string id="0">ram_system</string>
+		<string id="1">flash_system</string>
+		<string id="2">redundant_flash_system</string>
+		<string id="3">redundant_controller_flash_system</string>
+	</vector>
+	<int id="ComposedStatusLength">3</int>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
@@ -55,25 +70,35 @@
 	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
-		<boolean id="Modified">false</boolean>
+		<boolean id="Modified">true</boolean>
 		<string id="VersionNumber">2</string>
+	</class>
+	<class id="Mobius.ProjectManager.ModelStatus">
+		<int id="ClassVersion">2</int>
+		<boolean id="Modified">false</boolean>
+		<string id="VersionNumber">4</string>
 	</class>
 	<vector id="RewardNames">
 		<string id="0">basic_reward</string>
 		<string id="1">redundant_flash_reward</string>
+		<string id="2">redundant_controller_flash_reward</string>
 	</vector>
 	<vector id="RewardFormalismTypes">
 		<string id="0">Performance Variable Model</string>
 		<string id="1">Performance Variable Model</string>
+		<string id="2">Performance Variable Model</string>
 	</vector>
-	<int id="RewardChildrenLength">2</int>
+	<int id="RewardChildrenLength">3</int>
 	<vector id="RewardChildVector">
 		<string id="0">basic_model</string>
 	</vector>
 	<vector id="RewardChildVector">
 		<string id="0">redundant_flash_model</string>
 	</vector>
-	<int id="RewardStatusLength">2</int>
+	<vector id="RewardChildVector">
+		<string id="0">redundant_controller_flash_model</string>
+	</vector>
+	<int id="RewardStatusLength">3</int>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
@@ -84,22 +109,32 @@
 		<boolean id="Modified">false</boolean>
 		<string id="VersionNumber">4</string>
 	</class>
+	<class id="Mobius.ProjectManager.ModelStatus">
+		<int id="ClassVersion">2</int>
+		<boolean id="Modified">false</boolean>
+		<string id="VersionNumber">3</string>
+	</class>
 	<vector id="StudyNames">
 		<string id="0">basic_model_study</string>
 		<string id="1">redundant_flash_study</string>
+		<string id="2">redundant_controller_flash_study</string>
 	</vector>
 	<vector id="StudyFormalismTypes">
 		<string id="0">Range Study</string>
 		<string id="1">Range Study</string>
+		<string id="2">Range Study</string>
 	</vector>
-	<int id="StudyChildrenLength">2</int>
+	<int id="StudyChildrenLength">3</int>
 	<vector id="StudyChildVector">
 		<string id="0">basic_reward</string>
 	</vector>
 	<vector id="StudyChildVector">
 		<string id="0">redundant_flash_reward</string>
 	</vector>
-	<int id="StudyStatusLength">2</int>
+	<vector id="StudyChildVector">
+		<string id="0">redundant_controller_flash_reward</string>
+	</vector>
+	<int id="StudyStatusLength">3</int>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
@@ -108,24 +143,39 @@
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
-		<string id="VersionNumber">3</string>
+		<string id="VersionNumber">4</string>
+	</class>
+	<class id="Mobius.ProjectManager.ModelStatus">
+		<int id="ClassVersion">2</int>
+		<boolean id="Modified">true</boolean>
+		<string id="VersionNumber">6</string>
 	</class>
 	<vector id="TransformerNames">
 		<string id="0">basic_model_ssg</string>
 		<string id="1">redundant_flash_ssg</string>
+		<string id="2">redundant_controller_flash_ssg</string>
 	</vector>
 	<vector id="TransformerFormalismTypes">
 		<string id="0">State Space Generator</string>
 		<string id="1">State Space Generator</string>
+		<string id="2">State Space Generator</string>
 	</vector>
-	<int id="TransformerChildrenLength">2</int>
+	<int id="TransformerChildrenLength">3</int>
 	<vector id="TransformerChildVector">
 		<string id="0">basic_model_study</string>
 	</vector>
 	<vector id="TransformerChildVector">
 		<string id="0">redundant_flash_study</string>
 	</vector>
-	<int id="TransformerStatusLength">2</int>
+	<vector id="TransformerChildVector">
+		<string id="0">redundant_controller_flash_study</string>
+	</vector>
+	<int id="TransformerStatusLength">3</int>
+	<class id="Mobius.ProjectManager.ModelStatus">
+		<int id="ClassVersion">2</int>
+		<boolean id="Modified">true</boolean>
+		<string id="VersionNumber">1</string>
+	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">true</boolean>
@@ -139,23 +189,33 @@
 	<vector id="SolverNames">
 		<string id="0">basic_model_sim</string>
 		<string id="1">redundant_flash_sim</string>
+		<string id="2">redundant_controller_flash_sim</string>
 	</vector>
 	<vector id="SolverFormalismTypes">
 		<string id="0">Mobius Simulator</string>
 		<string id="1">Mobius Simulator</string>
+		<string id="2">Mobius Simulator</string>
 	</vector>
-	<int id="SolverChildrenLength">2</int>
+	<int id="SolverChildrenLength">3</int>
 	<vector id="SolverChildVector">
 		<string id="0">basic_model_study</string>
 	</vector>
 	<vector id="SolverChildVector">
 		<string id="0">redundant_flash_study</string>
 	</vector>
-	<int id="SolverStatusLength">2</int>
+	<vector id="SolverChildVector">
+		<string id="0">redundant_controller_flash_study</string>
+	</vector>
+	<int id="SolverStatusLength">3</int>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">true</boolean>
 		<string id="VersionNumber">1</string>
+	</class>
+	<class id="Mobius.ProjectManager.ModelStatus">
+		<int id="ClassVersion">2</int>
+		<boolean id="Modified">true</boolean>
+		<string id="VersionNumber">2</string>
 	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>

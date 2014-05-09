@@ -1,0 +1,592 @@
+Simulator Results
+Date:, Thu May 08 12:59:04 CDT 2014
+
+Simulator Configuration
+Simulation Type:,Terminating
+Project Name:,542project1
+Study Name:,redundant_controller_flash_study
+Random Number Generator:,Lagged Fibonacci
+Random Number Seed:,31415
+Maximum Batches:,10000
+Minimum Batches:,1000
+Data Reporting Frequency:,1000
+Display Update Frequency:,1000
+BuildType:,Optimize
+Execution Architecture:,32-bit
+Runname:,Results
+Output File:,Results_output.txt
+Results File:,Results_results
+Jackknife Variance:,On
+Processors Per Experiment:,1
+Maximize Processor Usage:,false
+Processors Selected for Simulation:
+macbook-win8,amd64
+
+Experiment 1
+Experiment 1,Start Time:,Thu May 08 12:55:09 CDT 2014
+Experiment 1,Finish Time:,Thu May 08 12:55:24 CDT 2014
+Experiment 1,Elapsed Running Time:,14.57
+Experiment 1,Total CPU Time:,14.345
+Experiment 1,Batches Completed:,10000
+Experiment 1,Experiment Name:,Experiment 1
+Experiment 1,Global Variable Settings:
+Experiment 1,float,flash_size,17.0
+Experiment 1,short,num_devices,1
+Experiment 1,short,num_replicas,1
+Experiment 1,float,power_cycle_rate,0.25
+Experiment 1,float,ram_size,128.0
+Experiment 1,float,random_failure_rate,0.005
+Experiment 1, Results
+Experiment 1,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 1,Mean,reliability,30.0,30.0,2.5700000000E-02,+/-,3.1016350810E-03, (*)
+Experiment 1,Mean,reliability,180.0,180.0,1.5090000000E-01,+/-,7.0161978545E-03
+Experiment 1,Mean,reliability,365.0,365.0,2.7340000000E-01,+/-,8.7362436748E-03
+
+
+(*) This result did not converge to within the specified confidence interval
+
+Experiment 2
+Experiment 2,Start Time:,Thu May 08 12:55:24 CDT 2014
+Experiment 2,Finish Time:,Thu May 08 12:55:26 CDT 2014
+Experiment 2,Elapsed Running Time:,1.911
+Experiment 2,Total CPU Time:,1.704
+Experiment 2,Batches Completed:,1000
+Experiment 2,Experiment Name:,Experiment 2
+Experiment 2,Global Variable Settings:
+Experiment 2,float,flash_size,17.0
+Experiment 2,short,num_devices,2
+Experiment 2,short,num_replicas,1
+Experiment 2,float,power_cycle_rate,0.25
+Experiment 2,float,ram_size,128.0
+Experiment 2,float,random_failure_rate,0.005
+Experiment 2, Results
+Experiment 2,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 2,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 2,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 2,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 3
+Experiment 3,Start Time:,Thu May 08 12:55:26 CDT 2014
+Experiment 3,Finish Time:,Thu May 08 12:55:28 CDT 2014
+Experiment 3,Elapsed Running Time:,1.907
+Experiment 3,Total CPU Time:,1.819
+Experiment 3,Batches Completed:,1000
+Experiment 3,Experiment Name:,Experiment 3
+Experiment 3,Global Variable Settings:
+Experiment 3,float,flash_size,17.0
+Experiment 3,short,num_devices,3
+Experiment 3,short,num_replicas,1
+Experiment 3,float,power_cycle_rate,0.25
+Experiment 3,float,ram_size,128.0
+Experiment 3,float,random_failure_rate,0.005
+Experiment 3, Results
+Experiment 3,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 3,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 3,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 3,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 4
+Experiment 4,Start Time:,Thu May 08 12:55:28 CDT 2014
+Experiment 4,Finish Time:,Thu May 08 12:55:43 CDT 2014
+Experiment 4,Elapsed Running Time:,15.365
+Experiment 4,Total CPU Time:,15.043
+Experiment 4,Batches Completed:,10000
+Experiment 4,Experiment Name:,Experiment 4
+Experiment 4,Global Variable Settings:
+Experiment 4,float,flash_size,17.0
+Experiment 4,short,num_devices,1
+Experiment 4,short,num_replicas,2
+Experiment 4,float,power_cycle_rate,0.25
+Experiment 4,float,ram_size,128.0
+Experiment 4,float,random_failure_rate,0.005
+Experiment 4, Results
+Experiment 4,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 4,Mean,reliability,30.0,30.0,2.5700000000E-02,+/-,3.1016350810E-03, (*)
+Experiment 4,Mean,reliability,180.0,180.0,1.5090000000E-01,+/-,7.0161978545E-03
+Experiment 4,Mean,reliability,365.0,365.0,2.7340000000E-01,+/-,8.7362436748E-03
+
+
+(*) This result did not converge to within the specified confidence interval
+
+Experiment 5
+Experiment 5,Start Time:,Thu May 08 12:55:43 CDT 2014
+Experiment 5,Finish Time:,Thu May 08 12:55:45 CDT 2014
+Experiment 5,Elapsed Running Time:,1.95
+Experiment 5,Total CPU Time:,1.581
+Experiment 5,Batches Completed:,1000
+Experiment 5,Experiment Name:,Experiment 5
+Experiment 5,Global Variable Settings:
+Experiment 5,float,flash_size,17.0
+Experiment 5,short,num_devices,2
+Experiment 5,short,num_replicas,2
+Experiment 5,float,power_cycle_rate,0.25
+Experiment 5,float,ram_size,128.0
+Experiment 5,float,random_failure_rate,0.005
+Experiment 5, Results
+Experiment 5,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 5,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 5,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 5,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 6
+Experiment 6,Start Time:,Thu May 08 12:55:45 CDT 2014
+Experiment 6,Finish Time:,Thu May 08 12:55:47 CDT 2014
+Experiment 6,Elapsed Running Time:,1.946
+Experiment 6,Total CPU Time:,1.614
+Experiment 6,Batches Completed:,1000
+Experiment 6,Experiment Name:,Experiment 6
+Experiment 6,Global Variable Settings:
+Experiment 6,float,flash_size,17.0
+Experiment 6,short,num_devices,3
+Experiment 6,short,num_replicas,2
+Experiment 6,float,power_cycle_rate,0.25
+Experiment 6,float,ram_size,128.0
+Experiment 6,float,random_failure_rate,0.005
+Experiment 6, Results
+Experiment 6,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 6,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 6,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 6,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 7
+Experiment 7,Start Time:,Thu May 08 12:55:47 CDT 2014
+Experiment 7,Finish Time:,Thu May 08 12:56:01 CDT 2014
+Experiment 7,Elapsed Running Time:,14.203
+Experiment 7,Total CPU Time:,13.887
+Experiment 7,Batches Completed:,10000
+Experiment 7,Experiment Name:,Experiment 7
+Experiment 7,Global Variable Settings:
+Experiment 7,float,flash_size,17.0
+Experiment 7,short,num_devices,1
+Experiment 7,short,num_replicas,3
+Experiment 7,float,power_cycle_rate,0.25
+Experiment 7,float,ram_size,128.0
+Experiment 7,float,random_failure_rate,0.005
+Experiment 7, Results
+Experiment 7,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 7,Mean,reliability,30.0,30.0,2.5700000000E-02,+/-,3.1016350810E-03, (*)
+Experiment 7,Mean,reliability,180.0,180.0,1.5090000000E-01,+/-,7.0161978545E-03
+Experiment 7,Mean,reliability,365.0,365.0,2.7340000000E-01,+/-,8.7362436748E-03
+
+
+(*) This result did not converge to within the specified confidence interval
+
+Experiment 8
+Experiment 8,Start Time:,Thu May 08 12:56:01 CDT 2014
+Experiment 8,Finish Time:,Thu May 08 12:56:03 CDT 2014
+Experiment 8,Elapsed Running Time:,1.94
+Experiment 8,Total CPU Time:,1.563
+Experiment 8,Batches Completed:,1000
+Experiment 8,Experiment Name:,Experiment 8
+Experiment 8,Global Variable Settings:
+Experiment 8,float,flash_size,17.0
+Experiment 8,short,num_devices,2
+Experiment 8,short,num_replicas,3
+Experiment 8,float,power_cycle_rate,0.25
+Experiment 8,float,ram_size,128.0
+Experiment 8,float,random_failure_rate,0.005
+Experiment 8, Results
+Experiment 8,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 8,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 8,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 8,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 9
+Experiment 9,Start Time:,Thu May 08 12:56:03 CDT 2014
+Experiment 9,Finish Time:,Thu May 08 12:56:05 CDT 2014
+Experiment 9,Elapsed Running Time:,1.935
+Experiment 9,Total CPU Time:,1.568
+Experiment 9,Batches Completed:,1000
+Experiment 9,Experiment Name:,Experiment 9
+Experiment 9,Global Variable Settings:
+Experiment 9,float,flash_size,17.0
+Experiment 9,short,num_devices,3
+Experiment 9,short,num_replicas,3
+Experiment 9,float,power_cycle_rate,0.25
+Experiment 9,float,ram_size,128.0
+Experiment 9,float,random_failure_rate,0.005
+Experiment 9, Results
+Experiment 9,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 9,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 9,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 9,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 10
+Experiment 10,Start Time:,Thu May 08 12:56:05 CDT 2014
+Experiment 10,Finish Time:,Thu May 08 12:56:18 CDT 2014
+Experiment 10,Elapsed Running Time:,12.79
+Experiment 10,Total CPU Time:,12.461
+Experiment 10,Batches Completed:,9000
+Experiment 10,Experiment Name:,Experiment 10
+Experiment 10,Global Variable Settings:
+Experiment 10,float,flash_size,17.0
+Experiment 10,short,num_devices,1
+Experiment 10,short,num_replicas,1
+Experiment 10,float,power_cycle_rate,0.5
+Experiment 10,float,ram_size,128.0
+Experiment 10,float,random_failure_rate,0.005
+Experiment 10, Results
+Experiment 10,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 10,Mean,reliability,30.0,30.0,4.2111111111E-02,+/-,4.1496824450E-03
+Experiment 10,Mean,reliability,180.0,180.0,2.2877777778E-01,+/-,8.6787190906E-03
+Experiment 10,Mean,reliability,365.0,365.0,4.0655555556E-01,+/-,1.0148665298E-02
+
+Experiment 11
+Experiment 11,Start Time:,Thu May 08 12:56:18 CDT 2014
+Experiment 11,Finish Time:,Thu May 08 12:56:32 CDT 2014
+Experiment 11,Elapsed Running Time:,14.533
+Experiment 11,Total CPU Time:,14.424
+Experiment 11,Batches Completed:,10000
+Experiment 11,Experiment Name:,Experiment 11
+Experiment 11,Global Variable Settings:
+Experiment 11,float,flash_size,17.0
+Experiment 11,short,num_devices,2
+Experiment 11,short,num_replicas,1
+Experiment 11,float,power_cycle_rate,0.5
+Experiment 11,float,ram_size,128.0
+Experiment 11,float,random_failure_rate,0.005
+Experiment 11, Results
+Experiment 11,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 11,Mean,reliability,30.0,30.0,3.0000000000E-04,+/-,3.3944800499E-04, (*)
+Experiment 11,Mean,reliability,180.0,180.0,4.0000000000E-04,+/-,3.9194118971E-04, (*)
+Experiment 11,Mean,reliability,365.0,365.0,7.0000000000E-04,+/-,5.1841164789E-04, (*)
+
+
+(*) This result did not converge to within the specified confidence interval
+
+Experiment 12
+Experiment 12,Start Time:,Thu May 08 12:56:32 CDT 2014
+Experiment 12,Finish Time:,Thu May 08 12:56:34 CDT 2014
+Experiment 12,Elapsed Running Time:,1.917
+Experiment 12,Total CPU Time:,1.745
+Experiment 12,Batches Completed:,1000
+Experiment 12,Experiment Name:,Experiment 12
+Experiment 12,Global Variable Settings:
+Experiment 12,float,flash_size,17.0
+Experiment 12,short,num_devices,3
+Experiment 12,short,num_replicas,1
+Experiment 12,float,power_cycle_rate,0.5
+Experiment 12,float,ram_size,128.0
+Experiment 12,float,random_failure_rate,0.005
+Experiment 12, Results
+Experiment 12,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 12,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 12,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 12,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 13
+Experiment 13,Start Time:,Thu May 08 12:56:34 CDT 2014
+Experiment 13,Finish Time:,Thu May 08 12:56:48 CDT 2014
+Experiment 13,Elapsed Running Time:,13.523
+Experiment 13,Total CPU Time:,13.204
+Experiment 13,Batches Completed:,9000
+Experiment 13,Experiment Name:,Experiment 13
+Experiment 13,Global Variable Settings:
+Experiment 13,float,flash_size,17.0
+Experiment 13,short,num_devices,1
+Experiment 13,short,num_replicas,2
+Experiment 13,float,power_cycle_rate,0.5
+Experiment 13,float,ram_size,128.0
+Experiment 13,float,random_failure_rate,0.005
+Experiment 13, Results
+Experiment 13,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 13,Mean,reliability,30.0,30.0,4.2111111111E-02,+/-,4.1496824450E-03
+Experiment 13,Mean,reliability,180.0,180.0,2.2877777778E-01,+/-,8.6787190906E-03
+Experiment 13,Mean,reliability,365.0,365.0,4.0655555556E-01,+/-,1.0148665298E-02
+
+Experiment 14
+Experiment 14,Start Time:,Thu May 08 12:56:48 CDT 2014
+Experiment 14,Finish Time:,Thu May 08 12:57:04 CDT 2014
+Experiment 14,Elapsed Running Time:,15.72
+Experiment 14,Total CPU Time:,15.378
+Experiment 14,Batches Completed:,10000
+Experiment 14,Experiment Name:,Experiment 14
+Experiment 14,Global Variable Settings:
+Experiment 14,float,flash_size,17.0
+Experiment 14,short,num_devices,2
+Experiment 14,short,num_replicas,2
+Experiment 14,float,power_cycle_rate,0.5
+Experiment 14,float,ram_size,128.0
+Experiment 14,float,random_failure_rate,0.005
+Experiment 14, Results
+Experiment 14,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 14,Mean,reliability,30.0,30.0,3.0000000000E-04,+/-,3.3944800499E-04, (*)
+Experiment 14,Mean,reliability,180.0,180.0,4.0000000000E-04,+/-,3.9194118971E-04, (*)
+Experiment 14,Mean,reliability,365.0,365.0,7.0000000000E-04,+/-,5.1841164789E-04, (*)
+
+
+(*) This result did not converge to within the specified confidence interval
+
+Experiment 15
+Experiment 15,Start Time:,Thu May 08 12:57:04 CDT 2014
+Experiment 15,Finish Time:,Thu May 08 12:57:06 CDT 2014
+Experiment 15,Elapsed Running Time:,1.909
+Experiment 15,Total CPU Time:,1.713
+Experiment 15,Batches Completed:,1000
+Experiment 15,Experiment Name:,Experiment 15
+Experiment 15,Global Variable Settings:
+Experiment 15,float,flash_size,17.0
+Experiment 15,short,num_devices,3
+Experiment 15,short,num_replicas,2
+Experiment 15,float,power_cycle_rate,0.5
+Experiment 15,float,ram_size,128.0
+Experiment 15,float,random_failure_rate,0.005
+Experiment 15, Results
+Experiment 15,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 15,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 15,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 15,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 16
+Experiment 16,Start Time:,Thu May 08 12:57:06 CDT 2014
+Experiment 16,Finish Time:,Thu May 08 12:57:21 CDT 2014
+Experiment 16,Elapsed Running Time:,15.164
+Experiment 16,Total CPU Time:,14.733
+Experiment 16,Batches Completed:,9000
+Experiment 16,Experiment Name:,Experiment 16
+Experiment 16,Global Variable Settings:
+Experiment 16,float,flash_size,17.0
+Experiment 16,short,num_devices,1
+Experiment 16,short,num_replicas,3
+Experiment 16,float,power_cycle_rate,0.5
+Experiment 16,float,ram_size,128.0
+Experiment 16,float,random_failure_rate,0.005
+Experiment 16, Results
+Experiment 16,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 16,Mean,reliability,30.0,30.0,4.2111111111E-02,+/-,4.1496824450E-03
+Experiment 16,Mean,reliability,180.0,180.0,2.2877777778E-01,+/-,8.6787190906E-03
+Experiment 16,Mean,reliability,365.0,365.0,4.0655555556E-01,+/-,1.0148665298E-02
+
+Experiment 17
+Experiment 17,Start Time:,Thu May 08 12:57:21 CDT 2014
+Experiment 17,Finish Time:,Thu May 08 12:57:37 CDT 2014
+Experiment 17,Elapsed Running Time:,16.154
+Experiment 17,Total CPU Time:,15.841
+Experiment 17,Batches Completed:,10000
+Experiment 17,Experiment Name:,Experiment 17
+Experiment 17,Global Variable Settings:
+Experiment 17,float,flash_size,17.0
+Experiment 17,short,num_devices,2
+Experiment 17,short,num_replicas,3
+Experiment 17,float,power_cycle_rate,0.5
+Experiment 17,float,ram_size,128.0
+Experiment 17,float,random_failure_rate,0.005
+Experiment 17, Results
+Experiment 17,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 17,Mean,reliability,30.0,30.0,3.0000000000E-04,+/-,3.3944800499E-04, (*)
+Experiment 17,Mean,reliability,180.0,180.0,4.0000000000E-04,+/-,3.9194118971E-04, (*)
+Experiment 17,Mean,reliability,365.0,365.0,7.0000000000E-04,+/-,5.1841164789E-04, (*)
+
+
+(*) This result did not converge to within the specified confidence interval
+
+Experiment 18
+Experiment 18,Start Time:,Thu May 08 12:57:37 CDT 2014
+Experiment 18,Finish Time:,Thu May 08 12:57:39 CDT 2014
+Experiment 18,Elapsed Running Time:,2.39
+Experiment 18,Total CPU Time:,1.89
+Experiment 18,Batches Completed:,1000
+Experiment 18,Experiment Name:,Experiment 18
+Experiment 18,Global Variable Settings:
+Experiment 18,float,flash_size,17.0
+Experiment 18,short,num_devices,3
+Experiment 18,short,num_replicas,3
+Experiment 18,float,power_cycle_rate,0.5
+Experiment 18,float,ram_size,128.0
+Experiment 18,float,random_failure_rate,0.005
+Experiment 18, Results
+Experiment 18,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 18,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 18,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 18,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 19
+Experiment 19,Start Time:,Thu May 08 12:57:39 CDT 2014
+Experiment 19,Finish Time:,Thu May 08 12:57:49 CDT 2014
+Experiment 19,Elapsed Running Time:,9.739
+Experiment 19,Total CPU Time:,9.506
+Experiment 19,Batches Completed:,6000
+Experiment 19,Experiment Name:,Experiment 19
+Experiment 19,Global Variable Settings:
+Experiment 19,float,flash_size,17.0
+Experiment 19,short,num_devices,1
+Experiment 19,short,num_replicas,1
+Experiment 19,float,power_cycle_rate,1.0
+Experiment 19,float,ram_size,128.0
+Experiment 19,float,random_failure_rate,0.005
+Experiment 19, Results
+Experiment 19,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 19,Mean,reliability,30.0,30.0,6.5833333333E-02,+/-,6.2755493085E-03
+Experiment 19,Mean,reliability,180.0,180.0,3.2000000000E-01,+/-,1.1804458940E-02
+Experiment 19,Mean,reliability,365.0,365.0,5.3150000000E-01,+/-,1.2627665595E-02
+
+Experiment 20
+Experiment 20,Start Time:,Thu May 08 12:57:49 CDT 2014
+Experiment 20,Finish Time:,Thu May 08 12:58:05 CDT 2014
+Experiment 20,Elapsed Running Time:,16.191
+Experiment 20,Total CPU Time:,15.764
+Experiment 20,Batches Completed:,10000
+Experiment 20,Experiment Name:,Experiment 20
+Experiment 20,Global Variable Settings:
+Experiment 20,float,flash_size,17.0
+Experiment 20,short,num_devices,2
+Experiment 20,short,num_replicas,1
+Experiment 20,float,power_cycle_rate,1.0
+Experiment 20,float,ram_size,128.0
+Experiment 20,float,random_failure_rate,0.005
+Experiment 20, Results
+Experiment 20,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 20,Mean,reliability,30.0,30.0,1.0000000000E-04,+/-,1.9600000000E-04, (*)
+Experiment 20,Mean,reliability,180.0,180.0,9.0000000000E-04,+/-,5.8776472941E-04, (*)
+Experiment 20,Mean,reliability,365.0,365.0,1.7000000000E-03,+/-,8.0748187614E-04, (*)
+
+
+(*) This result did not converge to within the specified confidence interval
+
+Experiment 21
+Experiment 21,Start Time:,Thu May 08 12:58:05 CDT 2014
+Experiment 21,Finish Time:,Thu May 08 12:58:07 CDT 2014
+Experiment 21,Elapsed Running Time:,1.926
+Experiment 21,Total CPU Time:,1.806
+Experiment 21,Batches Completed:,1000
+Experiment 21,Experiment Name:,Experiment 21
+Experiment 21,Global Variable Settings:
+Experiment 21,float,flash_size,17.0
+Experiment 21,short,num_devices,3
+Experiment 21,short,num_replicas,1
+Experiment 21,float,power_cycle_rate,1.0
+Experiment 21,float,ram_size,128.0
+Experiment 21,float,random_failure_rate,0.005
+Experiment 21, Results
+Experiment 21,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 21,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 21,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 21,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 22
+Experiment 22,Start Time:,Thu May 08 12:58:07 CDT 2014
+Experiment 22,Finish Time:,Thu May 08 12:58:17 CDT 2014
+Experiment 22,Elapsed Running Time:,9.777
+Experiment 22,Total CPU Time:,9.451
+Experiment 22,Batches Completed:,6000
+Experiment 22,Experiment Name:,Experiment 22
+Experiment 22,Global Variable Settings:
+Experiment 22,float,flash_size,17.0
+Experiment 22,short,num_devices,1
+Experiment 22,short,num_replicas,2
+Experiment 22,float,power_cycle_rate,1.0
+Experiment 22,float,ram_size,128.0
+Experiment 22,float,random_failure_rate,0.005
+Experiment 22, Results
+Experiment 22,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 22,Mean,reliability,30.0,30.0,6.5833333333E-02,+/-,6.2755493085E-03
+Experiment 22,Mean,reliability,180.0,180.0,3.2000000000E-01,+/-,1.1804458940E-02
+Experiment 22,Mean,reliability,365.0,365.0,5.3150000000E-01,+/-,1.2627665595E-02
+
+Experiment 23
+Experiment 23,Start Time:,Thu May 08 12:58:17 CDT 2014
+Experiment 23,Finish Time:,Thu May 08 12:58:33 CDT 2014
+Experiment 23,Elapsed Running Time:,16.179
+Experiment 23,Total CPU Time:,15.802
+Experiment 23,Batches Completed:,10000
+Experiment 23,Experiment Name:,Experiment 23
+Experiment 23,Global Variable Settings:
+Experiment 23,float,flash_size,17.0
+Experiment 23,short,num_devices,2
+Experiment 23,short,num_replicas,2
+Experiment 23,float,power_cycle_rate,1.0
+Experiment 23,float,ram_size,128.0
+Experiment 23,float,random_failure_rate,0.005
+Experiment 23, Results
+Experiment 23,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 23,Mean,reliability,30.0,30.0,1.0000000000E-04,+/-,1.9600000000E-04, (*)
+Experiment 23,Mean,reliability,180.0,180.0,9.0000000000E-04,+/-,5.8776472941E-04, (*)
+Experiment 23,Mean,reliability,365.0,365.0,1.7000000000E-03,+/-,8.0748187614E-04, (*)
+
+
+(*) This result did not converge to within the specified confidence interval
+
+Experiment 24
+Experiment 24,Start Time:,Thu May 08 12:58:33 CDT 2014
+Experiment 24,Finish Time:,Thu May 08 12:58:36 CDT 2014
+Experiment 24,Elapsed Running Time:,2.364
+Experiment 24,Total CPU Time:,1.87
+Experiment 24,Batches Completed:,1000
+Experiment 24,Experiment Name:,Experiment 24
+Experiment 24,Global Variable Settings:
+Experiment 24,float,flash_size,17.0
+Experiment 24,short,num_devices,3
+Experiment 24,short,num_replicas,2
+Experiment 24,float,power_cycle_rate,1.0
+Experiment 24,float,ram_size,128.0
+Experiment 24,float,random_failure_rate,0.005
+Experiment 24, Results
+Experiment 24,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 24,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 24,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 24,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+Experiment 25
+Experiment 25,Start Time:,Thu May 08 12:58:36 CDT 2014
+Experiment 25,Finish Time:,Thu May 08 12:58:45 CDT 2014
+Experiment 25,Elapsed Running Time:,9.717
+Experiment 25,Total CPU Time:,9.45
+Experiment 25,Batches Completed:,6000
+Experiment 25,Experiment Name:,Experiment 25
+Experiment 25,Global Variable Settings:
+Experiment 25,float,flash_size,17.0
+Experiment 25,short,num_devices,1
+Experiment 25,short,num_replicas,3
+Experiment 25,float,power_cycle_rate,1.0
+Experiment 25,float,ram_size,128.0
+Experiment 25,float,random_failure_rate,0.005
+Experiment 25, Results
+Experiment 25,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 25,Mean,reliability,30.0,30.0,6.5833333333E-02,+/-,6.2755493085E-03
+Experiment 25,Mean,reliability,180.0,180.0,3.2000000000E-01,+/-,1.1804458940E-02
+Experiment 25,Mean,reliability,365.0,365.0,5.3150000000E-01,+/-,1.2627665595E-02
+
+Experiment 26
+Experiment 26,Start Time:,Thu May 08 12:58:46 CDT 2014
+Experiment 26,Finish Time:,Thu May 08 12:59:02 CDT 2014
+Experiment 26,Elapsed Running Time:,16.168
+Experiment 26,Total CPU Time:,16.0
+Experiment 26,Batches Completed:,10000
+Experiment 26,Experiment Name:,Experiment 26
+Experiment 26,Global Variable Settings:
+Experiment 26,float,flash_size,17.0
+Experiment 26,short,num_devices,2
+Experiment 26,short,num_replicas,3
+Experiment 26,float,power_cycle_rate,1.0
+Experiment 26,float,ram_size,128.0
+Experiment 26,float,random_failure_rate,0.005
+Experiment 26, Results
+Experiment 26,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 26,Mean,reliability,30.0,30.0,1.0000000000E-04,+/-,1.9600000000E-04, (*)
+Experiment 26,Mean,reliability,180.0,180.0,9.0000000000E-04,+/-,5.8776472941E-04, (*)
+Experiment 26,Mean,reliability,365.0,365.0,1.7000000000E-03,+/-,8.0748187614E-04, (*)
+
+
+(*) This result did not converge to within the specified confidence interval
+
+Experiment 27
+Experiment 27,Start Time:,Thu May 08 12:59:02 CDT 2014
+Experiment 27,Finish Time:,Thu May 08 12:59:04 CDT 2014
+Experiment 27,Elapsed Running Time:,2.354
+Experiment 27,Total CPU Time:,2.044
+Experiment 27,Batches Completed:,1000
+Experiment 27,Experiment Name:,Experiment 27
+Experiment 27,Global Variable Settings:
+Experiment 27,float,flash_size,17.0
+Experiment 27,short,num_devices,3
+Experiment 27,short,num_replicas,3
+Experiment 27,float,power_cycle_rate,1.0
+Experiment 27,float,ram_size,128.0
+Experiment 27,float,random_failure_rate,0.005
+Experiment 27, Results
+Experiment 27,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
+Experiment 27,Mean,reliability,30.0,30.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 27,Mean,reliability,180.0,180.0,0.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 27,Mean,reliability,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
+
+<END_MOBIUS_RESULTS>

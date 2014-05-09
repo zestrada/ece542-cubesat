@@ -1,0 +1,77 @@
+
+**********************************************************
+
+State Generation initiated on Experiment_1 of redundant_controller_flash_ssg started at Sun May 04 15:03:15 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/redundant_controller_flash_ssg/]
+License File=C:/Mobius-2.4/\License.mli
+The Global Variable values for experiment Experiment 1 are:
+flash_size	float	64
+num_devices	short	1
+num_replicas	short	1
+power_cycle_rate	float	365
+ram_size	float	128
+random_failure_rate	float	0.005
+SSG: SetTraceLevel: 0
+
+Generated: 13 states
+Computation Time (user + system): 1.000000e-002 seconds
+State Generation of Experiment_1 on model redundant_controller_flash_ssg finished at Sun May 04 15:03:15 CDT 2014.
+
+
+**********************************************************
+
+**********************************************************
+
+State Generation initiated on Experiment_2 of redundant_controller_flash_ssg started at Sun May 04 15:03:15 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/redundant_controller_flash_ssg/]
+License File=C:/Mobius-2.4/\License.mli
+The Global Variable values for experiment Experiment 2 are:
+flash_size	float	64
+num_devices	short	2
+num_replicas	short	1
+power_cycle_rate	float	365
+ram_size	float	128
+random_failure_rate	float	0.005
+SSG: SetTraceLevel: 0
+
+Generated: 21 states
+Computation Time (user + system): 1.300000e-002 seconds
+State Generation of Experiment_2 on model redundant_controller_flash_ssg finished at Sun May 04 15:03:16 CDT 2014.
+
+
+**********************************************************
+
+**********************************************************
+
+State Generation initiated on Experiment_3 of redundant_controller_flash_ssg started at Sun May 04 15:03:16 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/redundant_controller_flash_ssg/]
+License File=C:/Mobius-2.4/\License.mli
+The Global Variable values for experiment Experiment 3 are:
+flash_size	float	64
+num_devices	short	3
+num_replicas	short	1
+power_cycle_rate	float	365
+ram_size	float	128
+random_failure_rate	float	0.005
+SSG: SetTraceLevel: 0
+
+Generated: 29 states
+Computation Time (user + system): 1.100000e-002 seconds
+State Generation of Experiment_3 on model redundant_controller_flash_ssg finished at Sun May 04 15:03:16 CDT 2014.
+
+
+**********************************************************
+
+**********************************************************
+
+State Generation initiated on Experiment_4 of redundant_controller_flash_ssg started at Sun May 04 15:03:16 CDT 2014 ...
+path=[C:/Users/Matt/Documents/GitHub/ece542/models/542project1/Transformer/redundant_controller_flash_ssg/]
+License File=C:/Mobius-2.4/\License.mli
+The Global Variable values for experiment Experiment 4 are:
+flash_size	float	64
+num_devices	short	1
+num_replicas	short	2
+power_cycle_rate	float	365
+ram_size	float	128
+random_failure_rate	float	0.005
+SSG: SetTraceLevel: 0

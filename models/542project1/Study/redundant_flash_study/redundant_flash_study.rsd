@@ -29,38 +29,6 @@
 						<boolean id="1">true</boolean>
 						<boolean id="2">true</boolean>
 						<boolean id="3">true</boolean>
-						<boolean id="4">true</boolean>
-						<boolean id="5">true</boolean>
-						<boolean id="6">true</boolean>
-						<boolean id="7">true</boolean>
-						<boolean id="8">true</boolean>
-						<boolean id="9">true</boolean>
-						<boolean id="10">true</boolean>
-						<boolean id="11">true</boolean>
-						<boolean id="12">true</boolean>
-						<boolean id="13">true</boolean>
-						<boolean id="14">true</boolean>
-						<boolean id="15">true</boolean>
-						<boolean id="16">true</boolean>
-						<boolean id="17">true</boolean>
-						<boolean id="18">true</boolean>
-						<boolean id="19">true</boolean>
-						<boolean id="20">true</boolean>
-						<boolean id="21">true</boolean>
-						<boolean id="22">true</boolean>
-						<boolean id="23">true</boolean>
-						<boolean id="24">true</boolean>
-						<boolean id="25">true</boolean>
-						<boolean id="26">true</boolean>
-						<boolean id="27">true</boolean>
-						<boolean id="28">true</boolean>
-						<boolean id="29">true</boolean>
-						<boolean id="30">true</boolean>
-						<boolean id="31">true</boolean>
-						<boolean id="32">true</boolean>
-						<boolean id="33">true</boolean>
-						<boolean id="34">true</boolean>
-						<boolean id="35">true</boolean>
 					</vector>
 					<vector id="GVNameVector">
 						<string id="0">flash_size</string>
@@ -87,14 +55,7 @@
 					<string id="2">1</string>
 				</vector>
 				<vector id="e">
-					<string id="0">Functional Range</string>
-					<string id="1">0</string>
-					<string id="2">1.0</string>
-					<string id="3">-5.0</string>
-					<string id="4">3.0</string>
-					<string id="5">1</string>
-					<string id="6">n^x</string>
-					<string id="7">2.0</string>
+					<string id="0">Fixed Value</string>
 				</vector>
 				<vector id="e">
 					<string id="0">Fixed Value</string>
@@ -112,15 +73,7 @@
 					<string id="3">4</string>
 				</vector>
 				<vector id="g">
-					<string id="0">0.03125</string>
-					<string id="1">0.0625</string>
-					<string id="2">0.125</string>
-					<string id="3">0.25</string>
-					<string id="4">0.5</string>
-					<string id="5">1.0</string>
-					<string id="6">2.0</string>
-					<string id="7">4.0</string>
-					<string id="8">8.0</string>
+					<string id="0">365.0</string>
 				</vector>
 				<vector id="g">
 					<string id="0">128.0</string>
