@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/inotify.h>
@@ -7,101 +8,143 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <linux/limits.h>
+#include <sys/select.h>
 #include "flash_patrold.h"
 
 char *directory=NULL, *logfile=NULL, *crcdir=NULL, *crclog=NULL;
 
+/* int patrol_init()
+ * 
+ * Open inotify fd and initialize the inotify watch to keep 
+ * track of all creations,  deletions, and modifications
+ *
+ * Params: Void
+ * 
+ * Return Value; fd for inotify 
+ */
 
 int patrol_init()
 {
-	int fd;
-	int wd;
+	int fd, wd;
 
 	fd = inotify_init();
 
+	// sanity check fd
 	if(fd < 0) 
 	{    
 		printf("inotify_init\n");
 		exit(EXIT_FAILURE);
 	}
 
-	wd = inotify_add_watch(fd, directory, 
-                         IN_MODIFY | IN_CREATE | IN_DELETE);
+	wd = inotify_add_watch(fd, directory, IN_MODIFY | IN_CREATE | IN_DELETE);
 	return fd;
 }
+
+/* void delete_crc_file(struct inotify_event *event, FILE* log_fp)
+ * 
+ * Delete the crc file that had been created for an associated file. 
+ * This will be called upon the flash patrol detecting a deletion
+ * of something inside of its watch directory
+ *
+ * Params:
+ * struct inotify_event *event: struct that has all of the information
+ * about a certain event sent from inotify 
+ * 
+ * FILE* log_fp: A file pointer to the log file
+ *
+ * Return Value: Void 
+ */
 
 void delete_crc_file(struct inotify_event *event, FILE* log_fp)
 {
 	char crc_str[NAME_MAX+1];
-	strcpy(crc_str, event->name);
-	strcat(crc_str, "_crc");
+
+	// create filename string
+	strncpy(crc_str, event->name, NAME_MAX+1);
+	strncat(crc_str, "_crc", NAME_MAX+1);
+
 	if(event->mask & IN_ISDIR)
 	{
-		return;//FIXME: we don't do directories yet
+		return; //FIXME: we don't do directories yet
 		if(rmdir(crc_str) < 0)
 			exit_error("Couldn't rmdir %s\n",crc_str);
 	}
 	else
 	{
 		LOG_MSG("Deleting %s\n",crc_str);
-		if(unlink(crc_str) < 0) {
+		if(unlink(crc_str) < 0) // delete the file
+		{
 			exit_error("Couldn't unlink %s\n",crc_str);
 		}
 	}
 }
+
+/* void create_crc_file(struct inotify_event *event, FILE* log_fp)
+ *
+ * Creates the CRC file(s) for all creations and modifications of
+ * files that lie within the directory(s) of the inotify watch
+ * 
+ * Params:
+ * struct inotify_event *event: struct that has all of the information
+ * about a certain event sent from inotify 
+ * 
+ * FILE* log_fp: A file pointer to the log file
+ *
+ * Return Value: Void
+ */
 
 void create_crc_file(struct inotify_event *event, FILE* log_fp)
 {
 	FILE* crc_fp;
 	FILE* read_fp;
 	char buf[BUF_LEN];
-	uint32_t crc = 0;
 	char crc_str[NAME_MAX+1];
 	char read_str[PATH_MAX+1];
+	uint32_t crc = 0;
 	uint32_t nbytes = BUF_LEN;
-	int i;
 	
 	memset(crc_str, 0, NAME_MAX+1);
 	memset(read_str, 0, PATH_MAX+1);
 	memset(buf, 0, BUF_LEN);
-	
-	
-	strcpy(crc_str, event->name);
-	strcat(crc_str, "_crc");
+
+	// create crc filename string	
+	strncpy(crc_str, event->name, NAME_MAX+1);
+	strncat(crc_str, "_crc", NAME_MAX+1);
 	crc_fp = fopen(crc_str, "w+");
+
+	// sanity check file pointer
 	if(crc_fp < 0)
 	{
-		fprintf(log_fp, "could not open crc file%s\n", crc_str);
-		fprintf(log_fp, "errno = %d\n", errno);
-		fflush(log_fp);
+		LOG_MSG("could not open crc file%s\n", crc_str);
+		LOG_MSG("errno = %d\n", errno);
 		return;
 	}
 
-	strcpy(read_str, directory);
-	strcat(read_str, event->name);
-	
+	// create readfile string
+	strncpy(read_str, directory, PATH_MAX+1);
+	strncat(read_str, event->name, PATH_MAX+1);
 	read_fp = fopen(read_str, "r");
+
+	// sanity check file pointer
 	if(read_fp < 0)
 	{
-		fprintf(log_fp, "could not open read file %s\n", read_str);
-		fprintf(log_fp, "errno = %d\n", errno);
-		fflush(log_fp);
-		
+		LOG_MSG("could not open read file %s\n", read_str);
+		LOG_MSG("errno = %d\n", errno);
 		fclose(crc_fp);
 		return;
 	}
-
+	
+	// calculate CRC32 of readfile
 	while(nbytes == BUF_LEN)
 	{
 		nbytes = fread(buf, sizeof(char), BUF_LEN, read_fp); 
-		fprintf(log_fp, "\n");
 		crc = crc32(crc, buf, nbytes);
 	}
 
+	// write CRC32 to crc file
 	if(fprintf(crc_fp, "%x", crc) < 0)
 	{
-		fprintf(log_fp, "file write failure\n");	
-		fflush(log_fp);
+		LOG_MSG("file write failure\n");	
 		
 		fclose(crc_fp);
 		fclose(read_fp);
@@ -109,10 +152,23 @@ void create_crc_file(struct inotify_event *event, FILE* log_fp)
 	}
 	fflush(crc_fp);
 	
+	// close open files
 	fclose(crc_fp);
 	fclose(read_fp);		
 }
 
+/* int skip_file(char * str, FILE* log_fp)
+ *
+ * Figure out if the file in question is a valid file to write a 
+ * CRC for or not. Invalid files are Swap files, etc.
+ * 
+ * Params:
+ * char * str: filename of file to check validity
+ *
+ * FILE* log_fp: log file pointer
+ *
+ * Return Value: 1 for skip, 0 for not skip
+ */
 
 int skip_file(char * str, FILE* log_fp)
 {
@@ -127,64 +183,74 @@ int skip_file(char * str, FILE* log_fp)
 	}
 }
 
+/* int patrol(int fd, FILE* log_fp)
+ * 
+ * This function iterates over the all of the events that are
+ * read in from the inotify fd. For each event, appropriate action
+ * is taken. File modifications and creations result in the creation
+ * of a crc file for the associated for. 
+ *
+ * Params:
+ * int fd: inotify file descriptor
+ *
+ * FILE* log_fp: log file pointer
+ *
+ * Return Value: 0 for success, -1 for failure
+ */
+
 int patrol(int fd, FILE* log_fp)
 {
-	int length, i = 0, j = 0;
+	int length, i = 0;
 	char buffer[BUF_LEN];
-	
-	//fprintf(log_fp, "inside patrol function\n");
-	//fflush(log_fp);
 
-	for(j = 0; j < BUF_LEN; j++)
-	{
-		buffer[j] = 0;
-	}
+	memset(buffer, 0, BUF_LEN);
 
 	length = read(fd, buffer, BUF_LEN);  
 
+	// sanity check inotify read
 	if (length < 0)
 	{
-	  fprintf(log_fp, "read fail\n");
-		fflush(log_fp);
+	  LOG_MSG("read fail\n");
 		return -1;
 	}  
 
+	// iterate over all inotify events
 	while (i < length)
 	{
 		struct inotify_event *event = (struct inotify_event *) &buffer[i];
 		if (event->len && !skip_file(event->name, log_fp))
 		{
-			if (event->mask & IN_CREATE)
+			if (event->mask & IN_CREATE) // file/directory creation
 			{
-				if (event->mask & IN_ISDIR)
+				if (event->mask & IN_ISDIR) // directory
 				{
 					LOG_MSG("The directory %s was created.\n", event->name);
 				}
-				else
+				else // file
 				{
 					LOG_MSG("The file %s was created.\n", event->name);
 					create_crc_file(event, log_fp);
 				}
 			}
-			else if(event->mask & IN_DELETE)
+			else if(event->mask & IN_DELETE) // file/directory deletion
 			{
-				if(event->mask & IN_ISDIR)
+				if(event->mask & IN_ISDIR) // directory
 				{
 					LOG_MSG("The directory %s was deleted.\n", event->name);
 				}
-				else
+				else // file
 				{
 					LOG_MSG("The file %s was deleted.\n", event->name);
 				}
-				delete_crc_file(event, log_fp);
+				delete_crc_file(event, log_fp); // delete associated CRC file
 			}
-			else if(event->mask & IN_MODIFY)
+			else if(event->mask & IN_MODIFY) // file/directory modification
 			{
-				if(event->mask & IN_ISDIR)
+				if(event->mask & IN_ISDIR) // directory
 				{
 					LOG_MSG("The directory %s was modified.\n", event->name);
 				}
-				else
+				else // file
 				{
 					LOG_MSG("The file %s was modified.\n", event->name);
 					create_crc_file(event, log_fp);				
@@ -194,10 +260,80 @@ int patrol(int fd, FILE* log_fp)
 		i += EVENT_SIZE + event->len;
 	}
 
-	//fprintf(log_fp, "exiting patrol function\n");	
-	//fflush(log_fp);
 	return 0;
 }
+
+/* int received_events(int fd)
+ *
+ * Uses select() to wait until the inotify fd sends a signal to say
+ * that something has happened, aka an inotify event. We wait for 0
+ * time because we have nothing to do before we go to sleep. We will
+ * wake up from select() once the inotify fd detects a filesys change
+ *
+ * Params:
+ * int fd: inotify file descriptor
+ *
+ * Return Value: The number of file descriptors contained in the 
+ * three returns descriptor sets (readfds, writefds, exceptfds)
+ * -1 on failure
+ */
+
+int received_events(int fd)
+{
+	fd_set fdset;
+	FD_ZERO(&fdset);
+	FD_SET(fd, &fdset);
+	return select(FD_SETSIZE, &fdset, NULL, NULL, NULL);
+}
+
+/* int patrol_loop(int fd, FILE* log_fp)
+ * 
+ * Iterates forever. Receives events every time received_events returns
+ * and then processes them using the patrol function.
+ *
+ * Params: 
+ * int fd: inotify file descriptor
+ *
+ * FILE* log_fp: log file pointer
+ *
+ * Return Value: 0
+ */
+
+int patrol_loop(int fd, FILE* log_fp)
+{
+	while(1)
+	{
+		if(received_events(fd) > 0) // signifies events occurred
+		{
+			patrol(fd, log_fp);
+		}
+		else
+		{
+			LOG_MSG("Event reception error\n");
+			LOG_MSG("errno = %d\n", errno);
+		}
+	}
+	return 0;
+}
+
+
+/* int main(int argc, char* argv[])
+ *
+ * Forks a new process and then halts the parent. The new process
+ * has no terminal associated with it and so is adopted by the init
+ * process. The daemon then initializes the inotify fd and adds
+ * the directory specified from the command line into the
+ * inotify watch. After initialization, it uses signal-based approach
+ * to respond to inotify events and create CRC files based on the
+ * files that are created/modified in the filesys.
+ *
+ * Params:
+ * int argc: number of command line arguments
+ *
+ * char* argv[]: array of arguments
+ *
+ * Return Value: 0
+ */
 
 int main(int argc, char* argv[])
 {
@@ -208,8 +344,7 @@ int main(int argc, char* argv[])
   
 	parse_args(argc, argv, &directory, &logfile, &crclog, &crcdir);
 
-	//I trust we don't worry about buffer overflows here...
-	if(directory[strlen(directory)-1]!='/') 
+	if(directory[strnlen(directory,PATH_MAX+1)-1]!='/') 
 	{
 		errno = EINVAL;
 		perror("Need trailing / for patrol directory");		
@@ -226,8 +361,6 @@ int main(int argc, char* argv[])
 	if(process_id < 0)
 	{
 		printf("fork failed!\n");
-
-		// Return failure in exit status
 		exit(EXIT_FAILURE);
 	}
 
@@ -235,8 +368,6 @@ int main(int argc, char* argv[])
 	if(process_id > 0)
 	{
 		printf("process_id of child process %d \n", process_id);
-
-		// return success in exit status
 		exit(EXIT_SUCCESS);
 	}
 
@@ -249,8 +380,6 @@ int main(int argc, char* argv[])
 	if(sid < 0)
 	{
 		printf("sid failed!\n");
-
-		// Return failure
 		exit(EXIT_FAILURE);
 	}
 	
@@ -258,7 +387,6 @@ int main(int argc, char* argv[])
 	if(chdir(crcdir) < 0)
 	{
 		printf("chdir failed!\n");
-
 		exit(EXIT_FAILURE);
 	}
 	
@@ -278,21 +406,8 @@ int main(int argc, char* argv[])
 	}
 
 	LOG_MSG("Daemon created\n\n");
-	while (1)
-	{
-	
-		//Dont block context switches, let the process sleep for some time
-		sleep(1);
-		
-		// Implement and call some function that does core work for this daemon.
-		if(-1 == patrol(fd, log_fp))
-		{
-			LOG_MSG("patrol function failed \n");
-		}
-		//fprintf(log_fp, "iterating the while loop\n\n");
-		//fflush(log_fp);
-	}
-	fclose(log_fp);
+
+	patrol_loop(fd, log_fp);
 
 	return 0;
 }

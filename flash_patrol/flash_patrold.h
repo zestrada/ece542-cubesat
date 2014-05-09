@@ -27,6 +27,10 @@ int skip_file(char * str, FILE* log_fp);
 
 int patrol(int fd, FILE* log_fp);
 
+int received_events(int fd);
+
+int patrol_loop(int fd, FILE* log_fp);
+
 void parse_args(int argc, char* argv[], char **directory, char **patrollog,
                 char **crclog, char **crcdir);
 
