@@ -131,16 +131,12 @@ char *parse_env(char *varname)
 		if(retval)
 			strcpy(retval,tmp);
 		else
-			exit_error("Couldn't allocate memory!");
+		{
+			perror("Couldn't allocate memory!");
+			exit(errno);
+		}
 	}
 	return retval;
-}
-
-
-void exit_error(char *msg)
-{
-	perror(msg);
-	exit(errno);
 }
 
 //Prints the current time to fd (not terribly efficient, but works)

@@ -35,16 +35,18 @@ void delete_crc_file(struct inotify_event *event, FILE* log_fp)
 	char crc_str[NAME_MAX+1];
 	strcpy(crc_str, event->name);
 	strcat(crc_str, "_crc");
-	LOG_MSG("Deleting %s\n",crc_str);
 	if(event->mask & IN_ISDIR)
 	{
-		if(rmdir(crc_str) != 0)
-			exit_error(crc_str);
+		return;//FIXME: we don't do directories yet
+		if(rmdir(crc_str) < 0)
+			exit_error("Couldn't rmdir %s\n",crc_str);
 	}
 	else
 	{
-		if(unlink(crc_str) != 0)
-			exit_error(crc_str);
+		LOG_MSG("Deleting %s\n",crc_str);
+		if(unlink(crc_str) < 0) {
+			exit_error("Couldn't unlink %s\n",crc_str);
+		}
 	}
 }
 
@@ -179,7 +181,7 @@ int patrol(int fd, FILE* log_fp)
 				{
 					LOG_MSG("The file %s was deleted.\n", event->name);
 				}
-				//delete_crc_file(event, log_fp);
+				delete_crc_file(event, log_fp);
 			}
 			else if(event->mask & IN_MODIFY)
 			{
@@ -215,7 +217,8 @@ int main(int argc, char* argv[])
 	if(directory[strlen(directory)-1]!='/') 
 	{
 		errno = EINVAL;
-		exit_error("Need trailing / for patrol directory");		
+		perror("Need trailing / for patrol directory");		
+		exit(errno);
 	}
 	printf("Watching %s\nWriting output to %s\n",directory,logfile);
 	printf("Storing crcs in %s\n",crcdir);
