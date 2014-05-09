@@ -13,7 +13,8 @@
 #define LOG_MSG(format, args...) print_time(log_fp);\
                                  fprintf(log_fp, format VA_ARGS(args));\
                                  fflush(log_fp)
-
+#define exit_error(format, args...) LOG_MSG(format, args);\
+                                    exit(errno);
 int patrol_init();
 
 uint32_t crc32(uint32_t crc, const void *buf, size_t size);
@@ -32,8 +33,6 @@ void parse_args(int argc, char* argv[], char **directory, char **patrollog,
 char *parse_env(char *varname);
 
 void print_time(FILE* fp);
-
-void exit_error(char *msg);
 
 int is_valid_file(char *filename);
 #endif

@@ -88,7 +88,8 @@ int main(int argc, char* argv[])
 	if(directory[strlen(directory)-1]!='/') 
 	{
 		errno = EINVAL;
-		exit_error("Need trailing / for patrol directory");		
+		perror("Need trailing / for patrol directory");		
+		exit(errno);
 	}
 	printf("Checking patrols of %s\nWriting output to %s\n",directory,crclog);
 	printf("Reading crcs from %s\n",crcdir);
