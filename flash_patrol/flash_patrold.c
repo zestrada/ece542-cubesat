@@ -179,7 +179,7 @@ int patrol(int fd, FILE* log_fp)
 				{
 					LOG_MSG("The file %s was deleted.\n", event->name);
 				}
-				delete_crc_file(event, log_fp);
+				//delete_crc_file(event, log_fp);
 			}
 			else if(event->mask & IN_MODIFY)
 			{
