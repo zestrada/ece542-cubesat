@@ -34,7 +34,6 @@ int check_file_crc(FILE* log_fp)
 		nbytes = BUF_LEN;
 		memset(buf, 0, BUF_LEN);
 
-		//FIXME: ignore . and ..
 		if(!is_valid_file(entry->d_name))
 			continue;
 		strncpy(oldcrcfile,crcdir,PATH_MAX);
@@ -47,17 +46,20 @@ int check_file_crc(FILE* log_fp)
 		LOG_MSG("calccrcfile: %s\n", calccrcfile);
 
 		calc_crc_fp = fopen(calccrcfile, "r+");
-		if(calc_crc_fp == NULL) {
+		if(calc_crc_fp == NULL)
+		{
 			LOG_MSG("fopen failed on %s\n", calccrcfile);
 			continue;
 		}
-		while(nbytes == BUF_LEN) {
+		while(nbytes == BUF_LEN)
+		{
 			nbytes = fread(buf, sizeof(char), BUF_LEN, calc_crc_fp);
 			calc_crc = crc32(calc_crc, buf, nbytes);
 		}
 		
 		old_crc_fp = fopen(oldcrcfile, "r+");
-		if(old_crc_fp == NULL) {
+		if(old_crc_fp == NULL) 
+		{
 			LOG_MSG("fopen failed on %s\n", oldcrcfile); 
 			fclose(calc_crc_fp);
 			continue;
@@ -66,10 +68,12 @@ int check_file_crc(FILE* log_fp)
 		fread(oldcrcstr, sizeof(char), BUF_LEN, old_crc_fp); 
 		old_crc = (int) strtol(oldcrcstr, (char **) NULL, 16);
 
-		if(old_crc != calc_crc) {
+		if(old_crc != calc_crc) 
+		{
 			LOG_MSG("old_crc = 0x%x != calc_crc = 0x%x\n", old_crc, calc_crc);
 		}
-		else {
+		else 
+		{
 			LOG_MSG("crc's matched\n");	
 		}
 
