@@ -29,7 +29,7 @@ void parse_args(int argc, char* argv[], char **directory, char **patrollog,
 		*crclog = DEFAULT_CRCLOG;
 
 	//Parse arguments
-	while((c = getopt(argc, argv, "hd:l:")) != -1) {
+	while((c = getopt(argc, argv, "hd:l:c:")) != -1) {
 		switch(c) {
 			case 'c':
 				*crcdir = (char *)optarg;
@@ -47,7 +47,8 @@ void parse_args(int argc, char* argv[], char **directory, char **patrollog,
 				printf("valid options:\n"
 				  "\t-c (env PATROL_CRCDIR): directory to store CRCs\n"
 				  "\t-d (env PATROL_DIR): directory to watch\n"
-				  "\t-l (env PATROL_LOG): log file to record output\n");
+				  "\t-l (env PATROL_LOG or PATROL_CRCLOG): log file to record"
+					" output\n");
 				exit(0);
 				break; /*style points?*/
 			default:
