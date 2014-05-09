@@ -33,6 +33,8 @@ int check_file_crc(FILE* log_fp)
 		memset(buf, 0, BUF_LEN);
 
 		//FIXME: ignore . and ..
+		if(!is_valid_file(entry->d_name))
+			continue;
 		strncpy(oldcrcfile,crcdir,PATH_MAX);
 		strncat(oldcrcfile,entry->d_name,PATH_MAX);
 		strncat(oldcrcfile,"_crc",PATH_MAX);
