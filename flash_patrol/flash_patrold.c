@@ -407,6 +407,7 @@ int main(int argc, char* argv[])
 
 	LOG_MSG("Daemon created\n\n");
 
+	// loop forever and process all inotify events
 	patrol_loop(fd, log_fp);
 
 	return 0;
