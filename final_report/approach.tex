@@ -21,10 +21,16 @@ used by IlliniSat, so we use the ``versatilepb'' virtual development board to
 run U-boot and Linux compiled for
 ARM.\footnote{\url{http://elinux.org/Virtual_Development_Board}}
 
-The initial bulk of this work involved
+The initial bulk of this work involved getting the test environment running and
+we have made detailed notes so that we can share this procedure with others
+working on similar problems.  The versatilepb board in QEMU has a virtual flash
+drive that is memory mapped to address 0x3400000, which we use to store the
+contents of the OS kernel images and the boot protection scheme.
+
 U-Boot has built-in support for CRC-32, and every image (e.g. application, OS,
 script, filesystem, etc...) is stored in a format that contains this checksum.
 Therefore, one can use this built-in functionality to validate checksums.  
+
 
 %(1.7 megabytes) / (914 bytes) = 1950.30547
 
