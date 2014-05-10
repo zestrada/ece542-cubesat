@@ -67,14 +67,14 @@ void delete_crc_file(struct inotify_event *event, FILE* log_fp)
 	{
 		return; //FIXME: we don't do directories yet
 		if(rmdir(crc_str) < 0)
-			exit_error("Couldn't rmdir %s\n",crc_str);
+			LOG_MSG("Couldn't rmdir %s\n",crc_str);
 	}
 	else
 	{
 		LOG_MSG("Deleting %s\n",crc_str);
 		if(unlink(crc_str) < 0) // delete the file
 		{
-			exit_error("Couldn't unlink %s\n",crc_str);
+			LOG_MSG("Couldn't unlink %s\n",crc_str);
 		}
 	}
 }

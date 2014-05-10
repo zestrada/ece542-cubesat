@@ -159,7 +159,7 @@ int main(int argc, char* argv[])
   fflush(log_fp);
 	while(1)
 	{
-		sleep(1);
+		sleep(2);
 
 		check_file_crc(log_fp);
 	}
