@@ -155,7 +155,7 @@ void print_time(FILE* fp)
 //Ignore files we don't want to read
 int is_valid_file(char *fname)
 {
-	int n_pre = 1;
+	int n_pre = 2;
 	int n_suf = 5;
 	int i;
 	const char *skip_pre[n_pre]; //prefixes to skip
@@ -168,6 +168,7 @@ int is_valid_file(char *fname)
 	skip_suf[3] = ".swpx";
 	skip_suf[4] = "~";
 	skip_pre[0] = ".";
+	skip_pre[1] = "lost+found";
 	/* Glad that's over */
 
 	for(i=0;i<n_suf;i++) 

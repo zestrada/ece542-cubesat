@@ -32,7 +32,9 @@ int check_file_crc(FILE* log_fp)
 
 	while((entry=readdir(dp))!=NULL) {
 		nbytes = BUF_LEN;
+    calc_crc = 0;
 		memset(buf, 0, BUF_LEN);
+		memset(oldcrcstr, 0, BUF_LEN);
 
 		if(!is_valid_file(entry->d_name))
 			continue;
@@ -45,7 +47,7 @@ int check_file_crc(FILE* log_fp)
 		strncat(calccrcfile,entry->d_name,PATH_MAX);
 		LOG_MSG("calccrcfile: %s\n", calccrcfile);
 
-		calc_crc_fp = fopen(calccrcfile, "r+");
+		calc_crc_fp = fopen(calccrcfile, "r");
 		if(calc_crc_fp == NULL)
 		{
 			LOG_MSG("fopen failed on %s\n", calccrcfile);
@@ -57,7 +59,7 @@ int check_file_crc(FILE* log_fp)
 			calc_crc = crc32(calc_crc, buf, nbytes);
 		}
 		
-		old_crc_fp = fopen(oldcrcfile, "r+");
+		old_crc_fp = fopen(oldcrcfile, "r");
 		if(old_crc_fp == NULL) 
 		{
 			LOG_MSG("fopen failed on %s\n", oldcrcfile); 
@@ -159,7 +161,7 @@ int main(int argc, char* argv[])
   fflush(log_fp);
 	while(1)
 	{
-		sleep(1);
+		sleep(2);
 
 		check_file_crc(log_fp);
 	}
