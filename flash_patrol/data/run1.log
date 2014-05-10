@@ -1,0 +1,365 @@
+2014-05-09 21:34:15# Daemon created
+
+2014-05-09 21:34:22# /mnt/inotify/big failed check!
+2014-05-09 21:34:22# old_crc = 0x776ca097 != calc_crc = 0xf116b6ed
+2014-05-09 21:34:28# Daemon created
+
+2014-05-09 21:34:37# /mnt/inotify/big failed check!
+2014-05-09 21:34:37# old_crc = 0x776ca097 != calc_crc = 0xf0ad0e76
+2014-05-09 21:34:42# Daemon created
+
+2014-05-09 21:34:48# /mnt/inotify/LIIB_dataPacket_1328673761.txt_50 failed check!
+2014-05-09 21:34:48# old_crc = 0xb387dd49 != calc_crc = 0xf83bf87e
+2014-05-09 21:34:54# Daemon created
+
+2014-05-09 21:35:00# /mnt/inotify/PMT_dataPacket_1328682721.txt_31 failed check!
+2014-05-09 21:35:00# old_crc = 0xfa8c7b5d != calc_crc = 0x24440506
+2014-05-09 21:35:06# Daemon created
+
+2014-05-09 21:35:13# /mnt/inotify/LIIB_dataPacket_1328673821.txt_22 failed check!
+2014-05-09 21:35:13# old_crc = 0x4ada8e32 != calc_crc = 0x47d63e08
+2014-05-09 21:35:18# Daemon created
+
+2014-05-09 21:35:25# /mnt/inotify/LIIB_dataPacket_1328673821.txt_22 failed check!
+2014-05-09 21:35:25# old_crc = 0x4ada8e32 != calc_crc = 0xe38d6178
+2014-05-09 21:35:31# Daemon created
+
+2014-05-09 21:35:37# /mnt/inotify/LIIB_dataPacket_1328673661.txt_39 failed check!
+2014-05-09 21:35:37# old_crc = 0x26c94f84 != calc_crc = 0x25fc16d0
+2014-05-09 21:35:43# Daemon created
+
+2014-05-09 21:35:49# /mnt/inotify/LIIB_dataPacket_1328673941.txt_2 failed check!
+2014-05-09 21:35:49# old_crc = 0x735b8017 != calc_crc = 0xcd97fca6
+2014-05-09 21:35:55# Daemon created
+
+2014-05-09 21:36:01# /mnt/inotify/LIIB_dataPacket_1328673941.txt_15 failed check!
+2014-05-09 21:36:01# old_crc = 0x735b8017 != calc_crc = 0x46c51e55
+2014-05-09 21:36:07# Daemon created
+
+2014-05-09 21:36:14# /mnt/inotify/LIIB_dataPacket_1328673781.txt_16 failed check!
+2014-05-09 21:36:14# old_crc = 0x1c5e9d3d != calc_crc = 0xa44f91e0
+2014-05-09 21:36:19# Daemon created
+
+2014-05-09 21:36:26# /mnt/inotify/LIIB_dataPacket_1328673781.txt_14 failed check!
+2014-05-09 21:36:26# old_crc = 0x1c5e9d3d != calc_crc = 0x657ef919
+2014-05-09 21:36:31# Daemon created
+
+2014-05-09 21:36:38# /mnt/inotify/PMT_dataPacket_1328682721.txt_43 failed check!
+2014-05-09 21:36:38# old_crc = 0xfa8c7b5d != calc_crc = 0xa3e0f6dc
+2014-05-09 21:36:43# Daemon created
+
+2014-05-09 21:36:50# /mnt/inotify/LIIB_dataPacket_1328673721.txt_53 failed check!
+2014-05-09 21:36:50# old_crc = 0x6ce8eed5 != calc_crc = 0xac085f0d
+2014-05-09 21:36:56# Daemon created
+
+2014-05-09 21:37:02# /mnt/inotify/LIIB_dataPacket_1328673821.txt_7 failed check!
+2014-05-09 21:37:02# old_crc = 0x4ada8e32 != calc_crc = 0x93ae3beb
+2014-05-09 21:37:08# Daemon created
+
+2014-05-09 21:37:14# /mnt/inotify/LIIB_dataPacket_1328673721.txt_36 failed check!
+2014-05-09 21:37:14# old_crc = 0x6ce8eed5 != calc_crc = 0x111eaa48
+2014-05-09 21:37:20# Daemon created
+
+2014-05-09 21:37:26# /mnt/inotify/LIIB_dataPacket_1328673901.txt_46 failed check!
+2014-05-09 21:37:26# old_crc = 0xe271b077 != calc_crc = 0x349d91af
+2014-05-09 21:37:32# Daemon created
+
+2014-05-09 21:37:38# /mnt/inotify/LIIB_dataPacket_1328673721.txt_3 failed check!
+2014-05-09 21:37:38# old_crc = 0x6ce8eed5 != calc_crc = 0xef5be7ba
+2014-05-09 21:37:44# Daemon created
+
+2014-05-09 21:37:51# /mnt/inotify/LIIB_dataPacket_1328673781.txt_58 failed check!
+2014-05-09 21:37:51# old_crc = 0x1c5e9d3d != calc_crc = 0x71bd78c7
+2014-05-09 21:37:56# Daemon created
+
+2014-05-09 21:38:03# /mnt/inotify/LIIB_dataPacket_1328673901.txt_14 failed check!
+2014-05-09 21:38:03# old_crc = 0xe271b077 != calc_crc = 0xfcc19234
+2014-05-09 21:38:09# Daemon created
+
+2014-05-09 21:38:15# /mnt/inotify/big failed check!
+2014-05-09 21:38:15# old_crc = 0x776ca097 != calc_crc = 0xf346c5d5
+2014-05-09 21:38:21# Daemon created
+
+2014-05-09 21:38:33# Daemon created
+
+2014-05-09 21:38:45# Daemon created
+
+2014-05-09 21:38:51# /mnt/inotify/LIIB_dataPacket_1328673761.txt_11 failed check!
+2014-05-09 21:38:51# old_crc = 0xb387dd49 != calc_crc = 0x7ab8434c
+2014-05-09 21:38:57# Daemon created
+
+2014-05-09 21:39:09# Daemon created
+
+2014-05-09 21:39:18# /mnt/inotify/big failed check!
+2014-05-09 21:39:18# old_crc = 0x776ca097 != calc_crc = 0x66345d4d
+2014-05-09 21:39:22# Daemon created
+
+2014-05-09 21:39:29# /mnt/inotify/LIIB_dataPacket_1328673821.txt_31 failed check!
+2014-05-09 21:39:29# old_crc = 0x4ada8e32 != calc_crc = 0x50056e2d
+2014-05-09 21:39:35# Daemon created
+
+2014-05-09 21:39:47# Daemon created
+
+2014-05-09 21:39:53# /mnt/inotify/LIIB_dataPacket_1328673901.txt_55 failed check!
+2014-05-09 21:39:53# old_crc = 0xe271b077 != calc_crc = 0x5c6ca742
+2014-05-09 21:39:59# Daemon created
+
+2014-05-09 21:40:05# /mnt/inotify/LIIB_dataPacket_1328673701.txt_5 failed check!
+2014-05-09 21:40:05# old_crc = 0x68b62d16 != calc_crc = 0xbd138947
+2014-05-09 21:40:11# Daemon created
+
+2014-05-09 21:40:18# /mnt/inotify/LIIB_dataPacket_1328673901.txt_41 failed check!
+2014-05-09 21:40:18# old_crc = 0xe271b077 != calc_crc = 0x5a1cd24e
+2014-05-09 21:40:23# Daemon created
+
+2014-05-09 21:40:30# /mnt/inotify/LIIB_dataPacket_1328673661.txt_16 failed check!
+2014-05-09 21:40:30# old_crc = 0x26c94f84 != calc_crc = 0x9a999cbe
+2014-05-09 21:40:36# Daemon created
+
+2014-05-09 21:40:42# /mnt/inotify/LIIB_dataPacket_1328673901.txt_5 failed check!
+2014-05-09 21:40:42# old_crc = 0xe271b077 != calc_crc = 0x1d7ca276
+2014-05-09 21:40:48# Daemon created
+
+2014-05-09 21:41:00# Daemon created
+
+2014-05-09 21:41:12# Daemon created
+
+2014-05-09 21:41:18# /mnt/inotify/LIIB_dataPacket_1328673781.txt_58 failed check!
+2014-05-09 21:41:18# old_crc = 0x1c5e9d3d != calc_crc = 0xf663a3d8
+2014-05-09 21:41:24# Daemon created
+
+2014-05-09 21:41:31# /mnt/inotify/LIIB_dataPacket_1328673721.txt_12 failed check!
+2014-05-09 21:41:31# old_crc = 0x6ce8eed5 != calc_crc = 0x7c8af67b
+2014-05-09 21:41:36# Daemon created
+
+2014-05-09 21:41:43# /mnt/inotify/LIIB_dataPacket_1328673661.txt_39 failed check!
+2014-05-09 21:41:43# old_crc = 0x26c94f84 != calc_crc = 0xe7cea2dd
+2014-05-09 21:41:48# Daemon created
+
+2014-05-09 21:41:55# /mnt/inotify/LIIB_dataPacket_1328673721.txt_23 failed check!
+2014-05-09 21:41:55# old_crc = 0x6ce8eed5 != calc_crc = 0x6d0eb0e7
+2014-05-09 21:42:01# Daemon created
+
+2014-05-09 21:42:07# /mnt/inotify/LIIB_dataPacket_1328673781.txt_40 failed check!
+2014-05-09 21:42:07# old_crc = 0x1c5e9d3d != calc_crc = 0x28e0eaef
+2014-05-09 21:42:13# Daemon created
+
+2014-05-09 21:42:19# /mnt/inotify/LIIB_dataPacket_1328673781.txt_13 failed check!
+2014-05-09 21:42:19# old_crc = 0x1c5e9d3d != calc_crc = 0xc77b85b6
+2014-05-09 21:42:25# Daemon created
+
+2014-05-09 21:42:31# /mnt/inotify/LIIB_dataPacket_1328673841.txt_39 failed check!
+2014-05-09 21:42:31# old_crc = 0x118a0cea != calc_crc = 0xf5f8610
+2014-05-09 21:42:37# Daemon created
+
+2014-05-09 21:42:44# /mnt/inotify/LIIB_dataPacket_1328673721.txt_33 failed check!
+2014-05-09 21:42:44# old_crc = 0x6ce8eed5 != calc_crc = 0x5ee1feae
+2014-05-09 21:42:49# Daemon created
+
+2014-05-09 21:42:56# /mnt/inotify/big failed check!
+2014-05-09 21:42:56# old_crc = 0x776ca097 != calc_crc = 0x9e5565d
+2014-05-09 21:43:01# Daemon created
+
+2014-05-09 21:43:13# Daemon created
+
+2014-05-09 21:43:25# Daemon created
+
+2014-05-09 21:43:32# /mnt/inotify/big failed check!
+2014-05-09 21:43:32# old_crc = 0x776ca097 != calc_crc = 0x6b8f099
+2014-05-09 21:43:38# Daemon created
+
+2014-05-09 21:43:44# /mnt/inotify/LIIB_dataPacket_1328673661.txt_36 failed check!
+2014-05-09 21:43:44# old_crc = 0x26c94f84 != calc_crc = 0xc6bc7827
+2014-05-09 21:43:50# Daemon created
+
+2014-05-09 21:43:56# /mnt/inotify/LIIB_dataPacket_1328673721.txt_47 failed check!
+2014-05-09 21:43:56# old_crc = 0x6ce8eed5 != calc_crc = 0xd1afc99b
+2014-05-09 21:44:02# Daemon created
+
+2014-05-09 21:44:08# /mnt/inotify/big failed check!
+2014-05-09 21:44:08# old_crc = 0x776ca097 != calc_crc = 0x69596e19
+2014-05-09 21:44:15# Daemon created
+
+2014-05-09 21:44:21# /mnt/inotify/PMT_dataPacket_1328682761.txt_31 failed check!
+2014-05-09 21:44:21# old_crc = 0x9f6f6b76 != calc_crc = 0xc0d2c4b6
+2014-05-09 21:44:27# Daemon created
+
+2014-05-09 21:44:34# /mnt/inotify/LIIB_dataPacket_1328673721.txt_57 failed check!
+2014-05-09 21:44:34# old_crc = 0x6ce8eed5 != calc_crc = 0x11f0776f
+2014-05-09 21:44:39# Daemon created
+
+2014-05-09 21:44:46# /mnt/inotify/LIIB_dataPacket_1328673781.txt_19 failed check!
+2014-05-09 21:44:46# old_crc = 0x1c5e9d3d != calc_crc = 0xb1ef7749
+2014-05-09 21:44:51# Daemon created
+
+2014-05-09 21:45:04# Daemon created
+
+2014-05-09 21:45:10# /mnt/inotify/LIIB_dataPacket_1328673821.txt_53 failed check!
+2014-05-09 21:45:10# old_crc = 0x4ada8e32 != calc_crc = 0xd8e289f7
+2014-05-09 21:45:16# Daemon created
+
+2014-05-09 21:45:28# Daemon created
+
+2014-05-09 21:45:35# /mnt/inotify/PMT_dataPacket_1328682721.txt_25 failed check!
+2014-05-09 21:45:35# old_crc = 0xfa8c7b5d != calc_crc = 0xe3e00500
+2014-05-09 21:45:40# Daemon created
+
+2014-05-09 21:45:47# /mnt/inotify/LIIB_dataPacket_1328673661.txt_47 failed check!
+2014-05-09 21:45:47# old_crc = 0x26c94f84 != calc_crc = 0xcce1e3de
+2014-05-09 21:45:52# Daemon created
+
+2014-05-09 21:45:54# /mnt/inotify/LIIB_dataPacket_1328673661.txt_19 failed check!
+2014-05-09 21:45:54# old_crc = 0x0 != calc_crc = 0x26c94f84
+2014-05-09 21:46:04# Daemon created
+
+2014-05-09 21:46:17# Daemon created
+
+2014-05-09 21:46:29# Daemon created
+
+2014-05-09 21:46:35# /mnt/inotify/LIIB_dataPacket_1328673781.txt_35 failed check!
+2014-05-09 21:46:35# old_crc = 0x1c5e9d3d != calc_crc = 0x199ac088
+2014-05-09 21:46:41# Daemon created
+
+2014-05-09 21:46:47# /mnt/inotify/big failed check!
+2014-05-09 21:46:47# old_crc = 0x776ca097 != calc_crc = 0x25f359f7
+2014-05-09 21:46:53# Daemon created
+
+2014-05-09 21:46:59# /mnt/inotify/big failed check!
+2014-05-09 21:46:59# old_crc = 0x776ca097 != calc_crc = 0x72d7312c
+2014-05-09 21:47:05# Daemon created
+
+2014-05-09 21:47:17# Daemon created
+
+2014-05-09 21:47:23# /mnt/inotify/PMT_dataPacket_1328682721.txt_38 failed check!
+2014-05-09 21:47:23# old_crc = 0xfa8c7b5d != calc_crc = 0x332d839b
+2014-05-09 21:47:29# Daemon created
+
+2014-05-09 21:47:41# Daemon created
+
+2014-05-09 21:47:48# /mnt/inotify/PMT_dataPacket_1328682721.txt_29 failed check!
+2014-05-09 21:47:48# old_crc = 0xfa8c7b5d != calc_crc = 0xca8017f3
+2014-05-09 21:47:53# Daemon created
+
+2014-05-09 21:48:00# /mnt/inotify/LIIB_dataPacket_1328673721.txt_12 failed check!
+2014-05-09 21:48:00# old_crc = 0x6ce8eed5 != calc_crc = 0x484905fd
+2014-05-09 21:48:05# Daemon created
+
+2014-05-09 21:48:12# /mnt/inotify/big failed check!
+2014-05-09 21:48:12# old_crc = 0x776ca097 != calc_crc = 0x7322f6ae
+2014-05-09 21:48:18# Daemon created
+
+2014-05-09 21:48:24# /mnt/inotify/LIIB_dataPacket_1328673781.txt_29 failed check!
+2014-05-09 21:48:24# old_crc = 0x1c5e9d3d != calc_crc = 0xa244cdf6
+2014-05-09 21:48:30# Daemon created
+
+2014-05-09 21:48:36# /mnt/inotify/LIIB_dataPacket_1328673781.txt_40 failed check!
+2014-05-09 21:48:36# old_crc = 0x1c5e9d3d != calc_crc = 0x6ca9930c
+2014-05-09 21:48:42# Daemon created
+
+2014-05-09 21:48:48# /mnt/inotify/LIIB_dataPacket_1328673781.txt_39 failed check!
+2014-05-09 21:48:48# old_crc = 0x1c5e9d3d != calc_crc = 0x27500eb1
+2014-05-09 21:48:54# Daemon created
+
+2014-05-09 21:49:00# /mnt/inotify/LIIB_dataPacket_1328673761.txt failed check!
+2014-05-09 21:49:00# old_crc = 0xb387dd49 != calc_crc = 0x6611d3c4
+2014-05-09 21:49:06# Daemon created
+
+2014-05-09 21:49:13# /mnt/inotify/LIIB_dataPacket_1328673821.txt_38 failed check!
+2014-05-09 21:49:13# old_crc = 0x4ada8e32 != calc_crc = 0x3e236461
+2014-05-09 21:49:19# Daemon created
+
+2014-05-09 21:49:26# /mnt/inotify/LIIB_dataPacket_1328673761.txt_58 failed check!
+2014-05-09 21:49:26# old_crc = 0xb387dd49 != calc_crc = 0x3149a7c5
+2014-05-09 21:49:31# Daemon created
+
+2014-05-09 21:49:38# /mnt/inotify/LIIB_dataPacket_1328673901.txt_39 failed check!
+2014-05-09 21:49:38# old_crc = 0xe271b077 != calc_crc = 0xbe4b168f
+2014-05-09 21:49:44# Daemon created
+
+2014-05-09 21:49:50# /mnt/inotify/LIIB_dataPacket_1328673701.txt_35 failed check!
+2014-05-09 21:49:50# old_crc = 0x68b62d16 != calc_crc = 0x89f0ff31
+2014-05-09 21:49:56# Daemon created
+
+2014-05-09 21:50:02# fopen failed on /home/zak/tmp/crcs/_crc
+2014-05-09 21:50:04# fopen failed on /home/zak/tmp/crcs/_crc
+2014-05-09 21:50:06# fopen failed on /home/zak/tmp/crcs/_crc
+2014-05-09 21:50:08# Daemon created
+
+2014-05-09 21:50:14# /mnt/inotify/LIIB_dataPacket_1328673821.txt_12 failed check!
+2014-05-09 21:50:14# old_crc = 0x4ada8e32 != calc_crc = 0xd51f2f84
+2014-05-09 21:50:20# Daemon created
+
+2014-05-09 21:50:27# /mnt/inotify/LIIB_dataPacket_1328673821.txt_35 failed check!
+2014-05-09 21:50:27# old_crc = 0x4ada8e32 != calc_crc = 0xa56cc0d5
+2014-05-09 21:50:32# Daemon created
+
+2014-05-09 21:50:39# /mnt/inotify/LIIB_dataPacket_1328673781.txt_44 failed check!
+2014-05-09 21:50:39# old_crc = 0x1c5e9d3d != calc_crc = 0x42c19f77
+2014-05-09 21:50:44# Daemon created
+
+2014-05-09 21:50:51# /mnt/inotify/LIIB_dataPacket_1328673821.txt_4 failed check!
+2014-05-09 21:50:51# old_crc = 0x4ada8e32 != calc_crc = 0xb3b55d4f
+2014-05-09 21:50:56# Daemon created
+
+2014-05-09 21:51:03# /mnt/inotify/LIIB_dataPacket_1328673781.txt_21 failed check!
+2014-05-09 21:51:03# old_crc = 0x1c5e9d3d != calc_crc = 0x1b94c1ed
+2014-05-09 21:51:08# Daemon created
+
+2014-05-09 21:51:15# /mnt/inotify/LIIB_dataPacket_1328673781.txt_27 failed check!
+2014-05-09 21:51:15# old_crc = 0x1c5e9d3d != calc_crc = 0xc8ee50bc
+2014-05-09 21:51:21# Daemon created
+
+2014-05-09 21:51:33# Daemon created
+
+2014-05-09 21:51:39# /mnt/inotify/LIIB_dataPacket_1328673721.txt_26 failed check!
+2014-05-09 21:51:39# old_crc = 0x6ce8eed5 != calc_crc = 0x55867797
+2014-05-09 21:51:45# Daemon created
+
+2014-05-09 21:51:51# /mnt/inotify/big failed check!
+2014-05-09 21:51:51# old_crc = 0x776ca097 != calc_crc = 0x470f8087
+2014-05-09 21:51:57# Daemon created
+
+2014-05-09 21:52:03# /mnt/inotify/big failed check!
+2014-05-09 21:52:03# old_crc = 0x776ca097 != calc_crc = 0xdf18ed3e
+2014-05-09 21:52:09# Daemon created
+
+2014-05-09 21:52:16# /mnt/inotify/LIIB_dataPacket_1328673721.txt_29 failed check!
+2014-05-09 21:52:16# old_crc = 0x6ce8eed5 != calc_crc = 0x339d4265
+2014-05-09 21:52:22# Daemon created
+
+2014-05-09 21:52:28# /mnt/inotify/LIIB_dataPacket_1328673781.txt_38 failed check!
+2014-05-09 21:52:28# old_crc = 0x94edb7d9 != calc_crc = 0x697aaf47
+2014-05-09 21:52:34# Daemon created
+
+2014-05-09 21:52:40# /mnt/inotify/big failed check!
+2014-05-09 21:52:40# old_crc = 0x776ca097 != calc_crc = 0x8164a2c9
+2014-05-09 21:52:46# Daemon created
+
+2014-05-09 21:52:53# /mnt/inotify/LIIB_dataPacket_1328673781.txt_2 failed check!
+2014-05-09 21:52:53# old_crc = 0x1c5e9d3d != calc_crc = 0xfd565789
+2014-05-09 21:52:58# Daemon created
+
+2014-05-09 21:53:04# /mnt/inotify/LIIB_dataPacket_1328673761.txt_34 failed check!
+2014-05-09 21:53:04# old_crc = 0xb387dd49 != calc_crc = 0xf56bc247
+2014-05-09 21:53:10# Daemon created
+
+2014-05-09 21:53:17# /mnt/inotify/LIIB_dataPacket_1328673821.txt_3 failed check!
+2014-05-09 21:53:17# old_crc = 0x4ada8e32 != calc_crc = 0xb70dcd3b
+2014-05-09 21:53:22# Daemon created
+
+2014-05-09 21:53:29# /mnt/inotify/LIIB_dataPacket_1328673781.txt_29 failed check!
+2014-05-09 21:53:29# old_crc = 0x1c5e9d3d != calc_crc = 0x9be1f90a
+2014-05-09 21:53:34# Daemon created
+
+2014-05-09 21:53:46# Daemon created
+
+2014-05-09 21:53:53# /mnt/inotify/big failed check!
+2014-05-09 21:53:53# old_crc = 0x776ca097 != calc_crc = 0x97f7d969
+2014-05-09 21:53:58# Daemon created
+
+2014-05-09 21:54:05# /mnt/inotify/LIIB_dataPacket_1328673701.txt_7 failed check!
+2014-05-09 21:54:05# old_crc = 0x68b62d16 != calc_crc = 0xa99bed77
+2014-05-09 21:54:10# Daemon created
+
+2014-05-09 21:54:24# Daemon created
+
