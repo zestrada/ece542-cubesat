@@ -26,6 +26,13 @@ flash:
 	dd if=./tmpKERNEL of=${FLASHIMG} conv=notrunc
 	rm -f tmpKERNEL
 
+#A kernel without out U-boot script
+noprotect:
+	dd if=/dev/zero of=${FLASHIMG} bs=1M count=64
+	cat ${KERNEL} ${KERNEL} ${KERNEL} > ./tmpKERNEL
+	dd if=./tmpKERNEL of=${FLASHIMG} conv=notrunc
+	rm -f tmpKERNEL
+
 run:
 	printf "Initrd stored at: 0x%X\n" `expr $$(stat -c%s ${UBOOT}) + 65536`
 	printf "kernel size: %x\n" `stat -c\%s ${KERNEL}`
