@@ -3,9 +3,9 @@
 
 #Global Variables
 FLASH_ADDR=0x34000000
-BOOT_ARGS="console=ttyAMA0"
+BOOT_ARGS="console=ttyAMA0 panic=5"
 #Obtained from printf "0x%X\n" `stat -c%s ./script.img`
-KERNEL_OFFSET=0x000003D5
+KERNEL_OFFSET=0x003DA
 #Easier than forcing u-boot to parse iminfo
 KERNEL_SIZE=0x1a8300
 NUM_IMAGES=3
