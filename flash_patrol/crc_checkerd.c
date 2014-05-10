@@ -41,11 +41,11 @@ int check_file_crc(FILE* log_fp)
 		strncpy(oldcrcfile,crcdir,PATH_MAX);
 		strncat(oldcrcfile,entry->d_name,PATH_MAX);
 		strncat(oldcrcfile,"_crc",PATH_MAX);
-		LOG_MSG("oldcrcfile: %s\n", oldcrcfile);
+		//LOG_MSG("oldcrcfile: %s\n", oldcrcfile);
 
 		strncpy(calccrcfile,directory,PATH_MAX);
 		strncat(calccrcfile,entry->d_name,PATH_MAX);
-		LOG_MSG("calccrcfile: %s\n", calccrcfile);
+		//LOG_MSG("calccrcfile: %s\n", calccrcfile);
 
 		calc_crc_fp = fopen(calccrcfile, "r");
 		if(calc_crc_fp == NULL)
@@ -72,11 +72,12 @@ int check_file_crc(FILE* log_fp)
 
 		if(old_crc != calc_crc) 
 		{
+      LOG_MSG("%s failed check!\n",calccrcfile);
 			LOG_MSG("old_crc = 0x%x != calc_crc = 0x%x\n", old_crc, calc_crc);
 		}
 		else 
 		{
-			LOG_MSG("crc's matched\n");	
+			//LOG_MSG("crc's matched\n");	
 		}
 
 		fclose(calc_crc_fp);
@@ -143,19 +144,18 @@ int main(int argc, char* argv[])
     exit(EXIT_FAILURE);
   }
 
-  // Close stdin. stdout and stderr
-  close(STDIN_FILENO);
-  close(STDOUT_FILENO);
-  close(STDERR_FILENO);
-
   // Open a log file in write mode.
-
   log_fp = fopen (crclog, "w+");
   if(log_fp < 0)
   {
     printf("fopen failed\n");
     exit(EXIT_FAILURE);
   }
+
+  // Close stdin. stdout and stderr
+  close(STDIN_FILENO);
+  close(STDOUT_FILENO);
+  close(STDERR_FILENO);
 
   fprintf(log_fp, "Daemon created\n\n");
   fflush(log_fp);
