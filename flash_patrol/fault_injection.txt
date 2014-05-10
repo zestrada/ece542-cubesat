@@ -85,3 +85,24 @@ zak@mustang0:~$ df -i $_
 Filesystem     Inodes IUsed IFree IUse% Mounted on
 /dev/loop0      32768    11 32757    1% /mnt/crapfs
 ---
+
+for posterity:
+---
+zak@mustang0:~/github/ece542$ cat ~/reset_testfs.sh 
+#!/bin/bash
+DISK=/dev/sdb1
+sudo umount /mnt/inotify
+sudo mkfs.ext2 -m 0 -F ${DISK}
+sudo mount ${DISK} /mnt/inotify
+sudo chown zak /mnt/inotify
+---
+
+and the overall results:
+---
+zak@mustang0:~/github/ece542/flash_patrol/data$ grep Daemon *log|wc -l
+402
+zak@mustang0:~/github/ece542/flash_patrol/data$ grep failed *log|wc -l
+337
+---
+
+337/402 = 83%
