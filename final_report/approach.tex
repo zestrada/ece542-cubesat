@@ -30,7 +30,8 @@ considered here is bit corruption in the Linux kernel that is present at boot
 time.  Currently, there is only one copy of the Linux kernel and if it fails to
 boot, the entire C\&DH system will experience catastrophic failure.  The
 solution described below is designed to reduce that single point of failure to a
-much smaller region of code.
+much smaller region of code.  When considering the reliability of U-boot itself,
+the C\&DH board already uses the MLO bootloader with redundant U-Boot images.
 
 \subsubsection{Test Environment}
 In order to develop and test the boot protection system in a controlled
@@ -47,10 +48,24 @@ working on similar problems.  The versatilepb board in QEMU has a virtual flash
 drive that is memory mapped to address 0x3400000, which we use to store the
 contents of the OS kernel images and the boot protection scheme.
 
+\subsubsection{Implementation}
 U-Boot has built-in support for CRC-32, and every image (e.g. application, OS,
 script, filesystem, etc...) is stored in a format that contains this checksum.
-Therefore, one can use this built-in functionality to validate checksums.  
+Therefore, one can use this built-in functionality to validate checksums.
+U-Boot can be configured with a script interpreter that will run pre-complied
+scripts that are very similar to typical Unix shell scripts. Using this
+functionality, we developed a script that will check kernel images before
+booting. The script iterates through multiple kernel images until it finds one
+with a valid CRC checksum and boots that one.  If not valid checksums are found,
+it will attempt to boot the first image.  
 
+Figure \label{fig:mem_map} shows the memory map of the boot protection scheme
+used in the QEMU test environment.  In this case, the script is 914B and each
+kernel image is 1.7MB.  Without this scheme, the Linux kernel image was a
+single-point-of-failure during the boot process (or one could boot a faulty
+kernel and have other failures at a later time).  The script effectively reduces
+the area vulnerable to bit errors by three orders of magnitude (1.7MB/914B =
+1950).
 
 %(1.7 megabytes) / (914 bytes) = 1950.30547
 
