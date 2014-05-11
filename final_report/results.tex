@@ -6,7 +6,7 @@ One surprising result of this simulation involved the \texttt{num\_replicas} par
 
 As the probability of an SEU event in this model affecting a kernel was essentially zero, we recognized that controlling SEFI events was the key toward maintaining reliable operation.  In order to accomplish this goal, we expanded our model to include $n$ independent devices, each containing $m$ copies of the kernel.  Each device has its own controller hardware and fails independently, so the system is able to handle $n-1$ SEFIs without failing.  We also focused on testing the periodic reboot parameter discussed in Section \ref{sec:buildingmodel}.
 
-The results of this simulation are shown in Figure \ref{fig:reliability} and Table \ref{tab:reliability}.  The 95\% confidence interval width is plotted for each point in Figure \ref{fig:reliability} and is also included in Table \ref{tab:reliability}
+The results of this simulation are shown in Figure \ref{fig:reliability} and Table \ref{tab:reliability}.  The 95\% confidence interval width is plotted for each point in Figure \ref{fig:reliability} and is also included in Table \ref{tab:reliability}.
 
 \begin{figure}[width = 0.5\textwidth]
 \centering
