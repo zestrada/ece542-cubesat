@@ -1,1 +1,22 @@
 \section{Project Insights}\label{sec:insights}
+
+%MERGE ANCHOR
+\subsection{Further Recommendations}
+Based on other observations during this project and past experience, we would
+like to make the following recommendations to the IlliniSat team.
+
+\subsubsection{Reboot on panic} By default, when the Linux kernel fails, it
+issues a ``kernel panic'' message and halts the system.  While IlliniSat's
+watchdog should detect this scenario, the kernel has the ability to
+automatically reboot on panic.  Enabling this can help ensure the system will
+reboot in the event of a transient kernel error. The system will either reboot
+faster than waiting for a watchdog timeout since the kernel will issue the
+reboot almost immediately after failure or it will still reboot in the unlikely
+event of a watchdog failure.
+
+\subsubsection{OOM-killer} When the system is low on main memory, the
+Out-Of-Memory killer (OOM-killer) will kill a process based on some heuristics.
+However, this can have undesirable consequences if it kills certain processes.
+We recommend that IlliniSat either be mindful of this and tune the OOM-killer
+such that processes are killed in an acceptable order or that the kernel be set
+to panic on OOM~\cite{oracle_oom}.
