@@ -75,7 +75,7 @@ U-Boot can be configured with a script interpreter that will run pre-complied
 scripts that are very similar to typical Unix shell scripts. Using this
 functionality, we developed a script that will check kernel images before
 booting. The script iterates through multiple kernel images until it finds one
-with a valid CRC checksum and boots that one.  If not valid checksums are found,
+with a valid CRC checksum and boots that one.  If no valid checksums are found,
 it will attempt to boot the first image.  
 
 Figure \label{fig:mem_map} shows the memory map of the boot protection scheme
