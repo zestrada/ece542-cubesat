@@ -63,7 +63,7 @@ injections against the protection script for future work.
 %TODO: wonder what would happen if we bind mounted the directory and injected
 %into that...
 The flash patrol daemon monitors a Linux filesystem.  However, since the
-\texttt{inotify} subsystem sends events based on file updates, we cannot simply
+inotify subsystem sends events based on file updates, we cannot simply
 inject into the files in the directory being watched by inotify (as this would
 force a crc update). Therefore, we use our fault injection utility to inject
 into the actual block device (e.g.  \texttt{/dev/sdb1}).  The files in the
