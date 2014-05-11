@@ -36,7 +36,7 @@ Among these failure modes, we chose to model SEU and SEFI failures for the flash
 
 We chose to intentionally omit SELs from the flash model because they only appear to be activated at higher ion energies; one example 1GB flash memory experienced SEL effects between 43 and 53 MeV $\cdot$ cm$^2$/mg \cite{Langley2004SEE}, which indicates that latchup is unlikely to occur \cite{Schwank2013Radiation}.  Similarly, TID testing often reveals that the necessary dose to cause failure in a chip is greater than 50kRad \cite{Oldham2008TID}, which is over double the dose that a CubeSat's C\&DH board is likely to experience over a 1-year mission \cite{Likar2010Novel}.  While multiple-bit errors could occur in the flash system, we assume that their absence in papers discussing SEE effects indicates that they are not a major concern for nonvolatile memory.  
 
-For the RAM system, we model an SEFI as either a word error or a device error; the two failure modes primarily differ in that a word error may not actually cause the system to fail, while a device failure is guaranteed to cause error.  Additionally, the two failure modes have different error rates \cite{Gliem2012Memory}.  In the RAM system, experimental TID data indicates that device failure is not a major concern over this mission's lifetime \cite{Herrmann2013InSitu}.
+For the RAM system, we model an SEFI as either a word error or a device error; the two failure modes primarily differ in that a word error may not actually cause the system to fail, while a device failure is guaranteed to cause error.  Additionally, the two failure modes have different error rates \cite{Gliem2012memory}.  In the RAM system, experimental TID data indicates that device failure is not a major concern over this mission's lifetime \cite{Herrmann2013InSitu}.
  
 \subsection{Building the Fault Model in M\"obius}\label{sec:buildingmodel}
 
@@ -44,7 +44,7 @@ We chose to motivate the development of the boot protection script by developing
 
 We choose to measure reliability as the relevant dependability metric because the continuous operation of the satellite is critical to the IlliniSat team; furthermore, the failure that we are modeling is catastrophic.  As the satellite cannot recover from any failure of this type, it does not make sense to measure the system's availability.
 
-The parameters used in this model are shown in Table \ref{tab:flashparameters} and Table \ref{tab:ramparameters}, and the two main components of the model are shown in Figure \ref{fig:flashsan} and \ref{fig:ramsan}.  All events are modeled as exponentially distributed unless otherwise indicated.  SEU error rates indicated in either table are listed per bit and were multiplied by 512MB in the M\"obius model.  For the flash model, we used the parameters given in \cite{Oldham2008TID} for the Micron memory, as the memory included on the C\&DH board is manufactured by Micron.  For the RAM model, we chose the largest error rate provided in \cite{Gliem2012Memory} for each category of error in order to be conservative.  All rates have units of per day ($d^{-1}$) unless otherwise specified.
+The parameters used in this model are shown in Table \ref{tab:flashparameters} and Table \ref{tab:ramparameters}, and the two main components of the model are shown in Figure \ref{fig:flashsan} and \ref{fig:ramsan}.  All events are modeled as exponentially distributed unless otherwise indicated.  SEU error rates indicated in either table are listed per bit and were multiplied by 512MB in the M\"obius model.  For the flash model, we used the parameters given in \cite{Oldham2008TID} for the Micron memory, as the memory included on the C\&DH board is manufactured by Micron.  For the RAM model, we chose the largest error rate provided in \cite{Gliem2012memory} for each category of error in order to be conservative.  All rates have units of per day ($d^{-1}$) unless otherwise specified.
 
 \begin{table*}[width = 0.5\textwidth]
 \centering
@@ -67,9 +67,9 @@ The parameters used in this model are shown in Table \ref{tab:flashparameters} a
 \hline
 {\bf Parameter Name} & {\bf Description} & {\bf Value} & {\bf Source}\\
 \hline
-\texttt{seu\_rate} & SEU event rate & $1.4 \cdot 10^{-9}$ & \cite{Gliem2012Memory} \\
-\texttt{word\_sefi\_rate} & SEFI event rate for word errors & $5.5 \cdot 10^{-15}$ & \cite{Gliem2012Memory} \\
-\texttt{device\_sefi\_rate} & SEFI event rate for device errors & $3.8 \cdot 10^{-2}$ & \cite{Gliem2012Memory} \\
+\texttt{seu\_rate} & SEU event rate & $1.4 \cdot 10^{-9}$ & \cite{Gliem2012memory} \\
+\texttt{word\_sefi\_rate} & SEFI event rate for word errors & $5.5 \cdot 10^{-15}$ & \cite{Gliem2012memory} \\
+\texttt{device\_sefi\_rate} & SEFI event rate for device errors & $3.8 \cdot 10^{-2}$ & \cite{Gliem2012memory} \\
 \texttt{watchdog\_reboot\_rate} & Time needed for the watchdog to reboot the system & 5 minutes & Estimate.\\
 \texttt{random\_failure\_rate} & Rate of other random failures & 0.01 & Estimate.\\
 \hline
