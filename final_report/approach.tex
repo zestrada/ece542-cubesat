@@ -78,7 +78,7 @@ booting. The script iterates through multiple kernel images until it finds one
 with a valid CRC checksum and boots that one.  If no valid checksums are found,
 it will attempt to boot the first image.  
 
-Figure \label{fig:mem_map} shows the memory map of the boot protection scheme
+Figure \ref{fig:mem_map} shows the memory map of the boot protection scheme
 used in the QEMU test environment.  In this case, the script is 914B and each
 kernel image is 1.7MB.  Without this scheme, the Linux kernel image was a
 single-point-of-failure during the boot process (or one could boot a faulty
