@@ -192,7 +192,7 @@ bool ram_systemSAN::watchdog_rebootActivity::Enabled(){
 }
 
 double ram_systemSAN::watchdog_rebootActivity::DeterministicParamValue(){
-  return 3.47e-3;
+  return 288;
   return 1.0;  // default rate if none is specified
 }
 
@@ -209,7 +209,7 @@ bool ram_systemSAN::watchdog_rebootActivity::ReactivationFunction(){
 }
 
 double ram_systemSAN::watchdog_rebootActivity::SampleDistribution(){
-  return 3.47e-3;
+  return 288;
 }
 
 double* ram_systemSAN::watchdog_rebootActivity::ReturnDistributionParameters(){
