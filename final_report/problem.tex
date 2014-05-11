@@ -32,22 +32,23 @@ schedule tasks.
 \begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{images/state_machine}
-  \caption{State diagram for IlliniSat-2, courtesy Alex Ghosh and Bindu
-  Jagannatha. The main function of the C\&DH system is to operate the satellite
-  through this state diagram. After launch and deploy, the system starts in the
-  detumble state (which can also be reentered in an emergency situation): it
-  calculates its attitude and points to the sun to charge the battery.  Idle:
-  this is the mode where the satellite works through its mission schedule and
-  ensures it has the proper attitude for data collection, the system can remain
-  in this state to charge its battery.  Science modes: this is the normal
-  operating mode of the satellite where the C\&DH subsystem collects data, and
-  if there is not enough power it will only run a subset of the experiments.
-  Communication modes: this is when a radio is active and communicating with a
-  ground station. Slew mode: C\&DH relinquishes control to the ADCS when it
-  detects that the satellite may need repositioning.  Safe mode: low-power
+  \caption{The main function of the C\&DH system is to operate the satellite
+  through this state diagram. After \textbf{launch} and \textbf{deploy}, the
+  system starts in the \textbf{detumble} state (which can also be reentered in
+  an emergency situation): it calculates its attitude and points to the sun to
+  charge the battery.  \textbf{Idle:} this is the mode where the satellite works
+  through its mission schedule and ensures it has the proper attitude for data
+  collection, the system can remain in this state to charge its battery.
+  \textbf{Science modes:} this is the normal operating mode of the satellite
+  where the C\&DH subsystem collects data, and if there is not enough power it
+  will only run a subset of the experiments.  \textbf{Communication modes:} this
+  is when a radio is active and communicating with a ground station.
+  \textbf{Slew mode:} C\&DH relinquishes control to the ADCS when it detects
+  that the satellite may need repositioning.  \textbf{Safe mode:} low-power
   default mode when a fault is detected, the satellite will broadcast an error
-  code to the ground station.  Shutdown: all non-crucial systems are shutdown
-  when battery power is critically low.  }\label{fig:state_machine}
+  code to the ground station.  \textbf{Shutdown:} all non-crucial systems are
+  shutdown when battery power is critically low. Figure courtesy Alex Ghosh and
+  Bindu Jagannatha. }\label{fig:state_machine}
   %FIXME: finish writing this
 \end{figure}
 

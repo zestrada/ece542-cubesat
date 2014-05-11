@@ -243,8 +243,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="694.89454"
-     inkscape:cy="352.13508"
+     inkscape:cx="441.34625"
+     inkscape:cy="348.09447"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -279,81 +279,84 @@
        height="165.71428"
        x="95.714272"
        y="345.50507" />
-    <text
-       xml:space="preserve"
-       style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Century Schoolbook L;-inkscape-font-specification:Century Schoolbook L"
-       x="353.76321"
-       y="417.9397"
-       id="text3675"
-       sodipodi:linespacing="110%"><tspan
-         sodipodi:role="line"
-         id="tspan3677"
-         x="361.39017"
-         y="417.9397">TI AM335x </tspan><tspan
-         sodipodi:role="line"
+    <g
+       id="g2905">
+      <text
+         sodipodi:linespacing="110%"
+         id="text3675"
+         y="417.9397"
          x="353.76321"
-         y="478.4397"
-         id="tspan3679">Cortex A8</tspan></text>
-    <g
-       transform="translate(-128.57142,-158.57145)"
-       id="g3725">
-      <rect
-         y="275.21936"
-         x="224.28569"
-         height="165.71428"
-         width="251.4286"
-         id="rect3673-2"
-         style="fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-      <text
-         sodipodi:linespacing="110%"
-         id="text3675-7"
-         y="347.26901"
-         x="348.76248"
          style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Century Schoolbook L;-inkscape-font-specification:Century Schoolbook L"
          xml:space="preserve"><tspan
-           id="tspan3679-2"
-           y="347.26901"
-           x="356.38943"
-           sodipodi:role="line">512MB </tspan><tspan
-           y="407.76901"
+           y="417.9397"
+           x="361.39017"
+           id="tspan3677"
+           sodipodi:role="line">TI AM335x </tspan><tspan
+           id="tspan3679"
+           y="478.4397"
+           x="353.76321"
+           sodipodi:role="line">Cortex A8</tspan></text>
+      <g
+         id="g3725"
+         transform="translate(-128.57142,-158.57145)">
+        <rect
+           style="fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect3673-2"
+           width="251.4286"
+           height="165.71428"
+           x="224.28569"
+           y="275.21936" />
+        <text
+           xml:space="preserve"
+           style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Century Schoolbook L;-inkscape-font-specification:Century Schoolbook L"
            x="348.76248"
-           sodipodi:role="line"
-           id="tspan3723">Flash</tspan></text>
-    </g>
-    <g
-       transform="translate(137.14286,-158.57145)"
-       id="g3725-6">
-      <rect
-         y="275.21936"
-         x="224.28569"
-         height="165.71428"
-         width="251.4286"
-         id="rect3673-2-8"
-         style="fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-      <text
-         sodipodi:linespacing="110%"
-         id="text3675-7-5"
-         y="347.26901"
-         x="348.76248"
-         style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Century Schoolbook L;-inkscape-font-specification:Century Schoolbook L"
-         xml:space="preserve"><tspan
-           id="tspan3679-2-8"
            y="347.26901"
-           x="356.38943"
-           sodipodi:role="line">512MB </tspan><tspan
-           y="407.76901"
+           id="text3675-7"
+           sodipodi:linespacing="110%"><tspan
+             sodipodi:role="line"
+             x="356.38943"
+             y="347.26901"
+             id="tspan3679-2">512MB </tspan><tspan
+             id="tspan3723"
+             sodipodi:role="line"
+             x="348.76248"
+             y="407.76901">Flash</tspan></text>
+      </g>
+      <g
+         id="g3725-6"
+         transform="translate(137.14286,-158.57145)">
+        <rect
+           style="fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect3673-2-8"
+           width="251.4286"
+           height="165.71428"
+           x="224.28569"
+           y="275.21936" />
+        <text
+           xml:space="preserve"
+           style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Century Schoolbook L;-inkscape-font-specification:Century Schoolbook L"
            x="348.76248"
-           sodipodi:role="line"
-           id="tspan3723-9">DDR3</tspan></text>
+           y="347.26901"
+           id="text3675-7-5"
+           sodipodi:linespacing="110%"><tspan
+             sodipodi:role="line"
+             x="356.38943"
+             y="347.26901"
+             id="tspan3679-2-8">512MB </tspan><tspan
+             id="tspan3723-9"
+             sodipodi:role="line"
+             x="348.76248"
+             y="407.76901">DDR3</tspan></text>
+      </g>
+      <path
+         id="path3779"
+         d="m 221.42857,272.36218 0,80"
+         style="color:#000000;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <path
+         id="path3781"
+         d="m 487.14285,356.6479 0,-84.28572"
+         style="color:#000000;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     </g>
-    <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 221.42857,272.36218 0,80"
-       id="path3779" />
-    <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 487.14285,356.6479 0,-84.28572"
-       id="path3781" />
     <path
        style="color:#000000;fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#Arrow1Mstart);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        d="M 35.145728,56.079368 91.71427,112.64791"
@@ -491,58 +494,62 @@
        id="rect5749-7-9"
        style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:12.00000034, 6.00000017;stroke-dashoffset:0" />
     <g
-       id="g5910"
-       transform="translate(-45.145282,2.0671348)">
-      <path
-         id="path5847"
-         d="m -483.42857,276.93361 91.42857,0"
-         style="color:#000000;fill:none;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:12, 6;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <text
-         sodipodi:linespacing="110%"
-         id="text5871"
-         y="271.21936"
-         x="-375.71429"
-         style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-         xml:space="preserve"><tspan
-           style="font-size:40px"
+       id="g2893"
+       transform="translate(0,-41.12018)">
+      <g
+         transform="translate(-45.145282,2.0671348)"
+         id="g5910">
+        <path
+           style="color:#000000;fill:none;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:12, 6;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           d="m -483.42857,276.93361 91.42857,0"
+           id="path5847" />
+        <text
+           xml:space="preserve"
+           style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+           x="-375.71429"
            y="271.21936"
+           id="text5871"
+           sodipodi:linespacing="110%"><tspan
+             sodipodi:role="line"
+             id="tspan5873"
+             x="-375.71429"
+             y="271.21936"
+             style="font-size:40px">Protected by</tspan><tspan
+             sodipodi:role="line"
+             x="-375.71429"
+             y="315.21936"
+             id="tspan5875"
+             style="font-size:40px">Flash Patrol Daemon</tspan></text>
+        <path
+           style="color:#000000;fill:none;stroke:#ff0000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:12, 6;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           d="m -483.42857,379.47359 91.42857,0"
+           id="path5847-9" />
+        <text
+           xml:space="preserve"
+           style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
            x="-375.71429"
-           id="tspan5873"
-           sodipodi:role="line">Protected by</tspan><tspan
-           style="font-size:40px"
-           id="tspan5875"
-           y="315.21936"
-           x="-375.71429"
-           sodipodi:role="line">Flash Patrol Daemon</tspan></text>
-      <path
-         id="path5847-9"
-         d="m -483.42857,379.47359 91.42857,0"
-         style="color:#000000;fill:none;stroke:#ff0000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:12, 6;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <text
-         sodipodi:linespacing="110%"
-         id="text5871-4"
-         y="373.75934"
-         x="-375.71429"
-         style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-         xml:space="preserve"><tspan
-           style="font-size:40px"
            y="373.75934"
-           x="-375.71429"
-           id="tspan5873-8"
-           sodipodi:role="line">Protected by</tspan><tspan
-           style="font-size:40px"
-           id="tspan5875-2"
-           y="417.75934"
-           x="-375.71429"
-           sodipodi:role="line">Boot Protection Scheme</tspan></text>
+           id="text5871-4"
+           sodipodi:linespacing="110%"><tspan
+             sodipodi:role="line"
+             id="tspan5873-8"
+             x="-375.71429"
+             y="373.75934"
+             style="font-size:40px">Protected by</tspan><tspan
+             sodipodi:role="line"
+             x="-375.71429"
+             y="417.75934"
+             id="tspan5875-2"
+             style="font-size:40px">Boot Protection Scheme</tspan></text>
+      </g>
+      <rect
+         ry="16.106607"
+         y="232.36218"
+         x="-579.14288"
+         height="211.4286"
+         width="621.42859"
+         id="rect5908"
+         style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
     </g>
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect5908"
-       width="621.42859"
-       height="211.4286"
-       x="-579.14288"
-       y="232.36218"
-       ry="16.106607" />
   </g>
 </svg>
