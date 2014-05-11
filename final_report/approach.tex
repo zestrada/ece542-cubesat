@@ -65,4 +65,45 @@ Therefore, one can use this built-in functionality to validate checksums.
 \end{figure}
 
 %END BOOT - MERGE ANCHOR
-\subsection{Flash Patrol Read Daemon}
+\subsection{Flash Patrol Daemon}
+The flash patrol daemon watches the filesystem that is on the device's flash memory and 
+generates CRCs on each creation or modification of a file. The inotify API allows the daemon
+to monitor any and all events to individual files or within selected directories using a series
+of system calls. Inotify is accessed using a file descriptor (fd) that is passed back after initialization. 
+Using this fd, we are able to add files and directories into the inotify ``watch list.''
+The events can then be accessed by reading the inotify fd. However, since this 
+mission calls for low power consumption, a naive polling implementation would not be ideal.
+
+Instead, we have used the select() function to implement a signal-based approach. This function
+will only return once a signal has been sent that indicates that the inotify fd has been used.
+Once we have returned, we know that there is an event that we need to process. We iterate
+through all of the events that we get from the read of the inotify fd and process them all separately.
+For all file creations and modifications in the currently watched directory, we generate a 32-bit CRC 
+for the created/modified file and then store this CRC in a new file. By using CRC-32 we are
+able to detect all 1-bit errors and burst errors that are less than 32 bits apart. This checksum is
+relatively simple, but still gives us decent error detection. Since we are conscious about the amount
+of time we spend on computations, we thought CRC-32 would fit perfectly. 
+
+\subsection{CRC Checker Daemon}
+The CRC checker daemon is the complement daemon to the flash patrol daemon. The flash
+patrol daemon watches the filesystem and creates CRCs, while the CRC checker periodically
+parses the directories that inotify is watching and checks the generated CRCs. The daemon will 
+sleep for a predefined amount of time and then parse the watched directories. To check the CRCs
+the daemon will recompute the CRC for each one of the files and then check that CRC against the
+one that was created earlier by the flash patrol daemon. The two daemons use the exact same
+CRC-32 generation function, so the daemon will be able to detect errors that occur in the 
+files. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
