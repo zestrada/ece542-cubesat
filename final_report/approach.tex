@@ -93,7 +93,9 @@ The parameters used in this model are shown in Table \ref{tab:flashparameters} a
 \label{fig:ramsan}
 \end{figure*}
 
-The flash SAN's operation is guided by the presence of tokens in two places: \texttt{replicas\_available} and \texttt{devices\_available}.
+%The flash SAN's operation is guided by the presence of tokens in two places: \texttt{replicas\_available} and \texttt{devices\_available}.
+
+We assume that each kernel image takes up approximately 10MB and that the RAM system uses 128 MB for the purpose of computing the chance that a random error affects a kernel.
 
 \subsection{Boot Protection}
 
