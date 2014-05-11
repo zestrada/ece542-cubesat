@@ -1,5 +1,17 @@
 \section{Approach}\label{sec:approach}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/block_diagram}
+  \caption{The system under consideration is based on a MitySOM-335x
+  board, containing a Cortex A8 and peripherals (for brevity, only the memory
+  and flash device are shown).  The \textit{flash patrol daemon} is designed to
+  detect errors on the filesystem.  The \textit{boot protection scheme} is
+  designed to detect and recover from errors in the region of the device used
+  for booting.  We note that an SD card slot is available for use as a redundant
+  storage device.}\label{fig:block_diagram}
+\end{figure}
+
 \subsection{Developing a Fault Model}\label{sec:developingmodel}
 
 After discussing the boot reliability problem with the IlliniSat team, we decided to develop a fault model that realistically represented the threat of cosmic ray related failures in space.  We chose to model the system as two component subsystems: the storage (or flash) subsystem and the execution (or RAM) subsystem.  A failure in the flash subsystem indicates that the flash memory that contains the operating system kernel is no longer correct or that the flash memory is unable to correctly respond to read or write requests.  A failure in the RAM subsystem indicates that the operating system has encountered a fatal error and must be rebooted by the watchdog timer.  The system has failed when both subsystems have failed simultaneously; the failure of the RAM subsystem causes the system to reboot, while the failure of the flash subsystem means that no valid operating system kernels exist to boot.  Note that we do not consider application-level crashes or failures in this model.
@@ -10,7 +22,7 @@ Our literature review revealed the following failure modes for each of the syste
 \begin{itemize}
   \item {\bf Single Event Upset (SEU):} This failure mode occurs when a cosmic ray strikes a single bit in a memory, causing it to change \cite{Gerardin2010Present}.  SEUs are part of a class of faults called Single Event Effects (SEEs).  SEE testing has been standardized \cite{Schwank2013Radiation} and many experimental studies have measured the SEU error rate for different devices \cite{Langley2004SEE, Oldham2008TID}.  SEUs in non-volatile flash cannot be repaired by power cycle and require error correction and detection systems to provide additional reliability.
   \item {\bf Single Event Latchup (SEL):} This failure mode causes a high operating current in the device that could eventually permanently damage the chip.  One study that measures SEL resistance in a chip is \cite{Langley2004SEE}.
-  \item {\bf Single Event Functional Interrupt (SEFI):} This failure mode occurs when the memory's control circuitry is struck by a cosmic ray, causing it to transition to an undefined state \cite{Langley2004SEE}.  SEFIs may generally be repaired by either attempting to repeat the desired operation or by power-cycling the controller to place it into a known state \cite{Gerardin2010Present}.
+  \item {\bf Single Event Functional Interrupt (SEFI):} This failure mode occurs when the memory's control circuitry is struck by a cosmic ray, causing it to transition to an undefined state~\cite{Langley2004SEE}.  SEFIs may generally be repaired by either attempting to repeat the desired operation or by power-cycling the controller to place it into a known state~\cite{Gerardin2010Present}.
   \item {\bf Total Ionizing Dose (TID):} As cosmic rays strike a device over time, the device may degrade, causing reduced performance or failure \cite{Gerardin2010Present}.  TID testing has also been performed in the laboratory for various devices \cite{Oldham2008TID}.  TID damage is permanent.
 \end{itemize}
 \subsubsection{RAM System}\label{sec:rammodel}
