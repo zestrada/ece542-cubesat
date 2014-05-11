@@ -75,7 +75,7 @@
 					<string id="4">3.0</string>
 					<string id="5">1</string>
 					<string id="6">n^x</string>
-					<string id="7">10.0</string>
+					<string id="7">0.1</string>
 				</vector>
 				<vector id="e">
 					<string id="0">Fixed Value</string>
@@ -96,9 +96,9 @@
 				</vector>
 				<vector id="g">
 					<string id="0">1.0</string>
-					<string id="1">10.0</string>
-					<string id="2">100.0</string>
-					<string id="3">1000.0</string>
+					<string id="1">0.1</string>
+					<string id="2">0.010000000000000002</string>
+					<string id="3">0.0010000000000000002</string>
 				</vector>
 				<vector id="g">
 					<string id="0">128.0</string>

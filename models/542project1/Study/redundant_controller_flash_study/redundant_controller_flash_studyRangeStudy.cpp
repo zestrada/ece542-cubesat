@@ -112,15 +112,15 @@ void redundant_controller_flash_studyRangeStudy::SetValues_power_cycle_rate() {
   power_cycle_rateValues[0] = 1.0;
   power_cycle_rateValues[1] = 1.0;
   power_cycle_rateValues[2] = 1.0;
-  power_cycle_rateValues[3] = 10.0;
-  power_cycle_rateValues[4] = 10.0;
-  power_cycle_rateValues[5] = 10.0;
-  power_cycle_rateValues[6] = 100.0;
-  power_cycle_rateValues[7] = 100.0;
-  power_cycle_rateValues[8] = 100.0;
-  power_cycle_rateValues[9] = 1000.0;
-  power_cycle_rateValues[10] = 1000.0;
-  power_cycle_rateValues[11] = 1000.0;
+  power_cycle_rateValues[3] = 0.1;
+  power_cycle_rateValues[4] = 0.1;
+  power_cycle_rateValues[5] = 0.1;
+  power_cycle_rateValues[6] = 0.010000000000000002;
+  power_cycle_rateValues[7] = 0.010000000000000002;
+  power_cycle_rateValues[8] = 0.010000000000000002;
+  power_cycle_rateValues[9] = 0.0010000000000000002;
+  power_cycle_rateValues[10] = 0.0010000000000000002;
+  power_cycle_rateValues[11] = 0.0010000000000000002;
 }
 
 
