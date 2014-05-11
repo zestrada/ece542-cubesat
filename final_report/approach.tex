@@ -121,7 +121,8 @@ Instead, we have used the select() function to implement a signal-based approach
 will only return once it has received a signal that indicates that the inotify fd has been used.
 Once the select function returns, we know that there is an event that we need to process. We iterate
 through all of the events that we get from the read of the inotify fd and process them all separately.
-For all file creations and modifications in the currently watched directory, we generate a 32-bit CRC 
+For all file creations and modifications in the currently watched directory, we generate a 32-bit 
+CRC\footnote{\url{http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/bsd/libkern/crc32.c}} 
 for the created/modified file and then store this CRC in a new file. By using CRC-32 we are
 able to detect all 1-bit errors and burst errors that are equal to or less than 32 bits apart. This checksum is
 relatively simple, but still gives us decent error detection. Since we are conscious about the amount
