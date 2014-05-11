@@ -1,5 +1,5 @@
 Simulator Results
-Date:, Sun May 11 16:07:32 CDT 2014
+Date:, Sun May 11 16:14:16 CDT 2014
 
 Simulator Configuration
 Simulation Type:,Terminating
@@ -23,10 +23,10 @@ Processors Selected for Simulation:
 macbook-win8,amd64
 
 Experiment 1
-Experiment 1,Start Time:,Sun May 11 16:07:30 CDT 2014
-Experiment 1,Finish Time:,Sun May 11 16:07:30 CDT 2014
-Experiment 1,Elapsed Running Time:,0.93
-Experiment 1,Total CPU Time:,0.009
+Experiment 1,Start Time:,Sun May 11 16:14:13 CDT 2014
+Experiment 1,Finish Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 1,Elapsed Running Time:,0.849
+Experiment 1,Total CPU Time:,0.042
 Experiment 1,Batches Completed:,1000
 Experiment 1,Experiment Name:,Experiment 1
 Experiment 1,Global Variable Settings:
@@ -38,17 +38,17 @@ Experiment 1,float,ram_size,128.0
 Experiment 1,float,random_failure_rate,0.01
 Experiment 1, Results
 Experiment 1,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
-Experiment 1,Mean,reliability,30.0,30.0,9.1900000000E-01,+/-,1.6918957223E-02
-Experiment 1,Mean,reliability,180.0,180.0,6.1300000000E-01,+/-,3.0203623433E-02
-Experiment 1,Mean,reliability,365.0,365.0,3.6000000000E-01,+/-,2.9765594747E-02
+Experiment 1,Mean,reliability,30.0,30.0,9.0700000000E-01,+/-,1.8010196245E-02
+Experiment 1,Mean,reliability,180.0,180.0,6.2100000000E-01,+/-,3.0084218364E-02
+Experiment 1,Mean,reliability,365.0,365.0,4.0200000000E-01,+/-,3.0404435586E-02
 Experiment 1,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 1,Mean,sefi_events,365.0,365.0,1.0080000000E00 ,+/-,6.1135316017E-02
+Experiment 1,Mean,sefi_events,365.0,365.0,9.6200000000E-01,+/-,6.4460989356E-02
 
 Experiment 2
-Experiment 2,Start Time:,Sun May 11 16:07:30 CDT 2014
-Experiment 2,Finish Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 2,Elapsed Running Time:,0.124
-Experiment 2,Total CPU Time:,0.011
+Experiment 2,Start Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 2,Finish Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 2,Elapsed Running Time:,0.192
+Experiment 2,Total CPU Time:,0.024
 Experiment 2,Batches Completed:,1000
 Experiment 2,Experiment Name:,Experiment 2
 Experiment 2,Global Variable Settings:
@@ -60,17 +60,17 @@ Experiment 2,float,ram_size,128.0
 Experiment 2,float,random_failure_rate,0.01
 Experiment 2, Results
 Experiment 2,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
-Experiment 2,Mean,reliability,30.0,30.0,9.9900000000E-01,+/-,1.9600000000E-03
-Experiment 2,Mean,reliability,180.0,180.0,9.9400000000E-01,+/-,4.7889703107E-03
-Experiment 2,Mean,reliability,365.0,365.0,9.9100000000E-01,+/-,5.8564091326E-03
+Experiment 2,Mean,reliability,30.0,30.0,1.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 2,Mean,reliability,180.0,180.0,9.9900000000E-01,+/-,1.9600000000E-03
+Experiment 2,Mean,reliability,365.0,365.0,9.9800000000E-01,+/-,2.7704709183E-03
 Experiment 2,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 2,Mean,sefi_events,365.0,365.0,1.9380000000E00 ,+/-,8.6952548181E-02
+Experiment 2,Mean,sefi_events,365.0,365.0,1.9630000000E00 ,+/-,8.8779187841E-02
 
 Experiment 3
-Experiment 3,Start Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 3,Finish Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 3,Elapsed Running Time:,0.117
-Experiment 3,Total CPU Time:,0.047
+Experiment 3,Start Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 3,Finish Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 3,Elapsed Running Time:,0.112
+Experiment 3,Total CPU Time:,0.04
 Experiment 3,Batches Completed:,1000
 Experiment 3,Experiment Name:,Experiment 3
 Experiment 3,Global Variable Settings:
@@ -86,13 +86,13 @@ Experiment 3,Mean,reliability,30.0,30.0,1.0000000000E00 ,+/-,0.0000000000E00
 Experiment 3,Mean,reliability,180.0,180.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 3,Mean,reliability,365.0,365.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 3,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 3,Mean,sefi_events,365.0,365.0,3.0710000000E00 ,+/-,1.0747818595E-01
+Experiment 3,Mean,sefi_events,365.0,365.0,2.9340000000E00 ,+/-,1.0361039863E-01
 
 Experiment 4
-Experiment 4,Start Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 4,Finish Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 4,Elapsed Running Time:,0.107
-Experiment 4,Total CPU Time:,0.034
+Experiment 4,Start Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 4,Finish Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 4,Elapsed Running Time:,0.108
+Experiment 4,Total CPU Time:,0.044
 Experiment 4,Batches Completed:,1000
 Experiment 4,Experiment Name:,Experiment 4
 Experiment 4,Global Variable Settings:
@@ -104,17 +104,17 @@ Experiment 4,float,ram_size,128.0
 Experiment 4,float,random_failure_rate,0.01
 Experiment 4, Results
 Experiment 4,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
-Experiment 4,Mean,reliability,30.0,30.0,9.1800000000E-01,+/-,1.7013810606E-02
-Experiment 4,Mean,reliability,180.0,180.0,6.1000000000E-01,+/-,3.0246181106E-02
-Experiment 4,Mean,reliability,365.0,365.0,3.5900000000E-01,+/-,2.9747437881E-02
+Experiment 4,Mean,reliability,30.0,30.0,9.1300000000E-01,+/-,1.7477058596E-02
+Experiment 4,Mean,reliability,180.0,180.0,6.2500000000E-01,+/-,3.0021263735E-02
+Experiment 4,Mean,reliability,365.0,365.0,4.0100000000E-01,+/-,3.0391975101E-02
 Experiment 4,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 4,Mean,sefi_events,365.0,365.0,1.0220000000E00 ,+/-,6.2244259281E-02
+Experiment 4,Mean,sefi_events,365.0,365.0,9.6800000000E-01,+/-,6.4771048241E-02
 
 Experiment 5
-Experiment 5,Start Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 5,Finish Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 5,Elapsed Running Time:,0.232
-Experiment 5,Total CPU Time:,0.04
+Experiment 5,Start Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 5,Finish Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 5,Elapsed Running Time:,0.095
+Experiment 5,Total CPU Time:,0.02
 Experiment 5,Batches Completed:,1000
 Experiment 5,Experiment Name:,Experiment 5
 Experiment 5,Global Variable Settings:
@@ -127,16 +127,16 @@ Experiment 5,float,random_failure_rate,0.01
 Experiment 5, Results
 Experiment 5,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
 Experiment 5,Mean,reliability,30.0,30.0,1.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 5,Mean,reliability,180.0,180.0,9.9800000000E-01,+/-,2.7704709183E-03
-Experiment 5,Mean,reliability,365.0,365.0,9.9800000000E-01,+/-,2.7704709183E-03
+Experiment 5,Mean,reliability,180.0,180.0,1.0000000000E00 ,+/-,0.0000000000E00 
+Experiment 5,Mean,reliability,365.0,365.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 5,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 5,Mean,sefi_events,365.0,365.0,1.9530000000E00 ,+/-,8.7846487186E-02
+Experiment 5,Mean,sefi_events,365.0,365.0,1.9530000000E00 ,+/-,8.8674304270E-02
 
 Experiment 6
-Experiment 6,Start Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 6,Finish Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 6,Elapsed Running Time:,0.118
-Experiment 6,Total CPU Time:,0.044
+Experiment 6,Start Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 6,Finish Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 6,Elapsed Running Time:,0.137
+Experiment 6,Total CPU Time:,0.032
 Experiment 6,Batches Completed:,1000
 Experiment 6,Experiment Name:,Experiment 6
 Experiment 6,Global Variable Settings:
@@ -152,13 +152,13 @@ Experiment 6,Mean,reliability,30.0,30.0,1.0000000000E00 ,+/-,0.0000000000E00
 Experiment 6,Mean,reliability,180.0,180.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 6,Mean,reliability,365.0,365.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 6,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 6,Mean,sefi_events,365.0,365.0,3.0700000000E00 ,+/-,1.0728374883E-01
+Experiment 6,Mean,sefi_events,365.0,365.0,2.9380000000E00 ,+/-,1.0483741208E-01
 
 Experiment 7
-Experiment 7,Start Time:,Sun May 11 16:07:31 CDT 2014
-Experiment 7,Finish Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 7,Elapsed Running Time:,0.103
-Experiment 7,Total CPU Time:,0.028
+Experiment 7,Start Time:,Sun May 11 16:14:14 CDT 2014
+Experiment 7,Finish Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 7,Elapsed Running Time:,0.125
+Experiment 7,Total CPU Time:,0.046
 Experiment 7,Batches Completed:,1000
 Experiment 7,Experiment Name:,Experiment 7
 Experiment 7,Global Variable Settings:
@@ -170,17 +170,17 @@ Experiment 7,float,ram_size,128.0
 Experiment 7,float,random_failure_rate,0.01
 Experiment 7, Results
 Experiment 7,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
-Experiment 7,Mean,reliability,30.0,30.0,9.2000000000E-01,+/-,1.6823340476E-02
-Experiment 7,Mean,reliability,180.0,180.0,6.1400000000E-01,+/-,3.0189169454E-02
-Experiment 7,Mean,reliability,365.0,365.0,3.5900000000E-01,+/-,2.9747437881E-02
+Experiment 7,Mean,reliability,30.0,30.0,9.1400000000E-01,+/-,1.7385838887E-02
+Experiment 7,Mean,reliability,180.0,180.0,6.2400000000E-01,+/-,3.0037206797E-02
+Experiment 7,Mean,reliability,365.0,365.0,4.0100000000E-01,+/-,3.0391975101E-02
 Experiment 7,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 7,Mean,sefi_events,365.0,365.0,1.0230000000E00 ,+/-,6.2273752206E-02
+Experiment 7,Mean,sefi_events,365.0,365.0,9.6900000000E-01,+/-,6.4743227506E-02
 
 Experiment 8
-Experiment 8,Start Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 8,Finish Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 8,Elapsed Running Time:,0.14
-Experiment 8,Total CPU Time:,0.015
+Experiment 8,Start Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 8,Finish Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 8,Elapsed Running Time:,0.162
+Experiment 8,Total CPU Time:,0.054
 Experiment 8,Batches Completed:,1000
 Experiment 8,Experiment Name:,Experiment 8
 Experiment 8,Global Variable Settings:
@@ -196,13 +196,13 @@ Experiment 8,Mean,reliability,30.0,30.0,1.0000000000E00 ,+/-,0.0000000000E00
 Experiment 8,Mean,reliability,180.0,180.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 8,Mean,reliability,365.0,365.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 8,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 8,Mean,sefi_events,365.0,365.0,1.9530000000E00 ,+/-,8.7802701667E-02
+Experiment 8,Mean,sefi_events,365.0,365.0,1.9560000000E00 ,+/-,8.8701902403E-02
 
 Experiment 9
-Experiment 9,Start Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 9,Finish Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 9,Elapsed Running Time:,0.128
-Experiment 9,Total CPU Time:,0.022
+Experiment 9,Start Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 9,Finish Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 9,Elapsed Running Time:,0.106
+Experiment 9,Total CPU Time:,0.034
 Experiment 9,Batches Completed:,1000
 Experiment 9,Experiment Name:,Experiment 9
 Experiment 9,Global Variable Settings:
@@ -218,13 +218,13 @@ Experiment 9,Mean,reliability,30.0,30.0,1.0000000000E00 ,+/-,0.0000000000E00
 Experiment 9,Mean,reliability,180.0,180.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 9,Mean,reliability,365.0,365.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 9,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 9,Mean,sefi_events,365.0,365.0,3.0770000000E00 ,+/-,1.0749807715E-01
+Experiment 9,Mean,sefi_events,365.0,365.0,2.9380000000E00 ,+/-,1.0494739466E-01
 
 Experiment 10
-Experiment 10,Start Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 10,Finish Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 10,Elapsed Running Time:,0.136
-Experiment 10,Total CPU Time:,0.029
+Experiment 10,Start Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 10,Finish Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 10,Elapsed Running Time:,0.242
+Experiment 10,Total CPU Time:,0.02
 Experiment 10,Batches Completed:,1000
 Experiment 10,Experiment Name:,Experiment 10
 Experiment 10,Global Variable Settings:
@@ -236,17 +236,17 @@ Experiment 10,float,ram_size,128.0
 Experiment 10,float,random_failure_rate,0.01
 Experiment 10, Results
 Experiment 10,Result Type,Name,Start Time,End Time,Mean,,Confidence Interval,Failed To Converge
-Experiment 10,Mean,reliability,30.0,30.0,9.2100000000E-01,+/-,1.6726947276E-02
-Experiment 10,Mean,reliability,180.0,180.0,6.1500000000E-01,+/-,3.0174581113E-02
-Experiment 10,Mean,reliability,365.0,365.0,3.5900000000E-01,+/-,2.9747437881E-02
+Experiment 10,Mean,reliability,30.0,30.0,9.1400000000E-01,+/-,1.7385838887E-02
+Experiment 10,Mean,reliability,180.0,180.0,6.2400000000E-01,+/-,3.0037206797E-02
+Experiment 10,Mean,reliability,365.0,365.0,4.0100000000E-01,+/-,3.0391975101E-02
 Experiment 10,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 10,Mean,sefi_events,365.0,365.0,1.0230000000E00 ,+/-,6.2273752206E-02
+Experiment 10,Mean,sefi_events,365.0,365.0,9.6900000000E-01,+/-,6.4743227506E-02
 
 Experiment 11
-Experiment 11,Start Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 11,Finish Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 11,Elapsed Running Time:,0.128
-Experiment 11,Total CPU Time:,0.031
+Experiment 11,Start Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 11,Finish Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 11,Elapsed Running Time:,0.125
+Experiment 11,Total CPU Time:,0.015
 Experiment 11,Batches Completed:,1000
 Experiment 11,Experiment Name:,Experiment 11
 Experiment 11,Global Variable Settings:
@@ -262,13 +262,13 @@ Experiment 11,Mean,reliability,30.0,30.0,1.0000000000E00 ,+/-,0.0000000000E00
 Experiment 11,Mean,reliability,180.0,180.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 11,Mean,reliability,365.0,365.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 11,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 11,Mean,sefi_events,365.0,365.0,1.9530000000E00 ,+/-,8.7802701667E-02
+Experiment 11,Mean,sefi_events,365.0,365.0,1.9680000000E00 ,+/-,8.9369446118E-02
 
 Experiment 12
-Experiment 12,Start Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 12,Finish Time:,Sun May 11 16:07:32 CDT 2014
-Experiment 12,Elapsed Running Time:,0.107
-Experiment 12,Total CPU Time:,0.046
+Experiment 12,Start Time:,Sun May 11 16:14:15 CDT 2014
+Experiment 12,Finish Time:,Sun May 11 16:14:16 CDT 2014
+Experiment 12,Elapsed Running Time:,0.119
+Experiment 12,Total CPU Time:,0.029
 Experiment 12,Batches Completed:,1000
 Experiment 12,Experiment Name:,Experiment 12
 Experiment 12,Global Variable Settings:
@@ -284,6 +284,6 @@ Experiment 12,Mean,reliability,30.0,30.0,1.0000000000E00 ,+/-,0.0000000000E00
 Experiment 12,Mean,reliability,180.0,180.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 12,Mean,reliability,365.0,365.0,1.0000000000E00 ,+/-,0.0000000000E00 
 Experiment 12,Mean,seu_events,365.0,365.0,0.0000000000E00 ,+/-,0.0000000000E00 
-Experiment 12,Mean,sefi_events,365.0,365.0,3.0770000000E00 ,+/-,1.0749807715E-01
+Experiment 12,Mean,sefi_events,365.0,365.0,2.9530000000E00 ,+/-,1.0616118360E-01
 
 <END_MOBIUS_RESULTS>
