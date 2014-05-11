@@ -1,0 +1,79 @@
+\section{Results}\label{sec:results}
+
+\subsection{M\"obius Results}\label{sec:mobiusresults}
+
+One surprising result of this simulation involved the \texttt{num\_replicas} parameter, which controlled the number of copies of the operating system image saved on an individual device.  When we first ran this simulation, we believed that our model was incorrect because the system reliability was completely unaffected by the \texttt{num\_replicas} parameter.  In order to further debug the system, we added additional places to the model to keep track of the number of SEU and SEFI events that were recorded in the system.  To our surprise, M\"obius reported that an average of 0.0 SEU events (with 95\% confidence interval width 0.0) occured over 1000 simulation runs; as M\"obius reports small numbers that it can detect, this average likely indicates that no SEU occured during each of the 1000 simulations.  In retrospect, this conclusion is reasonable; the SEU error rate is on the order of $10^{-7}$ events per day, which corresponds to an average time before failure of over 27,000 years.  In addition, an SEU only corrupts a kernel if it modifies any of the data in that kernel.  We assumed that each kernel took up 10MB of space and that errors were uniformly distributed across the 512MB flash chip.  As a result, any SEU that occurred had a $\frac{10\cdot\textrm{number of kernels}}{512}$ chance of actually corrupting a kernel.  These two factors combined indicated that the probability of an SEU affecting a kernel on the given Micron flash memory was essentially zero.
+
+As the probability of an SEU event in this model affecting a kernel was essentially zero, we recognized that controlling SEFI events was the key toward maintaining reliable operation.  In order to accomplish this goal, we expanded our model to include $n$ independent devices, each containing $m$ copies of the kernel.  Each device has its own controller hardware and fails independently, so the system is able to handle $n-1$ SEFIs without failing.  We also focused on testing the periodic reboot parameter discussed in Section \ref{sec:buildingmodel}.
+
+The results of this simulation are shown in Figure \ref{fig:reliability} and Table \ref{tab:reliability}.  The 95\% confidence interval width is plotted for each point in Figure \ref{fig:reliability} and is also included in Table \ref{tab:reliability}
+
+\begin{figure}[width = 0.5\textwidth]
+\centering
+\includegraphics[scale=0.6]{reliability}
+\caption{1-year mission reliability calculated in  our model}\label{fig:reliability}
+\end{figure}
+
+\begin{table}[width = 0.5\textwidth]
+{\scriptsize
+\centering
+\begin{tabular}{ccccc}
+\toprule
+& \multicolumn{4}{c}{\bf Flash Reboot Interval (days)}\\
+\cmidrule(r){2-5}
+{\bf \#Dev} & 1000 & 100 & 10 & 1\\
+\midrule
+1 & 0.395 $\pm$ 0.030 & 0.383 $\pm$ 0.030 & 0.351 $\pm$ 0.030 & 0.468 $\pm$ 0.031 \\
+2 & 0.618 $\pm$ 0.030 & 0.741 $\pm$ 0.028 & 0.944 $\pm$ 0.014 & 0.998 $\pm$ 0.001 \\
+3 & 0.740 $\pm$ 0.027 & 0.908 $\pm$ 0.018 & 0.998 $\pm$ 0.003 & 1.000 $\pm$ 0.000 \\
+\bottomrule
+\end{tabular}
+\caption{1-year mission reliability for our model}\label{tab:reliability}
+}
+\end{table}
+
+As the graphs indicate, the default reliability of the IlliniSat system is fairly low; there is approximately a 40\% chance that the satellite will survive a year under this model.  However, the introduction of another device improves reliability slightly.  If at least two devices are available, periodically power-cycling the flash memory provides an additional, significant reliability improvement.  If the flash is power cycled daily, we are able to achieve an estimated reliability of 99.8\%, a significant improvement over our initial condition.
+
+\subsection{Fault Injection Tool}
+
+In order to test the utilities developed, we built a small fault injection
+tool.  Since both the boot protection and flash patrol daemon interact with
+storage in some form, one tool was made for testing both utilities.  The tool
+opens a file ands seeks to a specified location (usually chosen uniformly at
+random) and then reads a bit, flips it, and writes it back.  When writing
+directly to block devices, the {\texttt {O\_DIRECT}} flag is used to ensure
+writes are flushed immediately.
+
+%FI MERGE ANCHOR
+\subsection{Boot Protection}
+To evaluate the boot protection scheme, we flipped a bit in the region of the
+QEMU virtual flash device used to hold the boot protection script and the kernel
+images.  This experiment was then repeated by uniformly flipping bits at random
+in this region.  Of the 610 boot attempts made during the injection campaign,
+602 were successful.  This corresponds to a recovery rate of 98.4\%, and we note
+that this recovery rate is for failures inside the boot region, not across the
+entire device (512MB in the case of IlliniSat).  When examining the output, 214
+boots had CRC errors in the first kernel, which matches expectations as there
+were three copies of the kernel (considering that there are three copies of the
+kernel in the flash image, this matches expectations).  We leave targeted
+injections against the protection script for future work.
+
+%BP MERGE ANCHOR
+\subsection{Flash Patrol Daemon}
+%TODO: wonder what would happen if we bind mounted the directory and injected
+%into that...
+The flash patrol daemon monitors a Linux filesystem.  However, since the
+inotify subsystem sends events based on file updates, we cannot simply
+inject into the files in the directory being watched by inotify (as this would
+force a crc update). Therefore, we use our fault injection utility to inject
+into the actual block device (e.g.  \texttt{/dev/sdb1}).  The files in the
+filesystem are sample data files provided from the IlliniSat team and copied
+until the filesystem is full (for the speed of experiments, we use a 7.5MB disk
+partition).  At each experiment, we need to start with a clean slate, so we
+regenerate the filesystem and recopy over the data.  After that, we flip a
+random bit inside the underlying block device and record whether the daemon can
+detect a failure.  We performed 402 such experiments and detected 337 errors,
+corresponding to 83.8\% of injections resulting in a detected CRC error.
+Note that faults were injected into non-data regions of the filesystem, so the
+detection rate is likely much higher than 83.3\%.
+%TODO: kill patrold and just run simple checkerd experiments?

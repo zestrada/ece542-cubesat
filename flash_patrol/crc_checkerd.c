@@ -32,20 +32,22 @@ int check_file_crc(FILE* log_fp)
 
 	while((entry=readdir(dp))!=NULL) {
 		nbytes = BUF_LEN;
+    calc_crc = 0;
 		memset(buf, 0, BUF_LEN);
+		memset(oldcrcstr, 0, BUF_LEN);
 
 		if(!is_valid_file(entry->d_name))
 			continue;
 		strncpy(oldcrcfile,crcdir,PATH_MAX);
 		strncat(oldcrcfile,entry->d_name,PATH_MAX);
 		strncat(oldcrcfile,"_crc",PATH_MAX);
-		LOG_MSG("oldcrcfile: %s\n", oldcrcfile);
+		//LOG_MSG("oldcrcfile: %s\n", oldcrcfile);
 
 		strncpy(calccrcfile,directory,PATH_MAX);
 		strncat(calccrcfile,entry->d_name,PATH_MAX);
-		LOG_MSG("calccrcfile: %s\n", calccrcfile);
+		//LOG_MSG("calccrcfile: %s\n", calccrcfile);
 
-		calc_crc_fp = fopen(calccrcfile, "r+");
+		calc_crc_fp = fopen(calccrcfile, "r");
 		if(calc_crc_fp == NULL)
 		{
 			LOG_MSG("fopen failed on %s\n", calccrcfile);
@@ -57,7 +59,7 @@ int check_file_crc(FILE* log_fp)
 			calc_crc = crc32(calc_crc, buf, nbytes);
 		}
 		
-		old_crc_fp = fopen(oldcrcfile, "r+");
+		old_crc_fp = fopen(oldcrcfile, "r");
 		if(old_crc_fp == NULL) 
 		{
 			LOG_MSG("fopen failed on %s\n", oldcrcfile); 
@@ -70,11 +72,12 @@ int check_file_crc(FILE* log_fp)
 
 		if(old_crc != calc_crc) 
 		{
+      LOG_MSG("%s failed check!\n",calccrcfile);
 			LOG_MSG("old_crc = 0x%x != calc_crc = 0x%x\n", old_crc, calc_crc);
 		}
 		else 
 		{
-			LOG_MSG("crc's matched\n");	
+			//LOG_MSG("crc's matched\n");	
 		}
 
 		fclose(calc_crc_fp);
@@ -141,13 +144,7 @@ int main(int argc, char* argv[])
     exit(EXIT_FAILURE);
   }
 
-  // Close stdin. stdout and stderr
-  close(STDIN_FILENO);
-  close(STDOUT_FILENO);
-  close(STDERR_FILENO);
-
   // Open a log file in write mode.
-
   log_fp = fopen (crclog, "w+");
   if(log_fp < 0)
   {
@@ -155,11 +152,16 @@ int main(int argc, char* argv[])
     exit(EXIT_FAILURE);
   }
 
+  // Close stdin. stdout and stderr
+  close(STDIN_FILENO);
+  close(STDOUT_FILENO);
+  close(STDERR_FILENO);
+
   fprintf(log_fp, "Daemon created\n\n");
   fflush(log_fp);
 	while(1)
 	{
-		sleep(1);
+		sleep(2);
 
 		check_file_crc(log_fp);
 	}

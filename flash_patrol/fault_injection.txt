@@ -11,15 +11,98 @@ and created a large random file:
 dd if=/dev/urandom of=/mnt/inotify/file bs=1M count=9
 ---
 
-then checked its contents:
----
-md5sum /mnt/inotify/file 
-8ce0d81e78ee328df19ea54df8d462aa  /mnt/inotify/file
----
-
 and modified it with a file containing all A
 ---
 9.0M  fonz.txt
 ---
  
 line 300000 seems good for bit flipping
+
+Here is the golden checksum:
+---
+zak@mustang0:~$ md5sum /mnt/inotify/fonz.txt 
+820479c00e663205a90c04b77c9014b8  /mnt/inotify/fonz.txt
+---
+
+tool to reset the filesystem state:
+---
+zak@mustang0:~$ ./reset_testfs.sh 
+---
+
+I then had these disks available on mustang0:
+---
+0:1:8 0:1:9 0:1:10 0:1:11 0:1:12
+---
+
+---
+root@mustang0:~# omconfig storage controller action=createvdisk controller=0
+pdisk=0:1:8,0:1:9 size=max raid=r1
+---
+
+---
+Disk /dev/sdb: 239.4 GB, 239444426752 bytes
+---
+
+I then created a 10M disk partition on /dev/sdb1
+
+now using this for fault injection:
+---
+zak@mustang0:~$ md5sum /mnt/inotify/fonz.txt 
+820479c00e663205a90c04b77c9014b8  /mnt/inotify/fonz.txt
+zak@mustang0:~$ sudo ./clear_cache.sh 
+zak@mustang0:~$ sudo ./github/ece542/flash_patrol/flip /dev/sdb1 2000000
+Read A at pos 2000000
+Wrote @ at pos 2000000
+zak@mustang0:~$ md5sum /mnt/inotify/fonz.txt 
+820479c00e663205a90c04b77c9014b8  /mnt/inotify/fonz.txt
+---
+
+---
+zak@mustang0:~/github/ece542/flash_patrol$ export PATROL_DIR=/mnt/inotify
+---
+
+now moving on to cubesat data
+
+---
+for d in `ls`; do cp ${d} ./tmp; cat tmp tmp > ${d}; rm tmp; done;
+---
+
+and lots of little files:
+---
+for d in `ls`; do for i in {1..58}; do cp ${d} ${d}_${i}; done; done;
+---
+
+---
+for f in /home/zak/cubesat/data/*; do
+  cp ${f} /mnt/inotify/cubesat/
+  sleep 0.05
+done
+---
+
+out of curiosity default 512MB ext3 filesystem:
+---
+zak@mustang0:~$ df -i $_
+Filesystem     Inodes IUsed IFree IUse% Mounted on
+/dev/loop0      32768    11 32757    1% /mnt/crapfs
+---
+
+for posterity:
+---
+zak@mustang0:~/github/ece542$ cat ~/reset_testfs.sh 
+#!/bin/bash
+DISK=/dev/sdb1
+sudo umount /mnt/inotify
+sudo mkfs.ext2 -m 0 -F ${DISK}
+sudo mount ${DISK} /mnt/inotify
+sudo chown zak /mnt/inotify
+---
+
+and the overall results:
+---
+zak@mustang0:~/github/ece542/flash_patrol/data$ grep Daemon *log|wc -l
+402
+zak@mustang0:~/github/ece542/flash_patrol/data$ grep failed *log|wc -l
+337
+---
+
+337/402 = 83%

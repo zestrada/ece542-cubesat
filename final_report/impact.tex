@@ -1,0 +1,28 @@
+\section{Project Impact}\label{sec:impact}
+
+The impacts of this project have both a specific and general component. Specifically, 
+we will be able to provide analysis to the IlliniSat team. Since we designed the
+M\"obius model to use paramaters that match the IlliniSat specification, we
+can give the team a realistic probability of failure given different failure modes.
+Also, we can suggest improvements to their system to greatly improve their
+reliability and probability for a successful mission. In addition, all of the software
+was designed to be compatible with the IlliniSat software stack. Our created software
+avoided complex solutions to make it easily fit in with IlliniSat and with the team.
+
+In a more general sense, all of what we have done can be easily tweaked to
+fit any other similar CubeSat projects. The M\"obius model parameters default
+to the IlliniSat specifications, but can be changed to account for any differences
+between the hardware of a different mission. Likewise, the software can be
+adapted to different projects. The U-boot modifications can be adapted to U-boot
+procedures on other boards. The multiple kernel images can even be used in other
+boot procedures, but the reliability analysis that we have given shows that adding
+these copies on multiple devices can greatly increase reliability. As for the software
+daemons, they are only dependent on the kernel running linux 2.6 or above so that
+it has the inotify tools necessary to run.
+
+Since CubeSats are becoming increasingly popular, providing a realistic model is
+invaluable to any team that is starting out. This starting point can help teams plan
+their missions, from the length of the mission all the way down to the hardware that
+they use. The improvements to the IlliniSat mission can also give the teams insight
+into simple reliability additions to their current or new systems that are low in cost
+and also power consumption.
