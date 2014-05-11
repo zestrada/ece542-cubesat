@@ -82,9 +82,11 @@ the area vulnerable to bit errors by three orders of magnitude (1.7MB/914B =
 %END BOOT - MERGE ANCHOR
 \subsection{Flash Patrol Daemon}
 The flash patrol daemon watches the filesystem that is on the device's flash memory and 
-generates CRCs on each creation or modification of a file. The inotify API allows the daemon
-to monitor any and all events to individual files or within selected directories using a series
-of system calls. Inotify is accessed using a file descriptor (fd) that is passed back after initialization. 
+generates CRCs on each creation or modification of a file. The daemon uses the linux 
+inotify\footnote{\url{http://man7.org/linux/man-pages/man7/inotify.7.html}} API.
+The inotify API allows the daemon to monitor any and all events to individual 
+files or within selected directories using a series of system calls. Inotify is 
+accessed using a file descriptor (fd) that is passed back after initialization. 
 Using this fd, we are able to add files and directories into the inotify ``watch list.''
 The events can then be accessed by reading the inotify fd. However, since this 
 mission calls for low power consumption, a naive polling implementation would not be ideal.
