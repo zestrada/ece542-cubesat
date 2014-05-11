@@ -25,8 +25,8 @@
 	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
-		<boolean id="Modified">false</boolean>
-		<string id="VersionNumber">25</string>
+		<boolean id="Modified">true</boolean>
+		<string id="VersionNumber">26</string>
 	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
@@ -154,7 +154,7 @@
 	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
-		<boolean id="Modified">true</boolean>
+		<boolean id="Modified">false</boolean>
 		<string id="VersionNumber">11</string>
 	</class>
 	<vector id="TransformerNames">
