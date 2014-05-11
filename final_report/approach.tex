@@ -44,21 +44,59 @@ We chose to motivate the development of the boot protection script by developing
 
 We choose to measure reliability as the relevant dependability metric because the continuous operation of the satellite is critical to the IlliniSat team; furthermore, the failure that we are modeling is catastrophic.  As the satellite cannot recover from any failure of this type, it does not make sense to measure the system's availability.
 
-The parameters used in this model are shown in Table \ref{tab:parameters}, and the two main components of the model are shown in Figure \ref{} and \ref{}.
+The parameters used in this model are shown in Table \ref{tab:flashparameters} and Table \ref{tab:ramparameters}, and the two main components of the model are shown in Figure \ref{fig:flashsan} and \ref{fig:ramsan}.  All events are modeled as exponentially distributed unless otherwise indicated.  SEU error rates indicated in either table are listed per bit and were multiplied by 512MB in the M\"obius model.  For the flash model, we used the parameters given in \cite{Oldham2008TID} for the Micron memory, as the memory included on the C\&DH board is manufactured by Micron.  For the RAM model, we chose the largest error rate provided in \cite{Gliem2012Memory} for each category of error in order to be conservative.  All rates have units of per day ($d^{-1}$) unless otherwise specified.
 
-\begin{table}[width = 0.5\textwidth]
+\begin{table*}[width = 0.5\textwidth]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
 {\bf Parameter Name} & {\bf Description} & {\bf Value} & {\bf Source}\\
 \hline
-\texttt{seu\_rate} & SEU event rate & & \\
+\texttt{seu\_rate} & SEU event rate & $1.5\cdot 10^{-16}$ & \cite{Oldham2008TID} \\
+\texttt{sefi\_rate} & SEFI event rate & 1 per year & \cite{Oldham2008TID} \\
+\texttt{power\_cycle\_rate} & Flash power cycle rate & $10^x, x\in\{0, 1, 2, 3\}$ & Independent variable \\
 \hline
 \end{tabular}
-\caption{Parameters used in the M\"obius model}
-\label{tab:parameters}
-\end{table}
+\caption{Parameters used in the flash SAN}
+\label{tab:flashparameters}
+\end{table*}
+
+\begin{table*}[width = 0.5\textwidth]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+{\bf Parameter Name} & {\bf Description} & {\bf Value} & {\bf Source}\\
+\hline
+\texttt{seu\_rate} & SEU event rate & $1.4 \cdot 10^{-9}$ & \cite{Gliem2012Memory} \\
+\texttt{word\_sefi\_rate} & SEFI event rate for word errors & $5.5 \cdot 10^{-15}$ & \cite{Gliem2012Memory} \\
+\texttt{device\_sefi\_rate} & SEFI event rate for device errors & $3.8 \cdot 10^{-2}$ & \cite{Gliem2012Memory} \\
+\texttt{watchdog\_reboot\_rate} & Time needed for the watchdog to reboot the system & 5 minutes & Estimate.\\
+\texttt{random\_failure\_rate} & Rate of other random failures & 0.01 & Estimate.\\
+\hline
+\end{tabular}
+\caption{Parameters used in the RAM SAN}
+\label{tab:ramparameters}
+\end{table*}
+
+\begin{figure*}
+\centering
+\includegraphics[scale=0.8]{pretty_redundant_controller_flash_system}
+\caption{The SAN model for the flash system.}
+\label{fig:flashsan}
+\end{figure*}
+
+
+\begin{figure*}
+\centering
+\includegraphics[scale=0.8]{ram_system}
+\caption{The SAN model for the RAM system.}
+\label{fig:ramsan}
+\end{figure*}
+
+The flash SAN's operation is guided by the presence of tokens in two places: \texttt{replicas\_available} and \texttt{devices\_available}.
+
 \subsection{Boot Protection}
+
 The C\&DH system uses a Linux kernel that is booted by
 U-boot.\footnote{\url{http://www.denx.de/wiki/U-Boot}} The fault model
 considered here is bit corruption in the Linux kernel that is present at boot
