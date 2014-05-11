@@ -26,7 +26,7 @@ Among these failure modes, we chose to model SEU and SEFI failures for the Flash
 
 We chose to motivate the development of the boot protection script by developing a SAN model in M\"obius.
 
-We choose to measure reliability as the relevant dependability metric because the continuous operation of the satellite is critical to the IlliniSAT team; furthermore, the failure that we are modeling is catastrophic.  As the satellite cannot recover from any failure of this type, it does not make sense to measure the system's availability.
+We choose to measure reliability as the relevant dependability metric because the continuous operation of the satellite is critical to the IlliniSat team; furthermore, the failure that we are modeling is catastrophic.  As the satellite cannot recover from any failure of this type, it does not make sense to measure the system's availability.
 
 The parameters used in this model are shown in Table \ref{tab:parameters}.
 
@@ -75,10 +75,10 @@ U-Boot can be configured with a script interpreter that will run pre-complied
 scripts that are very similar to typical Unix shell scripts. Using this
 functionality, we developed a script that will check kernel images before
 booting. The script iterates through multiple kernel images until it finds one
-with a valid CRC checksum and boots that one.  If not valid checksums are found,
+with a valid CRC checksum and boots that one.  If no valid checksums are found,
 it will attempt to boot the first image.  
 
-Figure \label{fig:mem_map} shows the memory map of the boot protection scheme
+Figure \ref{fig:mem_map} shows the memory map of the boot protection scheme
 used in the QEMU test environment.  In this case, the script is 914B and each
 kernel image is 1.7MB.  Without this scheme, the Linux kernel image was a
 single-point-of-failure during the boot process (or one could boot a faulty
