@@ -92,15 +92,15 @@ public:
   double Rate();
 }; // random_failureActivityActivity
 
-class bit_errorActivity_case1:public Activity {
+class seuActivity_case1:public Activity {
 public:
 
   Place* ram_working;
   short* ram_working_Mobius_Mark;
 
   double* TheDistributionParameters;
-  bit_errorActivity_case1();
-  ~bit_errorActivity_case1();
+  seuActivity_case1();
+  ~seuActivity_case1();
   bool Enabled();
   void LinkVariables();
   double Weight();
@@ -111,53 +111,9 @@ public:
   int Rank();
   BaseActionClass* Fire();
   double Rate();
-}; // bit_errorActivity_case1Activity
+}; // seuActivity_case1Activity
 
-class bit_errorActivity_case2:public Activity {
-public:
-
-  Place* ram_working;
-  short* ram_working_Mobius_Mark;
-  Place* ram_corrupted;
-  short* ram_corrupted_Mobius_Mark;
-
-  double* TheDistributionParameters;
-  bit_errorActivity_case2();
-  ~bit_errorActivity_case2();
-  bool Enabled();
-  void LinkVariables();
-  double Weight();
-  bool ReactivationPredicate();
-  bool ReactivationFunction();
-  double SampleDistribution();
-  double* ReturnDistributionParameters();
-  int Rank();
-  BaseActionClass* Fire();
-  double Rate();
-}; // bit_errorActivity_case2Activity
-
-class page_errorActivity_case1:public Activity {
-public:
-
-  Place* ram_working;
-  short* ram_working_Mobius_Mark;
-
-  double* TheDistributionParameters;
-  page_errorActivity_case1();
-  ~page_errorActivity_case1();
-  bool Enabled();
-  void LinkVariables();
-  double Weight();
-  bool ReactivationPredicate();
-  bool ReactivationFunction();
-  double SampleDistribution();
-  double* ReturnDistributionParameters();
-  int Rank();
-  BaseActionClass* Fire();
-  double Rate();
-}; // page_errorActivity_case1Activity
-
-class page_errorActivity_case2:public Activity {
+class seuActivity_case2:public Activity {
 public:
 
   Place* ram_working;
@@ -166,8 +122,8 @@ public:
   short* ram_corrupted_Mobius_Mark;
 
   double* TheDistributionParameters;
-  page_errorActivity_case2();
-  ~page_errorActivity_case2();
+  seuActivity_case2();
+  ~seuActivity_case2();
   bool Enabled();
   void LinkVariables();
   double Weight();
@@ -178,7 +134,74 @@ public:
   int Rank();
   BaseActionClass* Fire();
   double Rate();
-}; // page_errorActivity_case2Activity
+}; // seuActivity_case2Activity
+
+class word_sefiActivity_case1:public Activity {
+public:
+
+  Place* ram_working;
+  short* ram_working_Mobius_Mark;
+
+  double* TheDistributionParameters;
+  word_sefiActivity_case1();
+  ~word_sefiActivity_case1();
+  bool Enabled();
+  void LinkVariables();
+  double Weight();
+  bool ReactivationPredicate();
+  bool ReactivationFunction();
+  double SampleDistribution();
+  double* ReturnDistributionParameters();
+  int Rank();
+  BaseActionClass* Fire();
+  double Rate();
+}; // word_sefiActivity_case1Activity
+
+class word_sefiActivity_case2:public Activity {
+public:
+
+  Place* ram_working;
+  short* ram_working_Mobius_Mark;
+  Place* ram_corrupted;
+  short* ram_corrupted_Mobius_Mark;
+
+  double* TheDistributionParameters;
+  word_sefiActivity_case2();
+  ~word_sefiActivity_case2();
+  bool Enabled();
+  void LinkVariables();
+  double Weight();
+  bool ReactivationPredicate();
+  bool ReactivationFunction();
+  double SampleDistribution();
+  double* ReturnDistributionParameters();
+  int Rank();
+  BaseActionClass* Fire();
+  double Rate();
+}; // word_sefiActivity_case2Activity
+
+class device_sefiActivity:public Activity {
+public:
+
+  Place* ram_working;
+  short* ram_working_Mobius_Mark;
+  Place* ram_corrupted;
+  short* ram_corrupted_Mobius_Mark;
+
+  double* TheDistributionParameters;
+  device_sefiActivity();
+  ~device_sefiActivity();
+  bool Enabled();
+  void LinkVariables();
+  double Weight();
+  bool ReactivationPredicate();
+  bool ReactivationFunction();
+  double SampleDistribution();
+  double* ReturnDistributionParameters();
+  int Rank();
+  BaseActionClass* Fire();
+  double Rate();
+}; // device_sefiActivityActivity
 
   //List of user-specified place names
   Place* flash_corrupted;
@@ -190,14 +213,15 @@ public:
   failureActivity failure;
   watchdog_rebootActivity watchdog_reboot;
   random_failureActivity random_failure;
-  bit_errorActivity_case1 bit_error_case1;
-  bit_errorActivity_case2 bit_error_case2;
-  page_errorActivity_case1 page_error_case1;
-  page_errorActivity_case2 page_error_case2;
+  seuActivity_case1 seu_case1;
+  seuActivity_case2 seu_case2;
+  word_sefiActivity_case1 word_sefi_case1;
+  word_sefiActivity_case2 word_sefi_case2;
+  device_sefiActivity device_sefi;
   //Create instances of all groups 
   PreselectGroup ImmediateGroup;
   PostselectGroup failureGroup;
-  PostselectGroup bit_errorGroup;  PostselectGroup page_errorGroup;
+  PostselectGroup seuGroup;  PostselectGroup word_sefiGroup;
   ram_systemSAN();
   ~ram_systemSAN();
   void CustomInitialization();

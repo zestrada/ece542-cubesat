@@ -1,0 +1,221 @@
+<html>
+<head>
+<title>542project1 Documentation</title>
+<meta NAME="Description" Content="Project Documentation">
+</head>
+<body TEXT="black" BGCOLOR="white" LINK="blue" ALINK="red" VLINK="indigo" BACKGROUND="" >
+<p>
+<B>Model: ram_system</B>
+<br>
+<img USEMAP="#ImageMap.ram_system" type="image/svg+xml" src="ram_system.png" height="296" width="498"></img>
+<p>
+<MAP NAME="ImageMap.ram_system">
+<AREA SHAPE="rect" HREF="#Place.ram_system.flash_corrupted" COORDS="305,35 325,55">
+<AREA SHAPE="rect" HREF="#Place.ram_system.ram_working" COORDS="45,145 65,165">
+<AREA SHAPE="rect" HREF="#Place.ram_system.ram_corrupted" COORDS="275,105 295,125">
+<AREA SHAPE="rect" HREF="#Place.ram_system.system_failed" COORDS="445,45 465,65">
+<AREA SHAPE="rect" HREF="#Input Gate.ram_system.watchdog_in" COORDS="225,245 245,265">
+<AREA SHAPE="rect" HREF="#Input Gate.ram_system.random_failure_in" COORDS="95,45 115,65">
+<AREA SHAPE="rect" HREF="#Input Gate.ram_system.failure_condition" COORDS="335,75 355,95">
+<AREA SHAPE="rect" HREF="#Output Gate.ram_system.wd_reboot_complete" COORDS="85,215 105,235">
+<AREA SHAPE="rect" HREF="#Timed Activity.ram_system.watchdog_reboot" COORDS="172,250 178,280">
+<AREA SHAPE="rect" HREF="#Timed Activity.ram_system.random_failure" COORDS="182,20 188,50">
+<AREA SHAPE="rect" HREF="#Timed Activity.ram_system.seu" COORDS="139,90 151,120">
+<AREA SHAPE="rect" HREF="#Timed Activity.ram_system.word_sefi" COORDS="139,140 151,170">
+<AREA SHAPE="rect" HREF="#Timed Activity.ram_system.device_sefi" COORDS="152,190 158,220">
+<AREA SHAPE="rect" HREF="#Instantaneous Activity.ram_system.failure" COORDS="394,30 397,60">
+</MAP>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<caption align="Top"><font size="2"><B><font color="black">Place Attributes</font></B>: </caption>
+<tr ><th width="150" > <font size="2"><B>Place Names</B></th><th width="500" > <font size="2"><B>Initial Markings</B></th></tr>
+<tr ><td > <font size="2"><font color="blue"><a name="Place.ram_system.flash_corrupted" >flash_corrupted</a>
+</font></td><td > <font size="2"><center>0</center></td></tr>
+<tr ><td > <font size="2"><font color="blue"><a name="Place.ram_system.ram_corrupted" >ram_corrupted</a>
+</font></td><td > <font size="2"><center>0</center></td></tr>
+<tr ><td > <font size="2"><font color="blue"><a name="Place.ram_system.ram_working" >ram_working</a>
+</font></td><td > <font size="2"><center>1</center></td></tr>
+<tr ><td > <font size="2"><font color="blue"><a name="Place.ram_system.system_failed" >system_failed</a>
+</font></td><td > <font size="2"><center>0</center></td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="150" > <font size="2">Timed Activity: </th><th width="500" > <font size="2"><font color="blue"><a name="Timed Activity.ram_system.device_sefi" ><B>device_sefi</B></a>
+</font></th></tr>
+<tr ><td > <font size="2"><B><center><BR> Distribution Parameters</center></B></td><td > <font size="2"><B>Rate</B><br>
+<pre><font size="2">
+3.8e-2
+</font></pre>
+</td></tr>
+<tr ><td > <font size="2"><B><center>Activation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+<tr ><td > <font size="2"><B><center>Reactivation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="150" > <font size="2">Timed Activity: </th><th width="500" > <font size="2"><font color="blue"><a name="Timed Activity.ram_system.random_failure" ><B>random_failure</B></a>
+</font></th></tr>
+<tr ><td > <font size="2"><B><center><BR> Distribution Parameters</center></B></td><td > <font size="2"><B>Rate</B><br>
+<pre><font size="2">
+random_failure_rate
+</font></pre>
+</td></tr>
+<tr ><td > <font size="2"><B><center>Activation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+<tr ><td > <font size="2"><B><center>Reactivation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="150" > <font size="2">Timed Activity: </th><th width="500" > <font size="2"><font color="blue"><a name="Timed Activity.ram_system.seu" ><B>seu</B></a>
+</font></th></tr>
+<tr ><td > <font size="2"><B><center><BR> Distribution Parameters</center></B></td><td > <font size="2"><B>Rate</B><br>
+<pre><font size="2">
+6.012
+</font></pre>
+</td></tr>
+<tr ><td > <font size="2"><B><center>Activation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+<tr ><td > <font size="2"><B><center>Reactivation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+<tr ><td > <font size="2"><B><center>Case Distributions</center></B></td><td > <font size="2"><B>case 1</B><br>
+<pre><font size="2">
+return 1-(ram_size/512);
+</font></pre>
+<B>case 2</B><br>
+<pre><font size="2">
+return ram_size/512;
+</font></pre>
+</td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="150" > <font size="2">Timed Activity: </th><th width="500" > <font size="2"><font color="blue"><a name="Timed Activity.ram_system.watchdog_reboot" ><B>watchdog_reboot</B></a>
+</font></th></tr>
+<tr ><td > <font size="2"><B><center><BR> Distribution Parameters</center></B></td><td > <font size="2"><B>Value</B><br>
+<pre><font size="2">
+3.47e-3
+</font></pre>
+</td></tr>
+<tr ><td > <font size="2"><B><center>Activation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+<tr ><td > <font size="2"><B><center>Reactivation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="150" > <font size="2">Timed Activity: </th><th width="500" > <font size="2"><font color="blue"><a name="Timed Activity.ram_system.word_sefi" ><B>word_sefi</B></a>
+</font></th></tr>
+<tr ><td > <font size="2"><B><center><BR> Distribution Parameters</center></B></td><td > <font size="2"><B>Rate</B><br>
+<pre><font size="2">
+//2.36e-5/8
+0
+</font></pre>
+</td></tr>
+<tr ><td > <font size="2"><B><center>Activation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+<tr ><td > <font size="2"><B><center>Reactivation Predicate</center></B></td><td > <font size="2"><center>(none)</center></td></tr>
+<tr ><td > <font size="2"><B><center>Case Distributions</center></B></td><td > <font size="2"><B>case 1</B><br>
+<pre><font size="2">
+return 1-(ram_size/512);
+</font></pre>
+<B>case 2</B><br>
+<pre><font size="2">
+return ram_size/512;
+</font></pre>
+</td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="650" > <font size="2"><font color="black">Instantaneous Activities Without Cases: </font></th></tr>
+<tr ><td > <font size="2"><font color="blue"><a name="Instantaneous Activity.ram_system.failure" >failure</a>
+</font></td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="150" > <font size="2">Input Gate:</th><th width="500" > <font size="2"><font color="blue"><a name="Input Gate.ram_system.failure_condition" >failure_condition</a>
+</font></th></tr>
+<tr ><td > <font size="2"><B><center>Predicate</center></B></td><td > <font size="2"><pre><font size="2">
+flash_corrupted-&gt;Mark() &gt; 0 && ram_corrupted-&gt;Mark() &gt; 0 && system_failed-&gt;Mark() == 0
+</font></pre>
+</td></tr>
+<tr ><td > <font size="2"><B><center>Function</center></B></td><td > <font size="2"><pre><font size="2">
+;
+</font></pre>
+</td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="150" > <font size="2">Input Gate:</th><th width="500" > <font size="2"><font color="blue"><a name="Input Gate.ram_system.random_failure_in" >random_failure_in</a>
+</font></th></tr>
+<tr ><td > <font size="2"><B><center>Predicate</center></B></td><td > <font size="2"><pre><font size="2">
+ram_corrupted-&gt;Mark() == 0
+</font></pre>
+</td></tr>
+<tr ><td > <font size="2"><B><center>Function</center></B></td><td > <font size="2"><pre><font size="2">
+;
+</font></pre>
+</td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="150" > <font size="2">Input Gate:</th><th width="500" > <font size="2"><font color="blue"><a name="Input Gate.ram_system.watchdog_in" >watchdog_in</a>
+</font></th></tr>
+<tr ><td > <font size="2"><B><center>Predicate</center></B></td><td > <font size="2"><pre><font size="2">
+ram_corrupted-&gt;Mark() &gt; 0
+</font></pre>
+</td></tr>
+<tr ><td > <font size="2"><B><center>Function</center></B></td><td > <font size="2"><pre><font size="2">
+;
+</font></pre>
+</td></tr>
+</font>
+</table>
+<p>
+
+
+<p>
+<table border="1"CELLSPACING="0" >
+<tr ><th width="150" > <font size="2">Output Gate:</th><th width="500" > <font size="2"><font color="blue"><a name="Output Gate.ram_system.wd_reboot_complete" >wd_reboot_complete</a>
+</font></th></tr>
+<tr ><td > <font size="2"><B><center>Function</center></B></td><td > <font size="2"><pre><font size="2">
+ram_working-&gt;Mark() = 1;
+ram_corrupted-&gt;Mark() = 0;
+</font></pre>
+</td></tr>
+</font>
+</table>
+<p>
+
+</body>
+<hr>HTML generated by M&#246bius Documentor

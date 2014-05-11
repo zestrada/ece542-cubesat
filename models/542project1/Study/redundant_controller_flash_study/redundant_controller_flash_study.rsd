@@ -34,6 +34,9 @@
 						<boolean id="6">true</boolean>
 						<boolean id="7">true</boolean>
 						<boolean id="8">true</boolean>
+						<boolean id="9">true</boolean>
+						<boolean id="10">true</boolean>
+						<boolean id="11">true</boolean>
 					</vector>
 					<vector id="GVNameVector">
 						<string id="0">flash_size</string>
@@ -62,12 +65,17 @@
 					<string id="2">1</string>
 				</vector>
 				<vector id="e">
-					<string id="0">Incremental Range</string>
+					<string id="0">Fixed Value</string>
+				</vector>
+				<vector id="e">
+					<string id="0">Functional Range</string>
 					<string id="1">0</string>
-					<string id="2">1</string>
-				</vector>
-				<vector id="e">
-					<string id="0">Fixed Value</string>
+					<string id="2">1.0</string>
+					<string id="3">0.0</string>
+					<string id="4">3.0</string>
+					<string id="5">1</string>
+					<string id="6">n^x</string>
+					<string id="7">10.0</string>
 				</vector>
 				<vector id="e">
 					<string id="0">Fixed Value</string>
@@ -76,7 +84,7 @@
 					<string id="0">Fixed Value</string>
 				</vector>
 				<vector id="g">
-					<string id="0">17.0</string>
+					<string id="0">10.0</string>
 				</vector>
 				<vector id="g">
 					<string id="0">1</string>
@@ -85,17 +93,18 @@
 				</vector>
 				<vector id="g">
 					<string id="0">1</string>
-					<string id="1">2</string>
-					<string id="2">3</string>
 				</vector>
 				<vector id="g">
-					<string id="0">1000.0</string>
+					<string id="0">1.0</string>
+					<string id="1">10.0</string>
+					<string id="2">100.0</string>
+					<string id="3">1000.0</string>
 				</vector>
 				<vector id="g">
 					<string id="0">128.0</string>
 				</vector>
 				<vector id="g">
-					<string id="0">0.005</string>
+					<string id="0">0.01</string>
 				</vector>
 			</class>
 			<class id="Mobius.Studies.RangeStudy.RangeStudyInfoClass">

@@ -18,7 +18,7 @@ redundant_controller_flash_studyRangeStudy::redundant_controller_flash_studyRang
 
   // define arrays of global variable names and types
   NumGVs = 6;
-  NumExps = 9;
+  NumExps = 12;
 
   GVNames = new char*[NumGVs];
   GVTypes = new char*[NumGVs];
@@ -72,15 +72,8 @@ redundant_controller_flash_studyRangeStudy::~redundant_controller_flash_studyRan
 // set values for flash_size
 //******************************************************
 void redundant_controller_flash_studyRangeStudy::SetValues_flash_size() {
-  flash_sizeValues[0] = 17.0;
-  flash_sizeValues[1] = 17.0;
-  flash_sizeValues[2] = 17.0;
-  flash_sizeValues[3] = 17.0;
-  flash_sizeValues[4] = 17.0;
-  flash_sizeValues[5] = 17.0;
-  flash_sizeValues[6] = 17.0;
-  flash_sizeValues[7] = 17.0;
-  flash_sizeValues[8] = 17.0;
+  for (int n=0; n<NumExps; n++)
+    flash_sizeValues[n] = 10.0;
 }
 
 
@@ -97,6 +90,9 @@ void redundant_controller_flash_studyRangeStudy::SetValues_num_devices() {
   num_devicesValues[6] = 1;
   num_devicesValues[7] = 2;
   num_devicesValues[8] = 3;
+  num_devicesValues[9] = 1;
+  num_devicesValues[10] = 2;
+  num_devicesValues[11] = 3;
 }
 
 
@@ -104,15 +100,8 @@ void redundant_controller_flash_studyRangeStudy::SetValues_num_devices() {
 // set values for num_replicas
 //******************************************************
 void redundant_controller_flash_studyRangeStudy::SetValues_num_replicas() {
-  num_replicasValues[0] = 1;
-  num_replicasValues[1] = 1;
-  num_replicasValues[2] = 1;
-  num_replicasValues[3] = 2;
-  num_replicasValues[4] = 2;
-  num_replicasValues[5] = 2;
-  num_replicasValues[6] = 3;
-  num_replicasValues[7] = 3;
-  num_replicasValues[8] = 3;
+  for (int n=0; n<NumExps; n++)
+    num_replicasValues[n] = 1;
 }
 
 
@@ -120,15 +109,18 @@ void redundant_controller_flash_studyRangeStudy::SetValues_num_replicas() {
 // set values for power_cycle_rate
 //******************************************************
 void redundant_controller_flash_studyRangeStudy::SetValues_power_cycle_rate() {
-  power_cycle_rateValues[0] = 1000.0;
-  power_cycle_rateValues[1] = 1000.0;
-  power_cycle_rateValues[2] = 1000.0;
-  power_cycle_rateValues[3] = 1000.0;
-  power_cycle_rateValues[4] = 1000.0;
-  power_cycle_rateValues[5] = 1000.0;
-  power_cycle_rateValues[6] = 1000.0;
-  power_cycle_rateValues[7] = 1000.0;
-  power_cycle_rateValues[8] = 1000.0;
+  power_cycle_rateValues[0] = 1.0;
+  power_cycle_rateValues[1] = 1.0;
+  power_cycle_rateValues[2] = 1.0;
+  power_cycle_rateValues[3] = 10.0;
+  power_cycle_rateValues[4] = 10.0;
+  power_cycle_rateValues[5] = 10.0;
+  power_cycle_rateValues[6] = 100.0;
+  power_cycle_rateValues[7] = 100.0;
+  power_cycle_rateValues[8] = 100.0;
+  power_cycle_rateValues[9] = 1000.0;
+  power_cycle_rateValues[10] = 1000.0;
+  power_cycle_rateValues[11] = 1000.0;
 }
 
 
@@ -136,15 +128,8 @@ void redundant_controller_flash_studyRangeStudy::SetValues_power_cycle_rate() {
 // set values for ram_size
 //******************************************************
 void redundant_controller_flash_studyRangeStudy::SetValues_ram_size() {
-  ram_sizeValues[0] = 128.0;
-  ram_sizeValues[1] = 128.0;
-  ram_sizeValues[2] = 128.0;
-  ram_sizeValues[3] = 128.0;
-  ram_sizeValues[4] = 128.0;
-  ram_sizeValues[5] = 128.0;
-  ram_sizeValues[6] = 128.0;
-  ram_sizeValues[7] = 128.0;
-  ram_sizeValues[8] = 128.0;
+  for (int n=0; n<NumExps; n++)
+    ram_sizeValues[n] = 128.0;
 }
 
 
@@ -152,15 +137,8 @@ void redundant_controller_flash_studyRangeStudy::SetValues_ram_size() {
 // set values for random_failure_rate
 //******************************************************
 void redundant_controller_flash_studyRangeStudy::SetValues_random_failure_rate() {
-  random_failure_rateValues[0] = 0.005;
-  random_failure_rateValues[1] = 0.005;
-  random_failure_rateValues[2] = 0.005;
-  random_failure_rateValues[3] = 0.005;
-  random_failure_rateValues[4] = 0.005;
-  random_failure_rateValues[5] = 0.005;
-  random_failure_rateValues[6] = 0.005;
-  random_failure_rateValues[7] = 0.005;
-  random_failure_rateValues[8] = 0.005;
+  for (int n=0; n<NumExps; n++)
+    random_failure_rateValues[n] = 0.01;
 }
 
 

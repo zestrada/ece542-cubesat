@@ -13,7 +13,7 @@ redundant_controller_flash_rewardPV0Worker::~redundant_controller_flash_rewardPV
 
 double redundant_controller_flash_rewardPV0Worker::Reward_Function(void) {
 
-return ram_system->system_failed->Mark();
+return (ram_system->system_failed->Mark() == 0);
 //return ((ram_system->flash_corrupted->Mark() > 0) 
 //&& (ram_system->ram_corrupted->Mark() > 0));
 
