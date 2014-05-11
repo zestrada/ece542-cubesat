@@ -8,14 +8,16 @@
 		<string id="1">ram_system</string>
 		<string id="2">redundant_flash_system</string>
 		<string id="3">redundant_controller_flash_system</string>
+		<string id="4">pretty_redundant_controller_flash_system</string>
 	</vector>
 	<vector id="AtomicFormalismTypes">
 		<string id="0">SAN Model</string>
 		<string id="1">SAN Model</string>
 		<string id="2">SAN Model</string>
 		<string id="3">SAN Model</string>
+		<string id="4">SAN Model</string>
 	</vector>
-	<int id="AtomicStatusLength">4</int>
+	<int id="AtomicStatusLength">5</int>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
@@ -23,8 +25,8 @@
 	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
-		<boolean id="Modified">false</boolean>
-		<string id="VersionNumber">18</string>
+		<boolean id="Modified">true</boolean>
+		<string id="VersionNumber">24</string>
 	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
@@ -35,6 +37,11 @@
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
 		<string id="VersionNumber">12</string>
+	</class>
+	<class id="Mobius.ProjectManager.ModelStatus">
+		<int id="ClassVersion">2</int>
+		<boolean id="Modified">true</boolean>
+		<string id="VersionNumber">7</string>
 	</class>
 	<vector id="ComposedNames">
 		<string id="0">basic_model</string>
@@ -112,7 +119,7 @@
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
 		<boolean id="Modified">false</boolean>
-		<string id="VersionNumber">7</string>
+		<string id="VersionNumber">9</string>
 	</class>
 	<vector id="StudyNames">
 		<string id="0">basic_model_study</string>
@@ -147,8 +154,8 @@
 	</class>
 	<class id="Mobius.ProjectManager.ModelStatus">
 		<int id="ClassVersion">2</int>
-		<boolean id="Modified">true</boolean>
-		<string id="VersionNumber">7</string>
+		<boolean id="Modified">false</boolean>
+		<string id="VersionNumber">10</string>
 	</class>
 	<vector id="TransformerNames">
 		<string id="0">basic_model_ssg</string>

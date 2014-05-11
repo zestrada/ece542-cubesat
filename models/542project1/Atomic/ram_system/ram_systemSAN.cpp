@@ -18,29 +18,31 @@
 ram_systemSAN::ram_systemSAN(){
 
 
-  bit_errorGroup.initialize(2, "bit_errorGroup");
-  bit_errorGroup.appendGroup((BaseGroupClass*) &bit_error_case1);
-  bit_errorGroup.appendGroup((BaseGroupClass*) &bit_error_case2);
+  seuGroup.initialize(2, "seuGroup");
+  seuGroup.appendGroup((BaseGroupClass*) &seu_case1);
+  seuGroup.appendGroup((BaseGroupClass*) &seu_case2);
 
-  page_errorGroup.initialize(2, "page_errorGroup");
-  page_errorGroup.appendGroup((BaseGroupClass*) &page_error_case1);
-  page_errorGroup.appendGroup((BaseGroupClass*) &page_error_case2);
+  word_sefiGroup.initialize(2, "word_sefiGroup");
+  word_sefiGroup.appendGroup((BaseGroupClass*) &word_sefi_case1);
+  word_sefiGroup.appendGroup((BaseGroupClass*) &word_sefi_case2);
 
-  Activity* InitialActionList[7]={
+  Activity* InitialActionList[8]={
     &failure, //0
     &watchdog_reboot, //1
     &random_failure, //2
-    &bit_error_case1, //3
-    &bit_error_case2, //4
-    &page_error_case1, //5
-    &page_error_case2  // 6
+    &seu_case1, //3
+    &seu_case2, //4
+    &word_sefi_case1, //5
+    &word_sefi_case2, //6
+    &device_sefi  // 7
   };
 
-  BaseGroupClass* InitialGroupList[5]={
+  BaseGroupClass* InitialGroupList[6]={
     (BaseGroupClass*) &(watchdog_reboot), 
     (BaseGroupClass*) &(random_failure), 
-    (BaseGroupClass*) &(bit_errorGroup), 
-    (BaseGroupClass*) &(page_errorGroup), 
+    (BaseGroupClass*) &(seuGroup), 
+    (BaseGroupClass*) &(word_sefiGroup), 
+    (BaseGroupClass*) &(device_sefi), 
     (BaseGroupClass*) &(failure)
   };
 
@@ -58,29 +60,30 @@ ram_systemSAN::ram_systemSAN(){
   };
   initializeSANModelNow("ram_system", 4, InitialPlaces, 
                         0, InitialROPlaces, 
-                        7, InitialActionList, 5, InitialGroupList);
+                        8, InitialActionList, 6, InitialGroupList);
 
 
   assignPlacesToActivitiesInst();
   assignPlacesToActivitiesTimed();
 
-  int AffectArcs[10][2]={ 
+  int AffectArcs[12][2]={ 
     {3,0}, {1,1}, {2,1}, {2,2}, {1,3}, {1,4}, {2,4}, {1,5}, {1,6}, 
-    {2,6}
+    {2,6}, {1,7}, {2,7}
   };
-  for(int n=0;n<10;n++) {
+  for(int n=0;n<12;n++) {
     AddAffectArc(InitialPlaces[AffectArcs[n][0]],
                  InitialActionList[AffectArcs[n][1]]);
   }
-  int EnableArcs[9][2]={ 
-    {0,0}, {2,0}, {3,0}, {2,1}, {2,2}, {1,3}, {1,4}, {1,5}, {1,6}
+  int EnableArcs[10][2]={ 
+    {0,0}, {2,0}, {3,0}, {2,1}, {2,2}, {1,3}, {1,4}, {1,5}, {1,6}, 
+    {1,7}
   };
-  for(int n=0;n<9;n++) {
+  for(int n=0;n<10;n++) {
     AddEnableArc(InitialPlaces[EnableArcs[n][0]],
                  InitialActionList[EnableArcs[n][1]]);
   }
 
-  for(int n=0;n<7;n++) {
+  for(int n=0;n<8;n++) {
     InitialActionList[n]->LinkVariables();
   }
   CustomInitialization();
@@ -104,12 +107,14 @@ void ram_systemSAN::assignPlacesToActivitiesTimed(){
   watchdog_reboot.ram_corrupted = (Place*) LocalStateVariables[2];
   watchdog_reboot.ram_working = (Place*) LocalStateVariables[1];
   random_failure.ram_corrupted = (Place*) LocalStateVariables[2];
-  bit_error_case1.ram_working = (Place*) LocalStateVariables[1];
-  bit_error_case2.ram_working = (Place*) LocalStateVariables[1];
-  bit_error_case2.ram_corrupted = (Place*) LocalStateVariables[2];
-  page_error_case1.ram_working = (Place*) LocalStateVariables[1];
-  page_error_case2.ram_working = (Place*) LocalStateVariables[1];
-  page_error_case2.ram_corrupted = (Place*) LocalStateVariables[2];
+  seu_case1.ram_working = (Place*) LocalStateVariables[1];
+  seu_case2.ram_working = (Place*) LocalStateVariables[1];
+  seu_case2.ram_corrupted = (Place*) LocalStateVariables[2];
+  word_sefi_case1.ram_working = (Place*) LocalStateVariables[1];
+  word_sefi_case2.ram_working = (Place*) LocalStateVariables[1];
+  word_sefi_case2.ram_corrupted = (Place*) LocalStateVariables[2];
+  device_sefi.ram_working = (Place*) LocalStateVariables[1];
+  device_sefi.ram_corrupted = (Place*) LocalStateVariables[2];
 }
 /*****************************************************************/
 /*                  Activity Method Definitions                  */
@@ -119,7 +124,7 @@ void ram_systemSAN::assignPlacesToActivitiesTimed(){
 
 
 ram_systemSAN::failureActivity::failureActivity(){
-  ActivityInitialize("failure",4,Instantaneous , RaceEnabled, 1,3, false);
+  ActivityInitialize("failure",5,Instantaneous , RaceEnabled, 1,3, false);
 }
 
 void ram_systemSAN::failureActivity::LinkVariables(){
@@ -280,231 +285,291 @@ BaseActionClass* ram_systemSAN::random_failureActivity::Fire(){
   return this;
 }
 
-/*======================bit_errorActivity_case1========================*/
+/*======================seuActivity_case1========================*/
 
-ram_systemSAN::bit_errorActivity_case1::bit_errorActivity_case1(){
+ram_systemSAN::seuActivity_case1::seuActivity_case1(){
   TheDistributionParameters = new double[1];
-  ActivityInitialize("bit_error_case1",2,Exponential, RaceEnabled, 1,1, false);
+  ActivityInitialize("seu_case1",2,Exponential, RaceEnabled, 1,1, false);
 }
 
-ram_systemSAN::bit_errorActivity_case1::~bit_errorActivity_case1(){
+ram_systemSAN::seuActivity_case1::~seuActivity_case1(){
   delete[] TheDistributionParameters;
 }
 
-void ram_systemSAN::bit_errorActivity_case1::LinkVariables(){
+void ram_systemSAN::seuActivity_case1::LinkVariables(){
   ram_working->Register(&ram_working_Mobius_Mark);
 }
 
-bool ram_systemSAN::bit_errorActivity_case1::Enabled(){
+bool ram_systemSAN::seuActivity_case1::Enabled(){
   OldEnabled=NewEnabled;
   NewEnabled=(((*(ram_working_Mobius_Mark)) >=1));
   return NewEnabled;
 }
 
-double ram_systemSAN::bit_errorActivity_case1::Rate(){
+double ram_systemSAN::seuActivity_case1::Rate(){
   return 6.012;
   return 1.0;  // default rate if none is specified
 }
 
-double ram_systemSAN::bit_errorActivity_case1::Weight(){ 
+double ram_systemSAN::seuActivity_case1::Weight(){ 
   return 1-(ram_size/512);
 }
 
-bool ram_systemSAN::bit_errorActivity_case1::ReactivationPredicate(){ 
+bool ram_systemSAN::seuActivity_case1::ReactivationPredicate(){ 
   return false;
 }
 
-bool ram_systemSAN::bit_errorActivity_case1::ReactivationFunction(){ 
+bool ram_systemSAN::seuActivity_case1::ReactivationFunction(){ 
   return false;
 }
 
-double ram_systemSAN::bit_errorActivity_case1::SampleDistribution(){
+double ram_systemSAN::seuActivity_case1::SampleDistribution(){
   return TheDistribution->Exponential(6.012);
 }
 
-double* ram_systemSAN::bit_errorActivity_case1::ReturnDistributionParameters(){
+double* ram_systemSAN::seuActivity_case1::ReturnDistributionParameters(){
   TheDistributionParameters[0] = Rate();
   return TheDistributionParameters;
 }
 
-int ram_systemSAN::bit_errorActivity_case1::Rank(){
+int ram_systemSAN::seuActivity_case1::Rank(){
   return 1;
 }
 
-BaseActionClass* ram_systemSAN::bit_errorActivity_case1::Fire(){
+BaseActionClass* ram_systemSAN::seuActivity_case1::Fire(){
   (*(ram_working_Mobius_Mark))--;
   (*(ram_working_Mobius_Mark))++;
   return this;
 }
 
-/*======================bit_errorActivity_case2========================*/
+/*======================seuActivity_case2========================*/
 
-ram_systemSAN::bit_errorActivity_case2::bit_errorActivity_case2(){
+ram_systemSAN::seuActivity_case2::seuActivity_case2(){
   TheDistributionParameters = new double[1];
-  ActivityInitialize("bit_error_case2",2,Exponential, RaceEnabled, 2,1, false);
+  ActivityInitialize("seu_case2",2,Exponential, RaceEnabled, 2,1, false);
 }
 
-ram_systemSAN::bit_errorActivity_case2::~bit_errorActivity_case2(){
+ram_systemSAN::seuActivity_case2::~seuActivity_case2(){
   delete[] TheDistributionParameters;
 }
 
-void ram_systemSAN::bit_errorActivity_case2::LinkVariables(){
+void ram_systemSAN::seuActivity_case2::LinkVariables(){
   ram_working->Register(&ram_working_Mobius_Mark);
   ram_corrupted->Register(&ram_corrupted_Mobius_Mark);
 }
 
-bool ram_systemSAN::bit_errorActivity_case2::Enabled(){
+bool ram_systemSAN::seuActivity_case2::Enabled(){
   OldEnabled=NewEnabled;
   NewEnabled=(((*(ram_working_Mobius_Mark)) >=1));
   return NewEnabled;
 }
 
-double ram_systemSAN::bit_errorActivity_case2::Rate(){
+double ram_systemSAN::seuActivity_case2::Rate(){
   return 6.012;
   return 1.0;  // default rate if none is specified
 }
 
-double ram_systemSAN::bit_errorActivity_case2::Weight(){ 
+double ram_systemSAN::seuActivity_case2::Weight(){ 
   return ram_size/512;
 }
 
-bool ram_systemSAN::bit_errorActivity_case2::ReactivationPredicate(){ 
+bool ram_systemSAN::seuActivity_case2::ReactivationPredicate(){ 
   return false;
 }
 
-bool ram_systemSAN::bit_errorActivity_case2::ReactivationFunction(){ 
+bool ram_systemSAN::seuActivity_case2::ReactivationFunction(){ 
   return false;
 }
 
-double ram_systemSAN::bit_errorActivity_case2::SampleDistribution(){
+double ram_systemSAN::seuActivity_case2::SampleDistribution(){
   return TheDistribution->Exponential(6.012);
 }
 
-double* ram_systemSAN::bit_errorActivity_case2::ReturnDistributionParameters(){
+double* ram_systemSAN::seuActivity_case2::ReturnDistributionParameters(){
   TheDistributionParameters[0] = Rate();
   return TheDistributionParameters;
 }
 
-int ram_systemSAN::bit_errorActivity_case2::Rank(){
+int ram_systemSAN::seuActivity_case2::Rank(){
   return 1;
 }
 
-BaseActionClass* ram_systemSAN::bit_errorActivity_case2::Fire(){
+BaseActionClass* ram_systemSAN::seuActivity_case2::Fire(){
   (*(ram_working_Mobius_Mark))--;
   (*(ram_corrupted_Mobius_Mark))++;
   return this;
 }
 
-/*======================page_errorActivity_case1========================*/
+/*======================word_sefiActivity_case1========================*/
 
-ram_systemSAN::page_errorActivity_case1::page_errorActivity_case1(){
+ram_systemSAN::word_sefiActivity_case1::word_sefiActivity_case1(){
   TheDistributionParameters = new double[1];
-  ActivityInitialize("page_error_case1",3,Exponential, RaceEnabled, 1,1, false);
+  ActivityInitialize("word_sefi_case1",3,Exponential, RaceEnabled, 1,1, false);
 }
 
-ram_systemSAN::page_errorActivity_case1::~page_errorActivity_case1(){
+ram_systemSAN::word_sefiActivity_case1::~word_sefiActivity_case1(){
   delete[] TheDistributionParameters;
 }
 
-void ram_systemSAN::page_errorActivity_case1::LinkVariables(){
+void ram_systemSAN::word_sefiActivity_case1::LinkVariables(){
   ram_working->Register(&ram_working_Mobius_Mark);
 }
 
-bool ram_systemSAN::page_errorActivity_case1::Enabled(){
+bool ram_systemSAN::word_sefiActivity_case1::Enabled(){
   OldEnabled=NewEnabled;
   NewEnabled=(((*(ram_working_Mobius_Mark)) >=1));
   return NewEnabled;
 }
 
-double ram_systemSAN::page_errorActivity_case1::Rate(){
-  return 2.36e-5/8;
+double ram_systemSAN::word_sefiActivity_case1::Rate(){
+  return //2.36e-5/8
+0;
   return 1.0;  // default rate if none is specified
 }
 
-double ram_systemSAN::page_errorActivity_case1::Weight(){ 
-  return 0.75;
+double ram_systemSAN::word_sefiActivity_case1::Weight(){ 
+  return 1-(ram_size/512);
 }
 
-bool ram_systemSAN::page_errorActivity_case1::ReactivationPredicate(){ 
+bool ram_systemSAN::word_sefiActivity_case1::ReactivationPredicate(){ 
   return false;
 }
 
-bool ram_systemSAN::page_errorActivity_case1::ReactivationFunction(){ 
+bool ram_systemSAN::word_sefiActivity_case1::ReactivationFunction(){ 
   return false;
 }
 
-double ram_systemSAN::page_errorActivity_case1::SampleDistribution(){
-  return TheDistribution->Exponential(2.36e-5/8);
+double ram_systemSAN::word_sefiActivity_case1::SampleDistribution(){
+  return TheDistribution->Exponential(Rate());
 }
 
-double* ram_systemSAN::page_errorActivity_case1::ReturnDistributionParameters(){
+double* ram_systemSAN::word_sefiActivity_case1::ReturnDistributionParameters(){
   TheDistributionParameters[0] = Rate();
   return TheDistributionParameters;
 }
 
-int ram_systemSAN::page_errorActivity_case1::Rank(){
+int ram_systemSAN::word_sefiActivity_case1::Rank(){
   return 1;
 }
 
-BaseActionClass* ram_systemSAN::page_errorActivity_case1::Fire(){
+BaseActionClass* ram_systemSAN::word_sefiActivity_case1::Fire(){
   (*(ram_working_Mobius_Mark))--;
   (*(ram_working_Mobius_Mark))++;
   return this;
 }
 
-/*======================page_errorActivity_case2========================*/
+/*======================word_sefiActivity_case2========================*/
 
-ram_systemSAN::page_errorActivity_case2::page_errorActivity_case2(){
+ram_systemSAN::word_sefiActivity_case2::word_sefiActivity_case2(){
   TheDistributionParameters = new double[1];
-  ActivityInitialize("page_error_case2",3,Exponential, RaceEnabled, 2,1, false);
+  ActivityInitialize("word_sefi_case2",3,Exponential, RaceEnabled, 2,1, false);
 }
 
-ram_systemSAN::page_errorActivity_case2::~page_errorActivity_case2(){
+ram_systemSAN::word_sefiActivity_case2::~word_sefiActivity_case2(){
   delete[] TheDistributionParameters;
 }
 
-void ram_systemSAN::page_errorActivity_case2::LinkVariables(){
+void ram_systemSAN::word_sefiActivity_case2::LinkVariables(){
   ram_working->Register(&ram_working_Mobius_Mark);
   ram_corrupted->Register(&ram_corrupted_Mobius_Mark);
 }
 
-bool ram_systemSAN::page_errorActivity_case2::Enabled(){
+bool ram_systemSAN::word_sefiActivity_case2::Enabled(){
   OldEnabled=NewEnabled;
   NewEnabled=(((*(ram_working_Mobius_Mark)) >=1));
   return NewEnabled;
 }
 
-double ram_systemSAN::page_errorActivity_case2::Rate(){
-  return 2.36e-5/8;
+double ram_systemSAN::word_sefiActivity_case2::Rate(){
+  return //2.36e-5/8
+0;
   return 1.0;  // default rate if none is specified
 }
 
-double ram_systemSAN::page_errorActivity_case2::Weight(){ 
-  return 0.25;
+double ram_systemSAN::word_sefiActivity_case2::Weight(){ 
+  return ram_size/512;
 }
 
-bool ram_systemSAN::page_errorActivity_case2::ReactivationPredicate(){ 
+bool ram_systemSAN::word_sefiActivity_case2::ReactivationPredicate(){ 
   return false;
 }
 
-bool ram_systemSAN::page_errorActivity_case2::ReactivationFunction(){ 
+bool ram_systemSAN::word_sefiActivity_case2::ReactivationFunction(){ 
   return false;
 }
 
-double ram_systemSAN::page_errorActivity_case2::SampleDistribution(){
-  return TheDistribution->Exponential(2.36e-5/8);
+double ram_systemSAN::word_sefiActivity_case2::SampleDistribution(){
+  return TheDistribution->Exponential(Rate());
 }
 
-double* ram_systemSAN::page_errorActivity_case2::ReturnDistributionParameters(){
+double* ram_systemSAN::word_sefiActivity_case2::ReturnDistributionParameters(){
   TheDistributionParameters[0] = Rate();
   return TheDistributionParameters;
 }
 
-int ram_systemSAN::page_errorActivity_case2::Rank(){
+int ram_systemSAN::word_sefiActivity_case2::Rank(){
   return 1;
 }
 
-BaseActionClass* ram_systemSAN::page_errorActivity_case2::Fire(){
+BaseActionClass* ram_systemSAN::word_sefiActivity_case2::Fire(){
+  (*(ram_working_Mobius_Mark))--;
+  (*(ram_corrupted_Mobius_Mark))++;
+  return this;
+}
+
+/*======================device_sefiActivity========================*/
+
+ram_systemSAN::device_sefiActivity::device_sefiActivity(){
+  TheDistributionParameters = new double[1];
+  ActivityInitialize("device_sefi",4,Exponential, RaceEnabled, 2,1, false);
+}
+
+ram_systemSAN::device_sefiActivity::~device_sefiActivity(){
+  delete[] TheDistributionParameters;
+}
+
+void ram_systemSAN::device_sefiActivity::LinkVariables(){
+  ram_working->Register(&ram_working_Mobius_Mark);
+  ram_corrupted->Register(&ram_corrupted_Mobius_Mark);
+}
+
+bool ram_systemSAN::device_sefiActivity::Enabled(){
+  OldEnabled=NewEnabled;
+  NewEnabled=(((*(ram_working_Mobius_Mark)) >=1));
+  return NewEnabled;
+}
+
+double ram_systemSAN::device_sefiActivity::Rate(){
+  return 3.8e-2;
+  return 1.0;  // default rate if none is specified
+}
+
+double ram_systemSAN::device_sefiActivity::Weight(){ 
+  return 1;
+}
+
+bool ram_systemSAN::device_sefiActivity::ReactivationPredicate(){ 
+  return false;
+}
+
+bool ram_systemSAN::device_sefiActivity::ReactivationFunction(){ 
+  return false;
+}
+
+double ram_systemSAN::device_sefiActivity::SampleDistribution(){
+  return TheDistribution->Exponential(3.8e-2);
+}
+
+double* ram_systemSAN::device_sefiActivity::ReturnDistributionParameters(){
+  TheDistributionParameters[0] = Rate();
+  return TheDistributionParameters;
+}
+
+int ram_systemSAN::device_sefiActivity::Rank(){
+  return 1;
+}
+
+BaseActionClass* ram_systemSAN::device_sefiActivity::Fire(){
   (*(ram_working_Mobius_Mark))--;
   (*(ram_corrupted_Mobius_Mark))++;
   return this;

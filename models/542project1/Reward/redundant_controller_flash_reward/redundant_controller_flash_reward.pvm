@@ -69,9 +69,10 @@
 				<vector id="ImpulseFunctionsList">
 				</vector>
 				<string id="RewardFunction">
-					return ram_system-&gt;system_failed-&gt;Mark();\n//return ((
-					ram_system-&gt;flash_corrupted-&gt;Mark() &gt; 0) \n//&amp;&
-					amp; (ram_system-&gt;ram_corrupted-&gt;Mark() &gt; 0));
+					return (ram_system-&gt;system_failed-&gt;Mark() == 0);\n//re
+					turn ((ram_system-&gt;flash_corrupted-&gt;Mark() &gt; 0) \n/
+					/&amp;&amp; (ram_system-&gt;ram_corrupted-&gt;Mark() &gt; 0)
+					);
 				</string>
 				<int id="Type">0</int>
 				<int id="TimeSeriesType">1</int>
