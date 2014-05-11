@@ -13,9 +13,7 @@ Our literature review revealed the following failure modes for each of the syste
 \end{itemize}
 \subsubsection{RAM System}\label{sec:rammodel}
 \begin{itemize}
-
-
-
+\item
 \end{itemize}
 
 Among these failure modes, we chose to model SEU and SEFI failures for the Flash system and SEU, multiple-bit, and device failures for the RAM system.  We chose to intentionally omit SELs from the Flash model because they only appear to be activated at higher ion energies; one example 1GB flash memory experienced SEL effects between 43 and 53 MeV $\cdot$ cm$^2$/mg \cite{Langley2004SEE}, which indicates that latchup is unlikely to occur \cite{Schwank2013Radiation}.  Similarly, TID testing often reveals that the necessary dose to cause failure in a chip is greater than 50kRad \cite{Oldman2008TID}, which is over double the dose that a CubeSat's C\&DH board is likely to experience over a 1-year mission \cite{Likar2010Novel}.  While multiple-bit errors could occur in the flash system, we assume that their absence in papers discussing SEE effects indicates that they are not a major concern for nonvolatile memory.
