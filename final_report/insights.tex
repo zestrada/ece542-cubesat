@@ -18,9 +18,10 @@ event of a watchdog failure.
 \subsubsection{OOM-killer} The Linux kernel that the IlliniSat team is using
 has an Out-Of-Memory killer (OOM-killer) built into it. When the system is 
 low on main memory, the OOM-killer will kill a process based on some heuristics.
-However, this can have undesirable consequences if it kills certain processes.
-We recommend that IlliniSat either be mindful of this and tune the OOM-killer
-such that processes are killed in an acceptable order or that the kernel be set
+However, this can have undesirable consequences if it kills certain processes, such
+as the heart monitor or other mission critical components. We recommend that the
+IlliniSat team uses the OOM-killer but that they either tune the OOM-killer such 
+that processes are killed in an acceptable order or that the kernel be set
 to panic on OOM~\cite{oracleoom}.
 
 %OOM Merge anchor
@@ -30,6 +31,6 @@ mission, 1000 days without reboot is effectively the same as never rebooting. Th
 difference between this and rebooting every day for 2 and 3 devices increases the
 reliability from 0.618 to 0.998 and 0.740 to 1.000 respectively. This is a change in
 38\% and 26\% respectively which is a very large increase in system reliability. 
-Even in the case of a single device, the reliability increases by 7.3\% from 39.5\%
+Even in thme case of a single device, the reliability increases by 7.3\% from 39.5\%
 to 46.8\% Because of the increase in reliability with little to no additional overhead, 
 we urge the team to force regular reboots of the system every day.
