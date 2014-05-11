@@ -54,7 +54,7 @@ The parameters used in this model are shown in Table \ref{tab:flashparameters} a
 \hline
 \texttt{seu\_rate} & SEU event rate & $1.5\cdot 10^{-16}$ & \cite{Oldham2008TID} \\
 \texttt{sefi\_rate} & SEFI event rate & 1 per year & \cite{Oldham2008TID} \\
-\texttt{power\_cycle\_rate} & Flash power cycle rate & $10^x, x\in\{0, 1, 2, 3\}$ & Independent variable \\
+\texttt{power\_cycle\_rate} & Flash power cycle rate & $10^{x}, x\in\{-3, -2, -1, 0\}$ & Independent variable \\
 \hline
 \end{tabular}
 \caption{Parameters used in the flash SAN}
@@ -68,7 +68,7 @@ The parameters used in this model are shown in Table \ref{tab:flashparameters} a
 {\bf Parameter Name} & {\bf Description} & {\bf Value} & {\bf Source}\\
 \hline
 \texttt{seu\_rate} & SEU event rate & $1.4 \cdot 10^{-9}$ & \cite{Gliem2012memory} \\
-\texttt{word\_sefi\_rate} & SEFI event rate for word errors & $5.5 \cdot 10^{-15}$ & \cite{Gliem2012memory} \\
+\texttt{word\_sefi\_rate} & SEFI event rate for word errors\footnote{Note that this error rate was so small (even multiplied by the number of words in the system) that we replaced it by 0 with no effect on the reliability result.} & $5.5 \cdot 10^{-15}$ & \cite{Gliem2012memory} \\
 \texttt{device\_sefi\_rate} & SEFI event rate for device errors & $3.8 \cdot 10^{-2}$ & \cite{Gliem2012memory} \\
 \texttt{watchdog\_reboot\_rate} & Time needed for the watchdog to reboot the system & 5 minutes & Estimate.\\
 \texttt{random\_failure\_rate} & Rate of other random failures & 0.01 & Estimate.\\
