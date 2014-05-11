@@ -11,7 +11,7 @@ The results of this simulation are shown in Figure \ref{fig:reliability} and Tab
 \begin{figure}[width = 0.5\textwidth]
 \centering
 \includegraphics[scale=0.6]{reliability}
-\caption{1-year mission reliability calculated in  our model}\label{fig:reliability}
+\caption{1-year mission reliability calculated in our model}\label{fig:reliability}
 \end{figure}
 
 \begin{table}[width = 0.5\textwidth]
@@ -23,16 +23,16 @@ The results of this simulation are shown in Figure \ref{fig:reliability} and Tab
 \cmidrule(r){2-5}
 {\bf \#Dev} & 1000 & 100 & 10 & 1\\
 \midrule
-1 & 0.395 $\pm$ 0.030 & 0.383 $\pm$ 0.030 & 0.351 $\pm$ 0.030 & 0.468 $\pm$ 0.031 \\
-2 & 0.618 $\pm$ 0.030 & 0.741 $\pm$ 0.028 & 0.944 $\pm$ 0.014 & 0.998 $\pm$ 0.001 \\
-3 & 0.740 $\pm$ 0.027 & 0.908 $\pm$ 0.018 & 0.998 $\pm$ 0.003 & 1.000 $\pm$ 0.000 \\
+1 & 0.401 $\pm$ 0.030 & 0.401 $\pm$ 0.030 & 0.401 $\pm$ 0.030 & 0.402 $\pm$ 0.030 \\
+2 & 1.000 $\pm$ 0.000 & 1.000 $\pm$ 0.000 & 1.000 $\pm$ 0.000 & 0.998 $\pm$ 0.003 \\
+3 & 1.000 $\pm$ 0.000 & 1.000 $\pm$ 0.000 & 1.000 $\pm$ 0.000 & 1.000 $\pm$ 0.000 \\
 \bottomrule
 \end{tabular}
 \caption{1-year mission reliability for our model}\label{tab:reliability}
 }
 \end{table}
 
-As the graphs indicate, the default reliability of the IlliniSat system is fairly low; there is approximately a 40\% chance that the satellite will survive a year under this model.  However, the introduction of another device improves reliability slightly.  If at least two devices are available, periodically power-cycling the flash memory provides an additional, significant reliability improvement.  If the flash is power cycled daily, we are able to achieve an estimated reliability of 99.8\%, a significant improvement over our initial condition.
+As the graphs indicate, the default reliability of the IlliniSat system is fairly low; there is approximately a 40\% chance that the satellite will survive a year under this model.  However, the introduction of another device improves reliability significantly.  Note that the reboot rate has little bearing on the result; this contradicts previous data discussed earlier (including in the final presentation).  This change is due to the detection of a few incorrectly-specified parameters in the model.
 
 \subsection{Fault Injection Tool}
 
