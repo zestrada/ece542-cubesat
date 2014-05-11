@@ -50,7 +50,7 @@ images.  This experiment was then repeated by uniformly flipping bits at random
 in this region.  Of the 610 boot attempts made during the injection campaign,
 602 were successful.  This corresponds to a recovery rate of 98.4\%, and we note
 that this recovery rate is for failures inside the boot region, not across the
-entire device (512MB in the case of IlliniSat). When examining the output, 214
+entire device (512MB in the case of IlliniSat).  When examining the output, 214
 boots had CRC errors in the first kernel, which matches expectations as there
 were three copies of the kernel (considering that there are three copies of the
 kernel in the flash image, this matches expectations).  We leave targeted
@@ -58,3 +58,20 @@ injections against the protection script for future work.
 
 %BP MERGE ANCHOR
 \subsection{Flash Patrol Daemon}
+%TODO: wonder what would happen if we bind mounted the directory and injected
+%into that...
+The flash patrol daemon monitors a Linux filesystem.  However, since the
+\texttt{inotify} subsystem sends events based on file updates, we cannot simply
+inject into the files in the directory being watched by inotify (as this would
+force a crc update). Therefore, we use our fault injection utility to inject
+into the actual block device (e.g.  \texttt{/dev/sdb1}).  The files in the
+filesystem are sample data files provided from the IlliniSat team and copied
+until the filesystem is full (for the speed of experiments, we use a 7.5MB disk
+partition).  At each experiment, we need to start with a clean slate, so we
+regenerate the filesystem and recopy over the data.  After that, we flip a
+random bit inside the underlying block device and record whether the daemon can
+detect a failure.  We performed 402 such experiments and detected 337 errors,
+corresponding to 83.8\% of injections resulting in a detected CRC error.
+Note that faults were injected into non-data regions of the filesystem, so the
+detection rate is likely much higher than 83.3\%.
+%TODO: kill patrold and just run simple checkerd experiments?
