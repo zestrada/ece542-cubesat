@@ -65,7 +65,7 @@ injections against the protection script for future work.
 The flash patrol daemon monitors a Linux filesystem.  However, since the
 inotify subsystem sends events based on file updates, we cannot simply
 inject into the files in the directory being watched by inotify (as this would
-force a crc update). Therefore, we use our fault injection utility to inject
+force a CRC update). Therefore, we use our fault injection utility to inject
 into the actual block device (e.g.  \texttt{/dev/sdb1}).  The files in the
 filesystem are sample data files provided from the IlliniSat team and copied
 until the filesystem is full (for the speed of experiments, we use a 7.5MB disk
