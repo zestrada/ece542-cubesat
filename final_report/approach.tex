@@ -72,7 +72,7 @@ the C\&DH board already uses the MLO bootloader with redundant U-Boot images.
 In order to develop and test the boot protection system in a controlled
 environment, we decided to use an ARM emulator.  The QEMU~\cite{bellard2005qemu}
 emulator is well known and supports a variety of architectures, including
-several ARM development boards.  It does not currently support the MityARM board
+several ARM development boards.  It does not currently support the MitySOM board
 used by IlliniSat, so we use the ``versatilepb'' virtual development board to
 run U-boot and Linux compiled for
 ARM.\footnote{\url{http://elinux.org/Virtual_Development_Board}}
@@ -103,7 +103,7 @@ the area vulnerable to bit errors by three orders of magnitude (1.7MB/914B =
 1950).  It is important to note that since the QEMU development environment used
 a memory-mapped flash device, the kernels are shown as being contiguous in
 memory.  However, it would be trivial to modify the script to load the kernels
-from a separate device (e.g. an SD card, as found on the MityARM335x).
+from a separate device (e.g. an SD card, as found on the MitySOM-335x).
 
 %(1.7 megabytes) / (914 bytes) = 1950.30547
 
