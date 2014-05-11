@@ -65,7 +65,10 @@ kernel image is 1.7MB.  Without this scheme, the Linux kernel image was a
 single-point-of-failure during the boot process (or one could boot a faulty
 kernel and have other failures at a later time).  The script effectively reduces
 the area vulnerable to bit errors by three orders of magnitude (1.7MB/914B =
-1950).
+1950).  It is important to note that since the QEMU development environment used
+a memory-mapped flash device, the kernels are shown as being contiguous in
+memory.  However, it would be trivial to modify the script to load the kernels
+from a separate device (e.g. an SD card, as found on the MityARM335x).
 
 %(1.7 megabytes) / (914 bytes) = 1950.30547
 

@@ -34,11 +34,27 @@ As the graphs indicate, the default reliability of the IlliniSAT system is fairl
 
 \subsection{Fault Injection Tool}
 
-In order to test the utilities developed, we developed a fault injection tool.
-Since both the boot protection and flash patrol daemon 
+In order to test the utilities developed, we built a small fault injection
+tool.  Since both the boot protection and flash patrol daemon interact with
+storage in some form, one tool was made for testing both utilities.  The tool
+opens a file ands seeks to a specified location (usually chosen uniformly at
+random) and then reads a bit, flips it, and writes it back.  When writing
+directly to block devices, the {\texttt {O\_DIRECT}} flag is used to ensure
+writes are flushed immediately.
 
 %FI MERGE ANCHOR
 \subsection{Boot Protection}
+To evaluate the boot protection scheme, we flipped a bit in the region of the
+QEMU virtual flash device used to hold the boot protection script and the kernel
+images.  This experiment was then repeated by uniformly flipping bits at random
+in this region.  Of the 610 boot attempts made during the injection campaign,
+602 were successful.  This corresponds to a recovery rate of 98.4\%, and we note
+that this recovery rate is for failures inside the boot region, not across the
+entire device (512MB in the case of IlliniSat). When examining the output, 214
+boots had CRC errors in the first kernel, which matches expectations as there
+were three copies of the kernel (considering that there are three copies of the
+kernel in the flash image, this matches expectations).  We leave targeted
+injections against the protection script for future work.
 
 %BP MERGE ANCHOR
 \subsection{Flash Patrol Daemon}
