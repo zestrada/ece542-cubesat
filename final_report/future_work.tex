@@ -1,7 +1,22 @@
 \section{Future Work}\label{sec:future_work}
 \begin{itemize}
-  \item Consider adding MityARM335x to QEMU
+  \item {\bf Run IlliniSat code natively in QEMU.} It was useful to have QEMU
+  and run our tests on ARM compiled code, but we were unable to use the exact
+  same binaries (e.g. U-Boot) since the devices and memory maps in the
+  versatilepb system are different from the MitySOM-335x.  If we were able to
+  add the MitySOM-335x to QEMU, we could verify the entire software stack of
+  IlliniSat.  This would be somewhat of a large effort, but very worthwhile as
+  it would enable us to run different experiments - including much more thorough
+  fault injection campaigns.  Furthermore, it would provide a very useful
+  software development environment for the IlliniSat team.
   \item {\bf Model different hardware.}  While the M\"obius simulation used in this experiment was tuned to the board being used by the IlliniSat team, CubeSat is designed to be used on low-cost commodity hardware.  Studies such as \cite{Oldham2008TID} found a four-order-of-magnitude difference in flash memories of the same size from different manufacturers.  Our solution to the boot protection problem was designed to minimize the effects of SEFI failures because the IlliniSat hardware has a relatively high SEFI rate; we would most likely recommend different strategies for memories where the risk of SEU is non-negligable and the risk of SEFI is less significant.
   \item {\bf Model longer mission lifetimes.}  One of the major assumptions that guided the development of our fault model was the assumption that the IlliniSat mission had at most a 1 year lifetime.  This assumption simplified the model because the Total Ionizing Dose (TID) that the satellite received was small enough to have no effect during the course of the mission \cite{Likar2010Novel, Oldham2008TID}.  However, TID-related failure is a significant failure mode that could occur during longer missions.  By extending the model to support larger mission lifetimes, we would be able to better characterize reliability challenges for long-term CubeSat missions.
-  \item {\bf Provide additional software assurance.} While this project primarily focused on providing fault-tolerance from hardware errors via software, we believe that a formal analysis of the IlliniSat software stack would also help to provide dependability.  As our failure model only considers operating system level failures, it is unable to protect against application-level crashes or errors that could exist in the IlliniSat software.  We chose not to work on this topic for our project because the software is currently being developed; however, we could certainly revisit it in the future.
+  \item {\bf Provide additional software assurance.} While this project
+  primarily focused on providing fault-tolerance from hardware errors via
+  software, we believe that a formal analysis of the IlliniSat software stack
+  would also help to provide dependability.  As our failure model only considers
+  data corruption, it is unable to protect against all application-level crashes
+  or other errors that could exist in the IlliniSat software.  We chose not to
+  work on this topic for our project because the software is currently being
+  developed; however, we could certainly revisit it in the future.
 \end{itemize}

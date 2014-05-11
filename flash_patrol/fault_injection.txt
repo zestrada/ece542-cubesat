@@ -106,3 +106,28 @@ zak@mustang0:~/github/ece542/flash_patrol/data$ grep failed *log|wc -l
 ---
 
 337/402 = 83%
+
+I then started running this experiment:
+---
+#!/bin/bash
+~/reset_testfs.sh
+make kill
+make run
+sleep 0.1
+find /home/zak/cubesat/data/ -name "*txt" -type f -exec cp {} /mnt/inotify/ \;
+>/dev/null 2>&1
+sleep 2.0
+files=(/mnt/inotify/*)
+killall flash_patrold
+FILE=`printf "%s\n" ${files[RANDOM % ${#files[@]}]}`
+echo $FILE
+NBYTES=`stat -c%s ${FILE}`
+RAND=`shuf -i 0-${NBYTES} -n 1`
+echo $FILE
+echo $RAND
+sudo ./flip $FILE $RAND
+sleep 2.0
+---
+
+which kills patrold after it generates the checksums and then corrupts a
+random file
