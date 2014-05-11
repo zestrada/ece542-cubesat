@@ -1,6 +1,6 @@
 \section{Project Insights}\label{sec:insights}
 
-This study has also shown that a solution to the boot reliability problem need not be costly in terms of either time or effort.  Two Flash storage devices are enough to provide for kernel integrity, and many off-the-shelf devices provide support for an extra storage device.  Power cycling Flash memory on a daily basis is enough to provide almost three 9s of reliability and should only require a few minutes per day to perform the power cycle.
+This study has also shown that a solution to the boot reliability problem need not be costly in terms of either time or effort.  Two flash storage devices are enough to provide for kernel integrity, and many off-the-shelf devices provide support for an extra storage device.  Power cycling flash memory on a daily basis is enough to provide almost three 9s of reliability and should only require a few minutes per day to perform the power cycle.
 
 \subsection{Further Recommendations}
 Based on other observations during this project and past experience, we would
@@ -15,9 +15,21 @@ faster than waiting for a watchdog timeout since the kernel will issue the
 reboot almost immediately after failure or it will still reboot in the unlikely
 event of a watchdog failure.
 
-\subsubsection{OOM-killer} When the system is low on main memory, the
-Out-Of-Memory killer (OOM-killer) will kill a process based on some heuristics.
+\subsubsection{OOM-killer} The Linux kernel that the IlliniSat team is using
+has an Out-Of-Memory killer (OOM-killer) built into it. When the system is 
+low on main memory, the OOM-killer will kill a process based on some heuristics.
 However, this can have undesirable consequences if it kills certain processes.
 We recommend that IlliniSat either be mindful of this and tune the OOM-killer
 such that processes are killed in an acceptable order or that the kernel be set
-to panic on OOM~\cite{oracle_oom}.
+to panic on OOM~\cite{oracleoom}.
+
+%OOM Merge anchor
+\subsubsection{Regular Reboot} Our results from the M\"obius simulation model
+in Table \ref{tab:reliability} support a regular reboot of the system. For a one year
+mission, 1000 days without reboot is effectively the same as never rebooting. The
+difference between this and rebooting every day for 2 and 3 devices increases the
+reliability from 0.618 to 0.998 and 0.740 to 1.000 respectively. This is a change in
+38\% and 26\% respectively which is a very large increase in system reliability. 
+Even in the case of a single device, the reliability increases by 7.3\% from 39.5\%
+to 46.8\% Because of the increase in reliability with little to no additional overhead, 
+we urge the team to force regular reboots of the system every day.
